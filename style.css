@@ -5,6 +5,14 @@
   padding: 0;
 }
 
+/* BODY */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #fff;
+  color: #000;
+}
+
 /* TOP BAR */
 .top-bar {
   position: fixed;
@@ -19,6 +27,7 @@
   align-items: center;
   justify-content: flex-end;
   padding: 0 16px;
+
   z-index: 1000;
 }
 
@@ -34,21 +43,20 @@
   border: none;
   padding: 0;
   cursor: pointer;
+
+  position: relative;
+  z-index: 3000; /* 🔑 FIX: stays above menu */
 }
 
 .menu-button span {
-  height: 2px;
   width: 100%;
+  height: 2px;
   background: #000;
   border-radius: 1px;
   transform-origin: center;
 
   transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
               opacity 0.2s ease;
-}
-
-.menu-button:active {
-  opacity: 0.6;
 }
 
 /* OPEN → X */
@@ -60,14 +68,16 @@
   transform: translateY(-11px) rotate(-45deg);
 }
 
-/* MENU OVERLAY */
+/* FULL SCREEN MENU OVERLAY */
 .menu-overlay {
   position: fixed;
   inset: 0;
   background: #fff;
+
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
+
   z-index: 2000;
 }
 
@@ -95,6 +105,7 @@
 
 .menu-content a {
   text-decoration: none;
-  font-size: 22px;
+  font-size: 24px;
+  font-weight: 500;
   color: #000;
 }
