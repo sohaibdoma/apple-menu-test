@@ -13,7 +13,7 @@ body {
   color: #000;
 }
 
-/* TOP BAR */
+/* TOP BAR — RAISED ABOVE OVERLAY */
 .top-bar {
   position: fixed;
   top: 0;
@@ -28,7 +28,7 @@ body {
   justify-content: flex-end;
   padding: 0 16px;
 
-  z-index: 1000;
+  z-index: 3000; /* 🔑 KEY FIX */
 }
 
 /* MENU BUTTON */
@@ -45,7 +45,6 @@ body {
   cursor: pointer;
 
   position: relative;
-  z-index: 3000; /* 🔑 FIX: stays above menu */
 }
 
 .menu-button span {
@@ -78,7 +77,7 @@ body {
   pointer-events: none;
   transition: opacity 0.35s ease;
 
-  z-index: 2000;
+  z-index: 2000; /* BELOW HEADER */
 }
 
 .menu-overlay.open {
