@@ -1,11 +1,16 @@
-const menuButton = document.querySelector(".menu-button");
-const menuOverlay = document.querySelector(".menu-overlay");
+const menuButton = document.querySelector('.menu-button');
+const menuOverlay = document.querySelector('.menu-overlay');
+const menuLinks = document.querySelectorAll('.menu-overlay a');
 
-menuButton.addEventListener("click", () => {
-  const isOpen = menuOverlay.classList.toggle("open");
+menuButton.addEventListener('click', () => {
+  menuButton.classList.toggle('open');
+  menuOverlay.classList.toggle('open');
+});
 
-  menuButton.classList.toggle("open", isOpen);
-  menuOverlay.setAttribute("aria-hidden", !isOpen);
-
-  document.body.style.overflow = isOpen ? "hidden" : "";
+// Close menu when a menu link is clicked
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    menuButton.classList.remove('open');
+    menuOverlay.classList.remove('open');
+  });
 });
