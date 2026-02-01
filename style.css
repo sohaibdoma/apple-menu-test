@@ -103,8 +103,8 @@ body {
 }
 .ayah {
   font-size: 22px;
-  line-height: 2.2;
-  margin-bottom: 20px;
+  line-height: 1.9;
+  margin-bottom: 16px;
   text-align: center;
 }
 .surah {
@@ -117,4 +117,6 @@ body {
 }
 .surah-title {
   margin-bottom: 40px;
+  text-align: center;
 }
+
