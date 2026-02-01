@@ -101,3 +101,20 @@ body {
   font-weight: 500;
   color: #000;
 }
+.ayah {
+  font-size: 22px;
+  line-height: 2.2;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.surah {
+  padding-top: 160px;   /* space below menu */
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 48px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.surah-title {
+  margin-bottom: 40px;
+}
