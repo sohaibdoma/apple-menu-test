@@ -33,6 +33,13 @@ body {
 
   z-index: 4000; /* ABOVE EVERYTHING */
 }
+.menu-button {
+  -webkit-tap-highlight-color: transparent; /* iOS / Android */
+  outline: none; /* remove focus outline */
+}
+.menu-button:focus {
+  outline: none;
+}
 
 .menu-button span {
   width: 100%;
