@@ -1,9 +1,11 @@
-const menuBtn = document.getElementById("menuBtn");
-const menuPanel = document.getElementById("menuPanel");
-const container = document.querySelector(".container");
+const menuButton = document.querySelector(".menu-button");
+const menuOverlay = document.querySelector(".menu-overlay");
 
-menuBtn.addEventListener("click", () => {
-  const isOpen = menuPanel.classList.toggle("open");
-  menuBtn.classList.toggle("active", isOpen);
-  container.classList.toggle("menu-open", isOpen);
+menuButton.addEventListener("click", () => {
+  const isOpen = menuOverlay.classList.toggle("open");
+
+  menuButton.classList.toggle("open", isOpen);
+  menuOverlay.setAttribute("aria-hidden", !isOpen);
+
+  document.body.style.overflow = isOpen ? "hidden" : "";
 });

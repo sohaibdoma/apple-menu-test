@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Wahyollah</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <button id="menuBtn" class="menu-btn" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
 
-    <aside class="menu-panel" id="menuPanel">
-      <h2>بسم الله</h2>
-      <p>5K Retina brilliance.</p>
-      <p>Built-in camera and audio for the best experience.</p>
-    </aside>
+<header class="top-bar">
+  <button class="menu-button" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+  </button>
+</header>
 
-    <main class="main-content">
-      <h1>Wahyollah Website</h1>
-      <p>Tap the top-right button.</p>
-    </main>
-  </div>
+<div class="menu-overlay" aria-hidden="true">
+  <nav class="menu-content">
+    <ul>
+      <li><a href="menu.html">السور</a></li>
+      <li><a href="surah/001-al-fatihah.html">الفاتحة</a></li>
+      <li><a href="surah/002-al-baqarah.html">البقرة</a></li>
+    </ul>
+  </nav>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
