@@ -19,8 +19,8 @@ body {
   top: 14px;
   right: 16px;
 
-  width: 32px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 
   display: flex;
   flex-direction: column;
@@ -46,11 +46,11 @@ body {
 
 /* OPEN → X */
 .menu-button.open span:first-child {
-  transform: translateY(11px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
 }
 
 .menu-button.open span:last-child {
-  transform: translateY(-11px) rotate(-45deg);
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* FULL SCREEN MENU */
