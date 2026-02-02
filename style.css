@@ -119,4 +119,22 @@ body {
   margin-bottom: 20px;
   text-align: center;
 }
+/* HOME PAGE */
+.home {
+  padding-top: 180px;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.home-subtitle {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
 
