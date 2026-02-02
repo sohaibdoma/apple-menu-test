@@ -4,15 +4,20 @@ const menuLinks = document.querySelectorAll('.menu-overlay a');
 
 // Toggle menu (≡ ↔ X)
 function toggleMenu() {
-  menuButton.classList.toggle('open');
-  menuOverlay.classList.toggle('open');
+  const isOpen = menuOverlay.classList.toggle('open');
+
+  menuButton.classList.toggle('open', isOpen);
+  document.body.classList.toggle('menu-open', isOpen);
 }
+
 
 // Close menu (force close)
 function closeMenu() {
   menuButton.classList.remove('open');
   menuOverlay.classList.remove('open');
+  document.body.classList.remove('menu-open');
 }
+
 
 // Menu button click
 menuButton.addEventListener('click', toggleMenu);

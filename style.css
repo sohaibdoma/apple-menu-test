@@ -152,6 +152,11 @@ body {
 
   -webkit-overflow-scrolling: touch;
 }
+/* LOCK BACKGROUND SCROLL WHEN MENU IS OPEN */
+body.menu-open {
+  overflow: hidden;
+  height: 100vh;
+}
 
 
 
