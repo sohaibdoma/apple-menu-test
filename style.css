@@ -96,11 +96,16 @@ body {
 }
 
 .menu-content a {
+  display: block;        /* ← THIS FIXES THE BUG */
+  width: 100%;           /* ← PREVENTS LETTER COLLAPSE */
+
   text-decoration: none;
   font-size: 24px;
   font-weight: 500;
   color: #000;
+  text-align: center;
 }
+
 .ayah {
   font-size: 22px;
   line-height: 1.9;
