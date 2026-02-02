@@ -78,12 +78,14 @@ body {
   pointer-events: auto;
 }
 
-/* MENU CONTENT — SIMPLE & SAFE */
+/* MENU CONTENT — FIXED HEIGHT */
 .menu-content {
-  height: 100%;
-  padding-top: 120px; /* space from top */
+  height: 100vh;              /* 🔴 THIS IS THE KEY */
+  padding-top: 120px;
+  padding-bottom: 40px;
   text-align: center;
 }
+
 
 .menu-content li {
   margin: 16px 0;
@@ -139,6 +141,7 @@ body {
   line-height: 1.6;
 }
 /* MENU LIST — SAFARI + ARABIC SAFE */
+/* MENU LIST — SCROLLABLE */
 .menu-content ul {
   list-style: none;
   margin: 0 auto;
@@ -149,5 +152,6 @@ body {
 
   -webkit-overflow-scrolling: touch;
 }
+
 
 
