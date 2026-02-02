@@ -61,26 +61,26 @@ body {
 }
 
 /* FULL SCREEN MENU */
+/* FULL SCREEN MENU — SCROLLABLE & SAFE */
 .menu-overlay {
   position: fixed;
   inset: 0;
   background: #fff;
 
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
+  visibility: hidden;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
   z-index: 3000;
-
-  overflow-y: auto;                     /* ← THIS IS THE FIX */
-  -webkit-overflow-scrolling: touch;    /* iOS smooth scroll */
 }
-
 
 .menu-overlay.open {
   opacity: 1;
-  pointer-events: auto;
+  visibility: visible;
 }
+
 
 /* MENU CONTENT — FIXED HEIGHT */
 .menu-content {
@@ -103,7 +103,7 @@ body {
   font-weight: 500;
   color: #000;
 
-  text-align: center;
+  text-align: right;
 }
 
 
@@ -149,8 +149,8 @@ body {
   list-style: none;
   margin: 0 auto;
   padding: 0;
-  text-align: center;
 }
+
 
 /* LOCK BACKGROUND SCROLL WHEN MENU IS OPEN */
 body.menu-open {
