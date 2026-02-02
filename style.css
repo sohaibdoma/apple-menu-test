@@ -137,4 +137,12 @@ body {
   color: #555;
   line-height: 1.6;
 }
+/* SCROLLABLE MENU LIST */
+.menu-content ul {
+  max-height: 75vh;      /* keeps space for top/bottom */
+  overflow-y: auto;
+  padding: 24px 0;
+
+  -webkit-overflow-scrolling: touch; /* smooth iOS scrolling */
+}
 
