@@ -71,7 +71,11 @@ body {
   transition: opacity 0.35s ease;
 
   z-index: 3000;
+
+  overflow-y: auto;                     /* ← THIS IS THE FIX */
+  -webkit-overflow-scrolling: touch;    /* iOS smooth scroll */
 }
+
 
 .menu-overlay.open {
   opacity: 1;
@@ -80,7 +84,6 @@ body {
 
 /* MENU CONTENT — FIXED HEIGHT */
 .menu-content {
-  height: 100vh;              /* 🔴 THIS IS THE KEY */
   padding-top: 120px;
   padding-bottom: 40px;
   text-align: center;
@@ -146,12 +149,9 @@ body {
   list-style: none;
   margin: 0 auto;
   padding: 0;
-
-  max-height: calc(100vh - 160px);
-  overflow-y: auto;
-
-  -webkit-overflow-scrolling: touch;
+  text-align: center;
 }
+
 /* LOCK BACKGROUND SCROLL WHEN MENU IS OPEN */
 body.menu-open {
   overflow: hidden;
