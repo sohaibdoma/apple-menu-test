@@ -96,14 +96,15 @@ body {
 }
 
 .menu-content a {
-  display: block;        /* ← THIS FIXES THE BUG */
-  width: 100%;           /* ← PREVENTS LETTER COLLAPSE */
+  display: block;
+  width: 100%;
 
   text-decoration: none;
   font-size: 24px;
   font-weight: 500;
   color: #000;
-  text-align: center;
+
+  padding: 8px 0;
 }
 
 .ayah {
@@ -142,7 +143,7 @@ body {
   color: #555;
   line-height: 1.6;
 }
-/* SCROLLABLE MENU LIST — FIXED */
+/* SCROLLABLE MENU LIST — SAFARI SAFE */
 .menu-content ul {
   list-style: none;
   width: 100%;
@@ -152,10 +153,10 @@ body {
   overflow-y: auto;
   padding: 24px 0;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
+  text-align: center;
 
   -webkit-overflow-scrolling: touch;
 }
+
 
