@@ -179,4 +179,9 @@ body.easy-read {
                "Noto Naskh Arabic",
                serif;
 }
+.surah,
+.ayah,
+.surah-title {
+  text-align: center !important;
+}
 
