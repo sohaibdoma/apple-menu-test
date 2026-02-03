@@ -1,5 +1,9 @@
 // Load shared menu
-fetch('menu.html')
+const menuPath = window.location.pathname.includes('/surah/')
+  ? '../menu.html'
+  : 'menu.html';
+
+fetch(menuPath)
   .then(res => res.text())
   .then(html => {
     document.getElementById('menu-placeholder').innerHTML = html;
