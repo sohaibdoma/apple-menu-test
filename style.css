@@ -1,3 +1,12 @@
+/* ===============================
+   QURAN FONTS
+   =============================== */
+
+/* Amiri Quran — Default */
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
+
+/* Scheherazade New — Easy Read */
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
 /* RESET */
 * {
   box-sizing: border-box;
@@ -7,8 +16,10 @@
 
 /* BODY */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-               "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Amiri Quran",
+               "Scheherazade New",
+               "Noto Naskh Arabic",
+               serif;
   background: #fff;
   color: #000;
 }
@@ -158,5 +169,14 @@ body.menu-open {
   height: 100vh;
 }
 
+/* ===============================
+   EASY READ MODE
+   =============================== */
 
+body.easy-read {
+  font-family: "Scheherazade New",
+               "Amiri Quran",
+               "Noto Naskh Arabic",
+               serif;
+}
 
