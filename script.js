@@ -2,29 +2,18 @@ const menuButton = document.querySelector('.menu-button');
 const menuOverlay = document.querySelector('.menu-overlay');
 const menuLinks = document.querySelectorAll('.menu-overlay a');
 
-// Toggle menu (≡ ↔ X)
+// ONE source of truth
 function toggleMenu() {
-  const isOpen = menuOverlay.classList.toggle('open');
-
-  menuButton.classList.toggle('open', isOpen);
-  document.body.classList.toggle('menu-open', isOpen);
+  menuButton.classList.toggle('open');
+  menuOverlay.classList.toggle('open');
 }
 
-
-// Close menu (force close)
-function closeMenu() {
-  menuButton.classList.remove('open');
-  menuOverlay.classList.remove('open');
-  document.body.classList.remove('menu-open');
-}
-
-
-// Menu button click
+// Menu button
 menuButton.addEventListener('click', toggleMenu);
 
-// Menu item clicks behave EXACTLY like clicking X
+// Menu links behave EXACTLY like clicking the button
 menuLinks.forEach(link => {
   link.addEventListener('click', () => {
-    closeMenu();
+    toggleMenu();
   });
 });
