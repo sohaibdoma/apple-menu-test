@@ -1,12 +1,14 @@
-// Load shared menu
-const menuPath = window.location.pathname.includes('/surah/')
-  ? '../menu.html'
-  : 'menu.html';
-
-fetch(menuPath)
-  .then(res => res.text())
+// Load shared menu (base-aware, works everywhere)
+fetch('menu.html')
+  .then(res => {
+    if (!res.ok) throw new Error('Menu not found');
+    return res.text();
+  })
   .then(html => {
-    document.getElementById('menu-placeholder').innerHTML = html;
+    const placeholder = document.getElementById('menu-placeholder');
+    if (!placeholder) return;
+
+    placeholder.innerHTML = html;
 
     const menuButton = document.querySelector('.menu-button');
     const menuOverlay = document.querySelector('.menu-overlay');
