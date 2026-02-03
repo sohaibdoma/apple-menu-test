@@ -23,7 +23,7 @@ fetch('/menu.html')
   .then(html => {
     document.getElementById('menu-placeholder').innerHTML = html;
 
-    // Now the menu exists in the DOM
+    // Bind menu functionality AFTER menu loads
     const menuButton = document.querySelector('.menu-button');
     const menuOverlay = document.querySelector('.menu-overlay');
     const menuLinks = document.querySelectorAll('.menu-overlay a');
@@ -31,13 +31,12 @@ fetch('/menu.html')
     function toggleMenu() {
       menuButton.classList.toggle('open');
       menuOverlay.classList.toggle('open');
+      document.body.classList.toggle('menu-open'); // optional, locks scrolling
     }
 
-    // Button toggles menu
     menuButton.addEventListener('click', toggleMenu);
-
-    // Clicking a link closes the menu
     menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
   });
+
 
 
