@@ -23,7 +23,6 @@ fetch('/menu.html')
   .then(html => {
     document.getElementById('menu-placeholder').innerHTML = html;
 
-    // Re-bind menu logic AFTER load
     const menuButton = document.querySelector('.menu-button');
     const menuOverlay = document.querySelector('.menu-overlay');
     const menuLinks = document.querySelectorAll('.menu-overlay a');
@@ -39,3 +38,9 @@ fetch('/menu.html')
       link.addEventListener('click', toggleMenu);
     });
   });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menuOverlay.classList.contains('open')) {
+    toggleMenu();
+  }
+});
+
