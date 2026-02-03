@@ -23,6 +23,7 @@ fetch('/menu.html')
   .then(html => {
     document.getElementById('menu-placeholder').innerHTML = html;
 
+    // Now the menu exists in the DOM
     const menuButton = document.querySelector('.menu-button');
     const menuOverlay = document.querySelector('.menu-overlay');
     const menuLinks = document.querySelectorAll('.menu-overlay a');
@@ -32,15 +33,11 @@ fetch('/menu.html')
       menuOverlay.classList.toggle('open');
     }
 
+    // Button toggles menu
     menuButton.addEventListener('click', toggleMenu);
 
-    menuLinks.forEach(link => {
-      link.addEventListener('click', toggleMenu);
-    });
+    // Clicking a link closes the menu
+    menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
   });
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && menuOverlay.classList.contains('open')) {
-    toggleMenu();
-  }
-});
+
 
