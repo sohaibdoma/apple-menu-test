@@ -184,4 +184,23 @@ body.easy-read {
 .surah-title {
   text-align: center !important;
 }
+.ayah {
+  font-size: 1.6rem;
+  line-height: 2.8;
+  margin-bottom: 1.2rem;
+  text-align: right;
+}
+
+.ayah-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.6rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  line-height: 1;
+}
 
