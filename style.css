@@ -225,7 +225,7 @@ html, body {
   margin: 8px 0;                  /* spacing between pills */
 
   background: #f2f2f2;            /* same as page bg */
-  border-radius: 8px;            /* iOS-style curve */
+  border-radius: 18px;            /* iOS-style curve */
 
   font-size: 30px;
   font-weight: 700;               /* bold like screenshot */
