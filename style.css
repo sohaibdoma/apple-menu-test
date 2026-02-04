@@ -111,7 +111,7 @@ body {
 }
 
 .menu-content li {
-  margin: 8px 0; /* half the vertical space */
+  margin: 8px 0; /* slim vertical rhythm */
 }
 
 .menu-content a {
@@ -168,7 +168,9 @@ body {
   list-style: none;
   margin: 0 auto;
   padding: 0;
-  text-align: center;
+    display: flex;
+  flex-direction: column;
+  align-items: center; /* center boxes as a group */
 }
 
 
@@ -217,15 +219,20 @@ html, body {
 }
 /* MENU ITEM RECTANGLES */
 .menu-content a {
-  display: inline-block;          /* hug text width */
-  background: #f2f2f2;            /* same as page bg */
-  padding: 10px 18px;             /* rectangle size */
-  border-radius: 10px;            /* Apple-style rounding */
+  display: inline-flex;           /* tight fit + alignment control */
+  justify-content: flex-end;      /* text sticks to the right */
+  align-items: center;
 
+  background: #f2f2f2;
+  padding: 6px 14px;              /* slimmer height */
+  border-radius: 999px;           /* pill shape */
+
+  font-size: 30px;
   font-weight: 700;
-  text-align: right;
+  color: #000;
+  text-decoration: none;
 
-  transition: background 0.2s ease;
+  text-align: right;
 }
 .menu-content a:hover {
   background: #e8e8e8;
