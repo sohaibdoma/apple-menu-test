@@ -191,15 +191,20 @@ body.easy-read {
 }
 
 .ayah-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+
   width: 2rem;
   height: 2rem;
-  margin-right: 0.6rem;
+
   border: 1.5px solid currentColor;
   border-radius: 50%;
+
+  display: inline-block;
+  text-align: center;
+
   font-size: 0.9rem;
-  line-height: 1;
+  line-height: 2rem; /* 🔒 MAGIC */
 }
+
+
 
