@@ -191,12 +191,21 @@ body.easy-read {
 }
 
 .ayah-number {
-  font-size: 0.9rem;   /* SAME size as before */
+  font-size: 0.9rem;   /* same size as before */
   font-weight: 500;
   line-height: 1;
-  margin-right: 0.6rem; /* spacing from ayah text */
+  margin-right: 0.6rem;
   white-space: nowrap;
 }
+
+.ayah-number::before {
+  content: "(";
+}
+
+.ayah-number::after {
+  content: ")";
+}
+
 
 
 
