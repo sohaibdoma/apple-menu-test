@@ -225,7 +225,7 @@ html, body {
 
   background: #f2f2f2;
   padding: 6px 14px;              /* slimmer height */
-  border-radius: 999px;           /* pill shape */
+  border-radius: 500px;           /* pill shape */
 
   font-size: 30px;
   font-weight: 700;
