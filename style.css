@@ -205,6 +205,20 @@ body.easy-read {
 .ayah-number::after {
   content: ")";
 }
+.ayah-number {
+  color: red !important;
+  font-size: 18px !important;
+}
+
+.ayah-number::before {
+  content: "( ";
+  color: red;
+}
+
+.ayah-number::after {
+  content: " )";
+  color: red;
+}
 
 
 
