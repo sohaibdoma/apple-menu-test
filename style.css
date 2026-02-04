@@ -106,22 +106,33 @@ body {
 .menu-content ul {
   list-style: none;
   padding: 0;
-  margin: 0;
-  text-align: right; /* ensure text inside is right-aligned */
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center the whole group on the page */
 }
 
 .menu-content li {
-  margin: 8px 0; /* slim vertical rhythm */
+  display: flex;
+  justify-content: flex-end; /* anchor children to the right */
+  width: 100%;
 }
 
 .menu-content a {
-  display: block;
-  padding: 6px 0; /* tighter but still tappable */
-  text-decoration: none;
+  display: inline-block;
+  padding: 14px 28px;
+
+  background: #f2f2f2;
+  border-radius: 22px;
+
   font-size: 30px;
-  font-weight: 700; /* bold */
+  font-weight: 700;
   color: #000;
-  text-align: right; /* aligns text inside links */
+  text-decoration: none;
+
+  text-align: right;     /* Arabic text */
+  white-space: nowrap;   /* no wrapping */
 }
  
 
