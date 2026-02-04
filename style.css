@@ -81,11 +81,16 @@ body {
   opacity: 0;
   visibility: hidden;
 
+  display: flex;           /* added */
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   z-index: 3000;
 }
+
 
 .menu-overlay.open {
   opacity: 1;
@@ -93,12 +98,11 @@ body {
 }
 
 
-/* MENU CONTENT — FIXED HEIGHT */
 .menu-content {
-  padding-top: 120px;
-  padding-bottom: 40px;
-  text-align: center;
+  text-align: right; /* align text to the right */
+  padding: 0;        /* remove previous padding */
 }
+
 
 
 .menu-content li {
@@ -114,7 +118,7 @@ body {
   font-weight: 500;
   color: #000;
 
-   text-align: center;
+  text-align: right;
  
 
 
