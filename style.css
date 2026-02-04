@@ -191,11 +191,9 @@ body.easy-read {
 }
 
 .ayah-number {
-  font-size: 0.9rem;   /* same size as before */
-  font-weight: 500;
-  line-height: 1;
-  margin-right: 0.6rem;
-  white-space: nowrap;
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
 }
 
 .ayah-number::before {
@@ -205,20 +203,7 @@ body.easy-read {
 .ayah-number::after {
   content: ")";
 }
-.ayah-number {
-  color: red !important;
-  font-size: 18px !important;
-}
 
-.ayah-number::before {
-  content: "( ";
-  color: red;
-}
-
-.ayah-number::after {
-  content: " )";
-  color: red;
-}
 
 
 
