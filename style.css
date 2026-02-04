@@ -111,15 +111,15 @@ body {
 }
 
 .menu-content li {
-  margin: 16px 0;
+  margin: 8px 0; /* half the vertical space */
 }
 
 .menu-content a {
   display: block;
-  padding: 12px 0;
+  padding: 6px 0; /* tighter but still tappable */
   text-decoration: none;
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 700; /* bold */
   color: #000;
   text-align: right; /* aligns text inside links */
 }
