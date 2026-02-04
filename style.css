@@ -215,7 +215,21 @@ body.easy-read {
 html, body {
   background: #f2f2f2;
 }
+/* MENU ITEM RECTANGLES */
+.menu-content a {
+  display: inline-block;          /* hug text width */
+  background: #f2f2f2;            /* same as page bg */
+  padding: 10px 18px;             /* rectangle size */
+  border-radius: 10px;            /* Apple-style rounding */
 
+  font-weight: 700;
+  text-align: right;
+
+  transition: background 0.2s ease;
+}
+.menu-content a:hover {
+  background: #e8e8e8;
+}
 
 
 
