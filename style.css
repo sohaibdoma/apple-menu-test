@@ -191,20 +191,22 @@ body.easy-read {
 }
 
 .ayah-number {
-  position: relative;
-
-  width: 2rem;
-  height: 2rem;
-
-  border: 1.5px solid currentColor;
+  width: 28px;          /* circle size stays same */
+  height: 28px;
+  border: 1.5px solid #000;
   border-radius: 50%;
 
-  display: inline-block;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  font-size: 0.9rem;
-  line-height: 2rem; /* 🔒 MAGIC */
+  font-size: 1.6em;     /* ⬅️ DOUBLE the number size */
+  font-weight: 600;
+  line-height: 1;       /* ⬅️ critical for vertical centering */
+
+  margin-left: 6px;
 }
+
 
 
 
