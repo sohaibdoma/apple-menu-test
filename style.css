@@ -203,6 +203,13 @@ body.easy-read {
 .ayah-number::after {
   content: ")";
 }
+html, body {
+  background: #f2f2f2;
+}
+
+.surah {
+  background: #fff;
+}
 
 
 
