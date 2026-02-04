@@ -81,29 +81,34 @@ body {
   opacity: 0;
   visibility: hidden;
 
-  display: flex;           /* added */
+  display: flex;
   justify-content: center; /* horizontal center */
-  align-items: center;     /* vertical center */
+  align-items: flex-start; /* top-align so menu scrolls naturally */
+  padding-top: 120px;
 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-
   z-index: 3000;
 }
-
 
 .menu-overlay.open {
   opacity: 1;
   visibility: visible;
 }
 
-
 .menu-content {
-  text-align: right; /* align text to the right */
-  padding: 0;        /* remove previous padding */
+  max-width: 420px; /* menu width */
+  margin: 0 auto;   /* center menu block */
+  text-align: right; /* right-align Arabic text */
+  padding: 0;
 }
 
-
+.menu-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: right; /* ensure text inside is right-aligned */
+}
 
 .menu-content li {
   margin: 16px 0;
@@ -112,13 +117,12 @@ body {
 .menu-content a {
   display: block;
   padding: 12px 0;
-
   text-decoration: none;
   font-size: 30px;
   font-weight: 500;
   color: #000;
-
-  text-align: right;
+  text-align: right; /* aligns text inside links */
+}
  
 
 
