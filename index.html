@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-<nav class="lang-switch">
-  <button data-lang="ar">AR</button>
+<div class="lang-switch">
+  <button data-lang="ar" class="active">AR</button>
   <button data-lang="en">EN</button>
   <button data-lang="tr">TR</button>
-</nav>
+</div>
 
   <base href="/wahyollah/">
 
   <title>Wahyollah</title>
-  
+  <link rel="stylesheet" href="lang-switch.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -30,7 +30,7 @@
   </main>
 
   <script src="script.js"></script>
-  <script src="js/i18n.js"></script>
+  <script src="i18n.js" type="module"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
