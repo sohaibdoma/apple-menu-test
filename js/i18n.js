@@ -15,6 +15,15 @@ function loadLanguage(lang) {
       localStorage.setItem('lang', lang);
       updateActiveButton(lang);
     });
-}
-const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
-loadLanguage(savedLang);
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      loadLanguage(lang);
+    });
+  });
+
+  // Load saved language on first load
+  const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
+  loadLanguage(savedLang);
+});
