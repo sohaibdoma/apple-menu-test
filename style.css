@@ -120,7 +120,7 @@ body {
   gap: 14px;
 
   align-items: flex-end;   /* right rail */
-  width: max-content;      /* rail fits the longest item */
+  width: max-content;      /* rail = widest item */
 }
 
 /* MENU ITEMS (PILLS) */
