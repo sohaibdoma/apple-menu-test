@@ -119,9 +119,9 @@ body {
   flex-direction: column;
   gap: 14px;
 
-  align-items: flex-end;   /* right rail */
-  width: max-content;      /* rail = widest item */
+  align-items: center;     /* ✅ center each pill */
 }
+
 
 /* MENU ITEMS (PILLS) */
 .menu-content a {
