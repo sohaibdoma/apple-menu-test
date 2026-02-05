@@ -113,14 +113,14 @@ body {
 .menu-content ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
   gap: 14px;
 
-  align-items: flex-end; /* 🔥 RIGHT aligned pills */
-  width: fit-content; /* 🔥 THIS IS THE KEY */
+  align-items: flex-end;   /* right rail */
+  width: max-content;      /* rail fits the longest item */
 }
 
 /* MENU ITEMS (PILLS) */
