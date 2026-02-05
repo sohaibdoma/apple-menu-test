@@ -131,7 +131,8 @@ body {
   display: inline-flex;
   align-items: center;
 
-  padding: 14px 22px;
+  padding-block: 14px;
+  padding-inline: 22px;
   background: #f2f2f2;
 
   border-radius: 20px;
@@ -142,7 +143,7 @@ body {
   text-decoration: none;
 
   direction: rtl;
-  text-align: right;
+  text-align: start;
   white-space: nowrap;
 }
 
