@@ -16,3 +16,5 @@ function loadLanguage(lang) {
       updateActiveButton(lang);
     });
 }
+const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
+loadLanguage(savedLang);
