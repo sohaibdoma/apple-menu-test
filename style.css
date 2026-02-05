@@ -120,6 +120,7 @@ body {
   gap: 14px;
 
   align-items: flex-end; /* 🔥 RIGHT aligned pills */
+  width: fit-content; /* 🔥 THIS IS THE KEY */
 }
 
 /* MENU ITEMS (PILLS) */
