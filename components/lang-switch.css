@@ -1,1 +1,25 @@
+/* Language Switch Component */
 
+.lang-switch {
+  display: flex;
+  gap: 10px;
+}
+
+.lang-switch button {
+  padding-block: 6px;
+  padding-inline: 12px;
+
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 14px;
+
+  background: #eee;
+}
+
+.lang-switch button.active {
+  background: #000;
+  color: #fff;
+}
