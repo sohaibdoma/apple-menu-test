@@ -182,7 +182,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers the pills on the page */
+  align-items: flex-end; /* 🔥 RIGHT edge alignment */
 }
 
 
@@ -231,20 +231,21 @@ html, body {
 }
 /* MENU ITEM RECTANGLES */
 .menu-content a {
-  display: inline-block;          /* shrink to text */
-  padding: 14px 28px;             /* tight, Apple-like */
-  margin: 8px 0;                  /* spacing between pills */
+  display: inline-flex;
+  align-items: center;
 
-  background: #f2f2f2;            /* same as page bg */
-  border-radius: 22px;            /* iOS-style curve */
+  padding: 14px 22px;
+  background: #f2f2f2;
 
+  border-radius: 20px; /* you already tuned this */
+  font-weight: 700;
   font-size: 30px;
-  font-weight: 700;               /* bold like screenshot */
-  color: #000;
-  text-decoration: none;
 
-  text-align: right;              /* Arabic alignment */
-  white-space: nowrap;            /* prevent wrapping */
+  text-decoration: none;
+  color: #000;
+
+  text-align: right;
+  white-space: nowrap;
 }
 .menu-content a:hover {
   background: #e8e8e8;
