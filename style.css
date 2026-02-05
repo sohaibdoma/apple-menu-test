@@ -1,11 +1,7 @@
 /* ===============================
    QURAN FONTS
    =============================== */
-
-/* Amiri Quran — Default */
 @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
-
-/* Scheherazade New — Easy Read */
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
 
 /* ===============================
@@ -26,9 +22,7 @@ body {
 }
 
 body {
-  font-family: "Amiri Quran",
-               "Scheherazade New",
-               serif;
+  font-family: "Amiri Quran", "Scheherazade New", serif;
   color: #000;
 }
 
@@ -39,38 +33,21 @@ body {
   position: fixed;
   top: 14px;
   right: 16px;
-
   width: 16px;
   height: 10px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   background: none;
   border: none;
-  padding: 0;
   cursor: pointer;
-
   z-index: 4000;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
 }
 
 .menu-button span {
-  width: 100%;
   height: 2px;
   background: #000;
   border-radius: 1px;
-  transition: transform 0.3s ease;
-}
-
-.menu-button.open span:first-child {
-  transform: translateY(4px) rotate(45deg);
-}
-
-.menu-button.open span:last-child {
-  transform: translateY(-4px) rotate(-45deg);
 }
 
 /* ===============================
@@ -80,57 +57,61 @@ body {
   position: fixed;
   inset: 0;
   background: #fff;
-
-  opacity: 0;
-  visibility: hidden;
-
   display: flex;
-  justify-content: center;
+  justify-content: center; /* center the group */
   align-items: flex-start;
-
   padding-top: 120px;
-
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-
+  visibility: hidden;
+  opacity: 0;
   z-index: 3000;
 }
 
 .menu-overlay.open {
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
 }
 
 /* ===============================
-   MENU CONTENT
+   MENU CONTENT (CENTERED RAIL)
    =============================== */
 .menu-content {
-  max-width: 420px;
-  margin: 0 auto;
+  width: 420px;          /* ← alignment rail */
+  display: flex;
+  justify-content: center;
 }
 
-/* MENU LIST */
+/* ===============================
+   MENU LIST
+   =============================== */
 .menu-content ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
-
   display: flex;
   flex-direction: column;
   gap: 14px;
 
-  align-items: flex-end; /* 🔥 RIGHT aligned pills */
+  /* 🔑 THIS IS THE MAGIC */
+  align-items: flex-end; /* right edge alignment */
+  width: 100%;
 }
 
-/* MENU ITEMS (PILLS) */
+/* ===============================
+   MENU ITEMS (PILLS)
+   =============================== */
+.menu-content li {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* anchor to right edge */
+}
+
 .menu-content a {
   display: inline-flex;
   align-items: center;
 
   padding: 14px 22px;
   background: #f2f2f2;
-
   border-radius: 20px;
+
   font-size: 30px;
   font-weight: 700;
 
@@ -147,7 +128,7 @@ body {
 }
 
 /* ===============================
-   PAGE SECTIONS
+   SURAH PAGE
    =============================== */
 .surah {
   padding: 60px 24px 48px;
@@ -158,44 +139,19 @@ body {
 
 .surah-title {
   margin-bottom: 20px;
-  text-align: center;
 }
 
 .ayah {
   font-size: 22px;
   line-height: 1.9;
   margin-bottom: 16px;
-  text-align: center;
-}
-
-/* ===============================
-   HOME PAGE
-   =============================== */
-.home {
-  padding-top: 180px;
-  padding-left: 24px;
-  padding-right: 24px;
-  text-align: center;
-}
-
-.home-title {
-  font-size: 32px;
-  margin-bottom: 16px;
-}
-
-.home-subtitle {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.6;
 }
 
 /* ===============================
    EASY READ MODE
    =============================== */
 body.easy-read {
-  font-family: "Scheherazade New",
-               "Amiri Quran",
-               serif;
+  font-family: "Scheherazade New", "Amiri Quran", serif;
 }
 
 body.easy-read .ayah {
@@ -204,13 +160,9 @@ body.easy-read .ayah {
   text-align: right;
 }
 
-body.easy-read .surah,
-body.easy-read .surah-title {
-  text-align: center;
-}
-
-/* LOCK SCROLL WHEN MENU OPEN */
+/* ===============================
+   LOCK SCROLL
+   =============================== */
 body.menu-open {
   overflow: hidden;
-  height: 100vh;
 }
