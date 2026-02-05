@@ -1,1 +1,7 @@
+@import "./base/reset.css";
+@import "./base/variables.css";
+
+@import "./layout/header.css";
+
+@import "./components/lang-switch.css";
 
