@@ -3,34 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-<div class="lang-switch">
-  <button data-lang="ar" class="active">AR</button>
-  <button data-lang="en">EN</button>
-  <button data-lang="tr">TR</button>
-</div>
 
   <base href="/wahyollah/">
 
   <title>Wahyollah</title>
+
   <link rel="stylesheet" href="lang-switch.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="lang-switch">
+      <button data-lang="ar" class="active">AR</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="tr">TR</button>
+    </div>
+  </header>
 
   <!-- SHARED MENU -->
   <div id="menu-placeholder"></div>
 
   <!-- HOME CONTENT -->
   <main class="home">
-    <h1 class="home-title">القرآن الكريم</h1>
-    <p class="home-subtitle">
-      اقرأ القرآن الكريم واختر السورة من القائمة
-    </p>
+    <h1 class="home-title" data-i18n="home_title"></h1>
+    <p class="home-subtitle" data-i18n="home_subtitle"></p>
   </main>
 
+  <!-- SCRIPTS -->
   <script src="script.js"></script>
-  <script src="i18n.js" type="module"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
+
 </body>
 </html>
