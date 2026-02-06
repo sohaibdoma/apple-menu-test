@@ -46,7 +46,7 @@ function loadLanguage(lang) {
 /* ===============================
    Init
    =============================== */
-document.addEventListener('DOMContentLoaded', () => {
+function initI18n() {
   // Attach language button handlers
   document.querySelectorAll('.lang-switch button').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -57,4 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load saved or default language
   const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
   loadLanguage(savedLang);
-});
+}
+
+// expose globally
+window.initI18n = initI18n;
+
