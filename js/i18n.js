@@ -20,20 +20,22 @@ function loadLanguage(lang) {
   fetch(`lang/${lang}.json`)
     .then(res => res.json())
     .then(data => {
-      // HTML language & direction
+      // Set <html> language & direction
       document.documentElement.lang = data.lang;
       document.documentElement.dir = data.dir;
 
-      // Text translations
+      // Translate text
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
-        if (data[key]) el.textContent = data[key];
+        if (data[key]) {
+          el.textContent = data[key];
+        }
       });
 
       // Save preference
       localStorage.setItem('lang', lang);
 
-      // Update UI
+      // Update language buttons
       updateActiveButton(lang);
     })
     .catch(err => {
@@ -45,22 +47,14 @@ function loadLanguage(lang) {
    Init
    =============================== */
 document.addEventListener('DOMContentLoaded', () => {
-  // Language switch buttons
+  // Attach language button handlers
   document.querySelectorAll('.lang-switch button').forEach(btn => {
     btn.addEventListener('click', () => {
       loadLanguage(btn.dataset.lang);
     });
   });
 
-  // Initial language
+  // Load saved or default language
   const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
   loadLanguage(savedLang);
-});
-document.querySelectorAll('.lang-switch button').forEach(button => {
-  button.addEventListener('click', () => {
-    const lang = button.dataset.lang;
-
-    setLanguage(lang);
-    updateActiveButton(lang);
-  });
 });
