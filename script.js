@@ -3,12 +3,12 @@ fetch('menu.html')
   .then(html => {
     document.getElementById('menu-placeholder').innerHTML = html;
 
-    // 🔹 Menu is now in the DOM → load menu logic
-    const menuScript = document.createElement('script');
-    menuScript.src = 'js/menu.js';
-    document.body.appendChild(menuScript);
+    // Init menu AFTER it exists
+    if (window.initMenu) {
+      window.initMenu();
+    }
 
-    // 🔹 Language buttons now exist → init i18n
+    // Init language AFTER menu buttons exist
     if (window.initI18n) {
       window.initI18n();
     }
