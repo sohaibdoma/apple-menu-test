@@ -32,3 +32,21 @@ document.addEventListener('keydown', (e) => {
     closeMenu();
   }
 });
+menuOverlay.addEventListener('click', (e) => {
+  if (e.target === menuOverlay) {
+    closeMenu();
+  }
+});
+
+menuButton.addEventListener('click', () => {
+  const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+  isOpen ? closeMenu() : openMenu();
+});
+const currentSurah = document.body.dataset.surah;
+
+if (currentSurah) {
+  const activeLink = menuNav.querySelector(
+    `[data-surah="${currentSurah}"]`
+  );
+  activeLink?.setAttribute('aria-current', 'page');
+}
