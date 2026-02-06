@@ -1,14 +1,13 @@
 {
   "lang": "en",
   "dir": "ltr",
-  
-  "home_title": "The Holy Quran",
-  "home_subtitle": "Read the Holy Quran and choose a surah from the list"
-  
-  "menu.home": "Home",
 
+  "home_title": "The Holy Quran",
+  "home_subtitle": "Read the Holy Quran and choose a surah from the list",
+
+  "menu.home": "Home",
   "menu.001": "Al-Fatihah",
   "menu.002": "Al-Baqarah",
-  "menu.003": "Aal-E-Imran"
-  "menu.004": "An-Nisa"
+  "menu.003": "Aal-E-Imran",
+  "menu.004": "An-Nisa",
 }
