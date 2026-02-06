@@ -3,13 +3,18 @@
    =============================== */
 
 const DEFAULT_LANG = 'ar';
+let i18nInitialized = false;
+let currentLang = null;
 
 /* ===============================
    UI: Active language button
    =============================== */
 function updateActiveButton(lang) {
   document.querySelectorAll('.lang-switch button').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
+    const isActive = btn.dataset.lang === lang;
+
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
   });
 }
 
@@ -17,12 +22,18 @@ function updateActiveButton(lang) {
    Load language
    =============================== */
 function loadLanguage(lang) {
+  if (lang === currentLang) return;
+  currentLang = lang;
+
   fetch(`lang/${lang}.json`)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
     .then(data => {
       // Set <html> language & direction
-      document.documentElement.lang = data.lang;
-      document.documentElement.dir = data.dir;
+      document.documentElement.lang = data.lang || lang;
+      document.documentElement.dir  = data.dir  || 'ltr';
 
       // Translate text
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -47,7 +58,10 @@ function loadLanguage(lang) {
    Init
    =============================== */
 function initI18n() {
-  // Attach language button handlers
+  if (i18nInitialized) return;
+  i18nInitialized = true;
+
+  // Attach language button handlers (only once)
   document.querySelectorAll('.lang-switch button').forEach(btn => {
     btn.addEventListener('click', () => {
       loadLanguage(btn.dataset.lang);
@@ -61,4 +75,3 @@ function initI18n() {
 
 // expose globally
 window.initI18n = initI18n;
-
