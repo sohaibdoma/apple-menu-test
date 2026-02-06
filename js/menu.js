@@ -24,3 +24,11 @@ function closeMenu() {
 
   document.body.style.overflow = '';
 }
+document.addEventListener('keydown', (e) => {
+  if (
+    e.key === 'Escape' &&
+    menuButton.getAttribute('aria-expanded') === 'true'
+  ) {
+    closeMenu();
+  }
+});
