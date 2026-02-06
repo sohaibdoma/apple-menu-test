@@ -1,11 +1,15 @@
-    // 2️⃣ Now query elements (AFTER injection)
-    const menuButton = document.querySelector('.menu-button');
-    const menuOverlay = document.querySelector('.menu-overlay');
-    const menuNav = document.getElementById('main-menu');
+const menuButton = document.querySelector('.menu-button');
+const menuOverlay = document.querySelector('.menu-overlay');
+const menuNav = document.getElementById('main-menu');
 
-    let lastFocusedElement = null;
+if (!menuButton || !menuOverlay || !menuNav) {
+  console.warn('Menu elements not found');
+  return;
+}
 
-    function openMenu() {
+let lastFocusedElement = null;
+
+function openMenu() {
   lastFocusedElement = document.activeElement;
 
   menuOverlay.classList.add('open');
@@ -16,8 +20,7 @@
 
   document.body.classList.add('menu-open');
 
-  const firstLink = menuNav.querySelector('a');
-  firstLink?.focus();
+  menuNav.querySelector('a')?.focus();
 }
 
 function closeMenu() {
@@ -32,39 +35,28 @@ function closeMenu() {
   lastFocusedElement?.focus();
 }
 
-    // Escape key closes menu
-    document.addEventListener('keydown', (e) => {
-      if (
-        e.key === 'Escape' &&
-        menuButton.getAttribute('aria-expanded') === 'true'
-      ) {
-        closeMenu();
-      }
-    });
+// Toggle
+menuButton.addEventListener('click', () => {
+  const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+  isOpen ? closeMenu() : openMenu();
+});
 
-    // Click outside menu closes it
-    menuOverlay.addEventListener('click', (e) => {
-      if (e.target === menuOverlay) {
-        closeMenu();
-      }
-    });
+// Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+    closeMenu();
+  }
+});
 
-    // Toggle button
-    menuButton.addEventListener('click', () => {
-      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-      isOpen ? closeMenu() : openMenu();
-    });
+// Overlay click
+menuOverlay.addEventListener('click', e => {
+  if (e.target === menuOverlay) closeMenu();
+});
 
-    // Highlight current surah
-    const currentSurah = document.body.dataset.surah;
-
-    if (currentSurah) {
-      const activeLink = menuNav.querySelector(
-        `[data-surah="${currentSurah}"]`
-      );
-      activeLink?.setAttribute('aria-current', 'page');
-    }
-  })
-  .catch((err) => {
-    console.error('Failed to load menu.html', err);
-  });
+// Active surah
+const currentSurah = document.body.dataset.surah;
+if (currentSurah) {
+  menuNav
+    .querySelector(`[data-surah="${currentSurah}"]`)
+    ?.setAttribute('aria-current', 'page');
+}
