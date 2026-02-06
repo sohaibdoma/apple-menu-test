@@ -12,24 +12,31 @@ fetch('menu.html')
     let lastFocusedElement = null;
 
     function openMenu() {
-      lastFocusedElement = document.activeElement;
+  lastFocusedElement = document.activeElement;
 
-      menuOverlay.setAttribute('aria-hidden', 'false');
-      menuButton.setAttribute('aria-expanded', 'true');
+  menuOverlay.classList.add('open');
+  menuButton.classList.add('open');
 
-      const firstLink = menuNav.querySelector('a');
-      firstLink?.focus();
+  menuOverlay.setAttribute('aria-hidden', 'false');
+  menuButton.setAttribute('aria-expanded', 'true');
 
-      document.body.style.overflow = 'hidden';
-    }
+  document.body.classList.add('menu-open');
 
-    function closeMenu() {
-      menuOverlay.setAttribute('aria-hidden', 'true');
-      menuButton.setAttribute('aria-expanded', 'false');
+  const firstLink = menuNav.querySelector('a');
+  firstLink?.focus();
+}
 
-      lastFocusedElement?.focus();
-      document.body.style.overflow = '';
-    }
+function closeMenu() {
+  menuOverlay.classList.remove('open');
+  menuButton.classList.remove('open');
+
+  menuOverlay.setAttribute('aria-hidden', 'true');
+  menuButton.setAttribute('aria-expanded', 'false');
+
+  document.body.classList.remove('menu-open');
+
+  lastFocusedElement?.focus();
+}
 
     // Escape key closes menu
     document.addEventListener('keydown', (e) => {
