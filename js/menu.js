@@ -1,9 +1,3 @@
-fetch('menu.html')
-  .then((res) => res.text())
-  .then((html) => {
-    // 1️⃣ Inject menu into page
-    document.getElementById('menu-placeholder').innerHTML = html;
-
     // 2️⃣ Now query elements (AFTER injection)
     const menuButton = document.querySelector('.menu-button');
     const menuOverlay = document.querySelector('.menu-overlay');
