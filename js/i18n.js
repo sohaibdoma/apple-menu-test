@@ -56,3 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
   loadLanguage(savedLang);
 });
+document.querySelectorAll('.lang-switch button').forEach(button => {
+  button.addEventListener('click', () => {
+    const lang = button.dataset.lang;
+
+    setLanguage(lang);
+    updateActiveButton(lang);
+  });
+});
