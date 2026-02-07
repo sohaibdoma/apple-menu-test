@@ -5,7 +5,7 @@
 function bootstrapApp() {
   // Init menu behavior if menu exists
   if (window.initI18n) {
-  window.initI18n(true); // force refresh
+  window.initI18n();
 }
 
   // Init language system ONCE, after DOM is final
