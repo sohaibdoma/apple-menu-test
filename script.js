@@ -2,39 +2,41 @@
    Global Bootstrap Script
    =============================== */
 
-const placeholder = document.getElementById('menu-placeholder');
+function bootstrapApp() {
+  // Init menu behavior if menu exists
+  if (window.initMenu) {
+    window.initMenu();
+  }
 
-// If page has NO menu placeholder → init i18n only
-if (!placeholder) {
+  // Init language system ONCE, after DOM is final
   if (window.initI18n) {
     window.initI18n();
   }
-} else {
+}
+
+const placeholder = document.getElementById('menu-placeholder');
+
+// If page has a menu placeholder, load menu first
+if (placeholder) {
   fetch('menu.html')
     .then(res => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.text();
     })
     .then(html => {
-      // Inject menu
+      // Inject menu HTML
       placeholder.innerHTML = html;
 
-      // Init menu AFTER it exists
-      if (window.initMenu) {
-        window.initMenu();
-      }
-
-      // Init i18n AFTER language buttons exist
-      if (window.initI18n) {
-        window.initI18n();
-      }
+      // Now the DOM is COMPLETE
+      bootstrapApp();
     })
     .catch(err => {
       console.error('Failed to load menu.html:', err);
 
-      // Even if menu fails, page language still works
-      if (window.initI18n) {
-        window.initI18n();
-      }
+      // Even if menu fails, continue safely
+      bootstrapApp();
     });
+} else {
+  // No menu on this page → DOM already complete
+  bootstrapApp();
 }
