@@ -40,3 +40,7 @@ button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+.lang-switch button:focus {
+  outline: none;
+}
