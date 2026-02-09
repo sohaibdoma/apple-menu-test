@@ -3,20 +3,19 @@
    =============================== */
 
 function bootstrapApp() {
-  // Init menu behavior if menu exists
-  if (window.initI18n) {
-  window.initI18n();
-}
+  // Init menu AFTER it exists
+  if (window.initMenu) {
+    window.initMenu();
+  }
 
-  // Init language system ONCE, after DOM is final
+  // Init i18n ONCE, after DOM is final
   if (window.initI18n) {
-  window.initI18n();
-}
+    window.initI18n();
+  }
 }
 
 const placeholder = document.getElementById('menu-placeholder');
 
-// If page has a menu placeholder, load menu first
 if (placeholder) {
   fetch('menu.html')
     .then(res => {
@@ -24,19 +23,16 @@ if (placeholder) {
       return res.text();
     })
     .then(html => {
-      // Inject menu HTML
       placeholder.innerHTML = html;
 
-      // Now the DOM is COMPLETE
+      // DOM is now COMPLETE
       bootstrapApp();
     })
     .catch(err => {
       console.error('Failed to load menu.html:', err);
-
-      // Even if menu fails, continue safely
       bootstrapApp();
     });
 } else {
-  // No menu on this page → DOM already complete
+  // Pages without menu
   bootstrapApp();
 }
