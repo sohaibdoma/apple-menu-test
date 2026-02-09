@@ -34,3 +34,9 @@ position: fixed;
   background: #000;
   color: #fff;
 }
+
+/* Remove mobile tap highlight */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
