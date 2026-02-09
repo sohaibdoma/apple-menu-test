@@ -6,6 +6,8 @@ position: fixed;
   left: 16px;
 
   display: flex;
+  flex-direction: row;
+  direction: ltr; /* 🔒 prevent flipping */
   gap: 8px;
 
   z-index: 4000;
