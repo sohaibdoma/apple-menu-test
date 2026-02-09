@@ -23,7 +23,10 @@ position: fixed;
 
   font-weight: 700;
   font-size: 14px;
-
+  
+  outline: none;
+  background-color: transparent;
+  
   background: #eee;
 }
 
