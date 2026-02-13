@@ -49,7 +49,7 @@ body {
 
   background: none;
   border: none;
-  padding: 0;
+  padding: 12px;
   cursor: pointer;
 
   z-index: 4000;
