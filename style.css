@@ -132,6 +132,9 @@ body {
 
   padding-block: 0px;
   padding-inline: 8px;
+
+  line-height: 1;
+   
   background: #f2f2f2;
 
   border-radius: 20px;
