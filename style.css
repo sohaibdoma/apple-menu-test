@@ -128,7 +128,8 @@ body {
 /* MENU ITEMS (PILLS) */
 .menu-content a {
   display: inline-flex;
-  align-items: center;
+  align-items: center;     /* vertical centering */
+  justify-content: center; /* horizontal centering */
 
   padding-block: 10px;
   padding-inline: 10px;
