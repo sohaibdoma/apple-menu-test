@@ -169,7 +169,8 @@ body {
   font-size: 22px;
   line-height: 1.9;
   margin-bottom: 16px;
-  text-align: start;
+  text-align: justify;       /* 👈 makes lines fill both sides */
+  text-align-last: start;    /* 👈 last line stays normal */
 }
 
 .ayah-number::before {
