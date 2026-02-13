@@ -130,7 +130,7 @@ body {
   display: inline-flex;
   align-items: center;
 
-  padding-block: 6px;
+  padding-block: 10px;
   padding-inline: 10px;
 
   line-height: 1;
@@ -138,7 +138,7 @@ body {
   background: #f2f2f2;
 
   border-radius: 20px;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 700;
 
   color: #000;
