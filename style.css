@@ -130,8 +130,8 @@ body {
   display: inline-flex;
   align-items: center;
 
-  padding-block: 6px;
-  padding-inline: 10px;
+  padding-block: 4px;
+  padding-inline: 8px;
   background: #f2f2f2;
 
   border-radius: 12px;
