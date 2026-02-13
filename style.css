@@ -173,6 +173,14 @@ body {
   text-align: start;
 }
 
+.ayah-number::before {
+  content: " (";
+}
+
+.ayah-number::after {
+  content: ")";
+}
+
 /* ===============================
    HOME PAGE
    =============================== */
