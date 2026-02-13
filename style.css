@@ -61,7 +61,7 @@ body {
   height: 2px;
   background: #000;
   border-radius: 1px;
-  transition: transform 0.15s ease;
+  transition: transform 0.2s ease;
 }
 
 .menu-button.open span:first-child {
