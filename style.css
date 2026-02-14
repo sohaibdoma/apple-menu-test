@@ -246,3 +246,43 @@ header {
 .menu-button {
   order: 1; /* keep menu on right */
 }
+
+/* ===============================
+   NIGHT MODE
+   =============================== */
+
+body.night-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+/* Surah section */
+body.night-mode .surah {
+  background: transparent;
+}
+
+/* Ayah text */
+body.night-mode .ayah {
+  color: #f1f1f1;
+}
+
+/* Menu overlay */
+body.night-mode .menu-overlay {
+  background: #121212;
+}
+
+/* Menu pills */
+body.night-mode .menu-content a {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+
+body.night-mode .menu-content a:hover {
+  background: #2a2a2a;
+}
+
+/* Home subtitle */
+body.night-mode .home-subtitle {
+  color: #bbbbbb;
+}
+
