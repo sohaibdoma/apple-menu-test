@@ -30,6 +30,9 @@ body {
                "Amiri Quran",
                serif;
   color: #000;
+   
+  transition: background-color 0.3s ease,
+              color 0.3s ease;
 }
 
 /* ===============================
@@ -62,6 +65,7 @@ body {
   background: #000;
   border-radius: 1px;
   transition: transform 0.2s ease;
+              background-color 0.3s ease;
 }
 
 .menu-button.open span:first-child {
@@ -93,6 +97,9 @@ body {
   -webkit-overflow-scrolling: touch;
 
   z-index: 3000;
+   
+  transition: background-color 0.3s ease,
+              opacity 0.3s ease;
 }
 
 .menu-overlay.open {
@@ -150,6 +157,9 @@ body {
   direction: rtl;
   text-align: start;
   white-space: nowrap;
+
+  transition: background-color 0.3s ease,
+              color 0.3s ease;
 }
 
 .menu-content a:hover {
