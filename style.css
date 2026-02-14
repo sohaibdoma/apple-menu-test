@@ -5,8 +5,6 @@
 /* Amiri Quran — Default */
 @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
-
 /* Scheherazade New — Easy Read */
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
 
@@ -142,7 +140,7 @@ body {
 
   border-radius: 20px;
 
-  font-family: "Cairo", sans-serif;
+  font-family: "Scheherazade New", sans-serif;
   font-size: 35px;
   font-weight: 700;
 
