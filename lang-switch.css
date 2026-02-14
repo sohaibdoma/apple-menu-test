@@ -44,3 +44,17 @@ a {
 .lang-switch button:focus {
   outline: none;
 }
+
+.theme-toggle {
+  position: fixed;
+  top: 10px;
+  left: 140px; /* adjust this number */
+
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+
+  z-index: 4000;
+}
+
