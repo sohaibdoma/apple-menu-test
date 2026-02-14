@@ -247,6 +247,15 @@ header {
   order: 1; /* keep menu on right */
 }
 
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* ===============================
    NIGHT MODE
    =============================== */
