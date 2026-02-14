@@ -12,6 +12,15 @@ function bootstrapApp() {
   if (window.initI18n) {
     window.initI18n();
   }
+     // 🌙 Night Mode Toggle
+  const toggle = document.getElementById("themeToggle");
+
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("night-mode");
+    });
+  }
+
 }
 
 const placeholder = document.getElementById('menu-placeholder');
