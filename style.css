@@ -305,3 +305,8 @@ body.night-mode .home-subtitle {
   color: #bbbbbb;
 }
 
+/* Menu button lines in night mode */
+body.night-mode .menu-button span {
+  background: #f1f1f1;
+}
+
