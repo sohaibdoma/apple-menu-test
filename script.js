@@ -12,14 +12,26 @@ function bootstrapApp() {
   if (window.initI18n) {
     window.initI18n();
   }
-     // 🌙 Night Mode Toggle
-  const toggle = document.getElementById("themeToggle");
+   
+  // 🌙 Apply saved theme on page load
+if (localStorage.getItem("theme") === "night") {
+  document.body.classList.add("night-mode");
+}
 
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("night-mode");
-    });
-  }
+// 🌙 Night Mode Toggle
+const toggle = document.getElementById("themeToggle");
+
+if (toggle) {
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("night-mode");
+
+    if (document.body.classList.contains("night-mode")) {
+      localStorage.setItem("theme", "night");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
 
 }
 
