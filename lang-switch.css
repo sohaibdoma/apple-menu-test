@@ -47,8 +47,8 @@ a {
 
 .theme-toggle {
   position: fixed;
-  top: 10px;
-  left: 170px; /* adjust this number */
+  top: 8px;
+  left: 165px; /* adjust this number */
 
   background: none;
   border: none;
