@@ -181,6 +181,12 @@ body {
   text-align: center;
 }
 
+.bismillah {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 24px;
+}
+
 .ayah {
   font-size: 22px;
   line-height: 1.9;
