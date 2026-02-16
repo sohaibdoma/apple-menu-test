@@ -252,7 +252,8 @@ body.easy-read .surah-title {
 body.menu-open {
   overflow: hidden;
 }
-header {
+
+.main-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
