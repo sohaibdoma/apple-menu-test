@@ -64,7 +64,7 @@ body {
   height: 2px;
   background: #000;
   border-radius: 1px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease,
               background-color 0.3s ease;
 }
 
@@ -241,7 +241,6 @@ body.easy-read .surah-title {
 /* LOCK SCROLL WHEN MENU OPEN */
 body.menu-open {
   overflow: hidden;
-  height: 100vh;
 }
 header {
   display: flex;
