@@ -32,9 +32,15 @@ function applyLanguage(data, lang) {
   document.documentElement.dir  = data.dir  || 'ltr';
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    el.textContent = data[key] ?? fallback[key] ?? '';
-  });
+  const key = el.dataset.i18n;
+     
+  const translation = data[key] ?? fallback[key];
+  if (translation !== undefined) {
+    el.textContent = translation;
+  }
+     
+});
+
 
   localStorage.setItem('lang', lang);
   updateActiveButton(lang);
