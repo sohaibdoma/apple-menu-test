@@ -87,13 +87,17 @@ body {
   opacity: 0;
   visibility: hidden;
 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
   padding-top: 120px;
 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   z-index: 3000;
-
+   
   transition: background-color 0.3s ease,
               opacity 0.3s ease;
 }
