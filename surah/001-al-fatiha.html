@@ -4,28 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- 🔒 REQUIRED -->
   <base href="/wahyollah/">
 
-  <title>سورة الفاتحة</title>
+  <title data-i18n="surah_title">سورة الفاتحة</title>
   
   <link rel="stylesheet" href="lang-switch.css">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+
+<body data-lang-root data-surah="X">
 
   <!-- SHARED MENU -->
   <div id="menu-placeholder"></div>
 
-  <main class="surah">
-    <h1 class="surah-title">سورة الفاتحة</h1>
+  <main class="surah" role="main">
 
-    <p class="ayah">
-      <span class="ayah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
-      <span class="ayah-number">١</span>
-    </p>
+    <!-- Surah Header -->
+    <header class="surah-header">
+      <h1 class="surah-title" data-i18n="surah_name">
+        سورة TEMPLATE
+      </h1>
+    </header>
 
-    <p class="ayah">
+    <!-- Ayahs Container -->
+    <section class="ayahs">
+
+      <p class="ayah">
+        <span class="ayah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+        <span class="ayah-number">١</span>
+      </p>
+
+       <p class="ayah">
       <span class="ayah-text">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</span>
       <span class="ayah-number">٢</span>
     </p>
@@ -58,6 +67,9 @@
       </span>
       <span class="ayah-number">٧</span>
     </p>
+      
+    </section>
+
   </main>
 
   <!-- SCRIPTS -->
