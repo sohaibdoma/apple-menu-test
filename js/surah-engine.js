@@ -50,16 +50,26 @@ function renderSurah(data) {
   const content = document.getElementById("surah-content");
 
   header.innerHTML = `
-    <h1>${data.chapter.name_arabic}</h1>
-    <p>${data.chapter.name_simple}</p>
+    <div class="surah-title">
+      <h1>${data.chapter.name_arabic}</h1>
+      <p class="surah-meta">
+        ${data.chapter.name_simple} • ${data.chapter.revelation_place} • ${data.chapter.verses_count} Ayahs
+      </p>
+    </div>
   `;
 
   content.innerHTML = "";
 
-  data.verses.forEach((verse) => {
-    const ayah = document.createElement("p");
+  data.verses.forEach((verse, index) => {
+    const ayah = document.createElement("div");
     ayah.classList.add("ayah");
-    ayah.textContent = verse.text_uthmani;
+
+    ayah.innerHTML = `
+      <span class="ayah-text">${verse.text_uthmani}</span>
+      <span class="ayah-number">﴿${index + 1}﴾</span>
+    `;
+
     content.appendChild(ayah);
   });
 }
+
