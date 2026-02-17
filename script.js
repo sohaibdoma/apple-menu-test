@@ -38,7 +38,7 @@ if (toggle) {
 const placeholder = document.getElementById('menu-placeholder');
 
 if (placeholder) {
-  fetch('menu.html')
+  fetch('components/menu.html')
     .then(res => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.text();
