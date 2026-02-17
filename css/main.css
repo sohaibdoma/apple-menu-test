@@ -1,4 +1,3 @@
-Mixed style.css Main.css
 @import "./base/reset.css";
 @import "./base/variables.css";
 
@@ -118,3 +117,324 @@ html[dir="rtl"] .header-right {
   color: #888;
 }
 
+/* ===============================
+   QURAN FONTS
+   =============================== */
+
+/* Amiri Quran — Default */
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
+
+/* Scheherazade New — Easy Read */
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+
+/* ===============================
+   RESET
+   =============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===============================
+   BODY
+   =============================== */
+
+body {
+  background: #f2f2f2;
+}
+
+body {
+  font-family: "Scheherazade New",
+               "Amiri Quran",
+               serif;
+  color: #000;
+   
+  transition: background-color 0.3s ease,
+              color 0.3s ease;
+}
+
+/* ===============================
+   MENU BUTTON
+   =============================== */
+.menu-button {
+  position: fixed;
+  top: 19px;
+  right: 16px;
+
+  width: 18px;
+  height: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  z-index: 4000;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.menu-button span {
+  width: 100%;
+  height: 2px;
+  background: #000;
+  border-radius: 1px;
+  transition: transform 0.2s ease,
+              background-color 0.3s ease;
+}
+
+.menu-button.open span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.menu-button.open span:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* ===============================
+   MENU OVERLAY
+   =============================== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+
+  opacity: 0;
+  visibility: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  padding-top: 120px;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  z-index: 3000;
+   
+  transition: background-color 0.3s ease,
+              opacity 0.3s ease;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===============================
+   MENU CONTENT
+   =============================== */
+.menu-content {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* MENU LIST */
+.menu-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  align-items: flex-start; /* ✅ THIS IS THE KEY */
+}
+
+.menu-content li {
+  align-self: flex-start; /* 🔥 magic line */
+}
+
+/* MENU ITEMS (PILLS) */
+.menu-content a {
+  display: inline-flex;
+  align-items: center;     /* vertical centering */
+  justify-content: center; /* horizontal centering */
+   
+  padding-block: 12px;
+  padding-inline: 10px;
+
+  line-height: 1;
+   
+  background: #f2f2f2;
+
+  border-radius: 20px;
+
+  font-family: "Scheherazade New", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #000;
+  text-decoration: none;
+
+  direction: rtl;
+  text-align: start;
+  white-space: nowrap;
+
+  transition: background-color 0.3s ease,
+              color 0.3s ease;
+}
+
+.menu-content a:hover {
+  background: #e8e8e8;
+}
+
+/* ===============================
+   PAGE SECTIONS
+   =============================== */
+.surah {
+  padding: 60px 24px 48px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: start;
+}
+
+.surah-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.surah-header {
+  text-align: center;
+}
+
+.bismillah {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 24px;
+}
+
+.ayah {
+  font-size: 22px;
+  line-height: 1.9;
+  margin-bottom: 16px;
+  text-align: justify;       /* 👈 makes lines fill both sides */
+  text-align-last: start;    /* 👈 last line stays normal */
+}
+
+.ayah-number::before {
+  content: " (";
+}
+
+.ayah-number::after {
+  content: ")";
+}
+
+/* ===============================
+   HOME PAGE
+   =============================== */
+.home {
+  padding-top: 180px;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.home-subtitle {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ===============================
+   EASY READ MODE
+   =============================== */
+body.easy-read {
+  font-family: "Scheherazade New",
+               "Amiri Quran",
+               serif;
+}
+
+body.easy-read .ayah {
+  font-size: 1.6rem;
+  line-height: 2.8;
+  text-align: right;
+}
+
+body.easy-read .surah,
+body.easy-read .surah-title {
+  text-align: center;
+}
+
+/* LOCK SCROLL WHEN MENU OPEN */
+body.menu-open {
+  overflow: hidden;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lang-switch {
+  order: -1; /* push to left */
+}
+
+.menu-button {
+  order: 1; /* keep menu on right */
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===============================
+   NIGHT MODE
+   =============================== */
+
+body.night-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+/* Surah section */
+body.night-mode .surah {
+  background: transparent;
+}
+
+/* Ayah text */
+body.night-mode .ayah {
+  color: #f1f1f1;
+}
+
+/* Menu overlay */
+body.night-mode .menu-overlay {
+  background: #121212;
+}
+
+/* Menu pills */
+body.night-mode .menu-content a {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+
+body.night-mode .menu-content a:hover {
+  background: #2a2a2a;
+}
+
+/* Home subtitle */
+body.night-mode .home-subtitle {
+  color: #bbbbbb;
+}
+
+/* Menu button lines in night mode */
+body.night-mode .menu-button span {
+  background: #f1f1f1;
+}
