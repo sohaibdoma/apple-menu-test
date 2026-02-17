@@ -24,6 +24,17 @@ body {
   z-index: 1000;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .menu-right {
   display: flex;
   gap: 10px;
