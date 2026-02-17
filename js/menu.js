@@ -1,7 +1,7 @@
 function initMenu() {
   const menuButton = document.querySelector('.menu-button');
   const menuOverlay = document.querySelector('.menu-overlay');
-  const menuNav = document.getElementById('main-menu');
+  const menuNav = document.getElementById('menu-placeholder');
 
   if (!menuButton || !menuOverlay || !menuNav) {
     console.warn('Menu elements not found');
