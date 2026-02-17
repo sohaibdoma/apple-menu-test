@@ -5,3 +5,44 @@
 
 @import "./components/lang-switch.css";
 
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f8f8f8;
+  color: #111;
+}
+
+.surah-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.surah-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.surah-title h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.surah-meta {
+  color: #777;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.ayah {
+  text-align: right;
+  font-size: 28px;
+  line-height: 2.2;
+  margin-bottom: 25px;
+}
+
+.ayah-number {
+  font-size: 18px;
+  margin-right: 10px;
+  color: #555;
+}
