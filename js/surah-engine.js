@@ -59,6 +59,13 @@ function renderSurah(data) {
   `;
 
   content.innerHTML = "";
+  
+if (data.chapter.id !== 9) {
+  const bismillah = document.createElement("div");
+  bismillah.classList.add("bismillah");
+  bismillah.textContent = "﷽";
+  content.appendChild(bismillah);
+}
 
   data.verses.forEach((verse, index) => {
     const ayah = document.createElement("div");
