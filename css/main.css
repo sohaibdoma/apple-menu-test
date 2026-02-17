@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 25px;
+  padding: 16px 20px;
   background: white;
   border-bottom: 1px solid #eee;
   position: sticky;
@@ -24,15 +24,12 @@ body {
   z-index: 1000;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
+html[dir="rtl"] .header-left {
+  order: 2;
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+html[dir="rtl"] .header-right {
+  order: 1;
 }
 
 .menu-right {
