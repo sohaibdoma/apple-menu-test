@@ -34,6 +34,13 @@ body {
   font-size: 14px;
 }
 
+.bismillah {
+  text-align: center;
+  font-family: 'Amiri Quran', serif;
+  font-size: 38px;
+  margin-bottom: 40px;
+}
+
 .ayah {
   text-align: right;
   font-family: 'Amiri Quran', serif;
