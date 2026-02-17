@@ -36,9 +36,10 @@ body {
 
 .ayah {
   text-align: right;
-  font-size: 28px;
-  line-height: 2.2;
-  margin-bottom: 25px;
+  font-family: 'Amiri Quran', serif;
+  font-size: 32px;
+  line-height: 2.4;
+  margin-bottom: 35px;
 }
 
 .ayah-number {
