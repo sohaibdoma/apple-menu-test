@@ -12,6 +12,23 @@ body {
   color: #111;
 }
 
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu-right {
+  display: flex;
+  gap: 10px;
+}
+
 .surah-container {
   max-width: 800px;
   margin: 0 auto;
