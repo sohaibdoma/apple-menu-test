@@ -1,135 +1,14 @@
-@import "./base/reset.css";
-@import "./base/variables.css";
-
-@import "./layout/header.css";
-
-@import "./components/lang-switch.css";
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(to bottom, #ffffff, #f3f3f3);
-  color: #111;
-}
-
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  background: white;
-  border-bottom: 1px solid #eee;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-html[dir="rtl"] .header-left {
-  order: 2;
-}
-
-html[dir="rtl"] .header-right {
-  order: 1;
-}
-
-.menu-right {
-  display: flex;
-  gap: 10px;
-}
-
-.theme-toggle {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.menu-button {
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  position: relative;
-}
-
-.menu-button::before,
-.menu-button::after,
-.menu-button span {
-  content: "";
-  position: absolute;
-  left: 6px;
-  right: 6px;
-  height: 2px;
-  background: #111;
-  transition: all 0.3s ease;
-}
-
-.menu-button::before {
-  top: 9px;
-}
-
-.menu-button::after {
-  bottom: 9px;
-}
-
-
-.surah-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.surah-title {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.surah-title h1 {
-  font-size: 40px;
-  margin: 0;
-}
-
-.surah-meta {
-  color: #777;
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-.bismillah {
-  text-align: center;
-  font-family: 'Amiri Quran', serif;
-  font-size: 38px;
-  margin-bottom: 40px;
-}
-
-.ayah {
-  text-align: right;
-  font-family: 'Amiri Quran', serif;
-  font-size: 32px;
-  line-height: 2.4;
-  margin-bottom: 35px;
-}
-
-.ayah-number {
-  font-size: 16px;
-  margin-right: 8px;
-  color: #888;
-}
-
 /* ===============================
    QURAN FONTS
    =============================== */
 
-/* Amiri Quran — Default */
 @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
-
-/* Scheherazade New — Easy Read */
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
 
 /* ===============================
    RESET
    =============================== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -142,32 +21,58 @@ html[dir="rtl"] .header-right {
 
 body {
   background: #f2f2f2;
-}
-
-body {
   font-family: "Scheherazade New",
                "Amiri Quran",
                serif;
   color: #000;
-   
   transition: background-color 0.3s ease,
               color 0.3s ease;
 }
 
 /* ===============================
-   MENU BUTTON
+   HEADER (STRUCTURAL ONLY)
    =============================== */
-.menu-button {
-  position: fixed;
-  top: 19px;
-  right: 16px;
 
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background: #f2f2f2;
+}
+
+/* RTL SAFE ORDERING */
+
+html[dir="rtl"] .header-left {
+  order: 2;
+}
+
+html[dir="rtl"] .header-right {
+  order: 1;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===============================
+   MENU BUTTON (YOUR ORIGINAL STYLE)
+   =============================== */
+
+.menu-button {
   width: 18px;
   height: 10px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   background: none;
   border: none;
   padding: 0;
@@ -198,6 +103,7 @@ body {
 /* ===============================
    MENU OVERLAY
    =============================== */
+
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -216,7 +122,6 @@ body {
   -webkit-overflow-scrolling: touch;
 
   z-index: 3000;
-   
   transition: background-color 0.3s ease,
               opacity 0.3s ease;
 }
@@ -229,12 +134,12 @@ body {
 /* ===============================
    MENU CONTENT
    =============================== */
+
 .menu-content {
   max-width: 420px;
   margin: 0 auto;
 }
 
-/* MENU LIST */
 .menu-content ul {
   list-style: none;
   padding: 0;
@@ -244,26 +149,24 @@ body {
   flex-direction: column;
   gap: 10px;
 
-  align-items: flex-start; /* ✅ THIS IS THE KEY */
+  align-items: flex-start;
 }
 
 .menu-content li {
-  align-self: flex-start; /* 🔥 magic line */
+  align-self: flex-start;
 }
 
-/* MENU ITEMS (PILLS) */
 .menu-content a {
   display: inline-flex;
-  align-items: center;     /* vertical centering */
-  justify-content: center; /* horizontal centering */
-   
+  align-items: center;
+  justify-content: center;
+
   padding-block: 12px;
   padding-inline: 10px;
 
   line-height: 1;
-   
-  background: #f2f2f2;
 
+  background: #f2f2f2;
   border-radius: 20px;
 
   font-family: "Scheherazade New", sans-serif;
@@ -286,9 +189,10 @@ body {
 }
 
 /* ===============================
-   PAGE SECTIONS
+   SURAH PAGE
    =============================== */
-.surah {
+
+.surah-container {
   padding: 60px 24px 48px;
   max-width: 700px;
   margin: 0 auto;
@@ -314,8 +218,8 @@ body {
   font-size: 22px;
   line-height: 1.9;
   margin-bottom: 16px;
-  text-align: justify;       /* 👈 makes lines fill both sides */
-  text-align-last: start;    /* 👈 last line stays normal */
+  text-align: justify;
+  text-align-last: start;
 }
 
 .ayah-number::before {
@@ -329,6 +233,7 @@ body {
 /* ===============================
    HOME PAGE
    =============================== */
+
 .home {
   padding-top: 180px;
   padding-left: 24px;
@@ -348,8 +253,39 @@ body {
 }
 
 /* ===============================
+   LANGUAGE SWITCH
+   =============================== */
+
+.lang-switch {
+  display: flex;
+  gap: 8px;
+}
+
+.lang-switch button {
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-switch button:hover {
+  background: #e9e9e9;
+}
+
+.lang-switch button.active {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+/* ===============================
    EASY READ MODE
    =============================== */
+
 body.easy-read {
   font-family: "Scheherazade New",
                "Amiri Quran",
@@ -368,31 +304,9 @@ body.easy-read .surah-title {
 }
 
 /* LOCK SCROLL WHEN MENU OPEN */
+
 body.menu-open {
   overflow: hidden;
-}
-
-.main-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.lang-switch {
-  order: -1; /* push to left */
-}
-
-.menu-button {
-  order: 1; /* keep menu on right */
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  padding: 6px;
-  -webkit-tap-highlight-color: transparent;
 }
 
 /* ===============================
@@ -404,22 +318,18 @@ body.night-mode {
   color: #f1f1f1;
 }
 
-/* Surah section */
-body.night-mode .surah {
+body.night-mode .surah-container {
   background: transparent;
 }
 
-/* Ayah text */
 body.night-mode .ayah {
   color: #f1f1f1;
 }
 
-/* Menu overlay */
 body.night-mode .menu-overlay {
   background: #121212;
 }
 
-/* Menu pills */
 body.night-mode .menu-content a {
   background: #1e1e1e;
   color: #f1f1f1;
@@ -429,13 +339,10 @@ body.night-mode .menu-content a:hover {
   background: #2a2a2a;
 }
 
-/* Home subtitle */
 body.night-mode .home-subtitle {
   color: #bbbbbb;
 }
 
-/* Menu button lines in night mode */
 body.night-mode .menu-button span {
   background: #f1f1f1;
 }
-
