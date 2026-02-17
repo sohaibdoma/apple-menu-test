@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #f8f8f8;
+  background: linear-gradient(to bottom, #ffffff, #f3f3f3);
   color: #111;
 }
 
