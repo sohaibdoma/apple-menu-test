@@ -47,6 +47,36 @@ body {
   font-size: 16px;
 }
 
+.menu-button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.menu-button::before,
+.menu-button::after,
+.menu-button span {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  background: #111;
+  transition: all 0.3s ease;
+}
+
+.menu-button::before {
+  top: 9px;
+}
+
+.menu-button::after {
+  bottom: 9px;
+}
+
+
 .surah-container {
   max-width: 800px;
   margin: 0 auto;
