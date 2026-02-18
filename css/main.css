@@ -59,10 +59,11 @@ body {
   border: none;
   
   position: fixed;
-  inset: 0 auto auto 0;
+  top: 0;
+  left: 0;
   width: 100%;
   
-  z-index: 9999;
+  z-index: 10000;
 }
 
 .menu-right {
@@ -243,7 +244,13 @@ body {
 .surah-container {
   max-width: 800px;
   margin: 0 auto;
+
+  margin-top: 90px;
   padding: 40px 20px;
+
+  position: relative;
+  z-index: 1;
+   
 }
 
 .surah-header,
