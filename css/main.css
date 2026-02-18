@@ -1,9 +1,46 @@
+/* ========================================
+   IMPORTS
+======================================== */
+
 @import "./base/reset.css";
 @import "./base/variables.css";
 
 @import "./layout/header.css";
 
 @import "./components/lang-switch.css";
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
+
+/* ========================================
+   GLOBAL RESET
+======================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===============================
+   BODY
+   =============================== */
+
+body {
+  background: #f2f2f2;
+}
+
+body {
+  font-family: "Scheherazade New",
+               "Amiri Quran",
+               serif;
+  color: #000;
+   
+  transition: background-color 0.3s ease,
+              color 0.3s ease;
+  
+  padding-top: 80px;
+}
 
 .main-header {
   direction: ltr;
@@ -79,45 +116,6 @@
   font-size: 16px;
   margin-right: 8px;
   color: #888;
-}
-
-/* ===============================
-   QURAN FONTS
-   =============================== */
-
-/* Amiri Quran — Default */
-@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
-
-/* Scheherazade New — Easy Read */
-@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
-
-/* ===============================
-   RESET
-   =============================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* ===============================
-   BODY
-   =============================== */
-
-body {
-  background: #f2f2f2;
-}
-
-body {
-  font-family: "Scheherazade New",
-               "Amiri Quran",
-               serif;
-  color: #000;
-   
-  transition: background-color 0.3s ease,
-              color 0.3s ease;
-  
-  padding-top: 80px;
 }
 
 /* ===============================
