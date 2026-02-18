@@ -99,7 +99,7 @@ body {
 .menu-button span {
   width: 100%;
   height: 2px;
-  background: currentColor;
+  background: red;
 
   border-radius: 2px;
 
