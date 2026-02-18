@@ -124,7 +124,7 @@ body {
    MENU BUTTON
    =============================== */
 .menu-button {
-  position: fixed;
+  position: relative;
   top: 18px;
   right: 18px;
 
@@ -140,7 +140,7 @@ body {
   padding: 0;
 
   cursor: pointer;
-  z-index: 4000;
+  z-index: 1100;
 
   -webkit-tap-highlight-color: transparent;
 }
@@ -189,7 +189,7 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
-  z-index: 3000;
+  z-index: 1000;
    
   transition: background-color 0.3s ease,
               opacity 0.3s ease;
