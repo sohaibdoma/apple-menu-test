@@ -319,14 +319,6 @@ body {
   text-align-last: start;    /* 👈 last line stays normal */
 }
 
-.ayah-number::before {
-  content: " (";
-}
-
-.ayah-number::after {
-  content: ")";
-}
-
 
 /* ===============================
    EASY READ MODE
