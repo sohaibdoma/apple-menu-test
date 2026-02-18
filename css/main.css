@@ -38,6 +38,48 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.surah-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.surah-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.surah-title h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.surah-meta {
+  color: #777;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.bismillah {
+  text-align: center;
+  font-family: 'Amiri Quran', serif;
+  font-size: 38px;
+  margin-bottom: 40px;
+}
+
+.ayah {
+  text-align: right;
+  font-family: 'Amiri Quran', serif;
+  font-size: 32px;
+  line-height: 2.4;
+  margin-bottom: 35px;
+}
+
+.ayah-number {
+  font-size: 16px;
+  margin-right: 8px;
+  color: #888;
+}
 
 /* ===============================
    QURAN FONTS
@@ -215,47 +257,34 @@ body {
 /* ===============================
    PAGE SECTIONS
    =============================== */
-.surah-container {
-  max-width: 800px;
+.surah {
+  padding: 60px 24px 48px;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 40px 20px;
+  text-align: start;
 }
 
 .surah-title {
+  margin-bottom: 20px;
   text-align: center;
-  margin-bottom: 50px;
 }
 
-.surah-title h1 {
-  font-size: 40px;
-  margin: 0;
-}
-
-.surah-meta {
-  color: #777;
-  margin-top: 10px;
-  font-size: 14px;
+.surah-header {
+  text-align: center;
 }
 
 .bismillah {
   text-align: center;
-  font-family: 'Amiri Quran', serif;
-  font-size: 38px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  font-size: 24px;
 }
 
 .ayah {
-  text-align: right;
-  font-family: 'Amiri Quran', serif;
-  font-size: 32px;
-  line-height: 2.4;
-  margin-bottom: 35px;
-}
-
-.ayah-number {
-  font-size: 16px;
-  margin-right: 8px;
-  color: #888;
+  font-size: 22px;
+  line-height: 1.9;
+  margin-bottom: 16px;
+  text-align: justify;       /* 👈 makes lines fill both sides */
+  text-align-last: start;    /* 👈 last line stays normal */
 }
 
 .ayah-number::before {
