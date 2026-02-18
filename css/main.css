@@ -130,7 +130,7 @@ body {
   right: 18px;
 
   width: 28px;
-  height: 20px;
+  height: 18px;
 
   display: flex;
   flex-direction: column;
@@ -159,15 +159,11 @@ body {
 
 /* Animation */
 .menu-button.open span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .menu-button.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-button.open span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ===============================
