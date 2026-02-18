@@ -42,6 +42,10 @@ body {
   padding-top: 80px;
 }
 
+/* ========================================
+   HEADER
+======================================== */
+
 .main-header {
   direction: ltr;
   
@@ -66,61 +70,10 @@ body {
   gap: 10px;
 }
 
-.theme-toggle {
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  padding: 6px;
-  -webkit-tap-highlight-color: transparent;
+.lang-switch {
+  order: -1; /* push to left */
 }
 
-.surah-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-.surah-title {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.surah-title h1 {
-  font-size: 40px;
-  margin: 0;
-}
-
-.surah-meta {
-  color: #777;
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-.bismillah {
-  text-align: center;
-  font-family: 'Amiri Quran', serif;
-  font-size: 38px;
-  margin-bottom: 40px;
-}
-
-.ayah {
-  text-align: right;
-  font-family: 'Amiri Quran', serif;
-  font-size: 32px;
-  line-height: 2.4;
-  margin-bottom: 35px;
-}
-
-.ayah-number {
-  font-size: 16px;
-  margin-right: 8px;
-  color: #888;
-}
-
-/* ===============================
-   MENU BUTTON
-   =============================== */
 .menu-button {
   position: relative;
 
@@ -162,9 +115,19 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* ===============================
    MENU OVERLAY
    =============================== */
+
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -253,14 +216,85 @@ body {
 }
 
 /* ===============================
+   HOME PAGE
+   =============================== */
+.home {
+  padding-top: 180px;
+  padding-left: 24px;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.home-subtitle {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ========================================
+   SURAH PAGE
+======================================== */
+
+.surah-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.surah-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.surah-title h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+.surah-meta {
+  color: #777;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.bismillah {
+  text-align: center;
+  font-family: 'Amiri Quran', serif;
+  font-size: 38px;
+  margin-bottom: 40px;
+}
+
+.ayah {
+  text-align: right;
+  font-family: 'Amiri Quran', serif;
+  font-size: 32px;
+  line-height: 2.4;
+  margin-bottom: 35px;
+}
+
+.ayah-number {
+  font-size: 16px;
+  margin-right: 8px;
+  color: #888;
+}
+
+.ayah-number::before {
+  content: " (";
+}
+
+.ayah-number::after {
+  content: ")";
+}
+
+
+/* ===============================
    PAGE SECTIONS
    =============================== */
-.surah {
-  padding: 60px 24px 48px;
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: start;
-}
 
 .surah-title {
   margin-bottom: 20px;
@@ -293,26 +327,6 @@ body {
   content: ")";
 }
 
-/* ===============================
-   HOME PAGE
-   =============================== */
-.home {
-  padding-top: 180px;
-  padding-left: 24px;
-  padding-right: 24px;
-  text-align: center;
-}
-
-.home-title {
-  font-size: 32px;
-  margin-bottom: 16px;
-}
-
-.home-subtitle {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.6;
-}
 
 /* ===============================
    EASY READ MODE
@@ -339,9 +353,6 @@ body.menu-open {
   overflow: hidden;
 }
 
-.lang-switch {
-  order: -1; /* push to left */
-}
 
 .menu-button {
   order: 1; /* keep menu on right */
