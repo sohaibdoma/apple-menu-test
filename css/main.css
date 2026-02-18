@@ -270,11 +270,12 @@ body {
 }
 
 .ayah {
-  text-align: right;
+  text-align: justify;       /* 👈 makes lines fill both sides */
+  text-align-last: start;    /* 👈 last line stays normal */
   font-family: 'Amiri Quran', serif;
-  font-size: 32px;
-  line-height: 2.4;
-  margin-bottom: 35px;
+  font-size: 22px;
+  line-height: 1.9;
+  margin-bottom: 16px;
 }
 
 .ayah-number {
