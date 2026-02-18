@@ -243,8 +243,9 @@ body {
 
 .surah-container {
   max-width: 800px;
-
-  margin-top: 90px;
+  margin: 0 auto;
+   
+  margin-top: 200px;
   padding: 40px 20px;
 
   position: relative;
