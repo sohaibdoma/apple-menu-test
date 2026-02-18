@@ -246,9 +246,13 @@ body {
   padding: 40px 20px;
 }
 
+.surah-header,
 .surah-title {
   text-align: center;
-  margin-bottom: 50px;
+}
+
+.surah-title {
+  margin-bottom: 20px;
 }
 
 .surah-title h1 {
