@@ -66,14 +66,6 @@ body {
   z-index: 10000;
 }
 
-.header-left {
-  order: 2;
-}
-
-.header-right {
-  order: 1;
-}
-
 .menu-right {
   display: flex;
   gap: 10px;
