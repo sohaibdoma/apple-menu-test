@@ -24,14 +24,6 @@ body {
   z-index: 1000;
 }
 
-html[dir="rtl"] .header-left {
-  order: 2;
-}
-
-html[dir="rtl"] .header-right {
-  order: 1;
-}
-
 .menu-right {
   display: flex;
   gap: 10px;
