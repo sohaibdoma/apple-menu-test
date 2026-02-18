@@ -139,8 +139,10 @@ body {
   padding: 0;
 
   cursor: pointer;
-  z-index: 2000;
-
+  z-index: 1600;
+  
+  color: #000;
+  
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -386,4 +388,9 @@ body.night-mode .menu-content a:hover {
 /* Home subtitle */
 body.night-mode .home-subtitle {
   color: #bbbbbb;
+}
+
+/* Menu button lines in night mode */
+body.night-mode .menu-button {
+  color: #f1f1f1;
 }
