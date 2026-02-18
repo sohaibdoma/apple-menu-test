@@ -348,11 +348,14 @@ body.easy-read .surah-title {
   text-align: center;
 }
 
+/* ========================================
+   STATE: MENU OPEN
+======================================== *
+
 /* LOCK SCROLL WHEN MENU OPEN */
 body.menu-open {
   overflow: hidden;
 }
-
 
 .menu-button {
   order: 1; /* keep menu on right */
