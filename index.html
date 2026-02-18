@@ -203,7 +203,20 @@
   </main>
 
   <!-- SCRIPTS -->
+  <script>
+  fetch("components/menu.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("menu-placeholder").innerHTML = html;
+      initMenu();
+    });
+  </script>
+
   <script src="js/i18n.js"></script>
+  <script>
+    initI18n();
+  </script>
+
   <script src="js/menu.js"></script>
   <script src="js/surah-engine.js"></script>
   <script src="script.js"></script>
