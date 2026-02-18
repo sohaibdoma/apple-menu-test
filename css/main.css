@@ -291,35 +291,6 @@ body {
   content: ")";
 }
 
-
-/* ===============================
-   PAGE SECTIONS
-   =============================== */
-
-.surah-title {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.surah-header {
-  text-align: center;
-}
-
-.bismillah {
-  text-align: center;
-  margin-bottom: 32px;
-  font-size: 24px;
-}
-
-.ayah {
-  font-size: 22px;
-  line-height: 1.9;
-  margin-bottom: 16px;
-  text-align: justify;       /* 👈 makes lines fill both sides */
-  text-align-last: start;    /* 👈 last line stays normal */
-}
-
-
 /* ===============================
    EASY READ MODE
    =============================== */
