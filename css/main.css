@@ -7,18 +7,22 @@
 
 .main-header {
   direction: ltr;
-  display: flex;
   
+  display: flex;
   justify-content: space-between;
   align-items: center;
   
   padding: 16px 20px;
-  background: white;
-  border-bottom: 1px solid #eee;
   
-  position: sticky;
+  background: transparent;
+  border: none;
+  
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  width: 100%;
+  
+  z-index: 1500;
 }
 
 .menu-right {
