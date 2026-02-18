@@ -5,13 +5,6 @@
 
 @import "./components/lang-switch.css";
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(to bottom, #ffffff, #f3f3f3);
-  color: #111;
-}
-
 .main-header {
   direction: ltr;
   display: flex;
@@ -344,12 +337,6 @@ body.easy-read .surah-title {
 /* LOCK SCROLL WHEN MENU OPEN */
 body.menu-open {
   overflow: hidden;
-}
-
-.main-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .lang-switch {
