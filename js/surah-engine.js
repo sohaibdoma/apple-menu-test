@@ -1,3 +1,25 @@
+function getSurahIdFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get("surah");
+  const num = Number.parseInt(raw, 10);
+  return Number.isFinite(num) && num > 0 ? num : 1;
+}
+
+function renderSurahHeader(headerEl, meta) {
+  // Keep markup minimal and predictable.
+  // Do NOT change classes unless you already had them.
+  headerEl.innerHTML = `
+    <h1>${meta?.name || ""}</h1>
+  `;
+}
+
+function renderSurahContent(contentEl, verses) {
+  contentEl.innerHTML = verses
+    .map(v => `<p>${v?.text || ""}</p>`)
+    .join("");
+}
+
+
 document.addEventListener("DOMContentLoaded", async () => {
   const headerEl = document.getElementById("surah-header");
   const contentEl = document.getElementById("surah-content");
