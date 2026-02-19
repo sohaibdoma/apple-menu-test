@@ -50,13 +50,21 @@ function initMenu() {
   menuOverlay.addEventListener('click', e => {
     if (e.target === menuOverlay) closeMenu();
   });
-
+  
+function markCurrentSurah(menuNav) {
   const currentSurah = document.body.dataset.surah;
-  if (currentSurah) {
-    menuNav
-      .querySelector(`[data-surah="${currentSurah}"]`)
-      ?.setAttribute('aria-current', 'page');
-  }
+  if (!currentSurah) return;
+
+  menuNav
+    .querySelector(`[data-surah="${currentSurah}"]`)
+    ?.setAttribute("aria-current", "page");
+}
+
+markCurrentSurah(menuNav);
+
+window.Wahyollah = window.Wahyollah || {};
+window.Wahyollah.markCurrentSurah = () => markCurrentSurah(menuNav);
+  
 }
 
 // expose globally
