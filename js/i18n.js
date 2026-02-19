@@ -93,4 +93,5 @@ function initI18n() {
 }
 
 // expose globally
-window.initI18n = initI18n;
+window.Wahyollah = window.Wahyollah || {};
+window.Wahyollah.initI18n = initI18n;
