@@ -1,6 +1,7 @@
 .lang-switch {
   display: flex;
   gap: 8px;
+  order: -1; /* push to left */
 }
 
 .lang-switch button {
