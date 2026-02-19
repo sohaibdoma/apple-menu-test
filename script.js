@@ -1,3 +1,12 @@
+window.addEventListener("error", (e) => {
+  console.error("Global Error:", e.message);
+});
+
+window.addEventListener("unhandledrejection", (e) => {
+  console.error("Unhandled Promise Rejection:", e.reason);
+});
+
+
 /* ===============================
    Global Bootstrap Script
    =============================== */
