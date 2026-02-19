@@ -2,7 +2,7 @@
    i18n – Language System
    =============================== */
 
-const DEFAULT_LANG = 'ar';
+const DEFAULT_LANG = window.Wahyollah?.config?.defaultLang || 'ar';
 
 let currentLang = null;
 let i18nInitialized = false;
@@ -58,7 +58,9 @@ function loadLanguage(lang) {
     return;
   }
 
-  fetch(`lang/${lang}.json`)
+  const langUrl = window.Wahyollah?.config?.langPath?.(lang) || `lang/${lang}.json`;
+fetch(langUrl)
+   
     .then(res => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.json();
