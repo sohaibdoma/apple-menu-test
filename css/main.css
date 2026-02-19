@@ -309,3 +309,17 @@ button:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+body,
+.main-header,
+.menu-overlay,
+.surah-container,
+.menu-overlay a {
+  transition: background-color 0.25s ease, 
+              color 0.25s ease, 
+              border-color 0.25s ease;
+}
+
+body:not(.theme-ready) * {
+  transition: none !important;
+}
