@@ -49,14 +49,14 @@
 }
 
 .menu-button span {
-  width: 18px;
+  width: 19px;
   height: 2px;
   background: currentColor;
 
   border-radius: 2px;
 
   display: block;
-  margin: 3px auto;
+  margin: 2px auto;
 
   transition: transform 0.3s ease,
               opacity 0.2s ease,
@@ -65,11 +65,11 @@
 
 /* Animation */
 .menu-button.open span:nth-child(1) {
-  transform: translateY(5px) rotate(45deg);
+  transform: translateY(4px) rotate(45deg);
 }
 
 .menu-button.open span:nth-child(2) {
-  transform: translateY(-5px) rotate(-45deg);
+  transform: translateY(-4px) rotate(-45deg);
 }
 
 .theme-toggle {
