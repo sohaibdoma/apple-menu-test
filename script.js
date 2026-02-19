@@ -39,7 +39,9 @@ if (toggle) {
 const placeholder = document.getElementById('menu-placeholder');
 
 if (placeholder) {
-  fetch('components/menu.html')
+  const menuUrl = window.Wahyollah?.config?.menuPath || 'components/menu.html';
+fetch(menuUrl)
+
     .then(res => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return res.text();
