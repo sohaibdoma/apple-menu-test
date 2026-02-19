@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  const headerEl = document.getElementById("surah-header");
+  const contentEl = document.getElementById("surah-content");
+
+  // This script should only run on surah.html
+  if (!headerEl || !contentEl) return;
+  
   const surahId = getSurahIdFromURL();
 
   if (!surahId) {
