@@ -78,23 +78,8 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.menu-overlay a {
-  position: relative;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
 .menu-overlay a[aria-current="page"] {
-  color: #666;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #000;
+  color: #fff;
 }
 
-.menu-overlay a[aria-current="page"]::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10%;
-  height: 80%;
-  width: 3px;
-  background-color: #666;
-  border-radius: 2px;
-}
