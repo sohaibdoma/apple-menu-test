@@ -27,10 +27,6 @@
   gap: 10px;
 }
 
-.lang-switch {
-  order: -1; /* push to left */
-}
-
 .menu-button {
   position: relative;
 
