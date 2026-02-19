@@ -14,25 +14,10 @@ if (App?.initI18n) {
   App.initI18n();
 }
    
-  // 🌙 Apply saved theme on page load
-if (localStorage.getItem("theme") === "night") {
-  document.body.classList.add("night-mode");
+if (App?.initTheme) {
+  App.initTheme();
 }
 
-// 🌙 Night Mode Toggle
-const toggle = document.getElementById("themeToggle");
-
-if (toggle) {
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("night-mode");
-
-    if (document.body.classList.contains("night-mode")) {
-      localStorage.setItem("theme", "night");
-    } else {
-      localStorage.setItem("theme", "light");
-    }
-  });
-}
 
 }
 
