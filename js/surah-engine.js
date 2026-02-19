@@ -44,27 +44,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function fetchSurah(id) {
-  const response = await fetch(
-    `https://api.quran.com/api/v4/chapters/${id}?language=en`
-  );
+  const api = window.Wahyollah?.api;
+  if (!api) throw new Error("API module not loaded");
 
-  if (!response.ok) throw new Error("API error");
-
-  const chapter = await response.json();
-
-  const versesResponse = await fetch(
-    `https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=${id}`
-  );
-
-  if (!versesResponse.ok) throw new Error("Verses API error");
-
-  const verses = await versesResponse.json();
+  const chapterRes = await api.getChapter(id);
+  const versesRes = await api.getUthmaniVersesByChapter(id);
 
   return {
-    chapter: chapter.chapter,
-    verses: verses.verses
+    chapter: chapterRes.chapter,
+    verses: versesRes.verses
   };
 }
+
 
 function renderSurah(data) {
   const header = document.getElementById("surah-header");
