@@ -126,3 +126,8 @@ html.night-mode .menu-overlay a:focus-visible {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
 }
 
+html.night-mode .menu-overlay a[aria-current="page"],
+body.night-mode .menu-overlay a[aria-current="page"] {
+  background-color: #fff !important;
+  color: #000 !important;
+}
