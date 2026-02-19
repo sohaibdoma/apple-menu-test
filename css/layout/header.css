@@ -73,6 +73,10 @@
 }
 
 .theme-toggle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
   background: none;
   border: none;
   font-size: 18px;
