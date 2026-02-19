@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!headerEl || !contentEl) return;
   
   const surahId = getSurahIdFromURL();
+  document.body.dataset.surah = String(surahId);
 
   if (!surahId) {
     document.getElementById("surah-content").innerHTML =
