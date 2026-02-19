@@ -1,24 +1,3 @@
-function getSurahIdFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  const raw = params.get("surah");
-  const num = Number.parseInt(raw, 10);
-  return Number.isFinite(num) && num > 0 ? num : 1;
-}
-
-function renderSurahHeader(headerEl, meta) {
-  // Keep markup minimal and predictable.
-  // Do NOT change classes unless you already had them.
-  headerEl.innerHTML = `
-    <h1>${meta?.name || ""}</h1>
-  `;
-}
-
-function renderSurahContent(contentEl, verses) {
-  contentEl.innerHTML = verses
-    .map(v => `<p>${v?.text || ""}</p>`)
-    .join("");
-}
-
 
 document.addEventListener("DOMContentLoaded", async () => {
   const headerEl = document.getElementById("surah-header");
@@ -48,8 +27,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function getSurahIdFromURL() {
   const params = new URLSearchParams(window.location.search);
-  return params.get("id");
+
+  const surahParam = params.get("surah");
+  if (surahParam) {
+    const num = Number.parseInt(surahParam, 10);
+    return Number.isFinite(num) && num > 0 ? num : null;
+  }
+
+  const idParam = params.get("id");
+  if (idParam) {
+    const num = Number.parseInt(idParam, 10);
+    return Number.isFinite(num) && num > 0 ? num : null;
+  }
+
+  return 1;
 }
+
 
 async function fetchSurah(id) {
   const response = await fetch(
