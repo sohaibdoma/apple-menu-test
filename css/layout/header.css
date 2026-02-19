@@ -77,3 +77,7 @@
   padding: 6px;
   -webkit-tap-highlight-color: transparent;
 }
+
+.menu-overlay a[aria-current="page"] {
+  color: #888;
+}
