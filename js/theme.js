@@ -18,4 +18,8 @@ function initTheme() {
   });
 }
 
+requestAnimationFrame(() => {
+  document.body.classList.add("theme-ready");
+});
+
 window.Wahyollah.initTheme = initTheme;
