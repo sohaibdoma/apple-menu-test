@@ -61,4 +61,4 @@ function initMenu() {
 
 // expose globally
 window.Wahyollah = window.Wahyollah || {};
-window.Wahyollah.initI18n = initI18n;
+window.Wahyollah.initMenu = initMenu;
