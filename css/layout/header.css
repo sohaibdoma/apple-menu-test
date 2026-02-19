@@ -95,3 +95,22 @@ body.night-mode .menu-overlay a[aria-current="page"] {
   background-color: #fff;
   color: #000;
 }
+
+.menu-overlay a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-overlay a:focus {
+  outline: none;
+}
+
+.menu-overlay a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+html.night-mode .menu-overlay a:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
