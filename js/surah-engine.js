@@ -1,3 +1,21 @@
+function getSurahIdFromURL() {
+  const params = new URLSearchParams(window.location.search);
+
+  const surahParam = params.get("surah");
+  if (surahParam) {
+    const num = Number.parseInt(surahParam, 10);
+    return Number.isFinite(num) && num > 0 ? num : null;
+  }
+
+  const idParam = params.get("id");
+  if (idParam) {
+    const num = Number.parseInt(idParam, 10);
+    return Number.isFinite(num) && num > 0 ? num : null;
+  }
+
+  return 1;
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const headerEl = document.getElementById("surah-header");
   const contentEl = document.getElementById("surah-content");
@@ -21,26 +39,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error(error);
   }
 });
-
-
-function getSurahIdFromURL() {
-  const params = new URLSearchParams(window.location.search);
-
-  const surahParam = params.get("surah");
-  if (surahParam) {
-    const num = Number.parseInt(surahParam, 10);
-    return Number.isFinite(num) && num > 0 ? num : null;
-  }
-
-  const idParam = params.get("id");
-  if (idParam) {
-    const num = Number.parseInt(idParam, 10);
-    return Number.isFinite(num) && num > 0 ? num : null;
-  }
-
-  return 1;
-}
-
 
 async function fetchSurah(id) {
   const response = await fetch(
@@ -79,13 +77,13 @@ function renderSurah(data) {
   `;
 
   content.innerHTML = "";
-  
-if (data.chapter.id !== 9) {
-  const bismillah = document.createElement("div");
-  bismillah.classList.add("bismillah");
-  bismillah.textContent = "﷽";
-  content.appendChild(bismillah);
-}
+
+  if (data.chapter.id !== 9) {
+    const bismillah = document.createElement("div");
+    bismillah.classList.add("bismillah");
+    bismillah.textContent = "﷽";
+    content.appendChild(bismillah);
+  }
 
   data.verses.forEach((verse, index) => {
     const ayah = document.createElement("div");
@@ -99,4 +97,3 @@ if (data.chapter.id !== 9) {
     content.appendChild(ayah);
   });
 }
-
