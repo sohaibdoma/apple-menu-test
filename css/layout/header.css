@@ -94,6 +94,10 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html.night-mode .theme-toggle {
+  background-color: #fff;
+}
+
 .menu-overlay a[aria-current="page"] {
   background-color: #000;
   color: #fff;
