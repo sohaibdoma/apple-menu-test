@@ -3,15 +3,16 @@
    =============================== */
 
 function bootstrapApp() {
-  // Init menu AFTER it exists
-  if (window.initMenu) {
-    window.initMenu();
-  }
+// Init modules from a single global namespace (cleaner than many window.* globals)
+const App = window.Wahyollah;
 
-  // Init i18n ONCE, after DOM is final
-  if (window.initI18n) {
-    window.initI18n();
-  }
+if (App?.initMenu) {
+  App.initMenu();
+}
+
+if (App?.initI18n) {
+  App.initI18n();
+}
    
   // 🌙 Apply saved theme on page load
 if (localStorage.getItem("theme") === "night") {
