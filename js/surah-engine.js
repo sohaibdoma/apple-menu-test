@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   document.body.dataset.surah = String(surahId);
+  if (window.Wahyollah?.markCurrentSurah) {
+  window.Wahyollah.markCurrentSurah();
+}
 
   try {
     const surahData = await fetchSurah(surahId);
