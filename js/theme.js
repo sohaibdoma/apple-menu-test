@@ -12,7 +12,7 @@ function initTheme() {
   if (!toggle) return;
 
   toggle.addEventListener("click", () => {
-    const isNight = document.body.classList.toggle("night-mode");
+    const isNight = document.documentElement.classList.toggle("night-mode");
 
     localStorage.setItem("theme", isNight ? "night" : "light");
   });
