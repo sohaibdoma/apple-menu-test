@@ -83,3 +83,7 @@
   color: #fff;
 }
 
+body.night-mode .menu-overlay a[aria-current="page"] {
+  background-color: #fff;
+  color: #000;
+}
