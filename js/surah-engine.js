@@ -1,29 +1,27 @@
-
 document.addEventListener("DOMContentLoaded", async () => {
   const headerEl = document.getElementById("surah-header");
   const contentEl = document.getElementById("surah-content");
 
-  // This script should only run on surah.html
   if (!headerEl || !contentEl) return;
-  
+
   const surahId = getSurahIdFromURL();
-  document.body.dataset.surah = String(surahId);
 
   if (!surahId) {
-    document.getElementById("surah-content").innerHTML =
-      "<p>Invalid Surah ID</p>";
+    contentEl.innerHTML = "<p>Invalid Surah ID</p>";
     return;
   }
+
+  document.body.dataset.surah = String(surahId);
 
   try {
     const surahData = await fetchSurah(surahId);
     renderSurah(surahData);
   } catch (error) {
-    document.getElementById("surah-content").innerHTML =
-      "<p>Failed to load Surah.</p>";
+    contentEl.innerHTML = "<p>Failed to load Surah.</p>";
     console.error(error);
   }
 });
+
 
 function getSurahIdFromURL() {
   const params = new URLSearchParams(window.location.search);
