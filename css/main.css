@@ -306,6 +306,7 @@ body {
 /* ===============================
    EASY READ MODE
    =============================== */
+
 body.easy-read {
   font-family: "Scheherazade New",
                "Amiri Quran",
@@ -325,7 +326,7 @@ body.easy-read .surah-title {
 
 /* ========================================
    STATE: MENU OPEN
-======================================== *
+======================================== */
 
 /* LOCK SCROLL WHEN MENU OPEN */
 body.menu-open {
