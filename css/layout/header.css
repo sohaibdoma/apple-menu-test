@@ -103,7 +103,7 @@ html.night-mode .theme-toggle {
   color: #fff;
 }
 
-body.night-mode .menu-overlay a[aria-current="page"] {
+html.night-mode .menu-overlay a[aria-current="page"] {
   background-color: #fff;
   color: #000;
 }
