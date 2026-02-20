@@ -44,3 +44,19 @@
 body.night-mode .lang-switch button:focus-visible {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
 }
+
+html[data-lang="ar"] .lang-switch button[data-lang="ar"],
+html[data-lang="en"] .lang-switch button[data-lang="en"],
+html[data-lang="tr"] .lang-switch button[data-lang="tr"] {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+html.night-mode[data-lang="ar"] .lang-switch button[data-lang="ar"],
+html.night-mode[data-lang="en"] .lang-switch button[data-lang="en"],
+html.night-mode[data-lang="tr"] .lang-switch button[data-lang="tr"] {
+  background: #f1f1f1;
+  color: #000;
+  border-color: #f1f1f1;
+}
