@@ -22,6 +22,15 @@
   z-index: 10000;
 }
 
+.header-left {
+  justify-self: center;
+}
+
+.header-right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+}
 
 .menu-right {
   display: flex;
