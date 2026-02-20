@@ -1,22 +1,25 @@
 window.Wahyollah = window.Wahyollah || {};
 
-function initTheme() {
-  const toggle = document.getElementById("themeToggle");
-  if (!toggle) return;
+function applyTheme(isNight) {
+  document.documentElement.classList.toggle("night-mode", isNight);
+  document.body.classList.toggle("night-mode", isNight);
+  localStorage.setItem("theme", isNight ? "night" : "light");
+}
 
+function initTheme() {
   const saved = localStorage.getItem("theme");
-  if (saved === "night") {
-    document.body.classList.add("night-mode");
-  } else {
-    document.body.classList.remove("night-mode");
+  applyTheme(saved === "night");
+
+  const toggle = document.getElementById("themeToggle");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const isNight = !document.body.classList.contains("night-mode");
+      applyTheme(isNight);
+    });
   }
 
-  toggle.addEventListener("click", () => {
-    const isNight = document.body.classList.toggle("night-mode");
-    localStorage.setItem("theme", isNight ? "night" : "light");
-  });
-
   requestAnimationFrame(() => {
+    document.documentElement.classList.add("theme-ready");
     document.body.classList.add("theme-ready");
   });
 }
