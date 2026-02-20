@@ -308,6 +308,26 @@ body.night-mode .menu-button {
   color: #f1f1f1;
 }
 
+/* ===============================
+   NIGHT MODE — LANG SWITCH
+=============================== */
+
+body.night-mode .lang-switch button {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  color: #f1f1f1;
+}
+
+body.night-mode .lang-switch button:hover {
+  background: #2a2a2a;
+}
+
+body.night-mode .lang-switch button.active {
+  background: #f1f1f1;
+  color: #000000;
+  border-color: #f1f1f1;
+}
+
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid #666;
