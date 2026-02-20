@@ -14,7 +14,6 @@
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
   position: fixed;
   top: 0;
@@ -26,7 +25,6 @@
 
 body.night-mode .main-header {
   background-color: rgba(0, 0, 0, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .header-left {
