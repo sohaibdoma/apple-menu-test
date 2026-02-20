@@ -11,8 +11,10 @@
 
   padding: 16px 20px;
 
-  background: transparent;
-  border: none;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
   position: fixed;
   top: 0;
@@ -20,6 +22,11 @@
   width: 100%;
 
   z-index: 10000;
+}
+
+body.night-mode .main-header {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .header-left {
