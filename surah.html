@@ -8,6 +8,18 @@
   <base href="/wahyollah/">
 
   <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+
+  <script>
+  (function () {
+    try {
+      var theme = localStorage.getItem("theme");
+      if (theme === "night") {
+        document.documentElement.classList.add("night-mode");
+      }
+    } catch (e) {}
+  })();
+  </script>
+  
   <link rel="stylesheet" href="css/main.css" />
 </head>
 
