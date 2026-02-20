@@ -260,10 +260,6 @@ body.menu-open {
   overflow: hidden;
 }
 
-.menu-button {
-  order: 1; /* keep menu on right */
-}
-
 /* ===============================
    NIGHT MODE
    =============================== */
@@ -275,37 +271,44 @@ body.night-mode {
 }
 
 /* Surah section */
-body.night-mode .surah {
+body.night-mode .surah,
+html.night-mode .surah {
   background: transparent;
 }
 
 /* Ayah text */
-body.night-mode .ayah {
+body.night-mode .ayah,
+html.night-mode .ayah {
   color: #f1f1f1;
 }
 
 /* Menu overlay */
-body.night-mode .menu-overlay {
+body.night-mode .menu-overlay,
+html.night-mode .menu-overlay {
   background: #121212;
 }
 
 /* Menu pills */
-body.night-mode .menu-content a {
+body.night-mode .menu-content a,
+html.night-mode .menu-content a {
   background: #1e1e1e;
   color: #f1f1f1;
 }
 
-body.night-mode .menu-content a:not([aria-current="page"]):hover {
+body.night-mode .menu-content a:not([aria-current="page"]):hover,
+html.night-mode .menu-content a:not([aria-current="page"]):hover {
   background: #333;
 }
 
 /* Home subtitle */
-body.night-mode .home-subtitle {
+body.night-mode .home-subtitle,
+html.night-mode .home-subtitle {
   color: #bbbbbb;
 }
 
 /* Menu button lines in night mode */
-body.night-mode .menu-button {
+body.night-mode .menu-button,
+html.night-mode .menu-button {
   color: #f1f1f1;
 }
 
@@ -313,23 +316,27 @@ body.night-mode .menu-button {
    NIGHT MODE — LANG SWITCH
 =============================== */
 
-body.night-mode .lang-switch button {
+body.night-mode .lang-switch button,
+html.night-mode .lang-switch button {
   background: #1e1e1e;
   border: 1px solid #333;
   color: #f1f1f1;
 }
 
-body.night-mode .lang-switch button:hover {
+body.night-mode .lang-switch button:hover,
+html.night-mode .lang-switch button:hover {
   background: #2a2a2a;
 }
 
-body.night-mode .lang-switch button.active {
+body.night-mode .lang-switch button.active,
+html.night-mode .lang-switch button.active {
   background: #f1f1f1;
   color: #000000;
   border-color: #f1f1f1;
 }
 
-body.night-mode .lang-switch button:focus-visible {
+body.night-mode .lang-switch button:focus-visible,
+html.night-mode .lang-switch button:focus-visible {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
 }
 
@@ -357,5 +364,9 @@ body,
 }
 
 body:not(.theme-ready) * {
+  transition: none !important;
+}
+
+html:not(.theme-ready) * {
   transition: none !important;
 }
