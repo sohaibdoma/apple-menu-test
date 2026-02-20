@@ -57,19 +57,6 @@ function initMenu() {
   menuOverlay.addEventListener('click', e => {
     if (e.target === menuOverlay) closeMenu();
   });
-
-menuOverlay.addEventListener('scroll', () => {
-  if (menuOverlay.scrollTop <= 0) {
-    menuOverlay.scrollTop = 1;
-  }
-
-  const maxScrollTop =
-    menuOverlay.scrollHeight - menuOverlay.clientHeight - 1;
-
-  if (menuOverlay.scrollTop >= maxScrollTop) {
-    menuOverlay.scrollTop = maxScrollTop;
-  }
-}, { passive: true });
   
 function markCurrentSurah(menuNav) {
   const currentSurah = document.body.dataset.surah;
