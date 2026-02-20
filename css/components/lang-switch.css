@@ -23,3 +23,13 @@
   color: white;
   border-color: #111;
 }
+
+.lang-switch button:focus {
+  outline: none;
+}
+
+.lang-switch button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
