@@ -130,7 +130,7 @@ body {
               color 0.3s ease;
 }
 
-.menu-content a:hover {
+.menu-content a:not([aria-current="page"]):hover {
   background: #e8e8e8;
 }
 
