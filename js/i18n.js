@@ -30,6 +30,7 @@ function updateActiveButton(lang) {
 function applyLanguage(data, lang) {
   document.documentElement.lang = data.lang || lang;
   document.documentElement.dir  = data.dir  || 'ltr';
+  document.documentElement.setAttribute("data-lang", lang);
 
   document.querySelectorAll('[data-i18n]').forEach(el => {
   const key = el.dataset.i18n;
