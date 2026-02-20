@@ -9,9 +9,13 @@ function initMenu() {
   }
   
   let lastFocusedElement = null;
+  let lockedScrollY = 0;
 
   function openMenu() {
     lastFocusedElement = document.activeElement;
+
+    lockedScrollY = window.scrollY;
+    document.body.style.top = `-${lockedScrollY}px`;
 
     menuOverlay.classList.add('open');
     menuButton.classList.add('open');
@@ -31,7 +35,10 @@ function initMenu() {
     menuOverlay.setAttribute('aria-hidden', 'true');
     menuButton.setAttribute('aria-expanded', 'false');
 
+    document.body.style.top = '';
     document.body.classList.remove('menu-open');
+    window.scrollTo(0, lockedScrollY);
+    lockedScrollY = 0;
 
     lastFocusedElement?.focus();
   }
