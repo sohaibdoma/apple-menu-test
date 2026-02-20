@@ -250,6 +250,8 @@ body.easy-read .surah-title {
 
 /* LOCK SCROLL WHEN MENU OPEN */
 body.menu-open {
+  position: fixed;
+  width: 100%;
   overflow: hidden;
 }
 
