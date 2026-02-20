@@ -6,7 +6,7 @@
   direction: ltr;
 
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 44px 1fr 44px;
   align-items: center;
 
   padding: 16px 20px;
@@ -29,7 +29,6 @@ body.night-mode .main-header {
 
 .header-left {
   justify-self: center;
-  transform: translateX(-8px);
 }
 
 .header-right {
