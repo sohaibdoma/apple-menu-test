@@ -59,8 +59,8 @@ html.night-mode .main-header {
 }
 
 .menu-button span {
-  width: 22px;
-  height: 2px;
+  width: 20px;
+  height: 1px;
   background: currentColor;
 
   border-radius: 2px;
