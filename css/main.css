@@ -66,6 +66,7 @@ body {
 
   overscroll-behavior: none;
   height: 100dvh;
+  touch-action: pan-y;
    
   z-index: 1000;
    
