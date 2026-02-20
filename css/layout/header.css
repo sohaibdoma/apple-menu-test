@@ -76,11 +76,11 @@ html.night-mode .main-header {
 
 /* Animation */
 .menu-button.open span:nth-child(1) {
-  transform: translateY(4.5px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
 
 .menu-button.open span:nth-child(2) {
-  transform: translateY(-4.5px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 .theme-toggle {
