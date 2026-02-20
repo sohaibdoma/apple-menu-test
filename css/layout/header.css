@@ -29,6 +29,7 @@ body.night-mode .main-header {
 
 .header-left {
   justify-self: center;
+  transform: translateX(-8px);
 }
 
 .header-right {
