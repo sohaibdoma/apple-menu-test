@@ -39,7 +39,7 @@ body {
   transition: background-color 0.3s ease,
               color 0.3s ease;
   
-  padding-top: 80px;
+  padding-top: 40px;
 }
 
 /* ===============================
@@ -146,7 +146,7 @@ body {
    HOME PAGE
    =============================== */
 .home {
-  padding-top: 180px;
+  padding-top: 40px;
   padding-left: 24px;
   padding-right: 24px;
   text-align: center;
