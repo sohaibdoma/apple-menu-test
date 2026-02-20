@@ -11,7 +11,12 @@
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  
+  transition: background-color 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease;
+  
+  -webkit-tap-highlight-color: transparent;
 }
 
 .lang-switch button:hover {
@@ -29,7 +34,13 @@
 }
 
 .lang-switch button:focus-visible {
-  outline: none;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
+.lang-switch button.active:focus-visible {
+  box-shadow: none;
+}
+
+body.night-mode .lang-switch button:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
