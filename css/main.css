@@ -284,8 +284,8 @@ body.night-mode .menu-content a {
   color: #f1f1f1;
 }
 
-body.night-mode .menu-content a:hover {
-  background: #2a2a2a;
+body.night-mode .menu-content a:not([aria-current="page"]):hover {
+  background: #333;
 }
 
 /* Home subtitle */
