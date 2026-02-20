@@ -41,7 +41,7 @@ html.night-mode .main-header {
 .menu-button {
   position: relative;
 
-  width: 32px;
+  width: 50px;
 
   display: flex;
   flex-direction: column;
