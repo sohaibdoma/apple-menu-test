@@ -1,7 +1,6 @@
 .lang-switch {
   display: flex;
   gap: 8px;
-  justify-self: center;
 }
 
 .lang-switch button {
