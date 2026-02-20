@@ -42,12 +42,11 @@ html.night-mode .main-header {
   position: relative;
 
   width: 28px;
-  height: 18px;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
+  gap: 3px;
+   
   background: none;
   border: none;
   padding: 0;
