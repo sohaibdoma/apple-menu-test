@@ -13,6 +13,9 @@
         var theme = localStorage.getItem("theme");
         var isNight = theme === "night";
         document.documentElement.classList.toggle("night-mode", isNight);
+
+        var lang = localStorage.getItem("lang") || "ar";
+        document.documentElement.setAttribute("data-lang", lang);
       } catch (e) {}
     })();
   </script>
