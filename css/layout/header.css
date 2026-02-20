@@ -42,7 +42,7 @@ html.night-mode .main-header {
   position: relative;
 
   width: 28px;
-  height: 9px;
+  height: 10px;
 
   display: flex;
   flex-direction: column;
@@ -68,19 +68,21 @@ html.night-mode .main-header {
 
   display: block;
   margin: 0 auto;
-
+   
   transition: transform 0.2s ease,
               opacity 0.15s ease,
               background-color 0.2s ease;
+   
+  transform-origin: center;
 }
 
 /* Animation */
 .menu-button.open span:nth-child(1) {
-  transform: translateY(4.8px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
 
 .menu-button.open span:nth-child(2) {
-  transform: translateY(-4.8px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 .theme-toggle {
