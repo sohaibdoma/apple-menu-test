@@ -23,7 +23,8 @@
   z-index: 10000;
 }
 
-body.night-mode .main-header {
+body.night-mode .main-header,
+html.night-mode .main-header {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -101,7 +102,8 @@ body.night-mode .main-header {
   -webkit-tap-highlight-color: transparent;
 }
 
-body.night-mode .theme-toggle {
+body.night-mode .theme-toggle,
+html.night-mode .theme-toggle {
   background-color: #fff;
 }
 
