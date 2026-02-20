@@ -138,6 +138,10 @@ body {
   background: #e8e8e8;
 }
 
+.menu-scroll-buffer {
+  height: 1px;
+}
+
 /* ===============================
    HOME PAGE
    =============================== */
