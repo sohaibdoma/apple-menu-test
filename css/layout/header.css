@@ -98,6 +98,8 @@ html.night-mode .main-header {
   height: 16px;
   border-radius: 50%;
 
+  margin-left: 2px;
+
   background-color: #000;
 
   border: none;
