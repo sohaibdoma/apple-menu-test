@@ -68,7 +68,7 @@ body {
   z-index: 1000;
 
   opacity: 0;
-  transform: scaleY(0.92);
+  transform: scaleY(0.90);
   transform-origin: top;
 
   visibility: hidden;
