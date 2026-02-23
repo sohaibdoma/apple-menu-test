@@ -68,7 +68,7 @@ body {
   align-items: center;     /* vertical centering */
   justify-content: flex-start; /* horizontal centering */
    
-  padding-block: 20px;
+  padding-block: 12px;
   padding-inline: 10px;
 
   line-height: 1;
@@ -101,8 +101,8 @@ body {
 }
 
 #main-menu {
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   padding-inline: 10px;
    
   height: 100%;
