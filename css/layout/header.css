@@ -16,9 +16,9 @@
   -webkit-backdrop-filter: blur(1px);
 
   position: fixed;
-  top: 12px;
-  left: 12px;
-  right: 12px;
+  top: var(--nav-gap);
+  left: var(--nav-inset);
+  right: var(--nav-inset);
   width: auto;
    
   border-radius: 22px;
