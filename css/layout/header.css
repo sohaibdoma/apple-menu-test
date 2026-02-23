@@ -25,6 +25,8 @@
   width: auto;
 
   border-radius: 22px;
+  isolation: isolate;
+   
   z-index: 9999;
 
   max-height: var(--header-h, 60px);
