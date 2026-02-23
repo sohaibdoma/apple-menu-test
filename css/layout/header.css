@@ -23,7 +23,7 @@
    
   border-radius: 22px;
 
-  z-index: 10000;
+  z-index: 9999;
 }
 
 body.night-mode .main-header,
