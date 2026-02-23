@@ -51,8 +51,8 @@ body {
 
   left: var(--nav-inset);
   right: var(--nav-inset);
+  top: var(--nav-gap);
 
-  top: calc(var(--nav-gap) + var(--header-h) + var(--menu-gap));
   bottom: var(--nav-gap);
 
   background: rgba(255, 255, 255, 0.75);
@@ -67,18 +67,15 @@ body {
   visibility: hidden;
   pointer-events: none;
 
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
+  overflow: hidden;
 
-  transform: scaleY(0.96);
+  transform: scaleY(0.97);
   transform-origin: top;
 
   z-index: 9999;
 
   transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.2s ease,
-              background-color 0.3s ease,
               visibility 0s linear 0.2s;
 }
 
@@ -91,7 +88,6 @@ body {
 
   transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.2s ease,
-              background-color 0.3s ease,
               visibility 0s linear 0s;
 }
 
