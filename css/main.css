@@ -389,3 +389,13 @@ body:not(.theme-ready) * {
 html:not(.theme-ready) * {
   transition: none !important;
 }
+
+#main-menu {
+  padding-top: calc(var(--header-h, 60px) + 12px);
+  padding-bottom: 12px;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  max-height: 100%;
+}
