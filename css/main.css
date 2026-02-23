@@ -108,7 +108,11 @@ body {
 #main-menu {
   padding-top: calc(var(--header-h, 60px) + 12px);
   padding-bottom: 12px;
-
+   
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical center */
+   
   max-height: calc(100dvh - (2 * var(--nav-gap)));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
