@@ -48,31 +48,33 @@ body {
 
 .menu-overlay {
   position: fixed;
-  inset: 0;
-  background: #fff;
 
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  left: var(--nav-inset);
+  right: var(--nav-inset);
 
-  padding-top: 100px;
-  padding-bottom: 100px;
+  top: calc(var(--nav-gap) + var(--header-h) + var(--menu-gap));
+  bottom: var(--nav-gap);
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 22px;
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 
-  overscroll-behavior: none;
-  height: 100dvh;
-  touch-action: pan-y;
-
-  z-index: 1000;
-
-  opacity: 0;
-  transform: scaleY(0.1);
+  transform: scaleY(0.96);
   transform-origin: top;
 
-  visibility: hidden;
-  pointer-events: none;
+  z-index: 9999;
 
   transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.2s ease,
@@ -82,10 +84,10 @@ body {
 
 .menu-overlay.open {
   opacity: 1;
-  transform: scaleY(1);
-
   visibility: visible;
   pointer-events: auto;
+
+  transform: scaleY(1);
 
   transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.2s ease,
@@ -299,7 +301,7 @@ html.night-mode .ayah {
 /* Menu overlay */
 body.night-mode .menu-overlay,
 html.night-mode .menu-overlay {
-  background: #121212;
+  background: rgba(0, 0, 0, 0.65);
 }
 
 /* Menu pills */
