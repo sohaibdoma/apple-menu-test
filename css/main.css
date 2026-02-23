@@ -43,62 +43,6 @@ body {
 }
 
 /* ===============================
-   MENU OVERLAY
-   =============================== */
-
-.menu-overlay {
-  position: fixed;
-
-  left: var(--nav-inset);
-  right: var(--nav-inset);
-  top: var(--nav-gap);
-
-  bottom: var(--nav-gap);
-
-  padding-top: calc(var(--header-h) + 12px);
-  padding-bottom: 12px;
-
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  border-radius: 22px;
-
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-
-  transform: translateY(-8px) scaleY(0.60);
-  transform-origin: top;
-
-  z-index: 9998;
-
-  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.22s ease,
-              background-color 0.3s ease,
-              visibility 0s linear 0.22s;
-}
-
-.menu-overlay.open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-
-  transform: translateY(0) scaleY(1);
-
-  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.22s ease,
-              background-color 0.3s ease,
-              visibility 0s linear 0s;
-}
-
-/* ===============================
    MENU CONTENT
    =============================== */
 .menu-content {
