@@ -390,12 +390,16 @@ html:not(.theme-ready) * {
   transition: none !important;
 }
 
-#main-menu {
-  padding-top: calc(var(--header-h, 60px) + 12px);
-  padding-bottom: 12px;
+#menu-placeholder {
+  grid-column: 1 / -1;
+}
 
+#main-menu {
+  margin-top: var(--header-h, 60px);
+  padding: 12px 0 12px 0;
+
+  max-height: calc(100dvh - (2 * var(--nav-gap)) - var(--header-h, 60px));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  max-height: 100%;
 }
