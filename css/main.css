@@ -44,9 +44,7 @@ body {
    MENU CONTENT
    =============================== */
 .menu-content {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
+  width: 100%;
 }
 
 /* MENU LIST */
