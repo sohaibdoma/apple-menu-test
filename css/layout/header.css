@@ -8,13 +8,13 @@
   display: grid;
   grid-template-columns: 44px 1fr 44px;
   grid-template-rows: auto 1fr;
-   
-  align-items: start;
+
+  align-items: center;
 
   padding: 16px 10px;
   overflow: hidden;
-   
-  background: rgba(255, 255, 255, 0.85);
+
+  background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
@@ -23,9 +23,8 @@
   left: var(--nav-inset);
   right: var(--nav-inset);
   width: auto;
-   
-  border-radius: 22px;
 
+  border-radius: 22px;
   z-index: 9999;
 
   max-height: var(--header-h, 60px);
@@ -35,6 +34,8 @@
 #menu-placeholder {
   grid-column: 1 / -1;
   grid-row: 2;
+  align-self: stretch;
+  min-height: 0;
 }
 
 body.menu-open .main-header {
