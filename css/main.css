@@ -74,14 +74,15 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
-  transform: scaleY(0.97);
+  transform: translateY(-8px) scaleY(0.85);
   transform-origin: top;
 
   z-index: 9998;
 
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.2s ease,
-              visibility 0s linear 0.2s;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.22s ease,
+              background-color 0.3s ease,
+              visibility 0s linear 0.22s;
 }
 
 .menu-overlay.open {
@@ -89,10 +90,11 @@ body {
   visibility: visible;
   pointer-events: auto;
 
-  transform: scaleY(1);
+  transform: translateY(0) scaleY(1);
 
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.2s ease,
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.22s ease,
+              background-color 0.3s ease,
               visibility 0s linear 0s;
 }
 
