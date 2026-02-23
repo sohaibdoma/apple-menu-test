@@ -56,6 +56,12 @@ html.night-mode .main-header {
   align-items: center;
 }
 
+.theme-toggle,
+.header-left,
+.header-right {
+  align-self: center;
+}
+
 .menu-button {
   position: relative;
 
