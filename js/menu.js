@@ -30,7 +30,6 @@ function initMenu() {
     menuButton.classList.add("open");
     menuButton.setAttribute("aria-expanded", "true");
 
-    menuNav.setAttribute("aria-hidden", "false");
     menuNav.querySelector("a")?.focus();
   }
 
@@ -43,9 +42,7 @@ function initMenu() {
     window.scrollTo(0, lockedScrollY);
     lockedScrollY = 0;
 
-    menuNav.setAttribute("aria-hidden", "true");
     lastFocusedElement?.focus();
-
     syncHeaderHeight();
   }
 
