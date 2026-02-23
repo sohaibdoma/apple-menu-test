@@ -66,9 +66,7 @@ body {
 .menu-content a {
   display: inline-flex;
   align-items: center;     /* vertical centering */
-  justify-content: flex-end; /* horizontal centering */
-
-  min-width: 140px;
+  justify-content: flex-start; /* horizontal centering */
    
   padding-block: 12px;
   padding-inline: 10px;
