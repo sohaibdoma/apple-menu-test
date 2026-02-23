@@ -336,3 +336,30 @@ body:not(.theme-ready) * {
 html:not(.theme-ready) * {
   transition: none !important;
 }
+
+
+.menu-content a[aria-current="page"] {
+  background-color: #000;
+  color: #fff;
+}
+
+body.night-mode .menu-content a[aria-current="page"],
+html.night-mode .menu-content a[aria-current="page"] {
+  background-color: #fff;
+  color: #000;
+}
+
+.menu-content a:focus {
+  outline: none;
+}
+
+.menu-content a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+body.night-mode .menu-content a:focus-visible,
+html.night-mode .menu-content a:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
