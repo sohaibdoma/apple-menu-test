@@ -60,7 +60,8 @@ body {
   flex-direction: column;
   gap: 10px;
 
-  align-items: flex-start; /* ✅ THIS IS THE KEY */
+  align-items: flex-end; /* ✅ THIS IS THE KEY */
+  width: 100%;
 }
 
 .menu-content li {
