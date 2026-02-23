@@ -55,6 +55,9 @@ body {
 
   bottom: var(--nav-gap);
 
+  padding-top: calc(var(--header-h) + 12px);
+  padding-bottom: 12px;
+
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -67,7 +70,9 @@ body {
   visibility: hidden;
   pointer-events: none;
 
-  overflow: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 
   transform: scaleY(0.97);
   transform-origin: top;
