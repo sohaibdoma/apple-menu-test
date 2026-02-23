@@ -1,9 +1,8 @@
 function initMenu() {
   const menuButton = document.querySelector(".menu-button");
-  const headerShell = document.querySelector(".main-header");
   const menuNav = document.getElementById("main-menu");
 
-  if (!menuButton || !headerShell || !menuNav) {
+  if (!menuButton || !menuNav) {
     console.warn("Menu elements not found");
     return;
   }
@@ -12,8 +11,9 @@ function initMenu() {
   let lockedScrollY = 0;
 
   function syncHeaderHeight() {
-    if (document.body.classList.contains("menu-open")) return;
-    document.documentElement.style.setProperty("--header-h", `${headerShell.offsetHeight}px`);
+    const header = document.querySelector(".main-header");
+    if (!header) return;
+    document.documentElement.style.setProperty("--header-h", `${header.offsetHeight}px`);
   }
 
   syncHeaderHeight();
@@ -25,10 +25,11 @@ function initMenu() {
 
     lockedScrollY = window.scrollY;
     document.body.style.top = `-${lockedScrollY}px`;
-    document.body.classList.add("menu-open");
 
     menuButton.classList.add("open");
     menuButton.setAttribute("aria-expanded", "true");
+
+    document.body.classList.add("menu-open");
 
     menuNav.querySelector("a")?.focus();
   }
@@ -37,13 +38,13 @@ function initMenu() {
     menuButton.classList.remove("open");
     menuButton.setAttribute("aria-expanded", "false");
 
-    document.body.classList.remove("menu-open");
     document.body.style.top = "";
+    document.body.classList.remove("menu-open");
+
     window.scrollTo(0, lockedScrollY);
     lockedScrollY = 0;
 
     lastFocusedElement?.focus();
-    syncHeaderHeight();
   }
 
   menuButton.addEventListener("click", () => {
@@ -55,11 +56,6 @@ function initMenu() {
     if (e.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
       closeMenu();
     }
-  });
-
-  document.addEventListener("click", (e) => {
-    if (menuButton.getAttribute("aria-expanded") !== "true") return;
-    if (!headerShell.contains(e.target)) closeMenu();
   });
 
   function markCurrentSurah() {
