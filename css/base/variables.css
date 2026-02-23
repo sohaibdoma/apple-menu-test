@@ -1,4 +1,8 @@
 :root {
   /* Used by .menu-button in main.css */
+  --nav-gap: 12px;
+  --nav-inset: 12px;
+  --menu-gap: 10px;
+  --header-h: 60px;
   --text-color: #000;
 }
