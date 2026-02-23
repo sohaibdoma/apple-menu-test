@@ -71,7 +71,7 @@ body {
 .menu-content a {
   display: inline-flex;
   align-items: center;     /* vertical centering */
-  justify-content: center; /* horizontal centering */
+  justify-content: flex-end; /* horizontal centering */
    
   padding-block: 12px;
   padding-inline: 10px;
@@ -90,7 +90,7 @@ body {
   text-decoration: none;
 
   direction: rtl;
-  text-align: start;
+  text-align: right;
   white-space: nowrap;
 
   transition: background-color 0.3s ease,
