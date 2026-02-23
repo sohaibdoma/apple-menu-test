@@ -28,9 +28,7 @@
 
 body {
   background: #f2f2f2;
-}
-
-body {
+   
   font-family: "Scheherazade New",
                "Amiri Quran",
                serif;
@@ -65,7 +63,7 @@ body {
 }
 
 .menu-content li {
-  align-self: flex-start; /* 🔥 magic line */
+  align-self: flex-end; /* 🔥 magic line */
 }
 
 /* MENU ITEMS (PILLS) */
@@ -73,6 +71,8 @@ body {
   display: inline-flex;
   align-items: center;     /* vertical centering */
   justify-content: flex-end; /* horizontal centering */
+
+  min-width: 140px;
    
   padding-block: 12px;
   padding-inline: 10px;
@@ -260,12 +260,6 @@ html.night-mode .ayah {
   color: #f1f1f1;
 }
 
-/* Menu overlay */
-body.night-mode .menu-overlay,
-html.night-mode .menu-overlay {
-  background: rgba(0, 0, 0, 0.65);
-}
-
 /* Menu pills */
 body.night-mode .menu-content a,
 html.night-mode .menu-content a {
@@ -333,9 +327,8 @@ button:focus-visible {
 
 body,
 .main-header,
-.menu-overlay,
 .surah-container,
-.menu-overlay a {
+.menu-content a {
   transition: background-color 0.25s ease, 
               color 0.25s ease, 
               border-color 0.25s ease;
