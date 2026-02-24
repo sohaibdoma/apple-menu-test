@@ -401,7 +401,7 @@ html.night-mode .menu-content a:focus-visible {
 
 /* Smooth blur for page behind menu */
 body > *:not(.main-header) {
-  transition: filter 1.1s ease-in-out;
+  transition: filter 0.35s ease-in-out;
   will-change: filter;
 }
 
