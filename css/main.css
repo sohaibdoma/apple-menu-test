@@ -384,3 +384,17 @@ html.night-mode .menu-content a:focus-visible {
 #main-menu::-webkit-scrollbar {
   display: none;                  /* Chrome, Safari */
 }
+
+.menu-content a,
+.menu-content a * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-content a:focus {
+  outline: none;
+}
+
+.menu-content a:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
