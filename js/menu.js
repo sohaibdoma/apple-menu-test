@@ -12,17 +12,10 @@ function initMenu() {
   let lastFocusedElement = null;
   let lockedScrollY = 0;
 
-  function syncHeaderHeight() {
-    const header = document.querySelector(".main-header");
-    if (!header) return;
-    document.documentElement.style.setProperty("--header-h", `${header.offsetHeight}px`);
-  }
 
-  syncHeaderHeight();
-  window.addEventListener("resize", syncHeaderHeight);
 
   function openMenu() {
-    syncHeaderHeight();
+
     lastFocusedElement = document.activeElement;
 
     lockedScrollY = window.scrollY;
