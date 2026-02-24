@@ -348,17 +348,17 @@ html.night-mode .menu-content a[aria-current="page"] {
   color: #000;
 }
 
-.menu-content a:focus {
+.menu-content a:focus,
+.menu-content a:focus-visible {
   outline: none;
 }
 
 .menu-content a:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
 }
 
 body.night-mode .menu-content a:focus-visible,
 html.night-mode .menu-content a:focus-visible {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
 }
