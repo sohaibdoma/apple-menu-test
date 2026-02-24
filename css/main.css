@@ -371,3 +371,16 @@ html.night-mode .menu-content a:focus-visible {
 .menu-button:focus-visible {
   outline: none;
 }
+
+/* ===============================
+   HIDE MENU SCROLLBAR
+=============================== */
+
+#main-menu {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge */
+}
+
+#main-menu::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari */
+}
