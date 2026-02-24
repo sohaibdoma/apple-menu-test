@@ -408,3 +408,8 @@ body > *:not(.main-header) {
 body.menu-open > *:not(.main-header) {
   filter: blur(10px);
 }
+
+/* Instant blur removal when closing */
+body.no-blur-transition > *:not(.main-header) {
+  transition: none !important;
+}
