@@ -97,9 +97,8 @@ body {
 }
 
 #main-menu {
-  padding-top: 22px;
-  padding-bottom: 22px;
-  padding-inline: 10px;
+  padding: 0;          /* ✅ no extra space top/bottom */
+  margin: 0;
 
   height: 100%;
   min-height: 0;
@@ -108,10 +107,10 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
-  /* ✅ prevents items from sliding under the pill edges */
-  scroll-padding-top: 22px;
-  scroll-padding-bottom: 22px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+#main-menu::-webkit-scrollbar { display: none; }
 
 /* ===============================
    HOME PAGE
