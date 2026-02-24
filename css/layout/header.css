@@ -7,7 +7,7 @@
 
   display: grid;
   grid-template-columns: 44px 1fr 44px;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
 
   align-items: center;
 
