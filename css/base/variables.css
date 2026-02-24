@@ -11,6 +11,6 @@
 
 html.night-mode,
 body.night-mode {
-  --page-bg: #242424;  /* night */
+  --page-bg: #2a2a2a;  /* night */
   --page-text: #f1f1f1;
 }
