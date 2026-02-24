@@ -12,10 +12,9 @@ function initMenu() {
   let lastFocusedElement = null;
   let lockedScrollY = 0;
 
-
-
   function openMenu() {
-
+    document.body.classList.remove("no-blur-transition");
+    
     lastFocusedElement = document.activeElement;
 
     lockedScrollY = window.scrollY;
@@ -30,6 +29,9 @@ function initMenu() {
   }
 
   function closeMenu() {
+    // make blur removal instant (no transition on close)
+    document.body.classList.add("no-blur-transition");
+
     menuButton.classList.remove("open");
     menuButton.setAttribute("aria-expanded", "false");
 
@@ -40,6 +42,11 @@ function initMenu() {
     lockedScrollY = 0;
 
     lastFocusedElement?.focus();
+
+    // restore smooth transitions for next open
+    requestAnimationFrame(() => {
+      document.body.classList.remove("no-blur-transition");
+    });
   }
 
   menuButton.addEventListener("click", () => {
