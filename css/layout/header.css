@@ -30,7 +30,7 @@
   z-index: 9999;
 
   max-height: var(--header-h);
-  transition: max-height 0.25s ease-in-out;
+  transition: max-height 0.30s ease-in-out;
   will-change: max-height;
 }
 
