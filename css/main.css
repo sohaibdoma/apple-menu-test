@@ -400,9 +400,5 @@ html.night-mode .menu-content a:focus-visible {
 }
 
 body.menu-open > *:not(.main-header) {
-  pointer-events: none;
-}
-
-body.menu-open .main-header {
-  pointer-events: auto;
+  filter: blur(10px);
 }
