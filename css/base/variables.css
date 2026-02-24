@@ -5,12 +5,12 @@
   --menu-gap: 10px;
   --header-h: 60px;
   --text-color: #000;
-  --page-bg: #f2f2f2;   /* light */
+  --page-bg: #d5d5d5;   /* light */
   --page-text: #000;
 }
 
 html.night-mode,
 body.night-mode {
-  --page-bg: #121212;  /* night */
+  --page-bg: #343434;  /* night */
   --page-text: #f1f1f1;
 }
