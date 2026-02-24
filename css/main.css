@@ -398,3 +398,11 @@ html.night-mode .menu-content a:focus-visible {
   outline: none;
   box-shadow: none;
 }
+
+body.menu-open > *:not(.main-header) {
+  pointer-events: none;
+}
+
+body.menu-open .main-header {
+  pointer-events: auto;
+}
