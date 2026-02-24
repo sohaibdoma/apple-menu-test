@@ -7,6 +7,8 @@ function initMenu() {
     return;
   }
 
+  const header = document.querySelector(".main-header");
+
   let lastFocusedElement = null;
   let lockedScrollY = 0;
 
