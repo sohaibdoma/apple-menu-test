@@ -36,8 +36,17 @@
 #menu-placeholder {
   grid-column: 1 / -1;
   grid-row: 2;
+
   align-self: stretch;
   min-height: 0;
+
+  display: none;
+  pointer-events: none;
+}
+
+body.menu-open #menu-placeholder {
+  display: block;
+  pointer-events: auto;
 }
 
 body.menu-open .main-header {
