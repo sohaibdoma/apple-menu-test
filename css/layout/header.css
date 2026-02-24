@@ -41,15 +41,25 @@
   align-self: stretch;
   min-height: 0;
 
-  display: none;
+  max-height: 0;
+  opacity: 0;
   pointer-events: none;
+
+  overflow: hidden;
+
+  transform: translateY(-6px);
+
+  transition: max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.25s ease,
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body.menu-open #menu-placeholder {
-  display: block;
+  max-height: calc(100dvh - (2 * var(--nav-gap)) - var(--header-h, 60px));
+  opacity: 1;
   pointer-events: auto;
+  transform: translateY(0);
 }
-
 body.menu-open .main-header {
   max-height: calc(100dvh - (2 * var(--nav-gap)));
 }
