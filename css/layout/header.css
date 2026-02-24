@@ -52,15 +52,18 @@ body.menu-open body.night-mode .main-header {
 }
 
 #menu-placeholder {
-  position: absolute;
-  inset: 0;              /* touches pill border */
-  z-index: 1;
+  grid-column: 1 / -1;
+  grid-row: 2;
+
+  align-self: stretch;
+  min-height: 0;
 
   max-height: 0;
   opacity: 0;
   pointer-events: none;
 
   overflow: hidden;
+
   transform: translateY(-6px);
 
   transition: max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
@@ -69,7 +72,7 @@ body.menu-open body.night-mode .main-header {
 }
 
 body.menu-open #menu-placeholder {
-  max-height: 9999px;    /* let the header max-height do the real limit */
+  max-height: calc(100dvh - (2 * var(--nav-gap)) - var(--header-h, 60px));
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
