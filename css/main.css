@@ -27,12 +27,13 @@
    =============================== */
 
 body {
-  background: #f2f2f2;
+  background: var(--page-bg);
    
   font-family: "Scheherazade New",
                "Amiri Quran",
                serif;
-  color: #000;
+   
+  color: var(--page-text);
    
   transition: background-color 0.3s ease,
               color 0.3s ease;
@@ -232,12 +233,6 @@ body.menu-open {
 /* ===============================
    NIGHT MODE
    =============================== */
-
-html.night-mode body,
-body.night-mode {
-  background: #121212;
-  color: #f1f1f1;
-}
 
 /* Surah section */
 body.night-mode .surah,
