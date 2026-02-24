@@ -30,7 +30,8 @@
   z-index: 9999;
 
   max-height: var(--header-h, 60px);
-  transition: max-height 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: max-height 0.55s ease-in-out;
+  will-change: max-height;
 }
 
 #menu-placeholder {
