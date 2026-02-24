@@ -54,12 +54,33 @@ function initMenu() {
     isOpen ? closeMenu() : openMenu();
   });
 
+  menuNav.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (!link) return;
+
+    closeMenu();
+  });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
       closeMenu();
     }
   });
 
+  document.addEventListener("click", (e) => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    if (!isOpen) return;
+
+    if (!header) return;
+
+    const clickedInsideHeader = header.contains(e.target);
+    const clickedMenuButton = menuButton.contains(e.target);
+
+    if (!clickedInsideHeader && !clickedMenuButton) {
+      closeMenu();
+    }
+  });
+  
   function markCurrentSurah() {
     const currentSurah = document.body.dataset.surah;
     if (!currentSurah) return;
