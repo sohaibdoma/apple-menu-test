@@ -72,14 +72,14 @@ body.menu-open body.night-mode .main-header {
 }
 
 body.menu-open #menu-placeholder {
-  max-height: calc(100vh - (2 * var(--nav-gap)) - var(--header-h, 60px));
+  max-height: calc(100dvh - (2 * var(--nav-gap)) - var(--header-h, 60px));
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
 
 body.menu-open .main-header {
-  max-height: calc(100vh - (2 * var(--nav-gap)));
+  max-height: calc(100dvh - (2 * var(--nav-gap)));
 }
 
 body.night-mode .main-header,
