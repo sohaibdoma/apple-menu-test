@@ -321,7 +321,6 @@ button:focus-visible {
 }
 
 body,
-.main-header,
 .surah-container,
 .menu-content a {
   transition: background-color 0.25s ease, 
