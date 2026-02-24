@@ -96,15 +96,11 @@ body {
   background: #e8e8e8;
 }
 
-.menu-scroll-buffer {
-  height: 1px;
-}
-
 #main-menu {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 22px;
+  padding-bottom: 22px;
   padding-inline: 10px;
-   
+
   height: 100%;
   min-height: 0;
 
@@ -112,7 +108,9 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
-  display: block;
+  /* ✅ prevents items from sliding under the pill edges */
+  scroll-padding-top: 22px;
+  scroll-padding-bottom: 22px;
 }
 
 /* ===============================
