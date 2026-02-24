@@ -362,3 +362,12 @@ body.night-mode .menu-content a:focus-visible,
 html.night-mode .menu-content a:focus-visible {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
 }
+
+.menu-content a:focus,
+.menu-content a:focus-visible,
+.lang-switch button:focus,
+.lang-switch button:focus-visible,
+.menu-button:focus,
+.menu-button:focus-visible {
+  outline: none;
+}
