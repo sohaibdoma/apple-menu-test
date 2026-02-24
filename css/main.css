@@ -97,9 +97,6 @@ body {
 }
 
 #main-menu {
-  padding-top: 30px;
-  padding-bottom: 30px;
-   
   height: 100%;
   min-height: 0;
 
@@ -107,7 +104,8 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
-  display: block;
+  /* IMPORTANT: keep this small */
+  padding: 12px 10px;
 }
 
 /* ===============================
