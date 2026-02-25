@@ -67,7 +67,9 @@ body.menu-open body.night-mode .main-header {
   max-height: 0;
   opacity: 0;
   pointer-events: none;
-
+   
+  overflow-y: auto;
+  overflow-x: hidden;
   overflow: visible;
 
   -webkit-overflow-scrolling: touch;
