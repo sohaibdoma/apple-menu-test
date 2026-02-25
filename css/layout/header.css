@@ -69,9 +69,10 @@ body.menu-open body.night-mode .main-header {
    
   opacity: 0;
   pointer-events: none;
-   
-  overflow-y: auto;
-  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
 
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
@@ -81,6 +82,11 @@ body.menu-open body.night-mode .main-header {
   transition: max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.25s ease,
               transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.menu-open #menu-placeholder::before {
+  content: "";
+  flex: 0 0 40px; /* this is the fixed top starting space */
 }
 
 body.menu-open #menu-placeholder {
