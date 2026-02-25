@@ -79,6 +79,7 @@ body.menu-open #menu-placeholder {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+  overflow: visible;
 }
 
 body.menu-open .main-header {
@@ -147,7 +148,6 @@ html.night-mode .main-header {
 .menu-button span:nth-child(2) {
   bottom: 0;
 }
-
 
 /* Animation */
 .menu-button.open span:nth-child(1) {
