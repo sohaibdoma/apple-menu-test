@@ -32,9 +32,9 @@
   height: var(--header-h);
   max-height: var(--header-h);
    
-  transition: max-height 0.35s ease-in-out;
+  transition: max-height 0.35s ease-in-out,
               height 0.35s ease-in-out;
-  will-change: max-height;
+  will-change: max-height, height;
 }
 
 body.menu-open .main-header {
