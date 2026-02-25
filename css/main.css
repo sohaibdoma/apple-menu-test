@@ -111,9 +111,6 @@ body {
    
   height: auto;
   overflow: visible;
-
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* ===============================
