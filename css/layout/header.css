@@ -57,21 +57,19 @@ body.menu-open body.night-mode .main-header {
   -webkit-backdrop-filter: none;
 }
 
-
-
 #menu-placeholder {
   grid-column: 1 / -1;
-  grid-row: 1;              /* ✅ same row as everything */
+  grid-row: 2;
 
+  align-self: stretch;
   min-height: 0;
   height: 100%;
 
   max-height: 0;
   opacity: 0;
   pointer-events: none;
-
-  /* sit behind the controls */
-  z-index: 1;
+   
+  overflow: visible;
 
   transform: translateY(-6px);
 
@@ -79,8 +77,6 @@ body.menu-open body.night-mode .main-header {
               opacity 0.25s ease,
               transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-
 
 body.menu-open #menu-placeholder {
   max-height: calc(100dvh - (2 * var(--nav-gap)) - var(--header-h, 60px));
@@ -109,16 +105,11 @@ html.night-mode .main-header {
   align-items: center;
 }
 
-
-
 .theme-toggle,
 .header-left,
 .header-right {
-  position: relative;
-  z-index: 2;
+  align-self: center;
 }
-
-
 
 .menu-button {
   position: relative;
