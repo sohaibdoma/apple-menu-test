@@ -106,6 +106,8 @@ body {
    
   scroll-padding-top: 22px;
   scroll-padding-bottom: 22px;
+
+  background: transparent;
    
   height: auto;
   overflow: visible;
