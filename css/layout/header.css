@@ -69,7 +69,11 @@ body.menu-open body.night-mode .main-header {
   opacity: 0;
   pointer-events: none;
    
-  overflow: visible;
+  overflow-y: auto;
+  overflow-x: hidden;
+   
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 
   transform: translateY(-6px);
 
