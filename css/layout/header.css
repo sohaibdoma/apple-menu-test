@@ -52,7 +52,6 @@
   z-index: 3;
 }
 
-
 /* Make the menu surface feel continuous up to the top of the pill */
 body.menu-open .main-header::after {
   content: "";
@@ -64,9 +63,9 @@ body.menu-open .main-header::after {
   background: rgba(255, 255, 255, 1);
 }
 
-body.menu-open body.night-mode .main-header::after,
+html.night-mode body.menu-open .main-header::after,
 body.night-mode body.menu-open .main-header::after {
-  background: rgba(0, 0, 0, 1);
+  background: #000; /* pure black */
 }
 
 body.menu-open .main-header {
