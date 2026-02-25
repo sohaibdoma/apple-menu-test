@@ -6,7 +6,7 @@
  direction: ltr;
 
   display: grid;
-  grid-template-columns: 44px 1fr 44px;
+  grid-template-columns: 44px 44px;
   grid-template-rows: auto 1fr;
 
   align-items: center;
