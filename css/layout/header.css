@@ -37,6 +37,20 @@
   -webkit-clip-path: inset(0 round 22px);
 }
 
+
+
+
+.header-bar {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+
+  padding: 16px; /* this used to be .main-header padding */
+}
+
+
+
+
 body.menu-open .main-header {
   background: rgba(255, 255, 255, 1);
   backdrop-filter: none;
