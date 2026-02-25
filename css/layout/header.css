@@ -111,9 +111,9 @@ html.night-mode .main-header {
 
 
 
+.theme-toggle,
 .header-left,
-.header-right,
-.theme-toggle {
+.header-right {
   position: relative;
   z-index: 2;
 }
