@@ -12,21 +12,39 @@ function initMenu() {
   let lastFocusedElement = null;
   let lockedScrollY = 0;
 
-  function openMenu() {
-    document.body.classList.remove("no-blur-transition");
-    
-    lastFocusedElement = document.activeElement;
 
-    lockedScrollY = window.scrollY;
-    document.body.style.top = `-${lockedScrollY}px`;
 
-    menuButton.classList.add("open");
-    menuButton.setAttribute("aria-expanded", "true");
+function openMenu() {
+  document.body.classList.remove("no-blur-transition");
 
-    document.body.classList.add("menu-open");
+  lastFocusedElement = document.activeElement;
 
+  lockedScrollY = window.scrollY;
+  document.body.style.top = `-${lockedScrollY}px`;
+
+  menuButton.classList.add("open");
+  menuButton.setAttribute("aria-expanded", "true");
+
+  document.body.classList.add("menu-open");
+
+  // 1) Ensure current surah is marked (aria-current="page")
+  markCurrentSurah();
+
+  // 2) Scroll the current surah into the middle of the menu
+  const current = menuNav.querySelector('a[aria-current="page"]');
+  if (current) {
+    // Wait 1 frame so layout/height changes apply before scrolling
+    requestAnimationFrame(() => {
+      current.scrollIntoView({ block: "center", inline: "nearest" });
+      current.focus({ preventScroll: true });
+    });
+  } else {
+    // fallback: focus first item
     menuNav.querySelector("a")?.focus();
   }
+}
+
+  
 
   function closeMenu() {
     // make blur removal instant (no transition on close)
