@@ -98,14 +98,11 @@ body {
 }
 
 #main-menu {
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   padding-inline: 10px;
 
   display: block;
-   
-  scroll-padding-top: 22px;
-  scroll-padding-bottom: 22px;
 
   background: transparent;
    
