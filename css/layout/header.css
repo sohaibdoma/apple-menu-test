@@ -64,18 +64,12 @@ body.menu-open body.night-mode .main-header {
   align-self: stretch;
   min-height: 0;
   height: 100%;
-   
+
   max-height: 0;
-   
   opacity: 0;
   pointer-events: none;
-
-  display: flex;
-  flex-direction: column;
+   
   overflow: visible;
-
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
 
   transform: translateY(-6px);
 
@@ -84,17 +78,7 @@ body.menu-open body.night-mode .main-header {
               transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body.menu-open #menu-placeholder::before {
-  content: "";
-  flex: 0 0 40px; /* this is the fixed top starting space */
-}
-
 body.menu-open #menu-placeholder {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-inline: 10px;
-  box-sizing: border-box;
-   
   max-height: calc(100dvh - (2 * var(--nav-gap)) - var(--header-h, 60px));
   opacity: 1;
   pointer-events: auto;
