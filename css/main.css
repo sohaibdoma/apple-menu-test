@@ -104,8 +104,8 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
 
-  padding-bottom: 22px;
-  padding-inline: 10px;
+  padding-bottom: 0;
+  padding-inline: 0;
 
   /* no top padding here, because the fixed spacer handles it */
   padding-top: 0;
