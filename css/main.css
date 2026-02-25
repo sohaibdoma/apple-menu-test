@@ -378,15 +378,6 @@ html.night-mode .menu-content a:focus-visible {
    HIDE MENU SCROLLBAR
 =============================== */
 
-#menu-placeholder {
-  scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE/Edge */
-}
-
-#menu-placeholder::-webkit-scrollbar {
-  display: none;                  /* Chrome, Safari */
-}
-
 .menu-content a,
 .menu-content a * {
   -webkit-tap-highlight-color: transparent;
