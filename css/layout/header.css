@@ -75,11 +75,11 @@ body.menu-open body.night-mode .main-header {
 }
 
 body.menu-open #menu-placeholder {
+  overflow: visible;
   max-height: calc(100dvh - (2 * var(--nav-gap)) - var(--header-h, 60px));
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
-  overflow: visible;
 }
 
 body.menu-open .main-header {
