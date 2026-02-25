@@ -98,18 +98,15 @@ body {
 }
 
 #main-menu {
-  padding-top: 260px;
-  padding-bottom: 260px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   padding-inline: 10px;
-   
-  height: 100%;
-  min-height: 0;
 
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
+  height: auto;
+  overflow: visible;
 
   display: block;
+  background: transparent;
 }
 
 #main-menu::-webkit-scrollbar {
