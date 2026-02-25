@@ -70,7 +70,6 @@ body.menu-open body.night-mode .main-header {
    
   overflow-y: auto;
   overflow-x: hidden;
-  overflow: visible;
 
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
