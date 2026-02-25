@@ -26,29 +26,36 @@
 <body data-lang-root data-surah="0">
 
 <!-- HEADER -->
-<header class="main-header">
-  
-  <button id="themeToggle" class="theme-toggle"></button>
 
-  <div class="header-left">
-    <div class="lang-switch">
-      <button data-lang="ar">AR</button>
-      <button data-lang="en">EN</button>
-      <button data-lang="tr">TR</button>
+  <header class="main-header">
+
+  <!-- TOP BAR (controls only) -->
+  <div class="header-bar">
+    <button id="themeToggle" class="theme-toggle"></button>
+
+    <div class="header-left">
+      <div class="lang-switch">
+        <button data-lang="ar">AR</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="tr">TR</button>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <button class="menu-button" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
 
-  <div class="header-right">
-    <button class="menu-button" aria-label="Toggle menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-  
-  <!-- SHARED MENU -->
+  <!-- MENU AREA (fills pill, not affected by header padding) -->
   <div id="menu-placeholder"></div>
-  
+
 </header>
+
+
+  
 
   <!-- HOME CONTENT -->
   <main class="home">
