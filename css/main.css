@@ -100,6 +100,8 @@ body {
 #main-menu {
   padding-top: 22px;
   padding-bottom: 22px;
+  padding-inline: 10px;
+   
   scroll-padding-top: 22px;
   scroll-padding-bottom: 22px;
    
@@ -111,6 +113,9 @@ body {
   overscroll-behavior: contain;
 
   display: block;
+
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ===============================
