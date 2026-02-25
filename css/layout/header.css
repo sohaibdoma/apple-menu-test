@@ -28,9 +28,12 @@
   isolation: isolate;
    
   z-index: 9999;
-
+   
+  height: var(--header-h);
   max-height: var(--header-h);
+   
   transition: max-height 0.35s ease-in-out;
+              height 0.35s ease-in-out;
   will-change: max-height;
 }
 
@@ -79,6 +82,7 @@ body.menu-open #menu-placeholder {
 }
 
 body.menu-open .main-header {
+  height: calc(100dvh - (2 * var(--nav-gap)));
   max-height: calc(100dvh - (2 * var(--nav-gap)));
 }
 
