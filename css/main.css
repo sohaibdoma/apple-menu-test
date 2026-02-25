@@ -113,6 +113,15 @@ body {
   display: none;
 }
 
+#menu-placeholder {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#menu-placeholder::-webkit-scrollbar {
+  display: none;
+}
+
 /* ===============================
    HOME PAGE
    =============================== */
