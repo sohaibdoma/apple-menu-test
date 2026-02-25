@@ -58,7 +58,8 @@ function initMenu() {
     const link = e.target.closest("a");
     if (!link) return;
 
-    closeMenu();
+    // Do nothing on menu item click.
+    // The browser will navigate to the next page, and closing animation looks bad.
   });
 
   document.addEventListener("keydown", (e) => {
