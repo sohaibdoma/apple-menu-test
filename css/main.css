@@ -98,12 +98,29 @@ body {
 }
 
 #main-menu {
-  display: block;
+  flex: 1 1 auto;
+  min-height: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-bottom: 22px;
+  padding-inline: 10px;
+
+  /* no top padding here, because the fixed spacer handles it */
+  padding-top: 0;
+
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 
   background: transparent;
-   
-  height: auto;
-  overflow: visible;
+}
+
+#main-menu::-webkit-scrollbar {
+  display: none;
 }
 
 /* ===============================
