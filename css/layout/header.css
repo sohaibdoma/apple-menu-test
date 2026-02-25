@@ -84,6 +84,11 @@ body.menu-open body.night-mode .main-header {
 }
 
 body.menu-open #menu-placeholder {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-inline: 10px;
+  box-sizing: border-box;
+   
   max-height: calc(100dvh - (2 * var(--nav-gap)) - var(--header-h, 60px));
   opacity: 1;
   pointer-events: auto;
