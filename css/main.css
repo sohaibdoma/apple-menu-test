@@ -228,6 +228,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 
   /* this spacing is the “gap” you like above the page pill */
   margin-top: 18px;
@@ -239,7 +240,7 @@ body {
 
 .mushaf-page-footer::after {
   content: "";
-  width: calc(100% - 40px);
+  width: 100%;
   height: 1px;
   background: rgba(0, 0, 0, 0.12);
   border-radius: 999px;
