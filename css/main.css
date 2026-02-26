@@ -215,31 +215,28 @@ html.night-mode .mushaf-page-marker {
   justify-content: center;
 
   height: 26px;
-  min-width: 26px;          /* makes it a circle for 1-digit */
-  padding-inline: 8px;       /* expands into a pill for 2-3 digits */
+  min-width: 26px;
+  padding: 0 9px;              /* symmetric padding */
 
   border-radius: 999px;
+
   font-size: 14px;
-  line-height: 1;
+  line-height: 1;              /* important */
   font-weight: 700;
 
-  user-select: none;
   white-space: nowrap;
+  user-select: none;
+
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
-/* Ayah badge look */
 .q-badge--ayah {
-  margin-inline-start: 10px; /* space between text and badge (RTL-safe) */
+  margin-inline-start: 10px;
 
-  background: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.72);
-}
-
-/* Night mode for ayah badge */
-html.night-mode .q-badge--ayah,
-body.night-mode .q-badge--ayah {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.85);
+  background: transparent;                 /* no fill */
+  border: 1px solid currentColor;          /* stroke uses text color */
+  color: inherit;                          /* same as ayah text */
 }
 
 /* Page footer holder (at bottom) */
