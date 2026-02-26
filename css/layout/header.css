@@ -229,14 +229,14 @@ body.menu-closing #menu-placeholder {
 }
 
 /* ========================================
-   THEME TOGGLE (Outline Minimal – 20% Bigger)
+   THEME TOGGLE (Outline Minimal)
 ======================================== */
 
 .theme-toggle {
   justify-self: start;
 
-  width: 48px;              /* 40 × 1.2 */
-  height: 26px;             /* 22 × 1.2 */
+  width: 40px;
+  height: 22px;
 
   border-radius: 999px;
   padding: 0;
@@ -244,7 +244,7 @@ body.menu-closing #menu-placeholder {
   cursor: pointer;
   position: relative;
 
-  background: transparent;
+  background: transparent; /* no fill */
 
   border: 1px solid rgba(0, 0, 0, 0.15);
 
@@ -258,13 +258,13 @@ body.menu-closing #menu-placeholder {
   content: "";
   position: absolute;
 
-  width: 19px;              /* 16 × 1.2 ≈ 19 */
-  height: 19px;
+  width: 16px;
+  height: 16px;
 
   border-radius: 50%;
 
-  top: 3px;                 /* scaled spacing */
-  left: 3px;
+  top: 2px;
+  left: 2px;
 
   background: #000000;
 
@@ -283,6 +283,6 @@ body.night-mode .theme-toggle {
 
 html.night-mode .theme-toggle::after,
 body.night-mode .theme-toggle::after {
-  transform: translateX(22px);   /* recalculated */
+  transform: translateX(18px);
   background: #ffffff;
 }
