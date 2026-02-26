@@ -172,19 +172,14 @@ body {
   text-align-last: start;
 
   font-family: "Scheherazade New", serif;
-
   font-size: 24px;
-  line-height: 2.2;
-   
-  letter-spacing: 0.6px;
-  word-spacing: 1px;
 
   margin-bottom: 18px;
 }
 
 .ayah-text {
-  line-height: 2.7;
-  word-spacing: 0.2em;
+  line-height: 1.2;
+  word-spacing: 0.12em;
 
   font-variant-ligatures: normal;
   font-feature-settings: "calt" 1, "liga" 1;
