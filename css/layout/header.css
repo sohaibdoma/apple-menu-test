@@ -26,8 +26,10 @@
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
 
-  transition: max-height 0.35s ease-in-out,
-              height 0.35s ease-in-out;
+ transition: max-height 0.35s ease-in-out,
+             height 0.35s ease-in-out,
+             border-radius 0.35s ease-in-out,
+             clip-path 0.35s ease-in-out;
   will-change: max-height, height;
 
   overflow: visible;
