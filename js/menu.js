@@ -12,8 +12,6 @@ function initMenu() {
   let lastFocusedElement = null;
   let lockedScrollY = 0;
 
-
-
 function openMenu() {
   document.body.classList.remove("no-blur-transition");
 
@@ -27,6 +25,9 @@ function openMenu() {
 
   document.body.classList.add("menu-open");
 
+  const menuScroller = document.getElementById("menu-placeholder");
+  if (menuScroller) menuScroller.scrollTop = 0;
+  
   // 1) Ensure current surah is marked (aria-current="page")
   markCurrentSurah();
 
