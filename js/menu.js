@@ -29,32 +29,24 @@ function openMenu() {
 
   // Wait one frame so expanded height is applied
   requestAnimationFrame(() => {
-
-    if (menuScroller) {
-      menuScroller.scrollTop = 0;  // reset to steady start
-    }
-
     // Mark current surah
     markCurrentSurah();
 
     const current = menuNav.querySelector('a[aria-current="page"]');
 
     if (current) {
-      // Wait one more frame so scrollTop=0 applies first
+      // Center current surah (intentionally scrolls down)
       requestAnimationFrame(() => {
-        current.scrollIntoView({
-          block: "center",
-          inline: "nearest"
-        });
+        current.scrollIntoView({ block: "center", inline: "nearest" });
         current.focus({ preventScroll: true });
       });
     } else {
-      menuNav.querySelector("a")?.focus();
+      // HOME / no current: force a steady top start
+      if (menuScroller) menuScroller.scrollTop = 0;
+      menuNav.querySelector("a")?.focus({ preventScroll: true });
     }
   });
 }
-
-  
 
   function closeMenu() {
     // make blur removal instant (no transition on close)
@@ -110,14 +102,19 @@ function openMenu() {
     }
   });
   
-  function markCurrentSurah() {
-    const currentSurah = document.body.dataset.surah;
-    if (!currentSurah) return;
+function markCurrentSurah() {
+  // clear old
+  menuNav.querySelectorAll('a[aria-current="page"]').forEach(a => {
+    a.removeAttribute("aria-current");
+  });
 
-    menuNav
-      .querySelector(`[data-surah="${currentSurah}"]`)
-      ?.setAttribute("aria-current", "page");
-  }
+  const currentSurah = document.body.dataset.surah;
+  if (!currentSurah) return;
+
+  menuNav
+    .querySelector(`[data-surah="${currentSurah}"]`)
+    ?.setAttribute("aria-current", "page");
+}
 
   markCurrentSurah();
 
