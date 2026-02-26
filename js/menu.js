@@ -26,23 +26,32 @@ function openMenu() {
   document.body.classList.add("menu-open");
 
   const menuScroller = document.getElementById("menu-placeholder");
-  if (menuScroller) menuScroller.scrollTop = 0;
-  
-  // 1) Ensure current surah is marked (aria-current="page")
-  markCurrentSurah();
 
-  // 2) Scroll the current surah into the middle of the menu
-  const current = menuNav.querySelector('a[aria-current="page"]');
-  if (current) {
-    // Wait 1 frame so layout/height changes apply before scrolling
-    requestAnimationFrame(() => {
-      current.scrollIntoView({ block: "center", inline: "nearest" });
-      current.focus({ preventScroll: true });
-    });
-  } else {
-    // fallback: focus first item
-    menuNav.querySelector("a")?.focus();
-  }
+  // Wait one frame so expanded height is applied
+  requestAnimationFrame(() => {
+
+    if (menuScroller) {
+      menuScroller.scrollTop = 0;  // reset to steady start
+    }
+
+    // Mark current surah
+    markCurrentSurah();
+
+    const current = menuNav.querySelector('a[aria-current="page"]');
+
+    if (current) {
+      // Wait one more frame so scrollTop=0 applies first
+      requestAnimationFrame(() => {
+        current.scrollIntoView({
+          block: "center",
+          inline: "nearest"
+        });
+        current.focus({ preventScroll: true });
+      });
+    } else {
+      menuNav.querySelector("a")?.focus();
+    }
+  });
 }
 
   
