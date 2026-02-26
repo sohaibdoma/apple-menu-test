@@ -229,49 +229,52 @@ body.menu-closing #menu-placeholder {
 }
 
 /* ========================================
-   THEME TOGGLE (MOON)
+   THEME TOGGLE (iOS SWITCH)
 ======================================== */
 
 .theme-toggle {
   justify-self: start;
 
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+  width: 42px;
+  height: 24px;
 
-  margin-left: 6px;
-
+  border-radius: 999px;
   border: none;
-  cursor: pointer;
   padding: 0;
 
-  /* Use color as the moon fill */
-  color: #000;
-  background: currentColor;
-
+  cursor: pointer;
   position: relative;
 
-  transition: transform 0.2s ease;
+  background-color: #e5e5ea; /* iOS light gray */
+  transition: background-color 0.25s ease;
+
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Cutout circle that creates the crescent */
+/* The circular knob */
 .theme-toggle::after {
   content: "";
   position: absolute;
 
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
+
   border-radius: 50%;
+  background: #ffffff;
 
   top: 2px;
-  left: 9px; /* controls how "thin" the crescent is */
+  left: 2px;
 
-  background: var(--toggle-cutout-bg);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Night mode = white moon */
+/* Night mode ON state */
 html.night-mode .theme-toggle,
 body.night-mode .theme-toggle {
-  color: #fff;
+  background-color: #34c759; /* iOS green */
+}
+
+html.night-mode .theme-toggle::after,
+body.night-mode .theme-toggle::after {
+  transform: translateX(18px);
 }
