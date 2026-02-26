@@ -56,6 +56,9 @@ async function fetchSurah(id) {
   };
 }
 
+function toArabicDigits(n) {
+  return String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+}
 
 function renderSurah(data) {
   const header = document.getElementById("surah-header");
@@ -85,7 +88,7 @@ function renderSurah(data) {
 
     ayah.innerHTML = `
       <span class="ayah-text">${verse.text_uthmani}</span>
-      <span class="ayah-number">﴿${index + 1}﴾</span>
+      <span class="ayah-number">${toArabicDigits(index + 1)}</span>
     `;
 
     content.appendChild(ayah);
