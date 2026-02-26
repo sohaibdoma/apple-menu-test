@@ -265,7 +265,7 @@ body.menu-closing #menu-placeholder {
   border-radius: 50%;
 
   top: 2px;
-  left: 11px; /* controls how "thin" the crescent is */
+  left: 9px; /* controls how "thin" the crescent is */
 
   background: var(--toggle-cutout-bg);
 }
