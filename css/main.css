@@ -219,6 +219,7 @@ body {
   color: inherit;                          /* same as ayah text */
 }
 
+
 /* ===============================
    Mushaf page footer line
 =============================== */
@@ -240,7 +241,7 @@ body {
 
 .mushaf-page-footer::after {
   content: "";
-  width: 100%;
+  width: 102%;
   height: 1px;
   background: rgba(0, 0, 0, 0.12);
   border-radius: 999px;
