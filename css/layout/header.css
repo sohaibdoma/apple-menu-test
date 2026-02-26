@@ -149,6 +149,11 @@ body.menu-open #menu-placeholder::-webkit-scrollbar {
   display: none;
 }
 
+/* Freeze menu content during close to prevent jump */
+body.menu-closing #menu-placeholder {
+  overflow: hidden !important;
+}
+
 /* ========================================
    MENU BUTTON (burger / X)
 ======================================== */
