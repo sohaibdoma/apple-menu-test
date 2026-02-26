@@ -84,24 +84,51 @@ function renderSurah(data) {
 
   let currentPage = null;
 
-  data.verses.forEach((verse) => {
-    if (verse.page_number && verse.page_number !== currentPage) {
-      currentPage = verse.page_number;
+  const appendPageFooter = (pageNum) => {
+    if (!pageNum) return;
 
-      const marker = document.createElement("div");
-      marker.className = "mushaf-page-marker";
-      marker.textContent = `صفحة ${toArabicDigits(currentPage)}`;
-      content.appendChild(marker);
+    const footer = document.createElement("div");
+    footer.className = "mushaf-page-footer";
+
+    const badge = document.createElement("span");
+    badge.className = "q-badge q-badge--page";
+    badge.textContent = toArabicDigits(pageNum);
+
+    footer.appendChild(badge);
+    content.appendChild(footer);
+  };
+
+  data.verses.forEach((verse, index) => {
+    const pageNum = verse.page_number ?? null;
+
+    // If we moved to a new page, close the previous page at the bottom
+    if (currentPage !== null && pageNum !== currentPage) {
+      appendPageFooter(currentPage);
     }
+
+    if (pageNum !== null) currentPage = pageNum;
 
     const ayah = document.createElement("div");
     ayah.classList.add("ayah");
 
-    ayah.innerHTML = `
-      <span class="ayah-text">${verse.text_uthmani}</span>
-      <span class="ayah-number">(${toArabicDigits(verse.verse_number)})</span>
-    `;
+    const text = document.createElement("span");
+    text.className = "ayah-text";
+    text.textContent = verse.text_uthmani;
 
+    const badge = document.createElement("span");
+    badge.className = "q-badge q-badge--ayah";
+
+    // Prefer API verse number, fallback to index + 1
+    const verseNo = verse.verse_number ?? (index + 1);
+    badge.textContent = toArabicDigits(verseNo);
+
+    ayah.appendChild(text);
+    ayah.appendChild(badge);
     content.appendChild(ayah);
   });
+
+  // Close last page at the bottom
+  if (currentPage !== null) {
+    appendPageFooter(currentPage);
+  }
 }
