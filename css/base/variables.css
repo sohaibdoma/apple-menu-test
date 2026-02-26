@@ -2,9 +2,9 @@
   /* Used by .menu-button in main.css */
   --nav-gap: 12px;
   --nav-inset: 12px;
-  --nav-radius: 25px;
+  --nav-radius: 30px;
   --menu-gap: 10px;
-  --header-h: 50px;
+  --header-h: 60px;
   --header-pad: 16px;
   --text-color: #000;
   --page-bg: #e8e8e8;   /* light */
