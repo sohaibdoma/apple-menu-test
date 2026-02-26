@@ -2,6 +2,7 @@
   /* Used by .menu-button in main.css */
   --nav-gap: 12px;
   --nav-inset: 12px;
+  --nav-radius: 30px;
   --menu-gap: 10px;
   --header-h: 48px;
   --header-pad: 16px;
