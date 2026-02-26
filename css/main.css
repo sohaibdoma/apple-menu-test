@@ -176,8 +176,8 @@ body {
   font-size: 24px;
   line-height: 2.1;
 
-  letter-spacing: 0.35px;   /* subtle, elegant */
-  word-spacing: 1px;        /* more natural than heavy letter-spacing */
+  letter-spacing: 0.45px;
+  word-spacing: 1.5px;
 
   margin-bottom: 18px;
 }
