@@ -36,9 +36,6 @@
 
   clip-path: inset(0 round var(--nav-radius));
   -webkit-clip-path: inset(0 round var(--nav-radius));
-
-   
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 /* Expanded pill height */
@@ -53,9 +50,6 @@ body.menu-open .main-header {
   border-radius: var(--nav-radius-open);
   clip-path: inset(0 round var(--nav-radius-open));
   -webkit-clip-path: inset(0 round var(--nav-radius-open));
-
-   
-  box-shadow: none;
 }
 
 /* Header surface when menu is open (the menu “sheet”) */
