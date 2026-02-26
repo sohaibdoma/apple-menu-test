@@ -51,7 +51,7 @@ body.menu-open .main-header::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 22px;
+  border-radius: var(--nav-radius);
   z-index: 0;
   pointer-events: none;
   background: #ffffff;
