@@ -17,7 +17,6 @@
     let lockedScrollY = 0;
 
     function markCurrentSurah() {
-      // Clear any previous aria-current
       menuNav.querySelectorAll('a[aria-current="page"]').forEach((a) => {
         a.removeAttribute("aria-current");
       });
@@ -48,23 +47,30 @@
 
       const menuScroller = getMenuScroller();
 
-      // Wait a frame so layout/height changes are applied before touching scroll/focus
       requestAnimationFrame(() => {
-        // Always start from the top
         if (menuScroller) menuScroller.scrollTop = 0;
 
-        // Highlight current page in the list (no auto-centering)
         markCurrentSurah();
 
-        // Focus current item (without scrolling) or fallback to first item
         const current = menuNav.querySelector('a[aria-current="page"]');
         (current || menuNav.querySelector("a"))?.focus({ preventScroll: true });
       });
     }
 
     function closeMenu() {
-      // Make blur removal instant (no transition on close)
       document.body.classList.add("no-blur-transition");
+
+      const menuScroller = getMenuScroller();
+      const frozenScrollTop = menuScroller ? menuScroller.scrollTop : 0;
+
+      document.body.classList.add("menu-closing");
+
+      let rafId = 0;
+      function keepScrollFrozen() {
+        if (menuScroller) menuScroller.scrollTop = frozenScrollTop;
+        rafId = requestAnimationFrame(keepScrollFrozen);
+      }
+      keepScrollFrozen();
 
       menuButton.classList.remove("open");
       menuButton.setAttribute("aria-expanded", "false");
@@ -75,37 +81,36 @@
       window.scrollTo(0, lockedScrollY);
       lockedScrollY = 0;
 
-      // Restore focus to whatever was focused before opening
       if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
         lastFocusedElement.focus();
       }
 
-      // Restore smooth transitions for the next open
-      requestAnimationFrame(() => {
-        document.body.classList.remove("no-blur-transition");
-      });
+      // Match your header transition (~350ms)
+      window.setTimeout(() => {
+        cancelAnimationFrame(rafId);
+        document.body.classList.remove("menu-closing");
+
+        requestAnimationFrame(() => {
+          document.body.classList.remove("no-blur-transition");
+        });
+      }, 420);
     }
 
-    // Toggle on button click
     menuButton.addEventListener("click", () => {
       isMenuOpen() ? closeMenu() : openMenu();
     });
 
-    // Do nothing on menu link click (navigation will happen)
     menuNav.addEventListener("click", (e) => {
       const link = e.target.closest("a");
       if (!link) return;
-      // intentionally empty
     });
 
-    // ESC closes menu
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && isMenuOpen()) {
         closeMenu();
       }
     });
 
-    // Click outside closes menu
     document.addEventListener("click", (e) => {
       if (!isMenuOpen()) return;
 
@@ -117,10 +122,8 @@
       }
     });
 
-    // Mark current on load (useful before first open)
     markCurrentSurah();
 
-    // Expose helpers (matches your existing pattern)
     window.Wahyollah = window.Wahyollah || {};
     window.Wahyollah.markCurrentSurah = markCurrentSurah;
   }
