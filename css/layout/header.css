@@ -15,7 +15,7 @@
   display: grid;
   grid-template-rows: 1fr;
 
-  border-radius: 22px;
+  border-radius: var(--nav-radius);
   isolation: isolate;
   z-index: 9999;
 
@@ -32,8 +32,8 @@
 
   overflow: visible;
 
-  clip-path: inset(0 round 22px);
-  -webkit-clip-path: inset(0 round 22px);
+  clip-path: inset(0 round var(--nav-radius));
+  -webkit-clip-path: inset(0 round var(--nav-radius));
 }
 
 /* Expanded pill height */
