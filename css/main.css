@@ -162,8 +162,8 @@ body {
 
 .bismillah {
   text-align: center;
-  font-family: "Scheherazade New", serif;
-  font-size: 60px;
+  font-family: 'Amiri Quran', serif;
+  font-size: 28px;
   margin-bottom: 32px;
 }
 
@@ -176,8 +176,8 @@ body {
   font-size: 24px;
   line-height: 2.1;
    
-  letter-spacing: 0.6px;
-  word-spacing: 2px;
+  letter-spacing: 0.9px;
+  word-spacing: 1px;
 
   margin-bottom: 18px;
 }
