@@ -162,7 +162,7 @@ body {
 
 .bismillah {
   text-align: center;
-  font-family: 'Amiri Quran', serif;
+  font-family: "Scheherazade New", serif;
   font-size: 24px;
   margin-bottom: 32px;
 }
@@ -182,18 +182,19 @@ body {
   margin-bottom: 18px;
 }
 
+.ayah-text {
+  letter-spacing: 0.12em;   /* push high */
+  word-spacing: 0.18em;
+
+  /* helps make spacing actually visible with Arabic shaping */
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+}
+
 .ayah-number {
   font-size: 16px;
   margin-right: 8px;
   color: #888;
-}
-
-.ayah-number::before {
-  content: " (";
-}
-
-.ayah-number::after {
-  content: ")";
 }
 
 .mushaf-page-marker {
