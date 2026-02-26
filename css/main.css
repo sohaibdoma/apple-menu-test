@@ -176,15 +176,15 @@ body {
   font-size: 24px;
   line-height: 2.1;
    
-  letter-spacing: 0.9px;
+  letter-spacing: 0.6px;
   word-spacing: 1px;
 
   margin-bottom: 18px;
 }
 
 .ayah-text {
-  letter-spacing: 0.12em;   /* push high */
-  word-spacing: 0.18em;
+  letter-spacing: 0.22em;   /* push high */
+  word-spacing: 0.12em;
 
   /* helps make spacing actually visible with Arabic shaping */
   font-variant-ligatures: none;
@@ -200,7 +200,7 @@ body {
 .mushaf-page-marker {
   text-align: center;
   margin: 22px 0;
-  font-size: 14px;
+  font-size: 20px;
   opacity: 0.6;
   letter-spacing: 0.06em;
   user-select: none;
