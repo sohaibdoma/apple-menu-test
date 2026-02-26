@@ -190,6 +190,20 @@ body {
   content: ")";
 }
 
+.mushaf-page-marker {
+  text-align: center;
+  margin: 22px 0;
+  font-size: 14px;
+  opacity: 0.6;
+  letter-spacing: 0.06em;
+  user-select: none;
+}
+
+body.night-mode .mushaf-page-marker,
+html.night-mode .mushaf-page-marker {
+  opacity: 0.7;
+}
+
 /* ===============================
    EASY READ MODE
    =============================== */
@@ -318,7 +332,6 @@ body:not(.theme-ready) * {
 html:not(.theme-ready) * {
   transition: none !important;
 }
-
 
 .menu-content a[aria-current="page"] {
   background-color: #000;
