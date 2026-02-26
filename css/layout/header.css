@@ -271,7 +271,7 @@ body.menu-closing #menu-placeholder {
 /* Night mode ON state */
 html.night-mode .theme-toggle,
 body.night-mode .theme-toggle {
-  background-color: #34c759; /* iOS green */
+  background-color: #000; /* iOS green */
 }
 
 html.night-mode .theme-toggle::after,
