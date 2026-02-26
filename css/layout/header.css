@@ -229,7 +229,7 @@ body.menu-closing #menu-placeholder {
 }
 
 /* ========================================
-   THEME TOGGLE (Minimal B/W Switch)
+   THEME TOGGLE (Outline Minimal)
 ======================================== */
 
 .theme-toggle {
@@ -240,31 +240,31 @@ body.menu-closing #menu-placeholder {
 
   border-radius: 999px;
   padding: 0;
-  border: 1px solid rgba(0, 0, 0, 0.15);
 
   cursor: pointer;
   position: relative;
 
-  background-color: #ffffff;
+  background: transparent; /* no fill */
 
-  transition: background-color 0.25s ease,
-              border-color 0.25s ease;
+  border: 1.5px solid #000000;
+
+  transition: border-color 0.25s ease;
 
   -webkit-tap-highlight-color: transparent;
 }
 
-/* The knob */
+/* Knob */
 .theme-toggle::after {
   content: "";
   position: absolute;
 
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 
   border-radius: 50%;
 
-  top: 1px;
-  left: 1px;
+  top: 2px;
+  left: 2px;
 
   background: #000000;
 
@@ -278,8 +278,7 @@ body.menu-closing #menu-placeholder {
 
 html.night-mode .theme-toggle,
 body.night-mode .theme-toggle {
-  background-color: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
 }
 
 html.night-mode .theme-toggle::after,
