@@ -4,14 +4,7 @@
 
 .main-header {
   direction: ltr;
-
   padding: 0;
-
-  overflow: visible;
-
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
 
   position: fixed;
   top: var(--nav-gap);
@@ -20,23 +13,64 @@
   width: auto;
 
   display: grid;
-  grid-template-rows: 1fr;   /* header-bar will be overlay, so no 2-row layout needed */
-   
+  grid-template-rows: 1fr;
+
   border-radius: 22px;
   isolation: isolate;
-   
   z-index: 9999;
-   
+
   height: var(--header-h);
   max-height: var(--header-h);
-   
+
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
   transition: max-height 0.35s ease-in-out,
               height 0.35s ease-in-out;
   will-change: max-height, height;
 
+  overflow: visible;
+
   clip-path: inset(0 round 22px);
   -webkit-clip-path: inset(0 round 22px);
 }
+
+/* Expanded pill height */
+body.menu-open .main-header {
+  height: calc(100dvh - (2 * var(--nav-gap)));
+  max-height: calc(100dvh - (2 * var(--nav-gap)));
+
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Header surface when menu is open (the menu “sheet”) */
+body.menu-open .main-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  z-index: 0;
+  pointer-events: none;
+  background: #ffffff;
+}
+
+html.night-mode body.menu-open .main-header::after,
+body.night-mode body.menu-open .main-header::after {
+  background: #000000;
+}
+
+/* Default pill background in night mode (when menu is CLOSED) */
+html.night-mode .main-header,
+body.night-mode .main-header {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* ========================================
+   TOP BAR (controls)
+======================================== */
 
 .header-bar {
   display: grid;
@@ -49,89 +83,8 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 3;
-}
 
-/* Make the menu surface feel continuous up to the top of the pill */
-body.menu-open .main-header::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 22px;
-  z-index: 0;
-  pointer-events: none;
-  background: rgba(255, 255, 255, 1);
-}
-
-html.night-mode body.menu-open .main-header::after,
-body.night-mode body.menu-open .main-header::after {
-  background: #000; /* pure black */
-}
-
-body.menu-open .main-header {
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-body.night-mode .main-header {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-body.menu-open .main-header {
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-#menu-placeholder {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-
-  /* important for scroll inside fixed header */
-  min-height: 0;
-
-  opacity: 0;
-  pointer-events: none;
-
-  transform: translateY(-6px);
-
-  transition: opacity 0.25s ease,
-              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body.menu-open #menu-placeholder {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-
-body.menu-open #menu-placeholder {
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-}
-
-/* hide scrollbar (works because placeholder is now the scroller) */
-body.menu-open #menu-placeholder {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-body.menu-open #menu-placeholder::-webkit-scrollbar {
-  display: none;
-}
-
-body.menu-open .main-header {
-  height: calc(100dvh - (2 * var(--nav-gap)));
-  max-height: calc(100dvh - (2 * var(--nav-gap)));
-}
-
-body.night-mode .main-header,
-html.night-mode .main-header {
-  background: rgba(0, 0, 0, 0.75);
+  z-index: 3; /* above menu + surface */
 }
 
 .header-left {
@@ -149,6 +102,48 @@ html.night-mode .main-header {
 .header-right {
   align-self: center;
 }
+
+/* ========================================
+   MENU PLACEHOLDER (scroll layer)
+======================================== */
+
+#menu-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  min-height: 0;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(-6px);
+
+  transition: opacity 0.25s ease,
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.menu-open #menu-placeholder {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body.menu-open #menu-placeholder::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========================================
+   MENU BUTTON (burger / X)
+======================================== */
 
 .menu-button {
   position: relative;
@@ -202,6 +197,10 @@ html.night-mode .main-header {
   transform: translateX(-50%) translateY(-50%) rotate(-45deg);
 }
 
+/* ========================================
+   THEME TOGGLE
+======================================== */
+
 .theme-toggle {
   justify-self: start;
 
@@ -223,7 +222,7 @@ html.night-mode .main-header {
   -webkit-tap-highlight-color: transparent;
 }
 
-body.night-mode .theme-toggle,
-html.night-mode .theme-toggle {
+html.night-mode .theme-toggle,
+body.night-mode .theme-toggle {
   background-color: #fff;
 }
