@@ -178,7 +178,7 @@ body {
 }
 
 .ayah-text {
-  line-height: 1.6;
+  line-height: 2.0;
   word-spacing: 0.2em;
 
   font-variant-ligatures: normal;
@@ -219,15 +219,6 @@ body {
   color: inherit;                          /* same as ayah text */
 }
 
-/* Page footer holder (at bottom) */
-.mushaf-page-footer {
-  display: flex;
-  justify-content: center;
-
-  margin-top: 18px;
-  margin-bottom: 26px;
-}
-
 /* ===============================
    Mushaf page footer line
 =============================== */
@@ -248,7 +239,7 @@ body {
 
 .mushaf-page-footer::after {
   content: "";
-  width: min(220px, 60%);
+  width: calc(100% - 40px);
   height: 1px;
   background: rgba(0, 0, 0, 0.12);
   border-radius: 999px;
