@@ -138,6 +138,9 @@ body.menu-open #menu-placeholder {
   padding-inline: 10px;
   box-sizing: border-box;
    
+  scroll-padding-top: 50px;
+  scroll-padding-bottom: 50px;
+   
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
