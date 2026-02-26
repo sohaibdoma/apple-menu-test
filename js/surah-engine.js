@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.body.dataset.surah = String(surahId);
   if (window.Wahyollah?.markCurrentSurah) {
-  window.Wahyollah.markCurrentSurah();
-}
+    window.Wahyollah.markCurrentSurah();
+  }
 
   try {
     const surahData = await fetchSurah(surahId);
@@ -50,8 +50,6 @@ async function fetchSurah(id) {
   const chapterRes = await api.getChapter(id);
   const versesRes = await api.getUthmaniVersesByChapter(id);
 
-  console.log("First verse object:", versesRes.verses[0]);
-
   return {
     chapter: chapterRes.chapter,
     verses: versesRes.verses
@@ -59,7 +57,7 @@ async function fetchSurah(id) {
 }
 
 function toArabicDigits(n) {
-  return String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+  return String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
 }
 
 function renderSurah(data) {
@@ -84,13 +82,24 @@ function renderSurah(data) {
     content.appendChild(bismillah);
   }
 
-  data.verses.forEach((verse, index) => {
+  let currentPage = null;
+
+  data.verses.forEach((verse) => {
+    if (verse.page_number && verse.page_number !== currentPage) {
+      currentPage = verse.page_number;
+
+      const marker = document.createElement("div");
+      marker.className = "mushaf-page-marker";
+      marker.textContent = `صفحة ${toArabicDigits(currentPage)}`;
+      content.appendChild(marker);
+    }
+
     const ayah = document.createElement("div");
     ayah.classList.add("ayah");
 
     ayah.innerHTML = `
       <span class="ayah-text">${verse.text_uthmani}</span>
-      <span class="ayah-number">${toArabicDigits(index + 1)}</span>
+      <span class="ayah-number">(${toArabicDigits(verse.verse_number)})</span>
     `;
 
     content.appendChild(ayah);
