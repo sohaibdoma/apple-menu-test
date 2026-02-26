@@ -163,7 +163,7 @@ body {
 .bismillah {
   text-align: center;
   font-family: 'Amiri Quran', serif;
-  font-size: 28px;
+  font-size: 18px;
   margin-bottom: 32px;
 }
 
@@ -174,7 +174,7 @@ body {
   font-family: "Scheherazade New", serif;
 
   font-size: 24px;
-  line-height: 3;
+  line-height: 2.2;
    
   letter-spacing: 0.6px;
   word-spacing: 1px;
@@ -183,14 +183,12 @@ body {
 }
 
 .ayah-text {
-  letter-spacing: 0.8em;   /* push high */
-  word-spacing: 0.12em;
+  line-height: 2.7;
+  word-spacing: 0.2em;
 
-  /* helps make spacing actually visible with Arabic shaping */
-  font-variant-ligatures: none;
-  font-feature-settings: "liga" 0, "calt" 0;
+  font-variant-ligatures: normal;
+  font-feature-settings: "calt" 1, "liga" 1;
 }
-
 /* ========================================
    Quran Badges (Ayah + Page)
 ======================================== */
