@@ -174,7 +174,7 @@ body {
   font-family: "Scheherazade New", serif;
 
   font-size: 24px;
-  line-height: 2.1;
+  line-height: 3;
    
   letter-spacing: 0.6px;
   word-spacing: 1px;
@@ -183,34 +183,13 @@ body {
 }
 
 .ayah-text {
-  letter-spacing: 0.22em;   /* push high */
+  letter-spacing: 0.8em;   /* push high */
   word-spacing: 0.12em;
 
   /* helps make spacing actually visible with Arabic shaping */
   font-variant-ligatures: none;
   font-feature-settings: "liga" 0, "calt" 0;
 }
-
-.ayah-number {
-  font-size: 16px;
-  margin-right: 8px;
-  color: #888;
-}
-
-.mushaf-page-marker {
-  text-align: center;
-  margin: 22px 0;
-  font-size: 20px;
-  opacity: 0.6;
-  letter-spacing: 0.06em;
-  user-select: none;
-}
-
-body.night-mode .mushaf-page-marker,
-html.night-mode .mushaf-page-marker {
-  opacity: 0.7;
-}
-
 
 /* ========================================
    Quran Badges (Ayah + Page)
@@ -407,11 +386,6 @@ body.night-mode .menu-content a[aria-current="page"],
 html.night-mode .menu-content a[aria-current="page"] {
   background-color: #fff;
   color: #000;
-}
-
-.menu-content a:focus,
-.menu-content a:focus-visible {
-  outline: none;
 }
 
 .menu-content a:focus-visible {
