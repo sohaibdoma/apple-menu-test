@@ -240,7 +240,7 @@ body.menu-closing #menu-placeholder {
 
   border-radius: 999px;
   padding: 0;
-  border: 1px solid #000000;
+  border: 1px solid rgba(0, 0, 0, 0.15);
 
   cursor: pointer;
   position: relative;
@@ -279,7 +279,7 @@ body.menu-closing #menu-placeholder {
 html.night-mode .theme-toggle,
 body.night-mode .theme-toggle {
   background-color: #000000;
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 html.night-mode .theme-toggle::after,
