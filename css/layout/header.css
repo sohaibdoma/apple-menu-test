@@ -229,52 +229,61 @@ body.menu-closing #menu-placeholder {
 }
 
 /* ========================================
-   THEME TOGGLE (iOS SWITCH)
+   THEME TOGGLE (Minimal B/W Switch)
 ======================================== */
 
 .theme-toggle {
   justify-self: start;
 
-  width: 42px;
-  height: 24px;
+  width: 40px;
+  height: 22px;
 
   border-radius: 999px;
-  border: none;
   padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15); /* subtle stroke */
 
   cursor: pointer;
   position: relative;
 
-  background-color: #e5e5ea; /* iOS light gray */
-  transition: background-color 0.25s ease;
+  background-color: #ffffff;
+
+  transition: background-color 0.25s ease,
+              border-color 0.25s ease;
 
   -webkit-tap-highlight-color: transparent;
 }
 
-/* The circular knob */
+/* The knob */
 .theme-toggle::after {
   content: "";
   position: absolute;
 
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 
   border-radius: 50%;
-  background: #ffffff;
 
-  top: 2px;
-  left: 2px;
+  top: 1px;
+  left: 1px;
 
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #000000;
+
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s ease;
 }
 
-/* Night mode ON state */
+/* =========================
+   NIGHT MODE
+========================= */
+
 html.night-mode .theme-toggle,
 body.night-mode .theme-toggle {
-  background-color: #000; /* iOS green */
+  background-color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 html.night-mode .theme-toggle::after,
 body.night-mode .theme-toggle::after {
   transform: translateX(18px);
+  background: #ffffff;
 }
