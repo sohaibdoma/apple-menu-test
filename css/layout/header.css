@@ -46,6 +46,10 @@ body.menu-open .main-header {
   background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+   
+  border-radius: var(--nav-radius-open);
+  clip-path: inset(0 round var(--nav-radius-open));
+  -webkit-clip-path: inset(0 round var(--nav-radius-open));
 }
 
 /* Header surface when menu is open (the menu “sheet”) */
@@ -53,7 +57,7 @@ body.menu-open .main-header::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: var(--nav-radius);
+  border-radius: var(--nav-radius-open);
   z-index: 0;
   pointer-events: none;
   background: #ffffff;
