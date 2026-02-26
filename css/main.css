@@ -204,6 +204,66 @@ html.night-mode .mushaf-page-marker {
   opacity: 0.7;
 }
 
+
+/* ========================================
+   Quran Badges (Ayah + Page)
+======================================== */
+
+.q-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 26px;
+  min-width: 26px;          /* makes it a circle for 1-digit */
+  padding-inline: 8px;       /* expands into a pill for 2-3 digits */
+
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 700;
+
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Ayah badge look */
+.q-badge--ayah {
+  margin-inline-start: 10px; /* space between text and badge (RTL-safe) */
+
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.72);
+}
+
+/* Night mode for ayah badge */
+html.night-mode .q-badge--ayah,
+body.night-mode .q-badge--ayah {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Page footer holder (at bottom) */
+.mushaf-page-footer {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 18px;
+  margin-bottom: 26px;
+}
+
+/* Page badge look (same behavior, slightly “footer” feeling) */
+.q-badge--page {
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.75);
+}
+
+html.night-mode .q-badge--page,
+body.night-mode .q-badge--page {
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+
 /* ===============================
    EASY READ MODE
    =============================== */
