@@ -173,11 +173,12 @@ body {
 
   font-family: "Scheherazade New", serif;
 
-  font-size: 24px;       /* slightly larger — Scheherazade reads better a bit bigger */
-  line-height: 2.1;      /* more breathing space */
+  font-size: 24px;
+  line-height: 2.1;
 
-  letter-spacing: 0.2px;
-   
+  letter-spacing: 0.35px;   /* subtle, elegant */
+  word-spacing: 1px;        /* more natural than heavy letter-spacing */
+
   margin-bottom: 18px;
 }
 
