@@ -229,14 +229,14 @@ body.menu-closing #menu-placeholder {
 }
 
 /* ========================================
-   THEME TOGGLE (Outline Minimal)
+   THEME TOGGLE (Outline Minimal – Scaled)
 ======================================== */
 
 .theme-toggle {
   justify-self: start;
 
-  width: 40px;
-  height: 22px;
+  width: 40px;            /* stays the same */
+  height: 33px;           /* 22px × 1.5 */
 
   border-radius: 999px;
   padding: 0;
@@ -244,9 +244,9 @@ body.menu-closing #menu-placeholder {
   cursor: pointer;
   position: relative;
 
-  background: transparent; /* no fill */
+  background: transparent;
 
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1.5px solid #000000;
 
   transition: border-color 0.25s ease;
 
@@ -258,13 +258,13 @@ body.menu-closing #menu-placeholder {
   content: "";
   position: absolute;
 
-  width: 16px;
-  height: 16px;
+  width: 24px;            /* 16px × 1.5 */
+  height: 24px;
 
   border-radius: 50%;
 
-  top: 2px;
-  left: 2px;
+  top: 4.5px;             /* center vertically */
+  left: 3px;              /* adjusted for new size */
 
   background: #000000;
 
@@ -278,11 +278,11 @@ body.menu-closing #menu-placeholder {
 
 html.night-mode .theme-toggle,
 body.night-mode .theme-toggle {
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-color: #ffffff;
 }
 
 html.night-mode .theme-toggle::after,
 body.night-mode .theme-toggle::after {
-  transform: translateX(18px);
+  transform: translateX(10px); /* recalculated for new knob size */
   background: #ffffff;
 }
