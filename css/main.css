@@ -168,12 +168,17 @@ body {
 }
 
 .ayah {
-  text-align: justify;       /* 👈 makes lines fill both sides */
-  text-align-last: start;    /* 👈 last line stays normal */
-  font-family: 'Amiri Quran', serif;
-  font-size: 22px;
-  line-height: 1.9;
-  margin-bottom: 16px;
+  text-align: justify;
+  text-align-last: start;
+
+  font-family: "Scheherazade New", serif;
+
+  font-size: 24px;       /* slightly larger — Scheherazade reads better a bit bigger */
+  line-height: 2.1;      /* more breathing space */
+
+  letter-spacing: 0.2px;
+   
+  margin-bottom: 18px;
 }
 
 .ayah-number {
@@ -219,7 +224,8 @@ html.night-mode .mushaf-page-marker {
   padding: 0 9px;              /* symmetric padding */
 
   border-radius: 999px;
-
+   
+  font-family: "Scheherazade New", serif;
   font-size: 14px;
   line-height: 1;              /* important */
   font-weight: 700;
