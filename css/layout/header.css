@@ -268,21 +268,23 @@ body.menu-closing #menu-placeholder {
 
   background: #000000;
 
+  /* Create moon shape using inset shadow cut */
+  box-shadow: -4px 0 0 2px #ffffff;
+
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              background-color 0.25s ease;
+              background-color 0.25s ease,
+              box-shadow 0.25s ease;
 }
 
 /* =========================
    NIGHT MODE
 ========================= */
 
-html.night-mode .theme-toggle,
-body.night-mode .theme-toggle {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
 html.night-mode .theme-toggle::after,
 body.night-mode .theme-toggle::after {
   transform: translateX(18px);
   background: #ffffff;
+
+  /* Remove moon cut → full circle */
+  box-shadow: none;
 }
