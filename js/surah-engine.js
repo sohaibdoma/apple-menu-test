@@ -50,6 +50,8 @@ async function fetchSurah(id) {
   const chapterRes = await api.getChapter(id);
   const versesRes = await api.getUthmaniVersesByChapter(id);
 
+  console.log("First verse object:", versesRes.verses[0]);
+
   return {
     chapter: chapterRes.chapter,
     verses: versesRes.verses
