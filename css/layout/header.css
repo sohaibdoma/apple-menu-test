@@ -294,6 +294,6 @@ body.night-mode .theme-toggle {
 
 html.night-mode .theme-toggle::after,
 body.night-mode .theme-toggle::after {
-  transform: translateX(18px);
+  transform: translateX(10px);
   background: #ffffff;
 }
