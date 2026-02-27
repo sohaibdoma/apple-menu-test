@@ -192,7 +192,7 @@ body.menu-closing #menu-placeholder {
   top: calc(50% - 11px);
   transform: translateX(-50%);
 
-  border: 1px solid var(--control-stroke);
+  border: 3px solid var(--control-stroke);
   border-radius: 11px;
   box-sizing: border-box;
 
@@ -255,7 +255,7 @@ body.menu-closing #menu-placeholder {
 
   background: transparent; /* no fill */
 
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 3px solid rgba(0, 0, 0, 0.15);
 
   transition: border-color 0.25s ease;
 
