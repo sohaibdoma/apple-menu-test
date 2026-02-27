@@ -165,7 +165,7 @@ body.menu-closing #menu-placeholder {
   display: grid;
   place-items: center;
   cursor: pointer;
-  color: var(--text-color);
+  color: var(--menu-icon-color);
 }
 
 .chev{
