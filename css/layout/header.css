@@ -160,7 +160,8 @@ body.menu-closing #menu-placeholder {
 
 .menu-toggle{
   width: 40px;
-  height: 22px;
+  height: 22px;                 /* CLOSED pill height */
+  padding: 0;
 
   border: 1px solid var(--control-stroke);
   border-radius: 999px;
@@ -169,10 +170,22 @@ body.menu-closing #menu-placeholder {
 
   display: grid;
   place-items: center;
-  cursor: pointer;
 
+  cursor: pointer;
   color: var(--menu-icon-color);
+
+  /* This makes the pill expand DOWN (from the top edge) */
+  transform-origin: top center;
+
+  /* Allow the 28px icon to exist even when pill is 22px */
+  overflow: visible;
+
+  transition: height 700ms cubic-bezier(0.22, 1, 0.36, 1);
   -webkit-tap-highlight-color: transparent;
+}
+
+.menu-toggle.is-open{
+  height: 34px;                 /* OPEN pill height (fits 28px icon nicely) */
 }
 
 .chev{
@@ -190,7 +203,7 @@ body.menu-closing #menu-placeholder {
   /* CLOSED: show only the first 50% (top half) */
   stroke-dasharray: 50 100;
 
-  transition: stroke-dasharray 750ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: stroke-dasharray 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* OPEN: show 100% (full X) */
