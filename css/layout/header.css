@@ -163,7 +163,7 @@ body.menu-closing #menu-placeholder {
   position: relative;
 
   width: 28px;
-  height: 9px;
+  height: 28px;
 
   background: none;
   border: none;
@@ -175,40 +175,35 @@ body.menu-closing #menu-placeholder {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* two diagonal pieces */
 .menu-button span {
   position: absolute;
   left: 50%;
-  width: 20px;
+
   height: 2px;
+  width: 12px;               /* CLOSED: short */
   background: currentColor;
   border-radius: 2px;
 
-  transform: translateX(-50%);
   transform-origin: center;
-
-  transition: transform 0.2s ease,
-              top 0.2s ease,
-              opacity 0.15s ease,
+  transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1),
               background-color 0.2s ease;
 }
 
+/* fixed angles (never animate) + fixed positions (never animate) */
 .menu-button span:nth-child(1) {
-  top: 0;
+  top: 46%;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .menu-button span:nth-child(2) {
-  bottom: 0;
+  top: 54%;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-/* Animation */
-.menu-button.open span:nth-child(1) {
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-}
-
-.menu-button.open span:nth-child(2) {
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+/* OPEN: only expand length */
+.menu-button.open span {
+  width: 24px;               /* OPEN: long (100% look) */
 }
 
 /* ========================================
