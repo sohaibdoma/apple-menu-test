@@ -184,7 +184,7 @@ body.menu-closing #menu-placeholder {
   -webkit-tap-highlight-color: transparent;
 
   align-self: flex-start;   /* anchor in the flex row */
-  margin-top: calc((var(--header-h) - 22px) / 2);
+  margin-top: calc((var(--header-h) - <CLOSED_HEIGHT>) / 2);
 }
 
 .menu-toggle.is-open{
