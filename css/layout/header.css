@@ -159,14 +159,18 @@ body.menu-closing #menu-placeholder {
 /* ===== Menu Chevron Animation ===== */
 
 .menu-toggle{
-  width: 56px;
-  height: 56px;
-  border: 0;
+  width: 44px;              /* narrow */
+  height: 66px;             /* tall */
+  border: 1px solid var(--control-stroke);
+  border-radius: 999px;     /* vertical pill */
   background: transparent;
+
   display: grid;
   place-items: center;
   cursor: pointer;
+
   color: var(--menu-icon-color);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .chev{
