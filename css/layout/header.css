@@ -95,7 +95,14 @@ body.night-mode .main-header {
 .header-right {
   justify-self: end;
   display: flex;
-  align-items: center;
+  align-items: flex-start;      /* KEY: not centered */
+  gap: var(--menu-gap);
+  height: var(--header-h);      /* so we can center with margin-top */
+}
+
+/* Center the closed controls inside the 60px header */
+.header-right > * {
+  margin-top: calc((var(--header-h) - 22px) / 2);
 }
 
 .theme-toggle,
