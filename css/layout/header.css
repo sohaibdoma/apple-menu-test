@@ -171,30 +171,30 @@ body.menu-closing #menu-placeholder {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* both strokes */
 .menu-button span {
   position: absolute;
   left: 50%;
-  bottom: 10px;              /* anchor both at the bottom so they meet */
+  top: 10px;                 /* anchor up */
   height: 2px;
   width: 14px;               /* CLOSED length */
   background: currentColor;
   border-radius: 2px;
 
-  transform-origin: center;
   transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* fixed angles that form \/ (chevron down) */
+/* \/ shape */
 .menu-button span:nth-child(1) {
   transform: translateX(-50%) rotate(35deg);
+  transform-origin: left center;   /* grow from LEFT end only */
 }
 
 .menu-button span:nth-child(2) {
   transform: translateX(-50%) rotate(-35deg);
+  transform-origin: right center;  /* grow from RIGHT end only */
 }
 
-/* OPEN: only expand length */
+/* OPEN: expand one-direction only */
 .menu-button.open span {
   width: 28px;               /* OPEN length (100% longer) */
 }
