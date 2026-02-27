@@ -269,7 +269,7 @@ body.menu-closing #menu-placeholder {
   content: "";
   position: absolute;
 
-  width: 16px;
+  width: 10px;
   height: 16px;
 
   border-radius: 50%;
