@@ -187,6 +187,16 @@ body.menu-closing #menu-placeholder {
   margin-top: calc((var(--header-h) - <CLOSED_HEIGHT>) / 2);
 }
 
+/* Closed: optical centering inside the pill */
+.menu-toggle .chev{
+  transform: translateY(0px);
+}
+
+/* Open: if needed you can keep it same or tweak */
+.menu-toggle.is-open .chev{
+  transform: translateY(0px);
+}
+
 .menu-toggle.is-open{
   height: 34px;                 /* OPEN pill height (fits 28px icon nicely) */
 }
