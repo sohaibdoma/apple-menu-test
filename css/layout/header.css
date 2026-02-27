@@ -214,6 +214,10 @@ body.menu-closing #menu-placeholder {
   display: block;
 }
 
+.menu-toggle .chev{
+  transform: translateY(1px);
+}
+
 /* Stroke drawing stays exactly the same */
 .arm{
   fill: none;
