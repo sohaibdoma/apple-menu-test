@@ -180,7 +180,7 @@ body.menu-closing #menu-placeholder {
   stroke-linecap: round;
   stroke-linejoin: round;
 
-  stroke-dasharray: 100;
+  stroke-dasharray: 200;
   stroke-dashoffset: 2; /* CLOSED: almost full so they touch */
 
   transition: stroke-dashoffset 260ms cubic-bezier(0.22, 1, 0.36, 1);
