@@ -77,14 +77,15 @@ body.night-mode .main-header {
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
 
-  padding: 18px 20px;
+  height: var(--header-h);     /* key: matches header pill height */
+  padding: 0 20px;             /* remove vertical padding */
 
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
 
-  z-index: 3; /* above menu + surface */
+  z-index: 3;
 }
 
 .header-left {
