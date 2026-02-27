@@ -78,7 +78,7 @@ body.night-mode .main-header {
   align-items: center;
 
   height: var(--header-h);     /* key: matches header pill height */
-  padding: 0 14px;             /* remove vertical padding */
+  padding: 0 20px;             /* remove vertical padding */
 
   position: absolute;
   top: 0;
@@ -163,6 +163,8 @@ body.menu-closing #menu-placeholder {
   width: 44px;
   height: 44px;
   padding: 0;
+
+  margin-right: -6px;
 
   border: 0;
   background: transparent;
