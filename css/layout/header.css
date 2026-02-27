@@ -193,7 +193,7 @@ body.menu-closing #menu-placeholder {
   transform: translateX(-50%);
 
   border: 1px solid var(--control-stroke);
-  border-radius: 11px;
+  border-radius: 999px;
   box-sizing: border-box;
 
   background: transparent;
