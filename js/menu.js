@@ -2,7 +2,7 @@
   "use strict";
 
   function initMenu() {
-    const menuButton = document.querySelector(".menu-button");
+    const menuButton = document.querySelector(".menu-toggle");
     const menuNav = document.getElementById("main-menu");
     const header = document.querySelector(".main-header");
 
@@ -40,7 +40,7 @@
       lockedScrollY = window.scrollY;
       document.body.style.top = `-${lockedScrollY}px`;
 
-      menuButton.classList.add("open");
+      menuButton.classList.add("is-open");
       menuButton.setAttribute("aria-expanded", "true");
 
       document.body.classList.add("menu-open");
@@ -72,7 +72,7 @@
       }
       keepScrollFrozen();
 
-      menuButton.classList.remove("open");
+      menuButton.classList.remove("is-open");
       menuButton.setAttribute("aria-expanded", "false");
 
       document.body.style.top = "";
