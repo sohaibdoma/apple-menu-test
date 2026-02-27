@@ -1,5 +1,5 @@
 .lang-switch {
-  display: flex;
+  display: none;
   gap: 8px;
 }
 
