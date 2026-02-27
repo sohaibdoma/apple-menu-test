@@ -164,7 +164,7 @@ body.menu-closing #menu-placeholder {
   height: 44px;
   padding: 0;
 
-  margin-right: -12px;
+  margin-right: -11px;
 
   border: 0;
   background: transparent;
@@ -236,7 +236,7 @@ body.menu-closing #menu-placeholder {
 
 /* OPEN: pill grows downward only */
 .menu-toggle.is-open::before{
-  height: 29.2px;                 /* OPEN pill height */
+  height: 29px;                 /* OPEN pill height */
 }
 
 /* ========================================
