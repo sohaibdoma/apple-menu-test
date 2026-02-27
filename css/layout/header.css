@@ -215,7 +215,7 @@ body.menu-closing #menu-placeholder {
 }
 
 .menu-toggle .chev{
-  transform: translateY(1.2px);
+  transform: translateY(1.3px);
 }
 
 /* Stroke drawing stays exactly the same */
