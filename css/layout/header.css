@@ -183,7 +183,7 @@ body.menu-closing #menu-placeholder {
   /* CLOSED: show only the first 50% (top half) */
   stroke-dasharray: 50 100;
 
-  transition: stroke-dasharray 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: stroke-dasharray 800ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* OPEN: show 100% (full X) */
