@@ -159,8 +159,8 @@ body.menu-closing #menu-placeholder {
 /* ===== Menu Chevron Animation ===== */
 
 .menu-toggle{
-  width: 66px;
-  height: 66px;
+  width: 56px;
+  height: 56px;
   border: 0;
   background: transparent;
   display: grid;
@@ -170,8 +170,8 @@ body.menu-closing #menu-placeholder {
 }
 
 .chev{
-  width: 33px;
-  height: 33px;
+  width: 28px;
+  height: 28px;
 }
 
 .arm{
