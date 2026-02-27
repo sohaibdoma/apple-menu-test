@@ -164,7 +164,7 @@ body.menu-closing #menu-placeholder {
   height: 44px;
   padding: 0;
 
-  margin-right: -9.8px;
+  margin-right: -9.6px;
 
   border: 0;
   background: transparent;
@@ -188,7 +188,7 @@ body.menu-closing #menu-placeholder {
 }
 
 .menu-toggle .chev{
-  transform: translateY(1.7px);
+  transform: translateY(1.6px);
 }
 
 /* Stroke drawing stays exactly the same */
