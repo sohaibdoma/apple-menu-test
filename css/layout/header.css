@@ -158,53 +158,60 @@ body.menu-closing #menu-placeholder {
 
 /* ===== Menu Chevron Animation ===== */
 
+/* Keep the button layout stable so it never shifts */
 .menu-toggle{
-  width: 40px;
-  height: 22px;                 /* CLOSED pill height */
+  width: 44px;
+  height: 44px;
   padding: 0;
 
-  border: 1px solid var(--control-stroke);
-  border-radius: 999px;
+  border: 0;
   background: transparent;
   box-sizing: border-box;
 
+  position: relative;
   display: grid;
   place-items: center;
 
   cursor: pointer;
   color: var(--menu-icon-color);
 
-  /* This makes the pill expand DOWN (from the top edge) */
-  transform-origin: top center;
+  -webkit-tap-highlight-color: transparent;
+}
 
-  /* Allow the 28px icon to exist even when pill is 22px */
-  overflow: visible;
+/* The pill is a separate layer that we animate (expands DOWN only) */
+.menu-toggle::before{
+  content: "";
+  position: absolute;
+
+  width: 40px;
+  height: 22px;                 /* CLOSED pill height */
+
+  left: 50%;
+  top: calc(50% - 11px);        /* anchor pill top so it expands downward */
+  transform: translateX(-50%);
+
+  border: 1px solid var(--control-stroke);
+  border-radius: 999px;
+  box-sizing: border-box;
+
+  background: transparent;
 
   transition: height 700ms cubic-bezier(0.22, 1, 0.36, 1);
-  -webkit-tap-highlight-color: transparent;
-
-  margin-top: calc((var(--header-h) - <CLOSED_HEIGHT>) / 2);
 }
 
-/* Closed: optical centering inside the pill */
-.menu-toggle .chev{
-  transform: translateY(0px);
+/* OPEN: pill grows downward only */
+.menu-toggle.is-open::before{
+  height: 34px;                 /* OPEN pill height */
 }
 
-/* Open: if needed you can keep it same or tweak */
-.menu-toggle.is-open .chev{
-  transform: translateY(0px);
-}
-
-.menu-toggle.is-open{
-  height: 34px;                 /* OPEN pill height (fits 28px icon nicely) */
-}
-
+/* Your icon size (keep 28x28 like you want) */
 .chev{
-  width: 18px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
+/* Stroke drawing stays exactly the same */
 .arm{
   fill: none;
   stroke: currentColor;
