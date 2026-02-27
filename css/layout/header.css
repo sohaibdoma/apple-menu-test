@@ -209,8 +209,8 @@ body.menu-closing #menu-placeholder {
 
 /* Your icon size (keep 28x28 like you want) */
 .chev{
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   display: block;
 }
 
@@ -222,7 +222,7 @@ body.menu-closing #menu-placeholder {
 .arm{
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.2;
+  stroke-width: 2.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 
