@@ -536,18 +536,11 @@ body.night-mode{
   display: block;
 }
 
-.auto-wing,
-.auto-mid{
+.auto-stem,
+.auto-chev{
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-.auto-thin{ stroke-width: 1.6; }
-.auto-thick{ stroke-width: 2.4; }
-
-.auto-mid{
-  stroke-width: 1.4;
-  opacity: 0.9;
+  stroke-width: 2.2; /* thickness for both so they feel like 1 piece */
 }
