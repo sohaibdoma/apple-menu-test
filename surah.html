@@ -66,9 +66,19 @@
   </main>
 
   <div class="auto-scroll-bar" aria-hidden="false">
-    <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false">
-      Auto
-    </button>
+   <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
+     <svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
+       <!-- TOP chevron (same geometry idea as menu closed state) -->
+       <path class="auto-arm" pathLength="100" d="M6 6 L18 18" />
+       <path class="auto-arm" pathLength="100" d="M18 6 L6 18" />
+
+       <!-- BOTTOM chevron (bigger + lower) -->
+       <g class="auto-big">
+         <path class="auto-arm" pathLength="100" d="M5 8 L19 22" />
+         <path class="auto-arm" pathLength="100" d="M19 8 L5 22" />
+       </g>
+     </svg>
+   </button>
   </div>
   
   <!-- SCRIPTS -->
