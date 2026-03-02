@@ -66,42 +66,20 @@
   </main>
 
   <div class="auto-scroll-bar" aria-hidden="false">
+    
    <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
-     
-<svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
+     <svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
+       <!-- Stem -->
+       <path class="auto-stem" d="M12 6 V12" />
 
-  <!-- 1) Vertical stem -->
-  <path class="auto-stem" d="M12 5.2 V11.2" />
+       <!-- Chevron (OFF) -->
+       <path class="auto-chev" d="M8.5 12 L12 15.5 L15.5 12" />
 
-  <!-- 2) One chevron attached to the stem end (touches at 12,11.2) -->
-  <path class="auto-chev" d="M8.2 11.2 L12 15.0 L15.8 11.2">
-
-    <!-- OPEN (flatten into a straight line) -->
-<animate id="chevOpen"
-  attributeName="d"
-  dur="700ms"
-  fill="freeze"
-  begin="indefinite"
-  to="M7.5 13.1 H16.5"
-  calcMode="spline"
-  keyTimes="0;1"
-  keySplines="0.22 1 0.36 1" />
-
-    <!-- CLOSE (back to chevron) -->
-<animate id="chevClose"
-  attributeName="d"
-  dur="700ms"
-  fill="freeze"
-  begin="indefinite"
-  to="M8.2 11.2 L12 15.0 L15.8 11.2"
-  calcMode="spline"
-  keyTimes="0;1"
-  keySplines="0.22 1 0.36 1" />
-
-  </path>
-</svg>
-     
+       <!-- Flat line (ON) -->
+       <path class="auto-flat" d="M7.5 13.5 H16.5" />
+     </svg>
    </button>
+    
   </div>
   
   <!-- SCRIPTS -->
