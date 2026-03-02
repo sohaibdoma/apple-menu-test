@@ -69,33 +69,74 @@
    <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
      <svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
 
-       <!-- CHEVRON MODE (default) -->
-       <g class="auto-shape auto-chev">
-         <!-- Upper chevron (thin) -->
-          <path class="auto-arm auto-thin" d="M7 6.3 L12 10.3" />
-          <path class="auto-arm auto-thin" d="M17 6.3 L12 10.3" />
+  <!-- Vertical line ABOVE the wings (static, never animates) -->
+  <path class="auto-mid" d="M12 5.2 V8.4" />
 
-         <!-- Small middle dash (does NOT touch chevron) -->
-          <path class="auto-mid" d="M12 7.6 V11.6" />
+  <!-- ================= TOP WINGS (thin) ================= -->
 
-         <!-- Lower chevron (thicker + bigger under it) -->
-         <g class="auto-big">
-          <path class="auto-arm auto-thick" d="M6 11.7 L12 15.7" />
-          <path class="auto-arm auto-thick" d="M18 11.7 L12 15.7" />
-         </g>
-       </g>
+  <path class="auto-wing auto-thin" d="M8 10 L12 14">
+    <animate id="topOpenLeft"
+      attributeName="d"
+      dur="700ms"
+      fill="freeze"
+      begin="indefinite"
+      to="M7 12 H12" />
+    <animate id="topCloseLeft"
+      attributeName="d"
+      dur="700ms"
+      fill="freeze"
+      begin="indefinite"
+      to="M8 10 L12 14" />
+  </path>
 
-       <!-- LINE MODE (shown when ON) -->
-       <g class="auto-shape auto-lines">
-         <!-- Top line (thin) -->
-         <path class="auto-line auto-thin" d="M7 10.5 H17" />
-         <!-- Keep the same middle dash line -->
-         <path class="auto-mid" d="M10.3 9.0 H13.7" />
-         <!-- Bottom line (thicker) -->
-         <path class="auto-line auto-thick" d="M6 14.5 H18" />
-       </g>
+  <path class="auto-wing auto-thin" d="M16 10 L12 14">
+    <animate id="topOpenRight"
+      attributeName="d"
+      dur="700ms"
+      fill="freeze"
+      begin="indefinite"
+      to="M12 12 H17" />
+    <animate id="topCloseRight"
+      attributeName="d"
+      dur="700ms"
+      fill="freeze"
+      begin="indefinite"
+      to="M16 10 L12 14" />
+  </path>
 
-     </svg>
+  <!-- ================= BOTTOM WINGS (thicker) ================= -->
+
+  <path class="auto-wing auto-thick" d="M7 13.2 L12 18.2">
+    <animate id="botOpenLeft"
+      attributeName="d"
+      dur="700ms"
+      fill="freeze"
+      begin="indefinite"
+      to="M6 16 H12" />
+    <animate id="botCloseLeft"
+      attributeName="d"
+      dur="700ms"
+      fill="freeze"
+      begin="indefinite"
+      to="M7 13.2 L12 18.2" />
+  </path>
+
+  <path class="auto-wing auto-thick" d="M17 13.2 L12 18.2">
+    <animate id="botOpenRight"
+      attributeName="d"
+      dur="700ms"
+      fill="freeze"
+      begin="indefinite"
+      to="M12 16 H18" />
+    <animate id="botCloseRight"
+      attributeName="d"
+      dur="700ms"
+      fill="freeze"
+      begin="indefinite"
+      to="M17 13.2 L12 18.2" />
+  </path>
+
+</svg>
    </button>
   </div>
   
