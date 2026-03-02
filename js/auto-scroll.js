@@ -19,9 +19,27 @@
     const SPEED = prefersReduced ? 0 : 55;
 
     /* ===============================
+       SVG "Book-open" animation helper
+    =============================== */
+    function playSvg(open) {
+      const svg = btn.querySelector("svg");
+      if (!svg) return;
+
+      const ids = open
+        ? ["topOpenLeft", "topOpenRight", "botOpenLeft", "botOpenRight"]
+        : ["topCloseLeft", "topCloseRight", "botCloseLeft", "botCloseRight"];
+
+      ids.forEach((id) => {
+        const anim = svg.querySelector(`#${id}`);
+        if (anim && typeof anim.beginElement === "function") {
+          anim.beginElement();
+        }
+      });
+    }
+
+    /* ===============================
        UI State
     =============================== */
-
     function setUi() {
       btn.setAttribute("aria-pressed", String(isOn));
       btn.classList.toggle("is-on", isOn);
@@ -29,12 +47,14 @@
         "aria-label",
         isOn ? "Pause auto scroll" : "Start auto scroll"
       );
+
+      // Trigger the SVG wing morph (center stays locked)
+      playSvg(isOn);
     }
 
     /* ===============================
        Core Logic
     =============================== */
-
     function stop() {
       if (!isOn) return;
       isOn = false;
@@ -79,7 +99,6 @@
     /* ===============================
        Stop on User Intent
     =============================== */
-
     const stopEvents = ["wheel", "touchstart", "keydown", "mousedown"];
 
     function stopHandler(e) {
@@ -99,9 +118,9 @@
     /* ===============================
        Init
     =============================== */
-
     btn.addEventListener("click", toggle);
 
+    // Set initial state (ensures SVG is in correct mode)
     setUi();
   }
 
