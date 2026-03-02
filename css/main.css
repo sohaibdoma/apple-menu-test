@@ -136,7 +136,7 @@ body {
   margin-top: 0;
   padding: 40px 20px;
 
-  padding-bottom: 110px
+  padding-bottom: 110px;
    
   position: relative;
   z-index: 1;
@@ -331,12 +331,6 @@ html.night-mode .menu-content a:not([aria-current="page"]):hover {
 body.night-mode .home-subtitle,
 html.night-mode .home-subtitle {
   color: #bbbbbb;
-}
-
-/* Menu button lines in night mode */
-body.night-mode .menu-button,
-html.night-mode .menu-button {
-  color: #f1f1f1;
 }
 
 /* ===============================
