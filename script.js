@@ -15,18 +15,22 @@ function bootstrapApp() {
 // Init modules from a single global namespace (cleaner than many window.* globals)
 const App = window.Wahyollah;
 
-if (App?.initMenu) {
-  App.initMenu();
-}
+  if (App?.initMenu) {
+    App.initMenu();
+  }
 
-if (App?.initI18n) {
-  App.initI18n();
-}
+  if (App?.initI18n) {
+    App.initI18n();
+  }
    
-if (App?.initTheme) {
-  App.initTheme();
-}
+  if (App?.initTheme) {
+    App.initTheme();
+  }
 
+    /* Auto Scroll (Surah pages only) */
+  if (App?.initAutoScroll) {
+    App.initAutoScroll();
+  }
 
 }
 
