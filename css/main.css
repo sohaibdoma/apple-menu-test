@@ -530,8 +530,8 @@ body.night-mode{
 
 /* Icon size */
 .auto-icon{
-  width: 35px;
-  height: 35px;
+  width: 28px;
+  height: 28px;
   display: block;
 }
 
@@ -543,7 +543,7 @@ body.night-mode{
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.6;
+  stroke-width: 1.2;
 }
 
 /* Stem always visible */
@@ -554,7 +554,7 @@ body.night-mode{
 /* Smooth ease between chevron and flat */
 .auto-chev,
 .auto-flat{
-  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* OFF state */
