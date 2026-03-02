@@ -493,3 +493,64 @@ body.no-blur-transition > *:not(.main-header) {
   outline-offset: 3px;
 }
 
+/* ========================================
+   AUTO SCROLL BAR (Surah pages only)
+======================================== */
+
+.auto-scroll-bar{
+  position: fixed;
+  left: var(--nav-inset);
+  right: var(--nav-inset);
+  bottom: var(--nav-gap);
+  z-index: 9998;
+
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 0 20px;
+
+  border-radius: var(--nav-radius);
+  isolation: isolate;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  clip-path: inset(0 round var(--nav-radius));
+  -webkit-clip-path: inset(0 round var(--nav-radius));
+}
+
+/* Night mode like your header pill */
+html.night-mode .auto-scroll-bar,
+body.night-mode .auto-scroll-bar{
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Put your existing button inside the bar */
+.auto-scroll-btn{
+  height: 40px;
+  padding: 0 16px;
+
+  border-radius: 999px;
+  border: 1px solid var(--control-stroke);
+  background: transparent;
+
+  color: var(--page-text);
+  font: inherit;
+  font-weight: 700;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Clean focus */
+.auto-scroll-btn:focus{
+  outline: none;
+}
+.auto-scroll-btn:focus-visible{
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
