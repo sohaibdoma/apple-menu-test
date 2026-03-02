@@ -16,6 +16,8 @@
   --menu-icon-color: #000000;
   --menu-icon-focus: rgba(0, 0, 0, 0.15);
   --control-stroke: rgba(0, 0, 0, 0.15);
+
+  --auto-btn-fill: #ffffff;
 }
 
 html.night-mode,
@@ -28,4 +30,8 @@ body.night-mode {
   --menu-icon-color: #ffffff;
   --menu-icon-focus: rgba(255, 255, 255, 0.15);
   --control-stroke: rgba(255, 255, 255, 0.25);
+
+  html.night-mode,
+  body.night-mode{
+  --auto-btn-fill: #000000;
 }
