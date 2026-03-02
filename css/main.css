@@ -136,6 +136,8 @@ body {
   margin-top: 0;
   padding: 40px 20px;
 
+  padding-bottom: 110px
+   
   position: relative;
   z-index: 1;
 }
