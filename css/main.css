@@ -495,23 +495,20 @@ body.night-mode .auto-scroll-bar{
 =============================== */
 
 .auto-scroll-btn{
-  border: 1px solid var(--control-stroke);
-  border-radius: 11px;
-  background: transparent;
-
-  height: 30px;
-  width: 30px;
+  background: none;
+  border: none;
+  padding: 0;
 
   display: grid;
   place-items: center;
-  padding: 0;
+
+  height: 40px; /* touch-friendly */
+  width: 40px;
 
   color: var(--page-text);
   cursor: pointer;
 
-  transition: background-color 200ms ease,
-              color 200ms ease,
-              border-color 200ms ease;
+  transition: color 200ms ease;
 }
 
 /* Icon size */
@@ -536,24 +533,17 @@ body.night-mode .auto-scroll-bar{
 /* ===============================
    ACTIVE STATE
 =============================== */
-
-/* Light mode (default) */
-:root{
-  --auto-active-bg: #000000;
-  --auto-active-icon: #ffffff;
+.auto-scroll-btn.is-on{
+  color: var(--auto-active-color);
 }
 
-/* Night mode */
+:root{
+  --auto-active-color: #000;
+}
+
 html.night-mode,
 body.night-mode{
-  --auto-active-bg: #ffffff;
-  --auto-active-icon: #000000;
-}
-
-/* Apply when ON */
-.auto-scroll-btn.is-on{
-  background-color: var(--auto-active-bg);
-  color: var(--auto-active-icon);
+  --auto-active-color: #fff;
 }
 
 .auto-scroll-btn:focus-visible {
