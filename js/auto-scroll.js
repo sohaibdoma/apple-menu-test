@@ -6,12 +6,13 @@
     const surahRoot = document.querySelector(".surah-container");
     if (!surahRoot) return;
 
-    // Button (we’ll add it in surah.html)
+    // Button
     const btn = document.getElementById("autoScrollBtn");
     if (!btn) return;
 
     // Respect reduced motion
-    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    const prefersReduced =
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     let isOn = false;
     let rafId = 0;
@@ -46,7 +47,10 @@
       window.scrollBy(0, SPEED * dt);
 
       // Stop automatically at bottom
-      const atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2);
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+
       if (atBottom) {
         stop();
         return;
@@ -67,10 +71,19 @@
       isOn ? stop() : start();
     }
 
-    // Stop on user intent (very important for “premium feel”)
+    // Stop on user intent (but NOT when clicking the auto-scroll button itself)
     const stopEvents = ["wheel", "touchstart", "keydown", "mousedown"];
-    const stopHandler = () => stop();
-    stopEvents.forEach((ev) => window.addEventListener(ev, stopHandler, { passive: true }));
+
+    function stopHandler(e) {
+      if (e?.target && e.target.closest && e.target.closest("#autoScrollBtn")) {
+        return; // let the button click toggle handle it
+      }
+      stop();
+    }
+
+    stopEvents.forEach((ev) =>
+      window.addEventListener(ev, stopHandler, { passive: true })
+    );
 
     btn.addEventListener("click", toggle);
 
