@@ -67,76 +67,40 @@
 
   <div class="auto-scroll-bar" aria-hidden="false">
    <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
-     <svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
+     
+<svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
 
-  <!-- Vertical line ABOVE the wings (static, never animates) -->
-  <path class="auto-mid" d="M12 5.2 V8.4" />
+  <!-- 1) Vertical stem -->
+  <path class="auto-stem" d="M12 5.2 V11.2" />
 
-  <!-- ================= TOP WINGS (thin) ================= -->
+  <!-- 2) One chevron attached to the stem end (touches at 12,11.2) -->
+  <path class="auto-chev" d="M8.2 11.2 L12 15.0 L15.8 11.2">
 
-  <path class="auto-wing auto-thin" d="M8 10 L12 14">
-    <animate id="topOpenLeft"
+    <!-- OPEN (flatten into a straight line) -->
+    <animate id="chevOpen"
       attributeName="d"
       dur="700ms"
       fill="freeze"
       begin="indefinite"
-      to="M7 12 H12" />
-    <animate id="topCloseLeft"
+      calcMode="spline"
+      keyTimes="0;1"
+      keySplines="0.22 1 0.36 1"
+      to="M7.5 13.1 H16.5" />
+
+    <!-- CLOSE (back to chevron) -->
+    <animate id="chevClose"
       attributeName="d"
       dur="700ms"
       fill="freeze"
       begin="indefinite"
-      to="M8 10 L12 14" />
+      calcMode="spline"
+      keyTimes="0;1"
+      keySplines="0.22 1 0.36 1"
+      to="M8.2 11.2 L12 15.0 L15.8 11.2" />
+
   </path>
-
-  <path class="auto-wing auto-thin" d="M16 10 L12 14">
-    <animate id="topOpenRight"
-      attributeName="d"
-      dur="700ms"
-      fill="freeze"
-      begin="indefinite"
-      to="M12 12 H17" />
-    <animate id="topCloseRight"
-      attributeName="d"
-      dur="700ms"
-      fill="freeze"
-      begin="indefinite"
-      to="M16 10 L12 14" />
-  </path>
-
-  <!-- ================= BOTTOM WINGS (thicker) ================= -->
-
-  <path class="auto-wing auto-thick" d="M7 13.2 L12 18.2">
-    <animate id="botOpenLeft"
-      attributeName="d"
-      dur="700ms"
-      fill="freeze"
-      begin="indefinite"
-      to="M6 16 H12" />
-    <animate id="botCloseLeft"
-      attributeName="d"
-      dur="700ms"
-      fill="freeze"
-      begin="indefinite"
-      to="M7 13.2 L12 18.2" />
-  </path>
-
-  <path class="auto-wing auto-thick" d="M17 13.2 L12 18.2">
-    <animate id="botOpenRight"
-      attributeName="d"
-      dur="700ms"
-      fill="freeze"
-      begin="indefinite"
-      to="M12 16 H18" />
-    <animate id="botCloseRight"
-      attributeName="d"
-      dur="700ms"
-      fill="freeze"
-      begin="indefinite"
-      to="M17 13.2 L12 18.2" />
-  </path>
-
 </svg>
+     
    </button>
   </div>
   
