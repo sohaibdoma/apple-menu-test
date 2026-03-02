@@ -531,8 +531,8 @@ body.night-mode{
 /* Common stroke */
 
 .auto-icon{
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   display: block;
 }
 
@@ -542,5 +542,5 @@ body.night-mode{
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.2; /* thickness for both so they feel like 1 piece */
+  stroke-width: 1.6; /* thickness for both so they feel like 1 piece */
 }
