@@ -2,30 +2,38 @@
   "use strict";
 
   function initAutoScroll() {
-    // Only run on pages that have the surah container
     const surahRoot = document.querySelector(".surah-container");
     if (!surahRoot) return;
 
-    // Button
     const btn = document.getElementById("autoScrollBtn");
     if (!btn) return;
 
-    // Respect reduced motion
     const prefersReduced =
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     let isOn = false;
     let rafId = 0;
+    let lastT = 0;
 
-    // Speed (px per second). Adjust ONE number if you want slower/faster.
+    // Adjust this single number if you want different speed
     const SPEED = prefersReduced ? 0 : 55;
 
-    let lastT = 0;
+    /* ===============================
+       UI State
+    =============================== */
 
     function setUi() {
       btn.setAttribute("aria-pressed", String(isOn));
-      btn.textContent = isOn ? "Pause" : "Auto";
+      btn.classList.toggle("is-on", isOn);
+      btn.setAttribute(
+        "aria-label",
+        isOn ? "Pause auto scroll" : "Start auto scroll"
+      );
     }
+
+    /* ===============================
+       Core Logic
+    =============================== */
 
     function stop() {
       if (!isOn) return;
@@ -40,13 +48,11 @@
       if (!isOn) return;
 
       if (!lastT) lastT = t;
-      const dt = (t - lastT) / 1000; // seconds
+      const dt = (t - lastT) / 1000;
       lastT = t;
 
-      // Scroll down
       window.scrollBy(0, SPEED * dt);
 
-      // Stop automatically at bottom
       const atBottom =
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight - 2;
@@ -60,8 +66,7 @@
     }
 
     function start() {
-      if (prefersReduced) return; // no auto scroll for reduced motion users
-      if (isOn) return;
+      if (prefersReduced || isOn) return;
       isOn = true;
       setUi();
       rafId = requestAnimationFrame(tick);
@@ -71,19 +76,29 @@
       isOn ? stop() : start();
     }
 
-    // Stop on user intent (but NOT when clicking the auto-scroll button itself)
+    /* ===============================
+       Stop on User Intent
+    =============================== */
+
     const stopEvents = ["wheel", "touchstart", "keydown", "mousedown"];
 
     function stopHandler(e) {
-      if (e?.target && e.target.closest && e.target.closest("#autoScrollBtn")) {
-        return; // let the button click toggle handle it
-      }
+      if (e?.target?.closest?.("#autoScrollBtn")) return;
       stop();
     }
 
     stopEvents.forEach((ev) =>
       window.addEventListener(ev, stopHandler, { passive: true })
     );
+
+    // Stop if user switches tab (premium polish)
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+    });
+
+    /* ===============================
+       Init
+    =============================== */
 
     btn.addEventListener("click", toggle);
 
