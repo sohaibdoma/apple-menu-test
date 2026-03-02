@@ -497,8 +497,8 @@ body.night-mode .auto-scroll-bar{
   background: transparent;
 
   /* Match menu open-pill “feel” */
-  height: 30.2px;         /* set this to your menu open pill height */
-  width: 46px;            /* enough room for the double icon */
+  height: 30px;         /* set this to your menu open pill height */
+  width: 30px;            /* enough room for the double icon */
   padding: 0;
 
   display: grid;
