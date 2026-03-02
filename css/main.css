@@ -524,8 +524,8 @@ body.night-mode .auto-scroll-bar{
 }
 
 .auto-thin  { stroke-width: 1.2; }
-.auto-mid   { stroke-width: 1.8; }
-.auto-thick { stroke-width: 2.6; }
+.auto-mid   { stroke-width: 1.2; }
+.auto-thick { stroke-width: 1.2; }
 
 /* ===============================
    ACTIVE STATE
