@@ -491,7 +491,7 @@ body.night-mode .auto-scroll-bar{
 }
 
 /* ===============================
-   Auto Scroll Button Icon + States
+   Auto Scroll Button
 =============================== */
 
 .auto-scroll-btn{
@@ -501,72 +501,54 @@ body.night-mode .auto-scroll-bar{
 
   height: 30px;
   width: 30px;
-  padding: 0;
 
   display: grid;
   place-items: center;
+  padding: 0;
 
   color: var(--page-text);
   cursor: pointer;
 
-  transition: background-color 250ms ease, border-color 250ms ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* ON state fill */
-.auto-scroll-btn.is-on{
-  background-color: var(--auto-btn-fill);
-}
-
-/* Invert icon color when filled */
-.auto-scroll-btn.is-on{
-  background-color: var(--auto-btn-fill);
-  color: var(--auto-btn-icon);
-}
-
-/* Define fill color per theme */
-:root{
-  --auto-btn-fill: #000000; /* light mode = black */
-}
-
-html.night-mode,
-body.night-mode{
-  --auto-btn-fill: #ffffff; /* dark mode = white */
+  transition: background-color 200ms ease,
+              color 200ms ease,
+              border-color 200ms ease;
 }
 
 /* Icon size */
 .auto-icon{
-  width: 35px;
-  height: 35px;
+  width: 22px;
+  height: 22px;
   display: block;
 }
 
-/* Shared stroke style */
-.auto-stem,
-.auto-chev,
-.auto-flat{
+/* Chev style */
+.auto-chev{
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.2;
+  stroke-width: 1.8; /* balanced thickness */
 }
 
-/* Stem always visible */
-.auto-stem{
-  opacity: 1;
+/* ===============================
+   ACTIVE STATE
+=============================== */
+
+/* Light mode (default) */
+:root{
+  --auto-active-bg: #000000;
+  --auto-active-icon: #ffffff;
 }
 
-/* Smooth ease between chevron and flat */
-.auto-chev,
-.auto-flat{
-  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
+/* Night mode */
+html.night-mode,
+body.night-mode{
+  --auto-active-bg: #ffffff;
+  --auto-active-icon: #000000;
 }
 
-/* OFF state */
-.auto-chev{ opacity: 1; }
-.auto-flat{ opacity: 0; }
-
-/* ON state */
-.auto-scroll-btn.is-on .auto-chev{ opacity: 0; }
-.auto-scroll-btn.is-on .auto-flat{ opacity: 1; }
+/* Apply when ON */
+.auto-scroll-btn.is-on{
+  background-color: var(--auto-active-bg);
+  color: var(--auto-active-icon);
+}
