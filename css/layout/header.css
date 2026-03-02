@@ -257,7 +257,7 @@ body.menu-closing #menu-placeholder {
 
   background: transparent; /* no fill */
 
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--control-stroke);
 
   transition: border-color 0.25s ease;
 
