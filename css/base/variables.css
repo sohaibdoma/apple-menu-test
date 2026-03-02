@@ -15,9 +15,12 @@
   /* Menu Icon (Light Mode) */
   --menu-icon-color: #000000;
   --menu-icon-focus: rgba(0, 0, 0, 0.15);
+
+  /* Shared Controls */
   --control-stroke: rgba(0, 0, 0, 0.15);
 
-  --auto-btn-fill: #ffffff;
+  /* Auto Scroll Active Icon Color */
+  --auto-active-color: #000;
 }
 
 html.night-mode,
@@ -29,9 +32,9 @@ body.night-mode {
   /* Menu Icon (Night Mode) */
   --menu-icon-color: #ffffff;
   --menu-icon-focus: rgba(255, 255, 255, 0.15);
+
   --control-stroke: rgba(255, 255, 255, 0.25);
 
-  html.night-mode,
-  body.night-mode{
-  --auto-btn-fill: #000000;
+  /* Auto Scroll Active Icon Color */
+  --auto-active-color: #ffffff;
 }
