@@ -556,3 +556,13 @@ body.night-mode{
   background-color: var(--auto-active-bg);
   color: var(--auto-active-icon);
 }
+
+.auto-scroll-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
+html.night-mode .auto-scroll-btn:focus-visible,
+body.night-mode .auto-scroll-btn:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
