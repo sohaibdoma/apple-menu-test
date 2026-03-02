@@ -19,22 +19,7 @@
     const SPEED = prefersReduced ? 0 : 55;
 
     /* ===============================
-       SVG "Stem + One Chevron" helper
-       - Only the chevron morphs (book-open style)
-       - Vertical stem stays static
-    =============================== */
-    function playChev(open) {
-      const svg = btn.querySelector("svg");
-      if (!svg) return;
-
-      const anim = svg.querySelector(open ? "#chevOpen" : "#chevClose");
-      if (anim && typeof anim.beginElement === "function") {
-        anim.beginElement();
-      }
-    }
-
-    /* ===============================
-       UI State
+       UI State (CSS handles icon easing)
     =============================== */
     function setUi() {
       btn.setAttribute("aria-pressed", String(isOn));
@@ -43,9 +28,6 @@
         "aria-label",
         isOn ? "Pause auto scroll" : "Start auto scroll"
       );
-
-      // Trigger chevron morph only
-      playChev(isOn);
     }
 
     /* ===============================
@@ -94,6 +76,7 @@
 
     /* ===============================
        Stop on User Intent
+       (but NOT when clicking the auto button itself)
     =============================== */
     const stopEvents = ["wheel", "touchstart", "keydown", "mousedown"];
 
@@ -116,7 +99,7 @@
     =============================== */
     btn.addEventListener("click", toggle);
 
-    // Set initial state (ensures SVG is in correct mode)
+    // Ensure initial UI state is correct (prevents 1-frame mismatch)
     setUi();
   }
 
