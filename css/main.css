@@ -496,10 +496,10 @@ body.night-mode .auto-scroll-bar{
 
 .auto-scroll-btn{
   border: 1px solid var(--control-stroke);
-  border-radius: 999px;
+  border-radius: 11px;
   background: transparent;
 
-  height: 40px;
+  height: 30px;
   width: 40px;
   padding: 0;
 
