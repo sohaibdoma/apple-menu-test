@@ -19,22 +19,18 @@
     const SPEED = prefersReduced ? 0 : 55;
 
     /* ===============================
-       SVG "Book-open" animation helper
+       SVG "Stem + One Chevron" helper
+       - Only the chevron morphs (book-open style)
+       - Vertical stem stays static
     =============================== */
-    function playSvg(open) {
+    function playChev(open) {
       const svg = btn.querySelector("svg");
       if (!svg) return;
 
-      const ids = open
-        ? ["topOpenLeft", "topOpenRight", "botOpenLeft", "botOpenRight"]
-        : ["topCloseLeft", "topCloseRight", "botCloseLeft", "botCloseRight"];
-
-      ids.forEach((id) => {
-        const anim = svg.querySelector(`#${id}`);
-        if (anim && typeof anim.beginElement === "function") {
-          anim.beginElement();
-        }
-      });
+      const anim = svg.querySelector(open ? "#chevOpen" : "#chevClose");
+      if (anim && typeof anim.beginElement === "function") {
+        anim.beginElement();
+      }
     }
 
     /* ===============================
@@ -48,8 +44,8 @@
         isOn ? "Pause auto scroll" : "Start auto scroll"
       );
 
-      // Trigger the SVG wing morph (center stays locked)
-      playSvg(isOn);
+      // Trigger chevron morph only
+      playChev(isOn);
     }
 
     /* ===============================
