@@ -529,10 +529,9 @@ body.night-mode .auto-scroll-bar{
   stroke-linejoin: round;
 }
 
-/* Gradual thickness */
-.auto-thin  { stroke-width: 1; }
-.auto-mid   { stroke-width: 1.4; }
-.auto-thick { stroke-width: 1.8; }
+.auto-thin  { stroke-width: 1.2; }
+.auto-mid   { stroke-width: 1.8; }
+.auto-thick { stroke-width: 2.6; }
 
 /* ===============================
    ACTIVE STATE
