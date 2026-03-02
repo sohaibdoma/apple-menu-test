@@ -497,17 +497,20 @@ body.night-mode .auto-scroll-bar{
 
 /* Put your existing button inside the bar */
 .auto-scroll-btn{
-  height: 40px;
-  padding: 0 16px;
-
-  border-radius: 999px;
+  /* Match menu pill border style */
   border: 1px solid var(--control-stroke);
+  border-radius: 11px;
   background: transparent;
 
-  color: var(--page-text);
-  font: inherit;
-  font-weight: 700;
+  /* Match menu open-pill “feel” */
+  height: 30.2px;         /* set this to your menu open pill height */
+  width: 46px;            /* enough room for the double icon */
+  padding: 0;
 
+  display: grid;
+  place-items: center;
+
+  color: var(--page-text);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -519,4 +522,28 @@ body.night-mode .auto-scroll-bar{
 .auto-scroll-btn:focus-visible{
   outline: 2px solid currentColor;
   outline-offset: 3px;
+}
+
+.auto-icon{
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.auto-arm{
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;                 /* match your menu stroke */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  /* CLOSED look = same as menu closed state */
+  stroke-dasharray: 50 100;
+  transition: stroke-dasharray 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* the lower one should be bigger + sit lower */
+.auto-big{
+  transform: translateY(6px) scale(1.15);
+  transform-origin: center;
 }
