@@ -500,7 +500,7 @@ body.night-mode .auto-scroll-bar{
   background: transparent;
 
   height: 30px;
-  width: 29px;
+  width: 30px;
   padding: 0;
 
   display: grid;
@@ -528,19 +528,39 @@ body.night-mode{
   --auto-btn-fill: #000000;
 }
 
-/* Common stroke */
-
+/* Icon size */
 .auto-icon{
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   display: block;
 }
 
+/* Shared stroke style */
 .auto-stem,
-.auto-chev{
+.auto-chev,
+.auto-flat{
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.2; /* thickness for both so they feel like 1 piece */
+  stroke-width: 1.6;
 }
+
+/* Stem always visible */
+.auto-stem{
+  opacity: 1;
+}
+
+/* Smooth ease between chevron and flat */
+.auto-chev,
+.auto-flat{
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* OFF state */
+.auto-chev{ opacity: 1; }
+.auto-flat{ opacity: 0; }
+
+/* ON state */
+.auto-scroll-btn.is-on .auto-chev{ opacity: 0; }
+.auto-scroll-btn.is-on .auto-flat{ opacity: 1; }
