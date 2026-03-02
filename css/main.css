@@ -518,14 +518,20 @@ body.night-mode .auto-scroll-bar{
   background-color: var(--auto-btn-fill);
 }
 
+/* Invert icon color when filled */
+.auto-scroll-btn.is-on{
+  background-color: var(--auto-btn-fill);
+  color: var(--auto-btn-icon);
+}
+
 /* Define fill color per theme */
 :root{
-  --auto-btn-fill: #ffffff;
+  --auto-btn-fill: #000000; /* light mode = black */
 }
 
 html.night-mode,
 body.night-mode{
-  --auto-btn-fill: #000000;
+  --auto-btn-fill: #ffffff; /* dark mode = white */
 }
 
 /* Icon size */
