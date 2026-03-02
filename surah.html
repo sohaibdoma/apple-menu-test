@@ -68,15 +68,33 @@
   <div class="auto-scroll-bar" aria-hidden="false">
    <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
      <svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
-       <!-- TOP chevron (same geometry idea as menu closed state) -->
-       <path class="auto-arm" pathLength="100" d="M6 6 L18 18" />
-       <path class="auto-arm" pathLength="100" d="M18 6 L6 18" />
 
-       <!-- BOTTOM chevron (bigger + lower) -->
-       <g class="auto-big">
-         <path class="auto-arm" pathLength="100" d="M5 8 L19 22" />
-         <path class="auto-arm" pathLength="100" d="M19 8 L5 22" />
+       <!-- CHEVRON MODE (default) -->
+       <g class="auto-shape auto-chev">
+         <!-- Upper chevron (thin) -->
+         <path class="auto-arm auto-thin" pathLength="100" d="M7 6 L12 11" />
+         <path class="auto-arm auto-thin" pathLength="100" d="M17 6 L12 11" />
+
+         <!-- Small middle dash (does NOT touch chevron) -->
+         <path class="auto-mid" d="M10.3 9.0 H13.7" />
+
+         <!-- Lower chevron (thicker + bigger under it) -->
+         <g class="auto-big">
+           <path class="auto-arm auto-thick" pathLength="100" d="M6 9 L12 15" />
+           <path class="auto-arm auto-thick" pathLength="100" d="M18 9 L12 15" />
+         </g>
        </g>
+
+       <!-- LINE MODE (shown when ON) -->
+       <g class="auto-shape auto-lines">
+         <!-- Top line (thin) -->
+         <path class="auto-line auto-thin" d="M7 10.5 H17" />
+         <!-- Keep the same middle dash line -->
+         <path class="auto-mid" d="M10.3 9.0 H13.7" />
+         <!-- Bottom line (thicker) -->
+         <path class="auto-line auto-thick" d="M6 14.5 H18" />
+       </g>
+
      </svg>
    </button>
   </div>
