@@ -34,9 +34,6 @@ body {
                serif;
    
   color: var(--page-text);
-   
-  transition: background-color 0.3s ease,
-              color 0.3s ease;
   
   padding-top: 40px;
 }
@@ -533,29 +530,22 @@ body.night-mode .auto-scroll-bar{
 /* ===============================
    ACTIVE STATE
 =============================== */
-.auto-scroll-btn.is-on{
-  color: rgba(0, 0, 0, 0.4);
-}
-
-html.night-mode .auto-scroll-btn.is-on{
-  color: rgba(255, 255, 255, 0.5);
-}
 
 :root{
-  --auto-active-color: #000;
+  --auto-active-color: rgba(0, 0, 0, 0.4);
 }
 
 html.night-mode,
 body.night-mode{
-  --auto-active-color: #fff;
+  --auto-active-color: rgba(255, 255, 255, 0.5);
 }
 
-.auto-scroll-btn:focus-visible {
+.auto-scroll-btn.is-on{
+  color: var(--auto-active-color);
+}
+
+.auto-scroll-btn:focus,
+.auto-scroll-btn:focus-visible{
   outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
-}
-
-html.night-mode .auto-scroll-btn:focus-visible,
-body.night-mode .auto-scroll-btn:focus-visible {
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+  box-shadow: none;
 }
