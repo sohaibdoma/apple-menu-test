@@ -415,8 +415,8 @@ html.night-mode .menu-content a:focus-visible {
 .menu-content a:focus-visible,
 .lang-switch button:focus,
 .lang-switch button:focus-visible,
-.menu-button:focus,
-.menu-button:focus-visible {
+.menu-toggle:focus,
+.menu-toggle:focus-visible {
   outline: none;
 }
 
@@ -453,52 +453,17 @@ body.no-blur-transition > *:not(.main-header) {
   transition: none !important;
 }
 
-/* ========================================
-   AUTO SCROLL BAR (Surah pages only)
-======================================== */
+/* ===============================
+   Auto Scroll Button Icon + States
+=============================== */
 
-.auto-scroll-bar{
-  position: fixed;
-  left: var(--nav-inset);
-  right: var(--nav-inset);
-  bottom: var(--nav-gap);
-  z-index: 9998;
-
-  height: 56px;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  padding: 0 20px;
-
-  border-radius: var(--nav-radius);
-  isolation: isolate;
-
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-
-  clip-path: inset(0 round var(--nav-radius));
-  -webkit-clip-path: inset(0 round var(--nav-radius));
-}
-
-/* Night mode like your header pill */
-html.night-mode .auto-scroll-bar,
-body.night-mode .auto-scroll-bar{
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-/* Put your existing button inside the bar */
 .auto-scroll-btn{
-  /* Match menu pill border style */
   border: 1px solid var(--control-stroke);
   border-radius: 11px;
   background: transparent;
 
-  /* Match menu open-pill “feel” */
-  height: 30px;         /* set this to your menu open pill height */
-  width: 30px;            /* enough room for the double icon */
+  height: 30.2px;
+  width: 46px;
   padding: 0;
 
   display: grid;
@@ -506,16 +471,24 @@ body.night-mode .auto-scroll-bar{
 
   color: var(--page-text);
   cursor: pointer;
+
+  transition: background-color 250ms ease, border-color 250ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Clean focus */
-.auto-scroll-btn:focus{
-  outline: none;
+/* ON state fill */
+.auto-scroll-btn.is-on{
+  background-color: var(--auto-btn-fill);
 }
-.auto-scroll-btn:focus-visible{
-  outline: 2px solid currentColor;
-  outline-offset: 3px;
+
+/* Define fill color per theme */
+:root{
+  --auto-btn-fill: #ffffff;
+}
+
+html.night-mode,
+body.night-mode{
+  --auto-btn-fill: #000000;
 }
 
 .auto-icon{
@@ -524,25 +497,34 @@ body.night-mode .auto-scroll-bar{
   display: block;
 }
 
-.auto-arm{
+/* Common stroke */
+.auto-arm,
+.auto-line,
+.auto-mid{
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;                 /* match your menu stroke */
   stroke-linecap: round;
   stroke-linejoin: round;
-
-  /* CLOSED look = same as menu closed state */
-  stroke-dasharray: 50 100;
-  transition: stroke-dasharray 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* the lower one should be bigger + sit lower */
-.auto-big{
-  transform: translateY(6px) scale(1.15);
-  transform-origin: center;
-}
+/* Thickness control */
+.auto-thin{ stroke-width: 1.6; }
+.auto-thick{ stroke-width: 2.4; }
 
-/* Upper one thinner */
-.auto-icon > .auto-arm {
+/* Middle dash line: small + steady */
+.auto-mid{
   stroke-width: 1.4;
+  opacity: 0.9;
 }
+
+/* Smooth crossfade between chevrons and flat lines */
+.auto-shape{
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.auto-chev{ opacity: 1; }
+.auto-lines{ opacity: 0; }
+
+/* When ON: show flat lines, hide chevrons */
+.auto-scroll-btn.is-on .auto-chev{ opacity: 0; }
+.auto-scroll-btn.is-on .auto-lines{ opacity: 1; }
