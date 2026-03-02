@@ -547,3 +547,13 @@ body.night-mode .auto-scroll-bar{
   transform: translateY(6px) scale(1.15);
   transform-origin: center;
 }
+
+/* Upper one thinner */
+.auto-icon > .auto-arm {
+  stroke-width: 1;
+}
+
+/* Lower one normal thickness */
+.auto-big .auto-arm {
+  stroke-width: 2;
+}
