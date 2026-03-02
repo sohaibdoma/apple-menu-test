@@ -528,12 +528,6 @@ body.night-mode{
   --auto-btn-fill: #000000;
 }
 
-.auto-icon{
-  width: 22px;
-  height: 22px;
-  display: block;
-}
-
 /* Common stroke */
 .auto-arm,
 .auto-line,
@@ -542,17 +536,6 @@ body.night-mode{
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-/* Thickness control */
-.auto-thin{ stroke-width: 1.6; }
-.auto-thick{ stroke-width: 2.4; }
-
-/* Middle dash line: small + steady */
-.auto-mid{
-  stroke-width: 1.4;
-  opacity: 0.9;
-  transition: none !important;
 }
 
 /* Smooth crossfade between chevrons and flat lines */
