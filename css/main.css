@@ -526,7 +526,7 @@ body.night-mode .auto-scroll-bar{
 .auto-thin,
 .auto-mid,
 .auto-thick {
-  stroke-width: 2.6;
+  stroke-width: 2.2;
 }
 
 /* Dot-to-pill: grow upward like the navbar (no stretching) */
