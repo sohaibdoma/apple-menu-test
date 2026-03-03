@@ -289,44 +289,20 @@
     // 5) Notification overlay open = TEMP PAUSE
     //    overlay close = RESUME (if not paused by tap)
     //
-    // IMPORTANT: Put your real overlay selector(s) here.
+    // IMPORTANT: Uses a class on <body> or <html>.
     // =========================
-    const OVERLAY_SELECTORS = [
-      "#notification-overlay",
-      ".notification-overlay",
-      ".notification-panel",
-      ".notification-drawer",
-      ".notification-sheet",
-    ];
+    const OVERLAY_OPEN_CLASS = "notification-open";
 
-    function findOverlayEl() {
-      for (const sel of OVERLAY_SELECTORS) {
-        const el = document.querySelector(sel);
-        if (el) return el;
-      }
-      return null;
-    }
-
-    function isOverlayVisible(el) {
-      if (!el) return false;
-
-      if (el.getAttribute("aria-hidden") === "true") return false;
-      if (el.hidden) return false;
-
-      const cs = window.getComputedStyle(el);
-      if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") {
-        return false;
-      }
-
-      const r = el.getBoundingClientRect();
-      return r.width > 0 && r.height > 0;
+    function isOverlayOpen() {
+      const bodyHas = document.body?.classList?.contains(OVERLAY_OPEN_CLASS);
+      const htmlHas = document.documentElement?.classList?.contains(OVERLAY_OPEN_CLASS);
+      return Boolean(bodyHas || htmlHas);
     }
 
     function updateOverlayPause() {
       if (!isOn) return;
 
-      const el = findOverlayEl();
-      const open = isOverlayVisible(el);
+      const open = isOverlayOpen();
 
       if (open) pauseForOverlay();
       else resumeFromOverlay();
@@ -340,7 +316,12 @@
       attributes: true,
       attributeFilter: ["class", "style", "aria-hidden"],
       subtree: true,
-      childList: true,
+    });
+
+    mo.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class", "style", "aria-hidden"],
+      subtree: true,
     });
 
     window.addEventListener("resize", updateOverlayPause, { passive: true });
