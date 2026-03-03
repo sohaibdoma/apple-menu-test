@@ -559,3 +559,9 @@ body.night-mode .auto-scroll-bar{
   outline: none;
   box-shadow: none;
 }
+
+.auto-scroll-btn:focus,
+.auto-scroll-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
