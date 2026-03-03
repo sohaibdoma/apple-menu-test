@@ -15,11 +15,15 @@
     let rafId = 0;
     let lastT = 0;
 
-    // Adjust this single number if you want different speed
+    // Smooth low-speed support:
+    // keep our own float scroll position and ALWAYS reset it on start
+    let scrollYFloat = 0;
+
+    // Change this number freely (7, 10, 15...)
     const SPEED = prefersReduced ? 0 : 7;
 
     /* ===============================
-       UI State (CSS handles icon easing)
+       UI State (CSS handles icon)
     =============================== */
     function setUi() {
       btn.setAttribute("aria-pressed", String(isOn));
@@ -42,32 +46,35 @@
       setUi();
     }
 
-let accumulatedY = window.scrollY;
+    function tick(t) {
+      if (!isOn) return;
 
-function tick(t) {
-  if (!isOn) return;
+      if (!lastT) lastT = t;
+      const dt = (t - lastT) / 1000;
+      lastT = t;
 
-  if (!lastT) lastT = t;
-  const dt = (t - lastT) / 1000;
-  lastT = t;
+      scrollYFloat += SPEED * dt;
+      window.scrollTo(0, scrollYFloat);
 
-  accumulatedY += SPEED * dt;
-  window.scrollTo(0, accumulatedY);
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
 
-  const atBottom =
-    window.innerHeight + accumulatedY >=
-    document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        stop();
+        return;
+      }
 
-  if (atBottom) {
-    stop();
-    return;
-  }
-
-  rafId = requestAnimationFrame(tick);
-}
+      rafId = requestAnimationFrame(tick);
+    }
 
     function start() {
       if (prefersReduced || isOn) return;
+
+      // ✅ Always start from wherever the user is NOW (after manual scroll)
+      scrollYFloat = window.scrollY;
+      lastT = 0;
+
       isOn = true;
       setUi();
       rafId = requestAnimationFrame(tick);
@@ -78,21 +85,10 @@ function tick(t) {
     }
 
     /* ===============================
-       Stop on User Intent
-       (but NOT when clicking the auto button itself)
+       Video-like behavior
+       - Do NOT stop on scroll / touch / keys
+       - Pause when tab is hidden (like video)
     =============================== */
-    const stopEvents = ["wheel", "touchstart", "keydown", "mousedown"];
-
-    function stopHandler(e) {
-      if (e?.target?.closest?.("#autoScrollBtn")) return;
-      stop();
-    }
-
-    stopEvents.forEach((ev) =>
-      window.addEventListener(ev, stopHandler, { passive: true })
-    );
-
-    // Stop if user switches tab (premium polish)
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) stop();
     });
@@ -102,7 +98,7 @@ function tick(t) {
     =============================== */
     btn.addEventListener("click", toggle);
 
-    // Ensure initial UI state is correct (prevents 1-frame mismatch)
+    // Ensure initial UI state is correct
     setUi();
   }
 
