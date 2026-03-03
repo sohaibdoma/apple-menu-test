@@ -527,6 +527,19 @@ body.night-mode .auto-scroll-bar{
 .auto-mid   { stroke-width: 1.2; }
 .auto-thick { stroke-width: 1.2; }
 
+/* Dot-to-pill animation (only grows upward) */
+.auto-dot{
+  transform-box: fill-box;
+  transform-origin: 50% 100%; /* bottom center */
+  transform: scaleY(1);
+  transition: transform 200ms ease;
+}
+
+/* ON: stretch upward into a pill */
+.auto-scroll-btn.is-on .auto-dot{
+  transform: scaleY(2.2); /* adjust pill height */
+}
+
 /* ===============================
    ACTIVE STATE
 =============================== */
