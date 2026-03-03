@@ -531,15 +531,6 @@ body.night-mode .auto-scroll-bar{
    ACTIVE STATE
 =============================== */
 
-:root{
-  --auto-active-color: rgba(0, 0, 0, 0.4);
-}
-
-html.night-mode,
-body.night-mode{
-  --auto-active-color: rgba(255, 255, 255, 0.5);
-}
-
 .auto-scroll-btn.is-on{
   color: var(--auto-active-color);
 }
