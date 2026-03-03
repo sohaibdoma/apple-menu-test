@@ -16,7 +16,7 @@
     let lastT = 0;
 
     // Adjust this single number if you want different speed
-    const SPEED = prefersReduced ? 0 : 25;
+    const SPEED = prefersReduced ? 0 : 10;
 
     /* ===============================
        UI State (CSS handles icon easing)
