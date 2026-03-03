@@ -530,15 +530,18 @@ body.night-mode .auto-scroll-bar{
 /* Dot-to-pill: grow upward like the navbar (no stretching) */
 .auto-dot{
   transition:
-    y 150ms cubic-bezier(0.22, 1, 0.36, 1),
-    height 150ms cubic-bezier(0.22, 1, 0.36, 1);
+    y 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 200ms cubic-bezier(0.22, 1, 0.36, 1);
+   
+  height: 3.2px;
+  rx: 1.6px; /* stays constant */
 }
 
 /* ON: increase height upwards, keep bottom locked */
 .auto-scroll-btn.is-on .auto-dot{
   transition:
-    y 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    height 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    y 750ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 750ms cubic-bezier(0.22, 1, 0.36, 1);
    
   height: 7px; /* 2x taller (dot 3.2 → pill 6.4) */
   y: 0.6px;      /* move up by exactly the added height (3.2) */
