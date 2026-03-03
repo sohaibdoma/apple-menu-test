@@ -539,8 +539,8 @@ body.night-mode .auto-scroll-bar{
 /* ON: increase height upwards, keep bottom locked */
 .auto-scroll-btn.is-on .auto-dot{
   transition:
-    y 4800ms cubic-bezier(0.22, 1, 0.36, 1),
-    height 4800ms cubic-bezier(0.22, 1, 0.36, 1);
+    y 6000ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 6000ms cubic-bezier(0.22, 1, 0.36, 1);
    
   height: 6px;
   y: 1.8px;
