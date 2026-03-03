@@ -20,7 +20,7 @@
   --control-stroke: rgba(0, 0, 0, 0.15);
 
   /* Auto Scroll Active Icon Color */
-  --auto-active-color: #000;
+  --auto-active-color: rgba(0, 0, 0, 0.4);
 }
 
 html.night-mode,
@@ -36,5 +36,5 @@ body.night-mode {
   --control-stroke: rgba(255, 255, 255, 0.25);
 
   /* Auto Scroll Active Icon Color */
-  --auto-active-color: #ffffff;
+  --auto-active-color: rgba(255, 255, 255, 0.5);
 }
