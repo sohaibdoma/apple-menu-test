@@ -16,7 +16,7 @@
     let lastT = 0;
 
     // Adjust this single number if you want different speed
-    const SPEED = prefersReduced ? 0 : 16;
+    const SPEED = prefersReduced ? 0 : 7;
 
     /* ===============================
        UI State (CSS handles icon easing)
@@ -42,26 +42,29 @@
       setUi();
     }
 
-    function tick(t) {
-      if (!isOn) return;
+let accumulatedY = window.scrollY;
 
-      if (!lastT) lastT = t;
-      const dt = (t - lastT) / 1000;
-      lastT = t;
+function tick(t) {
+  if (!isOn) return;
 
-      window.scrollBy(0, SPEED * dt);
+  if (!lastT) lastT = t;
+  const dt = (t - lastT) / 1000;
+  lastT = t;
 
-      const atBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 2;
+  accumulatedY += SPEED * dt;
+  window.scrollTo(0, accumulatedY);
 
-      if (atBottom) {
-        stop();
-        return;
-      }
+  const atBottom =
+    window.innerHeight + accumulatedY >=
+    document.documentElement.scrollHeight - 2;
 
-      rafId = requestAnimationFrame(tick);
-    }
+  if (atBottom) {
+    stop();
+    return;
+  }
+
+  rafId = requestAnimationFrame(tick);
+}
 
     function start() {
       if (prefersReduced || isOn) return;
