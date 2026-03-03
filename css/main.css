@@ -536,8 +536,8 @@ body.night-mode .auto-scroll-bar{
 
 /* ON: increase height upwards, keep bottom locked */
 .auto-scroll-btn.is-on .auto-dot{
-  height: 6.4px; /* 2x taller (dot 3.2 → pill 6.4) */
-  y: 1.2px;      /* move up by exactly the added height (3.2) */
+  height: 7px; /* 2x taller (dot 3.2 → pill 6.4) */
+  y: 0.6px;      /* move up by exactly the added height (3.2) */
 }
 
 /* ===============================
