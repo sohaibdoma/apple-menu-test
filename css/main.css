@@ -560,8 +560,24 @@ body.night-mode .auto-scroll-bar{
   box-shadow: none;
 }
 
+/* ===============================
+   Auto scroll button: remove focus / tap highlight
+=============================== */
+
+.auto-scroll-btn,
+.auto-scroll-btn * {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .auto-scroll-btn:focus,
-.auto-scroll-btn:focus-visible {
-  outline: none;
-  box-shadow: none;
+.auto-scroll-btn:focus-visible,
+.auto-scroll-btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Safari/iOS extra glow */
+.auto-scroll-btn {
+  -webkit-appearance: none;
+  appearance: none;
 }
