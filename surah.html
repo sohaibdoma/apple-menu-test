@@ -68,20 +68,15 @@
   <div class="auto-scroll-bar" aria-hidden="false">
     
   <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
-   <svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
-
-     <!-- Top (thin + short) -->
-     <path class="auto-chev auto-thin"
-           d="M9 6 L12 9 L15 6" />
-
-     <!-- Middle (medium + wider) -->
-     <path class="auto-chev auto-mid"
-           d="M8 11 L12 15 L16 11" />
-
-     <!-- Bottom (thick + widest) -->
-     <path class="auto-chev auto-thick"
-           d="M7 17 L12 22 L17 17" />
-
+   <svg class="auto-icon" viewBox="0 0 24 24">
+     <polyline class="auto-chev auto-thin"  
+       points="4 9 12 15 20 9" />
+    
+     <polyline class="auto-chev auto-mid"   
+       points="4 12 12 18 20 12" />
+    
+     <polyline class="auto-chev auto-thick" 
+       points="4 15 12 21 20 15" />
    </svg>
   </button>
     
