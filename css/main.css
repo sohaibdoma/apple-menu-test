@@ -505,7 +505,7 @@ body.night-mode .auto-scroll-bar{
   color: var(--page-text);
   cursor: pointer;
 
-  transition: color 300ms ease;
+  transition: color 200ms ease;
 }
 
 /* Icon size */
