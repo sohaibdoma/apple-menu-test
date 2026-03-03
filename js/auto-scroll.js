@@ -286,23 +286,74 @@
     });
 
     // =========================
-    // 5) Notification overlay open = TEMP PAUSE
+    // 5) ANY overlay open = TEMP PAUSE
     //    overlay close = RESUME (if not paused by tap)
-    //
-    // IMPORTANT: Uses a class on <body> or <html>.
     // =========================
-    const OVERLAY_OPEN_CLASS = "notification-open";
 
-    function isOverlayOpen() {
-      const bodyHas = document.body?.classList?.contains(OVERLAY_OPEN_CLASS);
-      const htmlHas = document.documentElement?.classList?.contains(OVERLAY_OPEN_CLASS);
-      return Boolean(bodyHas || htmlHas);
+    function isScrollLocked() {
+      const b = document.body;
+      const h = document.documentElement;
+      if (!b || !h) return false;
+
+      const bcs = window.getComputedStyle(b);
+      const hcs = window.getComputedStyle(h);
+
+      if (bcs.overflowY === "hidden" || bcs.overflowX === "hidden") return true;
+      if (hcs.overflowY === "hidden" || hcs.overflowX === "hidden") return true;
+
+      if (bcs.position === "fixed") return true;
+
+      return false;
+    }
+
+    function hasAriaModalOpen() {
+      return Boolean(document.querySelector('[aria-modal="true"], [role="dialog"][open], dialog[open]'));
+    }
+
+    function hasFullScreenFixedOverlay() {
+      const ignore = (el) =>
+        el.closest?.(".main-header") ||
+        el.closest?.(".auto-scroll-bar") ||
+        el.id === "autoScrollBtn" ||
+        el.classList?.contains("menu-toggle");
+
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      const candidates = document.querySelectorAll("body *");
+      for (let i = 0; i < candidates.length; i++) {
+        const el = candidates[i];
+        if (!el || ignore(el)) continue;
+
+        const cs = window.getComputedStyle(el);
+        if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") continue;
+        if (cs.position !== "fixed") continue;
+        if (cs.pointerEvents === "none") continue;
+
+        const r = el.getBoundingClientRect();
+        if (r.width <= 0 || r.height <= 0) continue;
+
+        const coversWidth = r.width >= vw * 0.85;
+        const coversHeight = r.height >= vh * 0.35;
+        const nearTop = r.top <= 10;
+        const nearBottom = r.bottom >= vh - 10;
+
+        if (coversWidth && coversHeight && (nearTop || nearBottom)) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    function isAnyOverlayOpen() {
+      return isScrollLocked() || hasAriaModalOpen() || hasFullScreenFixedOverlay();
     }
 
     function updateOverlayPause() {
       if (!isOn) return;
 
-      const open = isOverlayOpen();
+      const open = isAnyOverlayOpen();
 
       if (open) pauseForOverlay();
       else resumeFromOverlay();
@@ -316,12 +367,14 @@
       attributes: true,
       attributeFilter: ["class", "style", "aria-hidden"],
       subtree: true,
+      childList: true,
     });
 
     mo.observe(document.body, {
       attributes: true,
       attributeFilter: ["class", "style", "aria-hidden"],
       subtree: true,
+      childList: true,
     });
 
     window.addEventListener("resize", updateOverlayPause, { passive: true });
