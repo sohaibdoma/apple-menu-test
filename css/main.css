@@ -527,17 +527,17 @@ body.night-mode .auto-scroll-bar{
 .auto-mid   { stroke-width: 1.2; }
 .auto-thick { stroke-width: 1.2; }
 
-/* Dot-to-pill animation (only grows upward) */
+/* Dot-to-pill: grow upward like the navbar (no stretching) */
 .auto-dot{
-  transform-box: fill-box;
-  transform-origin: 50% 100%; /* bottom center */
-  transform: scaleY(1);
-  transition: transform 200ms ease;
+  transition:
+    y 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ON: stretch upward into a pill */
+/* ON: increase height upwards, keep bottom locked */
 .auto-scroll-btn.is-on .auto-dot{
-  transform: scaleY(2.2); /* adjust pill height */
+  height: 6.4px; /* 2x taller (dot 3.2 → pill 6.4) */
+  y: 1.2px;      /* move up by exactly the added height (3.2) */
 }
 
 /* ===============================
