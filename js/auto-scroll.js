@@ -16,7 +16,6 @@
     // =========================
     let isOn = false;                 // TRUE ON/OFF (only auto button or menu/page exit changes this)
     let isPausedByTap = false;        // temporary pause/resume by tapping the page
-    let isPausedByOverlay = false;    // temporary pause while notification overlay is open
 
     let rafId = 0;
     let lastT = 0;
@@ -81,7 +80,7 @@
       btn.classList.toggle("is-on", isOn);
 
       // Optional: if you ever want a visual paused state in CSS
-      btn.classList.toggle("is-paused", isOn && (isPausedByTap || isPausedByOverlay));
+      btn.classList.toggle("is-paused", isOn && isPausedByTap);
 
       btn.setAttribute(
         "aria-label",
@@ -96,7 +95,6 @@
       // TRUE OFF
       isOn = false;
       isPausedByTap = false;
-      isPausedByOverlay = false;
 
       cancelAnimationFrame(rafId);
       rafId = 0;
@@ -124,41 +122,9 @@
 
       isPausedByTap = false;
 
-      // Only resume if overlay is not active
-      if (!isPausedByOverlay) {
-        scrollYFloat = window.scrollY;
-        lastT = 0;
-        rafId = requestAnimationFrame(tick);
-      }
-
-      setUi();
-      requestWakeLock();
-    }
-
-    function pauseForOverlay() {
-      if (!isOn || isPausedByOverlay) return;
-      isPausedByOverlay = true;
-
-      cancelAnimationFrame(rafId);
-      rafId = 0;
+      scrollYFloat = window.scrollY;
       lastT = 0;
-
-      setUi();
-      // Keep Wake Lock ON while paused (video behavior)
-      requestWakeLock();
-    }
-
-    function resumeFromOverlay() {
-      if (!isOn || !isPausedByOverlay) return;
-
-      isPausedByOverlay = false;
-
-      // Only resume if user-tap pause is not active
-      if (!isPausedByTap) {
-        scrollYFloat = window.scrollY;
-        lastT = 0;
-        rafId = requestAnimationFrame(tick);
-      }
+      rafId = requestAnimationFrame(tick);
 
       setUi();
       requestWakeLock();
@@ -166,7 +132,7 @@
 
     function tick(t) {
       if (!isOn) return;
-      if (isPausedByTap || isPausedByOverlay) return;
+      if (isPausedByTap) return;
 
       if (!lastT) lastT = t;
       const dt = (t - lastT) / 1000;
@@ -198,7 +164,6 @@
 
       isOn = true;
       isPausedByTap = false;
-      isPausedByOverlay = false;
 
       setUi();
       await requestWakeLock();
@@ -218,7 +183,7 @@
       "scroll",
       () => {
         if (!isOn) return;
-        if (isPausedByTap || isPausedByOverlay) return;
+        if (isPausedByTap) return;
         if (programmaticScroll) return;
 
         // User scrolled manually → continue auto from here
@@ -286,109 +251,12 @@
     });
 
     // =========================
-    // 5) ANY overlay open = TEMP PAUSE
-    //    overlay close = RESUME (if not paused by tap)
-    // =========================
-
-    function isScrollLocked() {
-      const b = document.body;
-      const h = document.documentElement;
-      if (!b || !h) return false;
-
-      const bcs = window.getComputedStyle(b);
-      const hcs = window.getComputedStyle(h);
-
-      if (bcs.overflowY === "hidden" || bcs.overflowX === "hidden") return true;
-      if (hcs.overflowY === "hidden" || hcs.overflowX === "hidden") return true;
-
-      if (bcs.position === "fixed") return true;
-
-      return false;
-    }
-
-    function hasAriaModalOpen() {
-      return Boolean(document.querySelector('[aria-modal="true"], [role="dialog"][open], dialog[open]'));
-    }
-
-    function hasFullScreenFixedOverlay() {
-      const ignore = (el) =>
-        el.closest?.(".main-header") ||
-        el.closest?.(".auto-scroll-bar") ||
-        el.id === "autoScrollBtn" ||
-        el.classList?.contains("menu-toggle");
-
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-
-      const candidates = document.querySelectorAll("body *");
-      for (let i = 0; i < candidates.length; i++) {
-        const el = candidates[i];
-        if (!el || ignore(el)) continue;
-
-        const cs = window.getComputedStyle(el);
-        if (cs.display === "none" || cs.visibility === "hidden" || cs.opacity === "0") continue;
-        if (cs.position !== "fixed") continue;
-        if (cs.pointerEvents === "none") continue;
-
-        const r = el.getBoundingClientRect();
-        if (r.width <= 0 || r.height <= 0) continue;
-
-        const coversWidth = r.width >= vw * 0.85;
-        const coversHeight = r.height >= vh * 0.35;
-        const nearTop = r.top <= 10;
-        const nearBottom = r.bottom >= vh - 10;
-
-        if (coversWidth && coversHeight && (nearTop || nearBottom)) {
-          return true;
-        }
-      }
-
-      return false;
-    }
-
-    function isAnyOverlayOpen() {
-      return isScrollLocked() || hasAriaModalOpen() || hasFullScreenFixedOverlay();
-    }
-
-    function updateOverlayPause() {
-      if (!isOn) return;
-
-      const open = isAnyOverlayOpen();
-
-      if (open) pauseForOverlay();
-      else resumeFromOverlay();
-    }
-
-    const mo = new MutationObserver(() => {
-      updateOverlayPause();
-    });
-
-    mo.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class", "style", "aria-hidden"],
-      subtree: true,
-      childList: true,
-    });
-
-    mo.observe(document.body, {
-      attributes: true,
-      attributeFilter: ["class", "style", "aria-hidden"],
-      subtree: true,
-      childList: true,
-    });
-
-    window.addEventListener("resize", updateOverlayPause, { passive: true });
-
-    // =========================
     // INIT
     // =========================
     btn.addEventListener("click", toggleAutoButton);
 
     // Initial UI
     setUi();
-
-    // Initial overlay state
-    updateOverlayPause();
   }
 
   window.Wahyollah = window.Wahyollah || {};
