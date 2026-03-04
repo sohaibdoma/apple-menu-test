@@ -370,9 +370,11 @@ body.search-open #search-placeholder{
   display: block;
   width: 100%;
 
-  border: none;
-  background: transparent;
+  border: none !important;
+  outline: none;
   box-shadow: none;
+
+  background: transparent;
 
   padding: 10px 0;
   margin: 0;
@@ -383,6 +385,11 @@ body.search-open #search-placeholder{
   -webkit-appearance: none;
 
   cursor: pointer;
+}
+
+.search-results > *{
+  border: none !important;
+  box-shadow: none;
 }
 
 .search-result:focus,
