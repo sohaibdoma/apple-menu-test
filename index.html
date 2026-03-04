@@ -31,8 +31,28 @@
 
   <!-- TOP BAR (controls only) -->
   <div class="header-bar">
-    <button id="themeToggle" class="theme-toggle"></button>
 
+
+
+
+    
+    
+    <div class="header-controls">
+     <button id="themeToggle" class="theme-toggle"></button>
+
+     <button id="searchToggle" class="search-toggle" aria-label="Search" aria-expanded="false" type="button">
+       <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+         <circle cx="11" cy="11" r="6.5"></circle>
+         <path d="M16.2 16.2 L20 20"></path>
+       </svg>
+     </button>
+   </div>
+
+
+
+
+    
+    
     <div class="header-left">
       <div class="lang-switch">
         <button data-lang="ar">AR</button>
@@ -55,10 +75,15 @@
   <!-- MENU AREA (fills pill, not affected by header padding) -->
   <div id="menu-placeholder"></div>
 
+
+
+    
+  <div id="search-placeholder"></div>
+
+
+    
+
 </header>
-
-
-  
 
   <!-- HOME CONTENT -->
   <main class="home">
@@ -76,6 +101,12 @@
   <script src="js/config.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/menu.js"></script>
+
+
+  <script src="js/search.js"></script>
+
+
+  
   <script src="js/theme.js"></script>
   <script src="script.js"></script>
 
