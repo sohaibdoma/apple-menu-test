@@ -173,10 +173,45 @@ body.night-mode .main-header {
               transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+body.menu-open #menu-placeholder {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+   
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body.menu-open #menu-placeholder::-webkit-scrollbar {
+  display: none;
+}
+
+/* Freeze menu content during close to prevent jump */
+body.menu-closing #menu-placeholder {
+  overflow: hidden !important;
+}
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+#search-placeholder{
+  z-index: 2; /* higher than ::after (0), below header-bar (3) */
+}
 
 body.search-open #search-placeholder{
   opacity: 1;
@@ -200,34 +235,19 @@ body.search-closing #search-placeholder{
   overflow: hidden !important;
 }
 
-
-
-
-
-
-
-body.menu-open #menu-placeholder {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-   
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-body.menu-open #menu-placeholder::-webkit-scrollbar {
+body:not(.search-open) #search-placeholder{
   display: none;
 }
-
-/* Freeze menu content during close to prevent jump */
-body.menu-closing #menu-placeholder {
-  overflow: hidden !important;
+body.search-open #search-placeholder{
+  display: block;
 }
+
+
+
+
+
+
+
 
 /* ===== Menu Chevron Animation ===== */
 
