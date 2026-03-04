@@ -383,7 +383,6 @@ body.search-open #search-placeholder{
   margin-top: 12px;
 }
 
-
 /* ========================================
    SEARCH INPUT CLEAR BUTTON (Native X)
    - Native behavior preserved
@@ -398,14 +397,9 @@ body.search-open #search-placeholder{
   height: 16px;
 
   border-radius: 50%;
-
-  /* move it slightly to the left */
   margin-left: -20px;
 
-  /* fill color (same as border family) */
   background-color: var(--control-stroke);
-
-  /* smaller fill */
   background-size: 12px 12px;
 
   background-repeat: no-repeat;
@@ -413,15 +407,16 @@ body.search-open #search-placeholder{
 
   cursor: pointer;
 
-  /* white X (light mode) */
+  /* LIGHT MODE → black X */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23000000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* DARK MODE → white X */
+html.night-mode .search-input::-webkit-search-cancel-button,
+body.night-mode .search-input::-webkit-search-cancel-button{
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
-/* dark mode: black X */
-html.night-mode .search-input::-webkit-search-cancel-button,
-body.night-mode .search-input::-webkit-search-cancel-button{
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23000000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
-}
 
 /* Results stack */
 .search-results{
