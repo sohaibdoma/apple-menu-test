@@ -405,7 +405,7 @@ body.search-open #search-placeholder{
   height: 18px;
 
   border-radius: 50%;
-  margin-left: -25px;
+  margin-left: -22px;
 
   background-color: var(--control-stroke);
   background-size: 18px 18px;
