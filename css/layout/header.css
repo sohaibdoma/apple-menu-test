@@ -36,12 +36,6 @@
   -webkit-clip-path: inset(0 round var(--nav-radius));
 }
 
-
-
-
-
-
-
 /* Expanded pill height */
 body.menu-open .main-header,
 body.search-open .main-header {
@@ -52,11 +46,6 @@ body.search-open .main-header {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
-
-
-
-
-
 
 /* Header surface when menu is open (the menu “sheet”) */
 body.menu-open .main-header::after,
@@ -85,8 +74,12 @@ body.night-mode .main-header {
 
 
 
+
 /* ========================================
-   TOP BAR (controls)
+   HEADER BAR (Top Controls Row)
+   - Theme toggle + search button (left group)
+   - Language switch (center)
+   - Menu toggle (right)
 ======================================== */
 
 .header-bar {
@@ -129,8 +122,11 @@ body.night-mode .main-header {
 
 
 
+
 /* ========================================
-   MENU PLACEHOLDER (scroll layer)
+   MENU OVERLAY LAYER
+   - Scrollable content layer inside the expanded header sheet
+   - Hidden by default, enabled only in .menu-open state
 ======================================== */
 
 #menu-placeholder {
@@ -183,8 +179,11 @@ body.menu-closing #menu-placeholder {
 
 
 
+
 /* ========================================
-   SEARCH PLACEHOLDER (scroll layer) - clone of menu placeholder
+   SEARCH OVERLAY LAYER
+   - Scrollable content layer inside the expanded header sheet
+   - Hidden by default, enabled only in .search-open state
 ======================================== */
 
 #search-placeholder{
@@ -243,7 +242,13 @@ body.search-open #search-placeholder{
 
 
 
-/* ===== Menu Chevron Animation ===== */
+
+/* ========================================
+   HEADER BUTTONS (Menu + Search)
+   - Menu: morphing chevron-to-X + animated outline pill
+   - Search: icon-only button (no pill)
+   - Focus states: removed for a clean “tap” feel
+======================================== */
 
 /* Keep the button layout stable so it never shifts */
 .menu-toggle{
@@ -326,8 +331,6 @@ body.search-open #search-placeholder{
   height: 29px;                 /* OPEN pill height */
 }
 
-
-
 .search-toggle{
   width: 44px;
   height: 44px;
@@ -359,13 +362,53 @@ body.search-open #search-placeholder{
   stroke-linejoin: round;
 }
 
-/* Search sheet should behave RTL when Arabic */
-.search-sheet,
-.search-results {
+
+
+
+/* ========================================
+   SEARCH UI (Overlay Contents)
+   - Clean, centered sheet
+   - RTL-ready for Arabic
+======================================== */
+
+/* Search sheet wrapper (centers within expanded header) */
+.search-sheet{
+  margin: 12px auto 0;
+  max-width: 800px;
+  padding: 0 10px;
+}
+
+/* Search input */
+.search-input{
+  width: 100%;
+  height: 44px;
+
+  border-radius: 11px;
+  border: 1px solid var(--control-stroke);
+
+  background: transparent;
+  color: var(--page-text);
+
+  padding: 0 16px;
+  font: inherit;
+
+  outline: none;
+  margin-top: 16px;
+}
+
+/* Results stack */
+.search-results{
+  margin-top: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
   direction: rtl;
   text-align: right;
 }
 
+/* Result row (button) — no borders, keep hover */
 .search-result{
   display: block;
   width: 100%;
@@ -376,7 +419,7 @@ body.search-open #search-placeholder{
 
   background: transparent;
 
-  padding: 10px 0;
+  padding: 12px 14px;
   margin: 0;
 
   text-align: right;
@@ -385,28 +428,12 @@ body.search-open #search-placeholder{
   -webkit-appearance: none;
 
   cursor: pointer;
+  color: var(--page-text);
+
+  border-radius: 11px;
 }
 
-.search-results > *{
-  border: none !important;
-  box-shadow: none;
-}
-
-.search-result:focus,
-.search-result:focus-visible{
-  outline: none;
-  box-shadow: none;
-}
-
-.menu-toggle:focus,
-.menu-toggle:focus-visible,
-.search-toggle:focus,
-.search-toggle:focus-visible{
-  outline: none;
-  box-shadow: none;
-}
-
-
+/* Hover */
 .search-result:hover{
   background: rgba(0,0,0,0.04);
 }
@@ -415,6 +442,27 @@ html.night-mode .search-result:hover,
 body.night-mode .search-result:hover{
   background: rgba(255,255,255,0.06);
 }
+
+/* Empty / hint text */
+.search-empty{
+  opacity: 0.7;
+  padding: 16px 4px;
+
+  direction: rtl;
+  text-align: right;
+}
+
+/* Focus cleanup (results + header buttons) */
+.search-result:focus,
+.search-result:focus-visible,
+.menu-toggle:focus,
+.menu-toggle:focus-visible,
+.search-toggle:focus,
+.search-toggle:focus-visible{
+  outline: none;
+  box-shadow: none;
+}
+
 
 
 
