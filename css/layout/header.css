@@ -331,6 +331,7 @@ body.search-open #search-placeholder{
   height: 29px;                 /* OPEN pill height */
 }
 
+
 .search-toggle{
   width: 44px;
   height: 44px;
@@ -395,7 +396,7 @@ body.search-open #search-placeholder{
   font: inherit;
 
   outline: none;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 
@@ -405,15 +406,71 @@ body.search-open #search-placeholder{
    - Only recolors icon for light / dark modes
 ======================================== */
 
-.search-input::-webkit-search-cancel-button{
-  filter: invert(1);
-  cursor: pointer;
+/* Search input container so we can place the clear button */
+.search-input-wrap{
+  position: relative;
 }
 
-html.night-mode .search-input::-webkit-search-cancel-button,
-body.night-mode .search-input::-webkit-search-cancel-button{
-  filter: invert(0);
+/* Clear button (fill = same as input border color) */
+.search-clear{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* RTL: keep it on the LEFT side */
+  left: 10px;
+
+  width: 28px;
+  height: 28px;
+  border: 0;
+  padding: 0;
+
+  border-radius: 11px;
+
+  background: var(--control-stroke); /* same feel as border */
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
 }
+
+/* The X icon */
+.search-clear-icon{
+  width: 14px;
+  height: 14px;
+  display: block;
+
+  fill: none;
+  stroke: #ffffff; /* Light mode: X is white */
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Dark mode: X becomes black */
+html.night-mode .search-clear-icon,
+body.night-mode .search-clear-icon{
+  stroke: #000000;
+}
+
+/* Remove any blue focus ring */
+.search-clear:focus,
+.search-clear:focus-visible{
+  outline: none;
+  box-shadow: none;
+}
+
+/* Make room inside the input so text doesn't overlap the clear button (RTL: pad-left) */
+.search-input{
+  padding-left: 48px;
+}
+
+
+
+
+
 
 
 /* Results stack */
