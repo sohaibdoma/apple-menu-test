@@ -19,6 +19,15 @@ const App = window.Wahyollah;
     App.initMenu();
   }
 
+
+
+  if (App?.initSearch) {
+    App.initSearch();
+  }
+
+
+  
+  
   if (App?.initI18n) {
     App.initI18n();
   }
