@@ -373,7 +373,7 @@ body.search-open #search-placeholder{
   border-radius: 11px;
   border: 1px solid var(--control-stroke);
 
-  background: transparent;
+  background: var(--page-bg);
   color: var(--page-text);
 
   padding-inline: 16px 36px;
@@ -381,12 +381,13 @@ body.search-open #search-placeholder{
   font: inherit;
 
   outline: none;
-  margin-top: 12px;
 
   position: sticky;
   top: 0;               /* sticks to top of the search sheet */
-  z-index: 2;           /* stays above results */
+  z-index: 3;           /* stays above results */
   margin-top: 0;     
+   
+  box-shadow: 0 1px 0 var(--control-stroke);
 }
 
 /* ========================================
@@ -445,7 +446,8 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   box-shadow: none;
 
   background: transparent;
-
+   
+  margin-top: 12px;
   padding: 12px 14px;
   margin: 0;
 
