@@ -98,7 +98,7 @@ body.night-mode .main-header {
 
 .header-bar {
   display: grid;
-  grid-template-columns: auto 1fr 44px;
+  grid-template-columns: 88px 1fr 44px;
   align-items: center;
 
   height: var(--header-h);     /* key: matches header pill height */
@@ -112,21 +112,11 @@ body.night-mode .main-header {
   z-index: 3;
 }
 
-
-
-
-
-
 .header-controls{
   display: inline-flex;
   align-items: center;
-  gap: 30px;
+  gap: 14px;
 }
-
-
-
-
-
 
 .header-left {
   justify-self: center;
@@ -196,10 +186,6 @@ body.menu-closing #menu-placeholder {
   overflow: hidden !important;
 }
 
-
-
-
-
 /* ========================================
    SEARCH PLACEHOLDER (scroll layer) - clone of menu placeholder
 ======================================== */
@@ -207,7 +193,7 @@ body.menu-closing #menu-placeholder {
 #search-placeholder{
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
 
   min-height: 0;
 
@@ -251,12 +237,12 @@ body.search-closing #search-placeholder{
   overflow: hidden !important;
 }
 
-
-
-
-
-
-
+body:not(.search-open) #search-placeholder{
+  display: none;
+}
+body.search-open #search-placeholder{
+  display: block;
+}
 
 /* ===== Menu Chevron Animation ===== */
 
@@ -343,10 +329,6 @@ body.search-closing #search-placeholder{
 
 
 
-
-
-
-
 .search-toggle{
   width: 44px;
   height: 44px;
@@ -378,7 +360,32 @@ body.search-closing #search-placeholder{
   stroke-linejoin: round;
 }
 
+/* Search sheet should behave RTL when Arabic */
+.search-sheet,
+.search-results {
+  direction: rtl;
+  text-align: right;
+}
 
+.search-result{
+  border: 0;
+  background: transparent; /* or keep whatever you want */
+  box-shadow: none;
+}
+.search-result:focus,
+.search-result:focus-visible{
+  outline: none;
+  box-shadow: none;
+}
+
+
+.menu-toggle:focus,
+.menu-toggle:focus-visible,
+.search-toggle:focus,
+.search-toggle:focus-visible{
+  outline: none;
+  box-shadow: none;
+}
 
 /* ========================================
    THEME TOGGLE (Outline Minimal)
