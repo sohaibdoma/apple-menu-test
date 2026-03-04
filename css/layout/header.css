@@ -400,7 +400,7 @@ body.search-open #search-placeholder{
   border-radius: 50%;
 
   /* move it slightly to the left */
-  margin-left: -21px;
+  margin-left: -20px;
 
   /* fill color (same as border family) */
   background-color: var(--control-stroke);
