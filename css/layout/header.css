@@ -378,41 +378,6 @@ body.search-open #search-placeholder{
   padding: 0 10px;
 }
 
-
-
-      /* ========================================
-      SEARCH INPUT CLEAR BUTTON (X)
-      - Styles the native clear button of input[type="search"]
-      - Keeps size but adds filled rounded background
-      ======================================== */
-
-      .search-input::-webkit-search-cancel-button{
-        -webkit-appearance: none;
-        appearance: none;
-
-        height: 16px;
-        width: 16px;
-
-        border-radius: 11px;
-
-        background: #ffffff;
-
-        display: grid;
-        place-items: center;
-
-        cursor: pointer;
-      }
-
-      /* Night mode */
-
-      html.night-mode .search-input::-webkit-search-cancel-button,
-      body.night-mode .search-input::-webkit-search-cancel-button{
-        background: #000000;
-      }
-
-
-
-
 /* Search input */
 .search-input{
   width: 100%;
@@ -425,11 +390,31 @@ body.search-open #search-placeholder{
   color: var(--page-text);
 
   padding: 0 16px;
+  padding-inline: 16px 36px;
+   
   font: inherit;
 
   outline: none;
   margin-top: 16px;
 }
+
+
+/* ========================================
+   SEARCH INPUT CLEAR BUTTON (Native X)
+   - Keeps native behavior
+   - Only recolors icon for light / dark modes
+======================================== */
+
+.search-input::-webkit-search-cancel-button{
+  filter: invert(1);
+  cursor: pointer;
+}
+
+html.night-mode .search-input::-webkit-search-cancel-button,
+body.night-mode .search-input::-webkit-search-cancel-button{
+  filter: invert(0);
+}
+
 
 /* Results stack */
 .search-results{
