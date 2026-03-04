@@ -3,20 +3,24 @@
 
   function initMenu() {
     const menuButton = document.querySelector(".menu-toggle");
+    const searchButton = document.getElementById("searchToggle");
     const menuNav = document.getElementById("main-menu");
     const header = document.querySelector(".main-header");
 
-    if (!menuButton || !menuNav || !header) {
+    if (!menuButton || !header) {
       console.warn("Menu elements not found");
       return;
     }
 
     const getMenuScroller = () => document.getElementById("menu-placeholder");
+    const getSearchScroller = () => document.getElementById("search-placeholder");
 
     let lastFocusedElement = null;
     let lockedScrollY = 0;
 
     function markCurrentSurah() {
+      if (!menuNav) return;
+
       menuNav.querySelectorAll('a[aria-current="page"]').forEach((a) => {
         a.removeAttribute("aria-current");
       });
@@ -28,55 +32,32 @@
       if (currentLink) currentLink.setAttribute("aria-current", "page");
     }
 
-    function isMenuOpen() {
-      return menuButton.getAttribute("aria-expanded") === "true";
+    function getOverlayMode() {
+      if (document.body.classList.contains("menu-open")) return "menu";
+      if (document.body.classList.contains("search-open")) return "search";
+      return "none";
     }
 
-    function openMenu() {
-      document.body.classList.remove("no-blur-transition");
+    function isOverlayOpen() {
+      return getOverlayMode() !== "none";
+    }
 
+    function lockScroll() {
       lastFocusedElement = document.activeElement;
 
       lockedScrollY = window.scrollY;
       document.body.style.top = `-${lockedScrollY}px`;
-
-      menuButton.classList.add("is-open");
-      menuButton.setAttribute("aria-expanded", "true");
-
-      document.body.classList.add("menu-open");
-
-      const menuScroller = getMenuScroller();
-
-      requestAnimationFrame(() => {
-        if (menuScroller) menuScroller.scrollTop = 0;
-
-        markCurrentSurah();
-
-        const current = menuNav.querySelector('a[aria-current="page"]');
-        (current || menuNav.querySelector("a"))?.focus({ preventScroll: true });
-      });
+      document.body.classList.add("menu-open-lock"); // internal only (no CSS needed)
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
     }
 
-    function closeMenu() {
-      document.body.classList.add("no-blur-transition");
-
-      const menuScroller = getMenuScroller();
-      const frozenScrollTop = menuScroller ? menuScroller.scrollTop : 0;
-
-      document.body.classList.add("menu-closing");
-
-      let rafId = 0;
-      function keepScrollFrozen() {
-        if (menuScroller) menuScroller.scrollTop = frozenScrollTop;
-        rafId = requestAnimationFrame(keepScrollFrozen);
-      }
-      keepScrollFrozen();
-
-      menuButton.classList.remove("is-open");
-      menuButton.setAttribute("aria-expanded", "false");
-
+    function unlockScroll() {
       document.body.style.top = "";
-      document.body.classList.remove("menu-open");
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
 
       window.scrollTo(0, lockedScrollY);
       lockedScrollY = 0;
@@ -84,11 +65,80 @@
       if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
         lastFocusedElement.focus();
       }
+    }
 
-      // Match your header transition (~350ms)
+    function setButtonsOpenState(open) {
+      menuButton.classList.toggle("is-open", open);
+      menuButton.setAttribute("aria-expanded", String(open));
+
+      if (searchButton) {
+        searchButton.classList.toggle("is-open", open && getOverlayMode() === "search");
+        searchButton.setAttribute("aria-expanded", String(open && getOverlayMode() === "search"));
+      }
+    }
+
+    function openOverlay(mode) {
+      document.body.classList.remove("no-blur-transition");
+
+      const current = getOverlayMode();
+      if (current === mode) return;
+
+      // if switching from menu <-> search while already open, just swap classes (no re-lock)
+      const wasOpen = isOverlayOpen();
+      if (!wasOpen) lockScroll();
+
+      document.body.classList.remove("menu-open", "search-open");
+      document.body.classList.add(mode === "menu" ? "menu-open" : "search-open");
+
+      setButtonsOpenState(true);
+
+      requestAnimationFrame(() => {
+        if (mode === "menu") {
+          const menuScroller = getMenuScroller();
+          if (menuScroller) menuScroller.scrollTop = 0;
+
+          markCurrentSurah();
+
+          if (menuNav) {
+            const currentLink = menuNav.querySelector('a[aria-current="page"]');
+            (currentLink || menuNav.querySelector("a"))?.focus({ preventScroll: true });
+          }
+        } else {
+          const searchScroller = getSearchScroller();
+          if (searchScroller) searchScroller.scrollTop = 0;
+
+          const input = document.querySelector("#searchInput");
+          if (input) input.focus({ preventScroll: true });
+        }
+      });
+    }
+
+    function closeOverlay() {
+      if (!isOverlayOpen()) return;
+
+      document.body.classList.add("no-blur-transition");
+
+      const mode = getOverlayMode();
+      const scroller = mode === "menu" ? getMenuScroller() : getSearchScroller();
+      const frozenScrollTop = scroller ? scroller.scrollTop : 0;
+
+      document.body.classList.add(mode === "menu" ? "menu-closing" : "search-closing");
+
+      let rafId = 0;
+      function keepScrollFrozen() {
+        if (scroller) scroller.scrollTop = frozenScrollTop;
+        rafId = requestAnimationFrame(keepScrollFrozen);
+      }
+      keepScrollFrozen();
+
+      document.body.classList.remove("menu-open", "search-open");
+      setButtonsOpenState(false);
+
+      unlockScroll();
+
       window.setTimeout(() => {
         cancelAnimationFrame(rafId);
-        document.body.classList.remove("menu-closing");
+        document.body.classList.remove("menu-closing", "search-closing");
 
         requestAnimationFrame(() => {
           document.body.classList.remove("no-blur-transition");
@@ -96,29 +146,37 @@
       }, 420);
     }
 
+    // MENU BUTTON:
+    // - if overlay open (menu/search) => CLOSE ONLY
+    // - if overlay closed => open MENU
     menuButton.addEventListener("click", () => {
-      isMenuOpen() ? closeMenu() : openMenu();
+      isOverlayOpen() ? closeOverlay() : openOverlay("menu");
     });
 
-    menuNav.addEventListener("click", (e) => {
-      const link = e.target.closest("a");
-      if (!link) return;
-    });
+    // SEARCH BUTTON toggles SEARCH overlay
+    if (searchButton) {
+      searchButton.addEventListener("click", () => {
+        getOverlayMode() === "search" ? closeOverlay() : openOverlay("search");
+      });
+    }
 
+    // ESC closes any overlay
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && isMenuOpen()) {
-        closeMenu();
+      if (e.key === "Escape" && isOverlayOpen()) {
+        closeOverlay();
       }
     });
 
+    // Click outside closes any overlay (same rule as menu)
     document.addEventListener("click", (e) => {
-      if (!isMenuOpen()) return;
+      if (!isOverlayOpen()) return;
 
       const clickedInsideHeader = header.contains(e.target);
       const clickedMenuButton = menuButton.contains(e.target);
+      const clickedSearchButton = searchButton ? searchButton.contains(e.target) : false;
 
-      if (!clickedInsideHeader && !clickedMenuButton) {
-        closeMenu();
+      if (!clickedInsideHeader && !clickedMenuButton && !clickedSearchButton) {
+        closeOverlay();
       }
     });
 
@@ -126,6 +184,11 @@
 
     window.Wahyollah = window.Wahyollah || {};
     window.Wahyollah.markCurrentSurah = markCurrentSurah;
+
+    // expose overlay controls for search.js if needed
+    window.Wahyollah.openOverlay = openOverlay;
+    window.Wahyollah.closeOverlay = closeOverlay;
+    window.Wahyollah.getOverlayMode = getOverlayMode;
   }
 
   window.Wahyollah = window.Wahyollah || {};
