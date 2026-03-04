@@ -401,14 +401,14 @@ body.search-open #search-placeholder{
   -webkit-appearance: none;
   appearance: none;
 
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 
   border-radius: 50%;
   margin-left: -20px;
 
   background-color: var(--control-stroke);
-  background-size: 16px 16px;
+  background-size: 20px 20px;
 
   background-repeat: no-repeat;
   background-position: center;
