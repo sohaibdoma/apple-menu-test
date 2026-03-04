@@ -362,6 +362,7 @@ body.search-open #search-placeholder{
   margin: 12px auto 0;
   max-width: 800px;
   padding: 0 10px;
+  position: relative;
 }
 
 /* Search input */
@@ -381,6 +382,11 @@ body.search-open #search-placeholder{
 
   outline: none;
   margin-top: 12px;
+
+  position: sticky;
+  top: 0;               /* sticks to top of the search sheet */
+  z-index: 2;           /* stays above results */
+  margin-top: 0;     
 }
 
 /* ========================================
