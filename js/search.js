@@ -11,33 +11,23 @@
     // Build UI (Arabic / RTL)
     holder.innerHTML = `
       <div class="search-sheet" role="search">
-        <div class="search-input-wrap">
-          <input
-            id="searchInput"
-            class="search-input"
-            type="search"
-            autocomplete="off"
-            spellcheck="false"
-            dir="rtl"
-            placeholder="اكتب للبحث"
-            aria-label="اكتب للبحث"
-          />
-          <button id="searchClear" class="search-clear" type="button" aria-label="مسح البحث">
-            <svg class="search-clear-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7.5 7.5 L16.5 16.5" />
-              <path d="M16.5 7.5 L7.5 16.5" />
-            </svg>
-          </button>
-        </div>
-
+        <input
+          id="searchInput"
+          class="search-input"
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          dir="rtl"
+          placeholder="اكتب للبحث"
+          aria-label="اكتب للبحث"
+        />
         <div id="searchResults" class="search-results" role="list"></div>
       </div>
     `;
 
     const input = document.getElementById("searchInput");
-    const clearBtn = document.getElementById("searchClear");
     const results = document.getElementById("searchResults");
-    if (!input || !clearBtn || !results) return;
+    if (!input || !results) return;
 
     function norm(s) {
       return (s || "").toString().trim().toLowerCase();
@@ -72,19 +62,13 @@
           const trimmed = text.trim();
           hits.push({
             type: "page",
-            label:
-              trimmed.slice(0, 140) + (trimmed.length > 140 ? "…" : ""),
+            label: trimmed.slice(0, 140) + (trimmed.length > 140 ? "…" : ""),
             el,
           });
         }
       });
 
       return hits;
-    }
-
-    function syncClear() {
-      const hasText = (input.value || "").trim().length > 0;
-      clearBtn.hidden = !hasText;
     }
 
     function render(items) {
@@ -108,7 +92,6 @@
           const item = items[i];
           if (!item) return;
 
-          // close overlay for navigation feel (if your overlay system exposes it)
           window.Wahyollah?.closeOverlay?.();
 
           if (item.type === "menu") {
@@ -139,20 +122,9 @@
       render([...menuItems, ...pageHits]);
     }
 
-    clearBtn.addEventListener("click", () => {
-      input.value = "";
-      input.focus();
-      syncClear();
-      doSearch();
-    });
-
-    input.addEventListener("input", () => {
-      syncClear();
-      doSearch();
-    });
+    input.addEventListener("input", doSearch);
 
     // initial state
-    clearBtn.hidden = true;
     results.innerHTML = "";
   }
 
