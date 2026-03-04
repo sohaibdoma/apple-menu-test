@@ -13,6 +13,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap');
 
+
+
+
 /* ========================================
    GLOBAL RESET
 ======================================== */
@@ -21,6 +24,9 @@
   margin: 0;
   padding: 0;
 }
+
+
+
 
 /* ===============================
    BODY
@@ -37,6 +43,9 @@ body {
   
   padding-top: 40px;
 }
+
+
+
 
 /* ===============================
    MENU CONTENT
@@ -101,6 +110,9 @@ body {
   display: block;
 }
 
+
+
+
 /* ===============================
    HOME PAGE
    =============================== */
@@ -121,6 +133,9 @@ body {
   color: #555;
   line-height: 1.6;
 }
+
+
+
 
 /* ========================================
    SURAH PAGE
@@ -183,6 +198,9 @@ body {
   font-variant-ligatures: normal;
   font-feature-settings: "calt" 1, "liga" 1;
 }
+
+
+
 /* ========================================
    Quran Badges (Ayah + Page)
 ======================================== */
@@ -217,6 +235,8 @@ body {
   border: 1px solid currentColor;          /* stroke uses text color */
   color: inherit;                          /* same as ayah text */
 }
+
+
 
 
 /* ===============================
@@ -264,6 +284,8 @@ body.night-mode .q-badge--page {
 }
 
 
+
+
 /* ===============================
    EASY READ MODE
    =============================== */
@@ -285,6 +307,9 @@ body.easy-read .surah-title {
   text-align: center;
 }
 
+
+
+
 /* ========================================
    STATE: MENU OPEN
 ======================================== */
@@ -295,6 +320,9 @@ body.menu-open {
   width: 100%;
   overflow: hidden;
 }
+
+
+
 
 /* ===============================
    NIGHT MODE
@@ -329,6 +357,9 @@ body.night-mode .home-subtitle,
 html.night-mode .home-subtitle {
   color: #bbbbbb;
 }
+
+
+
 
 /* ===============================
    NIGHT MODE — LANG SWITCH
@@ -417,6 +448,9 @@ html.night-mode .menu-content a:focus-visible {
   outline: none;
 }
 
+
+
+
 /* ===============================
    HIDE MENU SCROLLBAR
 =============================== */
@@ -449,6 +483,8 @@ body.menu-open > *:not(.main-header) {
 body.no-blur-transition > *:not(.main-header) {
   transition: none !important;
 }
+
+
 
 
 /* ========================================
@@ -486,6 +522,9 @@ html.night-mode .auto-scroll-bar,
 body.night-mode .auto-scroll-bar{
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+
+
 
 /* ===============================
    Auto Scroll Button
@@ -546,6 +585,9 @@ body.night-mode .auto-scroll-bar{
   y: 1.8px;
 }
 
+
+
+
 /* ===============================
    ACTIVE STATE
 =============================== */
@@ -559,6 +601,8 @@ body.night-mode .auto-scroll-bar{
   outline: none;
   box-shadow: none;
 }
+
+
 
 /* ===============================
    Auto scroll button: remove focus / tap highlight
@@ -581,54 +625,3 @@ body.night-mode .auto-scroll-bar{
   -webkit-appearance: none;
   appearance: none;
 }
-
-
-
-
-
-
-.search-sheet{
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-.search-input{
-  width: 100%;
-  height: 44px;
-  border-radius: 11px;
-  border: 1px solid var(--control-stroke);
-  background: transparent;
-  color: var(--page-text);
-  padding: 0 16px;
-  font: inherit;
-  outline: none;
-}
-
-.search-results{
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.search-result{
-  text-align: start;
-  border: 1px solid var(--control-stroke);
-  border-radius: 11px;
-  padding: 12px 14px;
-  background: transparent;
-  color: var(--page-text);
-  cursor: pointer;
-}
-
-.search-empty{
-  opacity: 0.7;
-  padding: 16px 4px;
-}
-
-
-
-
-
-
