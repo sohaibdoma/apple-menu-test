@@ -198,7 +198,7 @@ body.menu-closing #menu-placeholder {
   pointer-events: none;
 
   /* match menu spacing so it sits under the top bar */
-  padding-top: 50px;
+  padding-top: 80px;
   padding-bottom: 50px;
   padding-inline: 10px;
   box-sizing: border-box;
