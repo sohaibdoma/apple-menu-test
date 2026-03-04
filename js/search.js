@@ -13,7 +13,7 @@
     holder.innerHTML = `
       <div class="search-sheet" role="search">
         <input id="searchInput" class="search-input" type="search" autocomplete="off" spellcheck="false"
-               placeholder="Search..." aria-label="Search text" />
+               placeholder="اكتب للبحث" aria-label="Search text" />
         <div id="searchResults" class="search-results" role="list"></div>
       </div>
     `;
