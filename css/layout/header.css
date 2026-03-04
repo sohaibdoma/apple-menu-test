@@ -200,17 +200,33 @@ body.menu-closing #menu-placeholder {
 
 
 
-
-
-
-
-
-
-
-
+/* ========================================
+   SEARCH PLACEHOLDER (scroll layer) - clone of menu placeholder
+======================================== */
 
 #search-placeholder{
-  z-index: 2; /* higher than ::after (0), below header-bar (3) */
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  min-height: 0;
+
+  opacity: 0;
+  pointer-events: none;
+
+  /* match menu spacing so it sits under the top bar */
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-inline: 10px;
+  box-sizing: border-box;
+
+  scroll-padding-top: 50px;
+  scroll-padding-bottom: 50px;
+
+  transform: translateY(-6px);
+
+  transition: opacity 0.25s ease,
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body.search-open #search-placeholder{
@@ -233,13 +249,6 @@ body.search-open #search-placeholder::-webkit-scrollbar{
 
 body.search-closing #search-placeholder{
   overflow: hidden !important;
-}
-
-body:not(.search-open) #search-placeholder{
-  display: none;
-}
-body.search-open #search-placeholder{
-  display: block;
 }
 
 
