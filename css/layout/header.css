@@ -359,7 +359,7 @@ body.search-open #search-placeholder{
 
 /* Search sheet wrapper (centers within expanded header) */
 .search-sheet{
-  margin: 12px auto 0;
+  margin: 0 auto;
   max-width: 800px;
   padding: 0 10px;
    
