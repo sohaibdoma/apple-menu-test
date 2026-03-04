@@ -120,7 +120,7 @@ body.night-mode .main-header {
 .header-controls{
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 30px;
 }
 
 
