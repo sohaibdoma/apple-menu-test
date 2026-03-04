@@ -412,19 +412,19 @@ body.search-open #search-placeholder{
   -webkit-appearance: none;
   appearance: none;
 
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 
   border-radius: 7px;
 
   /* move it slightly to the left */
-  margin-left: -2px;
+  margin-left: -8px;
 
   /* fill color (same as border family) */
   background-color: var(--control-stroke);
 
   /* smaller fill */
-  background-size: 8px 8px;
+  background-size: 12px 12px;
 
   background-repeat: no-repeat;
   background-position: center;
