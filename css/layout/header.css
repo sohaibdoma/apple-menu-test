@@ -415,10 +415,10 @@ body.search-open #search-placeholder{
   width: 16px;
   height: 16px;
 
-  border-radius: 15px;
+  border-radius: 50%;
 
   /* move it slightly to the left */
-  margin-left: -16px;
+  margin-left: -24px;
 
   /* fill color (same as border family) */
   background-color: var(--control-stroke);
