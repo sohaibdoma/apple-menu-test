@@ -400,72 +400,43 @@ body.search-open #search-placeholder{
 }
 
 
+
+
 /* ========================================
    SEARCH INPUT CLEAR BUTTON (Native X)
-   - Keeps native behavior
-   - Only recolors icon for light / dark modes
+   - Keeps native behavior (shows only when browser shows it)
+   - Filled rounded background = input border color
+   - X color: white (light) / black (night)
 ======================================== */
 
-/* Search input container so we can place the clear button */
-.search-input-wrap{
-  position: relative;
-}
-
-/* Clear button (fill = same as input border color) */
-.search-clear{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  /* RTL: keep it on the LEFT side */
-  left: 10px;
+/* Base (Chrome/Safari/Edge WebKit/Blink) */
+.search-input::-webkit-search-cancel-button{
+  -webkit-appearance: none;
+  appearance: none;
 
   width: 28px;
   height: 28px;
-  border: 0;
-  padding: 0;
-
   border-radius: 11px;
 
-  background: var(--control-stroke); /* same feel as border */
-  display: grid;
-  place-items: center;
+  /* Fill = same as input border */
+  background-color: var(--control-stroke);
+
+  /* Draw the X as an SVG (light mode = white X) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
 
   cursor: pointer;
-
-  -webkit-tap-highlight-color: transparent;
 }
 
-/* The X icon */
-.search-clear-icon{
-  width: 14px;
-  height: 14px;
-  display: block;
-
-  fill: none;
-  stroke: #ffffff; /* Light mode: X is white */
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+/* Night mode = black X (keep same fill) */
+html.night-mode .search-input::-webkit-search-cancel-button,
+body.night-mode .search-input::-webkit-search-cancel-button{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23000000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
-/* Dark mode: X becomes black */
-html.night-mode .search-clear-icon,
-body.night-mode .search-clear-icon{
-  stroke: #000000;
-}
 
-/* Remove any blue focus ring */
-.search-clear:focus,
-.search-clear:focus-visible{
-  outline: none;
-  box-shadow: none;
-}
-
-/* Make room inside the input so text doesn't overlap the clear button (RTL: pad-left) */
-.search-input{
-  padding-left: 48px;
-}
 
 
 
