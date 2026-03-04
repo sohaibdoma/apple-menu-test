@@ -98,7 +98,7 @@ body.night-mode .main-header {
 
 .header-bar {
   display: grid;
-  grid-template-columns: 44px 1fr 44px;
+  grid-template-columns: auto 1fr 44px;
   align-items: center;
 
   height: var(--header-h);     /* key: matches header pill height */
