@@ -615,7 +615,7 @@ body.night-mode .auto-scroll-bar{
 .search-result{
   text-align: start;
   border: 1px solid var(--control-stroke);
-  border-radius: 20px;
+  border-radius: 11px;
   padding: 12px 14px;
   background: transparent;
   color: var(--page-text);
