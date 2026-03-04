@@ -5,6 +5,10 @@
     const holder = document.getElementById("search-placeholder");
     if (!holder) return;
 
+    if (holder.dataset.ready === "1") return;
+    holder.dataset.ready = "1";
+
+    
     // Build UI (minimal + clean)
     holder.innerHTML = `
       <div class="search-sheet" role="search">
