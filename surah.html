@@ -33,7 +33,24 @@
 
   <!-- TOP BAR (controls only) -->
   <div class="header-bar">
-    <button id="themeToggle" class="theme-toggle"></button>
+
+
+    
+    
+    <div class="header-controls">
+     <button id="themeToggle" class="theme-toggle"></button>
+
+     <button id="searchToggle" class="search-toggle" aria-label="Search" aria-expanded="false" type="button">
+       <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+         <circle cx="11" cy="11" r="6.5"></circle>
+         <path d="M16.2 16.2 L20 20"></path>
+       </svg>
+     </button>
+   </div>
+
+
+
+    
 
     <div class="header-left">
       <div class="lang-switch">
@@ -57,6 +74,13 @@
   <!-- MENU AREA (fills pill, not affected by header padding) -->
   <div id="menu-placeholder"></div>
 
+
+  
+  <div id="search-placeholder"></div>
+
+
+
+  
 </header>
   
   <!-- SURAH CONTENT -->
@@ -100,6 +124,11 @@
   <script src="js/api.js"></script>
   <script src="js/surah-engine.js"></script>
   <script src="js/auto-scroll.js"></script>
+
+
+  <script src="js/search.js"></script>
+
+  
   <script src="script.js"></script>
 
   
