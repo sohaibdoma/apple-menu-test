@@ -418,7 +418,7 @@ body.search-open #search-placeholder{
   border-radius: 50%;
 
   /* move it slightly to the left */
-  margin-left: -22px;
+  margin-left: -23px;
 
   /* fill color (same as border family) */
   background-color: var(--control-stroke);
