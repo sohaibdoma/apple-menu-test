@@ -70,10 +70,6 @@ body.search-open .main-header::after {
   background: #ffffff;
 }
 
-
-
-
-
 html.night-mode body.menu-open .main-header::after,
 body.night-mode body.menu-open .main-header::after,
 html.night-mode body.search-open .main-header::after,
@@ -81,16 +77,13 @@ body.night-mode body.search-open .main-header::after {
   background: #000000;
 }
 
-
-
-
-
-
 /* Default pill background in night mode (when menu is CLOSED) */
 html.night-mode .main-header,
 body.night-mode .main-header {
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+
 
 /* ========================================
    TOP BAR (controls)
@@ -133,6 +126,8 @@ body.night-mode .main-header {
 .header-right {
   align-self: center;
 }
+
+
 
 /* ========================================
    MENU PLACEHOLDER (scroll layer)
@@ -185,6 +180,8 @@ body.menu-open #menu-placeholder::-webkit-scrollbar {
 body.menu-closing #menu-placeholder {
   overflow: hidden !important;
 }
+
+
 
 /* ========================================
    SEARCH PLACEHOLDER (scroll layer) - clone of menu placeholder
@@ -243,6 +240,8 @@ body:not(.search-open) #search-placeholder{
 body.search-open #search-placeholder{
   display: block;
 }
+
+
 
 /* ===== Menu Chevron Animation ===== */
 
@@ -368,16 +367,29 @@ body.search-open #search-placeholder{
 }
 
 .search-result{
-  border: 0;
-  background: transparent; /* or keep whatever you want */
+  display: block;
+  width: 100%;
+
+  border: none;
+  background: transparent;
   box-shadow: none;
+
+  padding: 10px 0;
+  margin: 0;
+
+  text-align: right;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  cursor: pointer;
 }
+
 .search-result:focus,
 .search-result:focus-visible{
   outline: none;
   box-shadow: none;
 }
-
 
 .menu-toggle:focus,
 .menu-toggle:focus-visible,
@@ -386,6 +398,18 @@ body.search-open #search-placeholder{
   outline: none;
   box-shadow: none;
 }
+
+
+.search-result:hover{
+  background: rgba(0,0,0,0.04);
+}
+
+html.night-mode .search-result:hover,
+body.night-mode .search-result:hover{
+  background: rgba(255,255,255,0.06);
+}
+
+
 
 /* ========================================
    THEME TOGGLE (Outline Minimal)
