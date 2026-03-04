@@ -13,7 +13,7 @@
     holder.innerHTML = `
       <div class="search-sheet" role="search">
         <input id="searchInput" class="search-input" type="search" autocomplete="off" spellcheck="false"
-               placeholder="اكتب للبحث" aria-label="Search text" />
+          dir="rtl" placeholder="اكتب للبحث" aria-label="اكتب للبحث" />
         <div id="searchResults" class="search-results" role="list"></div>
       </div>
     `;
@@ -51,7 +51,7 @@
       if (!results) return;
 
       if (!items.length) {
-        results.innerHTML = `<div class="search-empty">No results</div>`;
+        results.innerHTML = `<div class="search-empty">لا توجد نتائج</div>`;
         return;
       }
 
@@ -88,9 +88,9 @@
     function doSearch() {
       const q = norm(input.value);
       if (!q) {
-        results.innerHTML = `<div class="search-empty">Type to search</div>`;
-        return;
-      }
+       results.innerHTML = "";
+       return;
+     }
 
       const menuItems = collectMenuItems().filter((it) => norm(it.label).includes(q));
       const pageHits = collectPageTextHits(q);
@@ -101,7 +101,7 @@
     input.addEventListener("input", doSearch);
 
     // initial state
-    results.innerHTML = `<div class="search-empty">Type to search</div>`;
+    results.innerHTML = "";
   }
 
   window.Wahyollah = window.Wahyollah || {};
