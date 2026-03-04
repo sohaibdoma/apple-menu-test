@@ -8,21 +8,46 @@
     if (holder.dataset.ready === "1") return;
     holder.dataset.ready = "1";
 
-    
-    // Build UI (minimal + clean)
+    // Build UI (Arabic / RTL)
     holder.innerHTML = `
       <div class="search-sheet" role="search">
-        <input id="searchInput" class="search-input" type="search" autocomplete="off" spellcheck="false"
-          dir="rtl" placeholder="اكتب للبحث" aria-label="اكتب للبحث" />
+        <div class="search-input-wrap">
+          <input
+            id="searchInput"
+            class="search-input"
+            type="search"
+            autocomplete="off"
+            spellcheck="false"
+            dir="rtl"
+            placeholder="اكتب للبحث"
+            aria-label="اكتب للبحث"
+          />
+          <button id="searchClear" class="search-clear" type="button" aria-label="مسح البحث">
+            <svg class="search-clear-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7.5 7.5 L16.5 16.5" />
+              <path d="M16.5 7.5 L7.5 16.5" />
+            </svg>
+          </button>
+        </div>
+
         <div id="searchResults" class="search-results" role="list"></div>
       </div>
     `;
 
     const input = document.getElementById("searchInput");
+    const clearBtn = document.getElementById("searchClear");
     const results = document.getElementById("searchResults");
+    if (!input || !clearBtn || !results) return;
 
     function norm(s) {
       return (s || "").toString().trim().toLowerCase();
+    }
+
+    function escapeHtml(s) {
+      return (s || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
     }
 
     function collectMenuItems() {
@@ -37,19 +62,32 @@
 
     function collectPageTextHits(q) {
       const hits = [];
-      const nodes = document.querySelectorAll(".ayah, .ayah-text, #surah-content, .surah-title, .bismillah");
+      const nodes = document.querySelectorAll(
+        ".ayah, .ayah-text, #surah-content, .surah-title, .bismillah"
+      );
+
       nodes.forEach((el) => {
         const text = el.textContent || "";
         if (norm(text).includes(q)) {
-          hits.push({ type: "page", label: text.trim().slice(0, 140) + (text.trim().length > 140 ? "…" : ""), el });
+          const trimmed = text.trim();
+          hits.push({
+            type: "page",
+            label:
+              trimmed.slice(0, 140) + (trimmed.length > 140 ? "…" : ""),
+            el,
+          });
         }
       });
+
       return hits;
     }
 
-    function render(items) {
-      if (!results) return;
+    function syncClear() {
+      const hasText = (input.value || "").trim().length > 0;
+      clearBtn.hidden = !hasText;
+    }
 
+    function render(items) {
       if (!items.length) {
         results.innerHTML = `<div class="search-empty">لا توجد نتائج</div>`;
         return;
@@ -58,7 +96,7 @@
       results.innerHTML = items
         .slice(0, 80)
         .map((it, idx) => {
-          const safe = (it.label || "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          const safe = escapeHtml(it.label || "");
           return `<button class="search-result" type="button" data-idx="${idx}">${safe}</button>`;
         })
         .join("");
@@ -70,7 +108,7 @@
           const item = items[i];
           if (!item) return;
 
-          // close overlay for navigation feel
+          // close overlay for navigation feel (if your overlay system exposes it)
           window.Wahyollah?.closeOverlay?.();
 
           if (item.type === "menu") {
@@ -87,20 +125,34 @@
 
     function doSearch() {
       const q = norm(input.value);
-      if (!q) {
-       results.innerHTML = "";
-       return;
-     }
 
-      const menuItems = collectMenuItems().filter((it) => norm(it.label).includes(q));
+      if (!q) {
+        results.innerHTML = "";
+        return;
+      }
+
+      const menuItems = collectMenuItems().filter((it) =>
+        norm(it.label).includes(q)
+      );
       const pageHits = collectPageTextHits(q);
 
       render([...menuItems, ...pageHits]);
     }
 
-    input.addEventListener("input", doSearch);
+    clearBtn.addEventListener("click", () => {
+      input.value = "";
+      input.focus();
+      syncClear();
+      doSearch();
+    });
+
+    input.addEventListener("input", () => {
+      syncClear();
+      doSearch();
+    });
 
     // initial state
+    clearBtn.hidden = true;
     results.innerHTML = "";
   }
 
