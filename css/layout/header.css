@@ -72,9 +72,6 @@ body.night-mode .main-header {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-
-
-
 /* ========================================
    HEADER BAR (Top Controls Row)
    - Theme toggle + search button (left group)
@@ -119,9 +116,6 @@ body.night-mode .main-header {
 .header-right {
   align-self: center;
 }
-
-
-
 
 /* ========================================
    MENU OVERLAY LAYER
@@ -176,9 +170,6 @@ body.menu-open #menu-placeholder::-webkit-scrollbar {
 body.menu-closing #menu-placeholder {
   overflow: hidden !important;
 }
-
-
-
 
 /* ========================================
    SEARCH OVERLAY LAYER
@@ -239,9 +230,6 @@ body:not(.search-open) #search-placeholder{
 body.search-open #search-placeholder{
   display: block;
 }
-
-
-
 
 /* ========================================
    HEADER BUTTONS (Menu + Search)
@@ -363,9 +351,6 @@ body.search-open #search-placeholder{
   stroke-linejoin: round;
 }
 
-
-
-
 /* ========================================
    SEARCH UI (Overlay Contents)
    - Clean, centered sheet
@@ -390,7 +375,6 @@ body.search-open #search-placeholder{
   background: transparent;
   color: var(--page-text);
 
-  padding: 0 16px;
   padding-inline: 16px 36px;
    
   font: inherit;
@@ -398,8 +382,6 @@ body.search-open #search-placeholder{
   outline: none;
   margin-top: 12px;
 }
-
-
 
 
 /* ========================================
@@ -440,13 +422,6 @@ html.night-mode .search-input::-webkit-search-cancel-button,
 body.night-mode .search-input::-webkit-search-cancel-button{
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23000000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
-
-
-
-
-
-
-
 
 /* Results stack */
 .search-results{
@@ -504,7 +479,13 @@ body.night-mode .search-result:hover{
   text-align: right;
 }
 
-/* Focus cleanup (results + header buttons) */
+/* ========================================
+   FOCUS CLEANUP (Search + Header Controls)
+   Removes browser focus outlines and tap highlights
+======================================== */
+
+.search-input:focus,
+.search-input:focus-visible,
 .search-result:focus,
 .search-result:focus-visible,
 .menu-toggle:focus,
@@ -515,8 +496,13 @@ body.night-mode .search-result:hover{
   box-shadow: none;
 }
 
-
-
+/* Remove mobile tap highlight */
+.search-input,
+.search-result,
+.menu-toggle,
+.search-toggle{
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* ========================================
    THEME TOGGLE (Outline Minimal)
