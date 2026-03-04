@@ -408,7 +408,7 @@ body.search-open #search-placeholder{
   margin-left: -20px;
 
   background-color: var(--control-stroke);
-  background-size: 18px 18px;
+  background-size: 16px 16px;
 
   background-repeat: no-repeat;
   background-position: center;
