@@ -404,38 +404,42 @@ body.search-open #search-placeholder{
 
 /* ========================================
    SEARCH INPUT CLEAR BUTTON (Native X)
-   - Keeps native behavior (shows only when browser shows it)
-   - Filled rounded background = input border color
-   - X color: white (light) / black (night)
+   - Native behavior preserved
+   - Styled fill + SVG icon
 ======================================== */
 
-/* Base (Chrome/Safari/Edge WebKit/Blink) */
 .search-input::-webkit-search-cancel-button{
   -webkit-appearance: none;
   appearance: none;
 
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
+
   border-radius: 11px;
 
-  /* Fill = same as input border */
+  /* move it slightly to the left */
+  margin-left: -4px;
+
+  /* fill color (same as border family) */
   background-color: var(--control-stroke);
 
-  /* Draw the X as an SVG (light mode = white X) */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  /* smaller fill */
+  background-size: 12px 12px;
+
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 14px 14px;
 
   cursor: pointer;
+
+  /* white X (light mode) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
-/* Night mode = black X (keep same fill) */
+/* dark mode: black X */
 html.night-mode .search-input::-webkit-search-cancel-button,
 body.night-mode .search-input::-webkit-search-cancel-button{
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23000000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
-
 
 
 
