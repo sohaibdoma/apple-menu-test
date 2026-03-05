@@ -345,6 +345,11 @@ body.search-open #search-placeholder{
   stroke-linejoin: round;
 }
 
+body.search-open .search-toggle{
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ========================================
    SEARCH UI (Overlay Contents)
    - Clean, centered sheet
@@ -362,6 +367,27 @@ body.search-open #search-placeholder{
   flex-direction: column;
 }
 
+
+/* Sticky header area inside the search overlay (pins input + creates the cut line) */
+.search-head{
+  position: sticky;
+  top: 0;
+  z-index: 5;
+
+  /* prevents results from showing "through" behind the input while scrolling */
+  background: transparent;
+}
+
+/* The single separator line under the input (the ONLY top cut line you want) */
+.search-head::after{
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--control-stroke);
+  margin-top: 0;
+}
+
+
 /* Search input */
 .search-input{
   width: 100%;
@@ -373,20 +399,19 @@ body.search-open #search-placeholder{
   background: transparent;
   color: var(--page-text);
 
-  padding-inline: 16px 36px;
-   
-  font: inherit;
+  /* fixed vertical sizing forever (prevents iOS resizing on focus/typing) */
+  padding-block: 0;
+  line-height: 44px;
 
+  padding-inline: 16px 36px;
+
+  font: inherit;
   outline: none;
 
-   /* stays above results */
-  margin-top: 0;     
-   
-  box-shadow: 0 1px 0 var(--control-stroke);
-   
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  -webkit-appearance: none;
+  appearance: none;
+
+  margin-top: 0;
 }
 
 /* ========================================
