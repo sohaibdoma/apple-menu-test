@@ -224,12 +224,6 @@ body.search-closing #search-placeholder{
   overflow: hidden !important;
 }
 
-body:not(.search-open) #search-placeholder{
-  display: none;
-}
-body.search-open #search-placeholder{
-  display: block;
-}
 
 /* ========================================
    HEADER BUTTONS (Menu + Search)
