@@ -207,19 +207,11 @@ body.search-open #search-placeholder{
   pointer-events: auto;
   transform: translateY(0);
 
-  overflow-y: auto;
-  overflow-x: hidden;
+  /* IMPORTANT: placeholder is NOT the scroller.
+     It behaves like a mask inside the header pill. */
+  overflow: hidden;
 
-  -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-
-body.search-open #search-placeholder::-webkit-scrollbar{
-  display: none;
 }
 
 body.search-closing #search-placeholder{
@@ -442,11 +434,23 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   direction: rtl;
   text-align: right;
 
+  /* This is the ONLY scroller */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
+  /* Menu-like breathing space at bottom (NO extra divider line) */
+  padding-bottom: 50px;
+
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+.search-results::-webkit-scrollbar{
+  display: none;
 }
 
 /* Result row (button) — no borders, keep hover */
