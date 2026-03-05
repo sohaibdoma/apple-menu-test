@@ -378,16 +378,6 @@ body.search-open .search-toggle{
   background: transparent;
 }
 
-/* The single separator line under the input (the ONLY top cut line you want) */
-.search-head::after{
-  content: "";
-  display: block;
-  height: 1px;
-  background: var(--control-stroke);
-  margin-top: 0;
-}
-
-
 /* Search input */
 .search-input{
   width: 100%;
@@ -468,15 +458,24 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
-  /* Menu-like breathing space at bottom (NO extra divider line) */
-  padding-bottom: 50px;
-
   scrollbar-width: none;
   -ms-overflow-style: none;
+
+
+  /* TOP-ONLY MASK (keeps the “under input” cut, removes bottom cut) */
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 0px,
+    #000 14px,
+    #000 100%
+  );
+          mask-image: linear-gradient(to bottom,
+    transparent 0px,
+    #000 14px,
+    #000 100%
+  );
 }
-.search-results::-webkit-scrollbar{
-  display: none;
-}
+.search-results::-webkit-scrollbar{ display:none; }
+
 
 /* Result row (button) — no borders, keep hover */
 .search-result{
