@@ -191,7 +191,6 @@ body.menu-closing #menu-placeholder {
   /* match menu spacing so it sits under the top bar */
   padding-top: 80px;
   padding-bottom: 50px;
-  padding-inline: 10px;
   box-sizing: border-box;
 
   scroll-padding-top: 50px;
@@ -367,7 +366,7 @@ body.search-open .search-toggle{
 .search-sheet{
   margin: 0 auto;
   max-width: 800px;
-  padding: 0 10px;
+  padding: 0;
    
   height: auto;
   display: flex;
@@ -381,9 +380,6 @@ body.search-open .search-toggle{
   position: sticky;
   top: 0;
   z-index: 5;
-
-  /* THIS is the empty padded area above the input */
-  padding-top: 56px;
 
   /* keep a little breathing room under the input if you want */
   padding-bottom: 1px;
