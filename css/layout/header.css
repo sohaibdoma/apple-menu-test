@@ -484,6 +484,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   font-family: "Scheherazade New", serif;
   font-size: 20px;
   line-height: 1.6;
+  font-feature-settings: "calt" 1, "liga" 1;
 }
 
 /* Hover */
