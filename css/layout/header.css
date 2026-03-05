@@ -386,7 +386,7 @@ body.search-open .search-toggle{
   padding-top: 100px;
 
   /* keep a little breathing room under the input if you want */
-  padding-bottom: 12px;
+  padding-bottom: 1px;
 
   /* MUST be solid so it hides results behind it */
   background: #ffffff;
