@@ -499,7 +499,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 
 html.night-mode .search-result:hover,
 body.night-mode .search-result:hover{
-  background: rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.14);
 }
 
 /* Empty / hint text */
