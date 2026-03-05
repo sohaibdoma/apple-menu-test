@@ -473,6 +473,16 @@ body.night-mode .search-input::-webkit-search-cancel-button{
     #000 14px,
     #000 100%
   );
+   
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+
+  -webkit-mask-position: top;
+          mask-position: top;
+   
 }
 .search-results::-webkit-scrollbar{ display:none; }
 
