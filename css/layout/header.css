@@ -207,14 +207,16 @@ body.search-open #search-placeholder{
   pointer-events: auto;
   transform: translateY(0);
 
-  overflow: hidden;
-   
+  overflow-y: auto;
+  overflow-x: hidden;
+
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 
 body.search-open #search-placeholder::-webkit-scrollbar{
   display: none;
@@ -389,6 +391,10 @@ body.search-open #search-placeholder{
   margin-top: 0;     
    
   box-shadow: 0 1px 0 var(--control-stroke);
+   
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 /* ========================================
@@ -436,18 +442,11 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   direction: rtl;
   text-align: right;
 
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
-}
-.search-results::-webkit-scrollbar{
-  display: none;
 }
 
 /* Result row (button) — no borders, keep hover */
@@ -461,7 +460,6 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 
   background: transparent;
    
-  margin-top: 12px;
   padding: 12px 14px;
   margin: 0;
 
