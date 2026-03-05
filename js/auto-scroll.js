@@ -11,6 +11,8 @@
     const prefersReduced =
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
+    const scroller = document.scrollingElement || document.documentElement;
+
     // =========================
     // STATE
     // =========================
@@ -23,7 +25,7 @@
     let programmaticScroll = false;
 
     // Set speed here (7 / 10 / 15 etc.)
-    const SPEED = prefersReduced ? 0 : 20;
+    const SPEED = prefersReduced ? 0 : 10;
 
     // =========================
     // WAKE LOCK (Stop screen timeout)
@@ -122,7 +124,7 @@
 
       isPausedByTap = false;
 
-      scrollYFloat = window.scrollY;
+      scrollYFloat = scroller.scrollTop;
       lastT = 0;
       rafId = requestAnimationFrame(tick);
 
@@ -141,12 +143,12 @@
       scrollYFloat += SPEED * dt;
 
       programmaticScroll = true;
-      window.scrollTo(0, scrollYFloat);
+      scroller.scrollTop = scrollYFloat;
       programmaticScroll = false;
 
       const atBottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 2;
+        window.innerHeight + scroller.scrollTop >=
+        scroller.scrollHeight - 2;
 
       if (atBottom) {
         stopAll();
@@ -159,7 +161,7 @@
     async function start() {
       if (prefersReduced || isOn) return;
 
-      scrollYFloat = window.scrollY;
+      scrollYFloat = scroller.scrollTop;
       lastT = 0;
 
       isOn = true;
@@ -187,7 +189,7 @@
         if (programmaticScroll) return;
 
         // User scrolled manually → continue auto from here
-        scrollYFloat = window.scrollY;
+        scrollYFloat = scroller.scrollTop;
         lastT = 0;
       },
       { passive: true }
