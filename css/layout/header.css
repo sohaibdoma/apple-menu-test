@@ -383,13 +383,17 @@ body.search-open .search-toggle{
   z-index: 5;
 
   /* THIS is the empty padded area above the input */
-  padding-top: 50px;
+  padding-top: 56px;
 
   /* keep a little breathing room under the input if you want */
   padding-bottom: 1px;
 
   /* MUST be solid so it hides results behind it */
   background: #ffffff;
+   
+  /* extend to overlay borders */
+  margin-inline: -10px;
+  padding-inline: 10px;
 }
 
 html.night-mode .search-head,
