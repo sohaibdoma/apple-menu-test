@@ -9,21 +9,24 @@
     holder.dataset.ready = "1";
 
     // Build UI (Arabic / RTL)
-    holder.innerHTML = `
-      <div class="search-sheet" role="search">
-        <input
-          id="searchInput"
-          class="search-input"
-          type="search"
-          autocomplete="off"
-          spellcheck="false"
-          dir="rtl"
-          placeholder="اكتب للبحث"
-          aria-label="اكتب للبحث"
-        />
-        <div id="searchResults" class="search-results" role="list"></div>
-      </div>
-    `;
+holder.innerHTML = `
+  <div class="search-sheet" role="search">
+    <div class="search-head">
+      <input
+        id="searchInput"
+        class="search-input"
+        type="search"
+        autocomplete="off"
+        spellcheck="false"
+        dir="rtl"
+        placeholder="اكتب للبحث"
+        aria-label="اكتب للبحث"
+      />
+    </div>
+
+    <div id="searchResults" class="search-results" role="list"></div>
+  </div>
+`;
 
     const input = document.getElementById("searchInput");
     const results = document.getElementById("searchResults");
