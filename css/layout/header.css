@@ -376,6 +376,7 @@ body.search-open .search-toggle{
 
   /* prevents results from showing "through" behind the input while scrolling */
   background: #ffffff;
+  padding-bottom: 12px;
 }
 
 html.night-mode .search-head,
@@ -445,7 +446,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 
 /* Results stack */
 .search-results{
-  margin-top: 12px;
+  margin-top: 0;
 
   display: flex;
   flex-direction: column;
