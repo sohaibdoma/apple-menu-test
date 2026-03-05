@@ -47,7 +47,7 @@ body.search-open .main-header {
   -webkit-backdrop-filter: none;
 }
 
-/* Header surface when menu/search is open (blurred sheet) */
+/* Header surface when menu is open (the menu “sheet”) */
 body.menu-open .main-header::after,
 body.search-open .main-header::after {
   content: "";
@@ -56,22 +56,14 @@ body.search-open .main-header::after {
   border-radius: var(--nav-radius);
   z-index: 0;
   pointer-events: none;
-
-  /* translucent surface so backdrop-filter can blur what's behind */
-  background: rgba(255, 255, 255, 0.72);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: #ffffff;
 }
 
 html.night-mode body.menu-open .main-header::after,
 body.night-mode body.menu-open .main-header::after,
 html.night-mode body.search-open .main-header::after,
 body.night-mode body.search-open .main-header::after {
-  background: rgba(0, 0, 0, 0.72);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: #000000;
 }
 
 /* Default pill background in night mode (when menu is CLOSED) */
