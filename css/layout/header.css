@@ -366,7 +366,7 @@ body.search-open .search-toggle{
 .search-sheet{
   margin: 0 auto;
   max-width: 800px;
-  padding: 0 10px;
+  padding: 0 12px;
    
   height: auto;
   display: flex;
