@@ -383,7 +383,7 @@ body.search-open .search-toggle{
   z-index: 5;
 
   /* THIS is the empty padded area above the input */
-  padding-top: 1000px;
+  padding-top: 200px;
 
   /* keep a little breathing room under the input if you want */
   padding-bottom: 1px;
