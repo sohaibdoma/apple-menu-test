@@ -366,7 +366,7 @@ body.search-open .search-toggle{
 .search-sheet{
   margin: 0 auto;
   max-width: 800px;
-  padding: 0 10px;
+  padding: 0 19px;
    
   height: auto;
   display: flex;
@@ -467,7 +467,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 .search-result{
   display: block;
   width: 100%;
-
+   
   border: none !important;
   outline: none;
   box-shadow: none;
@@ -485,7 +485,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   cursor: pointer;
   color: var(--page-text);
 
-  border-radius: 11px;
+  border-radius: 999px;
 }
 
 /* Hover */
