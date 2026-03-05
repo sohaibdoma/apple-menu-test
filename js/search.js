@@ -38,10 +38,12 @@ holder.innerHTML = `
       searchToggle.addEventListener("click", () => {
         // allow overlay class to apply first
         requestAnimationFrame(() => {
-          // focus only if overlay is open
-          if (document.body.classList.contains("search-open")) {
-            input.focus({ preventScroll: true });
-          }
+          setTimeout(() => {
+            // focus only if overlay is open
+            if (document.body.classList.contains("search-open")) {
+              input.focus({ preventScroll: true });
+            }
+          }, 250);
         });
       });
     }
