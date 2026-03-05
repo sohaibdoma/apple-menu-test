@@ -380,12 +380,7 @@ body.search-open .search-toggle{
   position: sticky;
   top: 0;
   z-index: 5;
-  background: #ffffff;
-}
-
-html.night-mode .search-head,
-body.night-mode .search-head{
-  background: #000000;
+  background: transparent;
 }
 
 /* Search input */
@@ -396,7 +391,7 @@ body.night-mode .search-head{
   border-radius: 999px;
   border: 1px solid var(--control-stroke);
 
-  background: transparent;
+  background: #ffffff;
   color: var(--page-text);
 
   /* fixed vertical sizing forever (prevents iOS resizing on focus/typing) */
@@ -412,6 +407,14 @@ body.night-mode .search-head{
   appearance: none;
 
   margin-top: 0;
+   
+  position: relative;
+  z-index: 2;
+}
+
+html.night-mode .search-input,
+body.night-mode .search-input{
+  background: #000000;
 }
 
 /* ========================================
