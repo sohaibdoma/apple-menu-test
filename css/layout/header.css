@@ -461,7 +461,8 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 /* Result row (button) — no borders, keep hover */
 .search-result{
   display: block;
-  width: 100%;
+  width: calc(100% - 24px);
+  
    
   border: none !important;
   outline: none;
@@ -471,6 +472,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
    
   padding: 12px 14px;
   margin: 0;
+  margin-inline: auto;
 
   text-align: right;
 
@@ -486,6 +488,8 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   font-size: 20px;
   line-height: 1.6;
   font-feature-settings: "calt" 1, "liga" 1;
+
+  transition: background 0.15s ease;
 }
 
 /* Hover */
