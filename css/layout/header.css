@@ -461,7 +461,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 /* Result row (button) — no borders, keep hover */
 .search-result{
   display: block;
-  width: calc(100% - 60px);
+  width: calc(100% - 70px);
   
    
   border: none !important;
