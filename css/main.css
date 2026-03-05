@@ -475,7 +475,8 @@ body > *:not(.main-header) {
   will-change: filter;
 }
 
-body.menu-open > *:not(.main-header) {
+body.menu-open > *:not(.main-header),
+body.search-open > *:not(.main-header) {
   filter: blur(6px);
 }
 
