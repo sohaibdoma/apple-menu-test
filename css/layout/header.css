@@ -479,7 +479,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   cursor: pointer;
   color: var(--page-text);
 
-  border-radius: 999px;
+  border-radius: 50px;
    
   font-family: "Scheherazade New", serif;
   font-size: 20px;
