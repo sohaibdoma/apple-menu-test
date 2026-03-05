@@ -383,7 +383,7 @@ body.search-open .search-toggle{
   z-index: 5;
 
   /* THIS is the empty padded area above the input */
-  padding-top: 46px;
+  padding-top: 100px;
 
   /* keep a little breathing room under the input if you want */
   padding-bottom: 12px;
@@ -467,20 +467,6 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 
   direction: rtl;
   text-align: right;
-
-     /* ONLY SCROLLER */
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.search-results::-webkit-scrollbar{ display:none; }
 }
 
 /* Result row (button) — no borders, keep hover */
