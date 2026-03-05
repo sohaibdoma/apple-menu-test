@@ -480,6 +480,10 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   color: var(--page-text);
 
   border-radius: 999px;
+   
+  font-family: "Scheherazade New", serif;
+  font-size: 20px;
+  line-height: 1.6;
 }
 
 /* Hover */
