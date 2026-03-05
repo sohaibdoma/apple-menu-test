@@ -340,8 +340,8 @@ body.search-open #search-placeholder{
 }
 
 .search-icon{
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   display: block;
 
   fill: none;
@@ -366,7 +366,7 @@ body.search-open .search-toggle{
 .search-sheet{
   margin: 0 auto;
   max-width: 800px;
-  padding: 0 12px;
+  padding: 0 10px;
    
   height: auto;
   display: flex;
@@ -380,16 +380,7 @@ body.search-open .search-toggle{
   position: sticky;
   top: 0;
   z-index: 5;
-
-  /* keep a little breathing room under the input if you want */
-  padding-bottom: 1px;
-
-  /* MUST be solid so it hides results behind it */
   background: #ffffff;
-   
-  /* extend to overlay borders */
-  margin-inline: -10px;
-  padding-inline: 10px;
 }
 
 html.night-mode .search-head,
