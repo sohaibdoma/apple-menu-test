@@ -32,6 +32,20 @@ holder.innerHTML = `
     const results = document.getElementById("searchResults");
     if (!input || !results) return;
 
+    // iOS: focus input when search overlay opens (best-effort, doesn't break anything)
+    const searchToggle = document.getElementById("searchToggle");
+    if (searchToggle) {
+      searchToggle.addEventListener("click", () => {
+        // allow overlay class to apply first
+        requestAnimationFrame(() => {
+          // focus only if overlay is open
+          if (document.body.classList.contains("search-open")) {
+            input.focus({ preventScroll: true });
+          }
+        });
+      });
+    }
+
     function norm(s) {
       return (s || "").toString().trim().toLowerCase();
     }
