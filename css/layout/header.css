@@ -362,11 +362,9 @@ body.menu-open .search-toggle{
 .home-toggle{
   width: 44px;
   height: 44px;
-  padding: 0;
 
   border: 0;
   background: transparent;
-  box-sizing: border-box;
 
   position: relative;
   display: grid;
@@ -378,33 +376,38 @@ body.menu-open .search-toggle{
   -webkit-tap-highlight-color: transparent;
 }
 
-/* pill border clone */
 .home-toggle::before{
   content: "";
   position: absolute;
-  display: block;
-  pointer-events: none;
 
   width: 30px;
   height: 22px;
 
   left: 50%;
-  top: calc(50% - 11px);
+  top: calc(50% - 4px);
   transform: translateX(-50%);
 
   border: 1px solid var(--control-stroke);
   border-radius: 11px;
-  box-sizing: border-box;
 
   background: transparent;
+  pointer-events: none;
 }
 
-.home-toggle .chev{
-  width: 24px;
-  height: 24px;
-  display: block;
 
-  transform: translateY(1.6px);
+.home-chev{
+  position: absolute;
+
+  width: 22px;
+  height: 22px;
+
+  top: calc(50% - 16px);
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .home-toggle .arm{
