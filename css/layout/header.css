@@ -420,6 +420,7 @@ body.menu-open .search-toggle{
 
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.2s ease;
 }
 
 .home-icon{
@@ -432,6 +433,14 @@ body.menu-open .search-toggle{
   stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* Hide home button on home page and overlays */
+body[data-surah="0"] .home-toggle,
+body.menu-open .home-toggle,
+body.search-open .home-toggle{
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ========================================
