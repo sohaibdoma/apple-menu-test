@@ -360,7 +360,7 @@ body.menu-open .search-toggle{
 .home-toggle{
   position: absolute;
   left: 19px;
-  top: 50%;
+  top: 45%;
   transform: translate(-10px, -50%); /* moves 5px left */
 
   width: 44px;
@@ -383,8 +383,8 @@ body.menu-open .search-toggle{
 }
 
 .home-icon{
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 
   fill: none;
   stroke: var(--menu-icon-color);
@@ -514,7 +514,6 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   display: block;
   width: calc(100% - 80px);
   
-   
   border: none !important;
   outline: none;
   box-shadow: none;
