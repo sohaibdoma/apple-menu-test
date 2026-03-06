@@ -418,7 +418,6 @@ body.menu-open .search-toggle{
 
 
 /* Hide home button on home page and overlays */
-body[data-surah="0"] .home-toggle,
 body.menu-open .home-toggle,
 body.search-open .home-toggle{
   opacity: 0;
