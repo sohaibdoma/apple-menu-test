@@ -598,8 +598,13 @@ body.night-mode .search-result:hover{
 ======================================== */
 
 body.menu-open .theme-toggle{
+  display: block;
   opacity: 1;
   pointer-events: auto;
+}
+
+body:not(.menu-open) .theme-toggle{
+  opacity:0;
 }
 
 .theme-toggle {
