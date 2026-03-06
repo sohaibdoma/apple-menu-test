@@ -360,6 +360,8 @@ body.menu-open .search-toggle{
 
 
 .home-toggle{
+  justify-self: start;
+
   width: 44px;
   height: 44px;
   padding: 0;
@@ -396,6 +398,7 @@ body.search-open .home-toggle{
   opacity: 0;
   pointer-events: none;
 }
+
 
 /* ========================================
    SEARCH UI (Overlay Contents)
