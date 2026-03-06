@@ -360,8 +360,6 @@ body.menu-open .search-toggle{
 
 
 .home-toggle{
-  justify-self: start;
-
   width: 44px;
   height: 44px;
   padding: 0;
@@ -611,7 +609,6 @@ body:not(.menu-open) .theme-toggle{
   justify-self: start;
    
   display: none;
-
    
   width: 30px;
   height: 22px;
