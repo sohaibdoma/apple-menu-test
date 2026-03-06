@@ -360,7 +360,7 @@ body.menu-open .search-toggle{
 .home-toggle{
   position: absolute;
   left: 19px;
-  top: 48%;
+  top: 46%;
   transform: translate(-10px, -50%); /* moves 5px left */
 
   width: 44px;
@@ -379,7 +379,7 @@ body.menu-open .search-toggle{
 
   -webkit-tap-highlight-color: transparent;
 
-  transition: opacity 0.2s ease;
+  transition: opacity 0.8s ease;
 }
 
 .home-icon{
