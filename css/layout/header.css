@@ -379,8 +379,8 @@ body.menu-open .search-toggle{
 }
 
 .home-icon{
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 
   fill: none;
   stroke: var(--menu-icon-color);
