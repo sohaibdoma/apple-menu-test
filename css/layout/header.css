@@ -357,6 +357,8 @@ body.menu-open .search-toggle{
   pointer-events: none;
 }
 
+
+
 .home-toggle{
   width: 44px;
   height: 44px;
@@ -373,22 +375,47 @@ body.menu-open .search-toggle{
   cursor: pointer;
   color: var(--menu-icon-color);
 
-  text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  transition: opacity 0.2s ease;
 }
 
-.home-icon{
+/* pill border clone */
+.home-toggle::before{
+  content: "";
+  position: absolute;
+  display: block;
+  pointer-events: none;
+
   width: 30px;
-  height: 30px;
+  height: 22px;
+
+  left: 50%;
+  top: calc(50% - 11px);
+  transform: translateX(-50%);
+
+  border: 1px solid var(--control-stroke);
+  border-radius: 11px;
+  box-sizing: border-box;
+
+  background: transparent;
+}
+
+.home-toggle .chev{
+  width: 24px;
+  height: 24px;
   display: block;
 
+  transform: translateY(1.6px);
+}
+
+.home-toggle .arm{
   fill: none;
   stroke: currentColor;
-  stroke-width: 1;
+  stroke-width: 2.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+
 
 /* Hide home button on home page and overlays */
 body[data-surah="0"] .home-toggle,
