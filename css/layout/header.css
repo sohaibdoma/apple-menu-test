@@ -315,6 +315,29 @@ body.search-closing #search-placeholder{
 }
 
 
+/* SEARCH BUTTON: clone of menu opened pill */
+body.menu-open .search-toggle::before{
+  content: "";
+  position: absolute;
+  display: block;
+  pointer-events: none;
+
+  width: 30px;
+  height: 29px;
+
+  left: 50%;
+  top: calc(50% - 11px);
+  transform: translateX(-50%);
+
+  border: 1px solid var(--control-stroke);
+  border-radius: 11px;
+  box-sizing: border-box;
+
+  background: transparent;
+}
+
+
+
 .search-toggle{
   width: 44px;
   height: 44px;
