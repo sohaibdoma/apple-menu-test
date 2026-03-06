@@ -379,7 +379,7 @@ body.menu-open .search-toggle{
 
   -webkit-tap-highlight-color: transparent;
 
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 
