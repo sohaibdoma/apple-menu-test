@@ -361,7 +361,7 @@ body.menu-open .search-toggle{
   position: absolute;
   left: 19px;
   top: 50%;
-  transform: translate(-10px, -50%); /* moves 5px left */
+  transform: translate(-13px, -50%); /* moves 5px left */
 
   width: 44px;
   height: 44px;
