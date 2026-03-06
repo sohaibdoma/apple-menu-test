@@ -351,6 +351,10 @@ body.search-open .search-toggle{
   pointer-events: none;
 }
 
+body.menu-open .search-toggle{
+  opacity: 0;
+  pointer-events: none;
+}
 
 .home-toggle{
   width: 44px;
