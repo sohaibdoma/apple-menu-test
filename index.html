@@ -36,32 +36,34 @@
      <button id="themeToggle" class="theme-toggle"></button>
 
 <a href="index.html" class="home-toggle" aria-label="Home">
-  <svg class="home-icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path
-      fill="currentColor"
-      fill-rule="evenodd"
-      d="
-        M5.5 10.8
-        Q5.5 10.1 6.2 9.6
-        L11.2 6
-        Q12 5.4 12.8 6
-        L17.8 9.6
-        Q18.5 10.1 18.5 10.8
-        V18
-        Q18.5 19.6 16.7 19.6
-        H7.3
-        Q5.5 19.6 5.5 18
-        Z
+<svg class="home-icon" viewBox="0 0 24 24">
 
-        M10.2 20.8
-        V15.5
-        Q10.2 14 12 14
-        Q13.8 14 13.8 15.5
-        V20.8
-        Z
-      "
-    />
-  </svg>
+<defs>
+<mask id="doorCut">
+<rect width="24" height="24" fill="white"/>
+<path d="M10.2 20 V15.5 Q10.2 14 12 14 Q13.8 14 13.8 15.5 V20 Z" fill="black"/>
+</mask>
+</defs>
+
+<path
+fill="currentColor"
+mask="url(#doorCut)"
+d="
+M5.5 10.8
+Q5.5 10.1 6.2 9.6
+L11.2 6
+Q12 5.4 12.8 6
+L17.8 9.6
+Q18.5 10.1 18.5 10.8
+V18
+Q18.5 19.6 16.7 19.6
+H7.3
+Q5.5 19.6 5.5 18
+Z
+"
+/>
+
+</svg>
 </a>
    </div>
 
