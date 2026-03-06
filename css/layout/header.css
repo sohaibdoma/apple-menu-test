@@ -362,9 +362,11 @@ body.menu-open .search-toggle{
 .home-toggle{
   width: 44px;
   height: 44px;
+  padding: 0;
 
   border: 0;
   background: transparent;
+  box-sizing: border-box;
 
   position: relative;
   display: grid;
@@ -376,39 +378,44 @@ body.menu-open .search-toggle{
   -webkit-tap-highlight-color: transparent;
 }
 
+/* pill */
 .home-toggle::before{
   content: "";
   position: absolute;
+  pointer-events: none;
 
   width: 30px;
   height: 22px;
 
   left: 50%;
-  top: calc(50% - 4px);
+  top: calc(50% - 2px);
   transform: translateX(-50%);
 
   border: 1px solid var(--control-stroke);
   border-radius: 11px;
+  box-sizing: border-box;
 
   background: transparent;
-  pointer-events: none;
 }
 
-
+/* floating chevron */
 .home-chev{
   position: absolute;
 
-  width: 50px;
-  height: 22px;
+  width: 34px;
+  height: 18px;
 
-  top: calc(50% - 16px);
+  left: 50%;
+  top: calc(50% - 18px);
+  transform: translateX(-50%);
 
   fill: none;
-  stroke: currentColor;
+  stroke: var(--control-stroke);
   stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
 
 /* Hide home button on home page and overlays */
 body.menu-open .home-toggle,
