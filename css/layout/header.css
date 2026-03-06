@@ -358,6 +358,23 @@ body.menu-open .search-toggle{
   pointer-events: none;
 }
 
+
+/* ========================================
+   SEARCH BUTTON INSIDE MENU
+======================================== */
+
+body.menu-open .search-toggle{
+  opacity: 1;
+  pointer-events: auto;
+
+  position: absolute;
+  top: calc(var(--header-h) + 8px);
+  right: 19px;
+
+  z-index: 4;
+}
+
+
 .home-toggle{
   width: 44px;
   height: 44px;
