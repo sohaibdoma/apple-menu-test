@@ -25,7 +25,7 @@
     let programmaticScroll = false;
 
     // Set speed here (7 / 10 / 15 etc.)
-    const SPEED = prefersReduced ? 0 : 10;
+    const SPEED = prefersReduced ? 0 : 1;
 
     // =========================
     // WAKE LOCK (Stop screen timeout)
