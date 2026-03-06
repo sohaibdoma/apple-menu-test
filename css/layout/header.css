@@ -379,7 +379,7 @@ body.menu-open .search-toggle{
 
   -webkit-tap-highlight-color: transparent;
 
-  transition: opacity 0.4s ease;
+  transition: opacity 0.2s ease;
 }
 
 .home-icon{
