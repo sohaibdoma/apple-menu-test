@@ -360,13 +360,13 @@ body.menu-open .search-toggle::before{
 }
 
 .search-icon{
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   display: block;
 
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.6;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -382,6 +382,9 @@ body.menu-open .search-toggle{
   transform: translateY(4px);
 }
 
+body.menu-open .search-toggle .search-icon{
+  transform: translateY(1.6px);
+}
 
 /* ========================================
    SEARCH BUTTON INSIDE MENU
