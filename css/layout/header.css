@@ -332,6 +332,8 @@ body.search-closing #search-placeholder{
   color: var(--menu-icon-color);
 
   -webkit-tap-highlight-color: transparent;
+
+  transition: opacity 0.2s ease;
 }
 
 .search-icon{
