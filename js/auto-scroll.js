@@ -137,10 +137,10 @@
       if (isPausedByTap) return;
 
       if (!lastT) lastT = t;
-      const dt = (t - lastT) / 1000;
+      const dt = t - lastT;
       lastT = t;
 
-      scrollYFloat += SPEED * dt;
+      scrollYFloat += (SPEED * dt) / 16;
 
       programmaticScroll = true;
       scroller.scrollTop = scrollYFloat;
