@@ -336,8 +336,8 @@ body.search-closing #search-placeholder{
 }
 
 .search-icon{
-  width: 23px;
-  height: 23px;
+  width: 26px;
+  height: 26px;
   display: block;
 
   fill: none;
@@ -360,7 +360,7 @@ body.menu-open .search-toggle{
 .home-toggle{
   position: absolute;
   left: 19px;
-  top: 46%;
+  top: 48%;
   transform: translate(-10px, -50%); /* moves 5px left */
 
   width: 44px;
@@ -383,8 +383,8 @@ body.menu-open .search-toggle{
 }
 
 .home-icon{
-  width: 33px;
-  height: 33px;
+  width: 35px;
+  height: 35px;
 
   fill: none;
   stroke: var(--menu-icon-color);
