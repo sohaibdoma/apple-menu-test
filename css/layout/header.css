@@ -378,44 +378,17 @@ body.menu-open .search-toggle{
   -webkit-tap-highlight-color: transparent;
 }
 
-/* pill */
-.home-toggle::before{
-  content: "";
-  position: absolute;
-  pointer-events: none;
-
-  width: 30px;
-  height: 22px;
-
-  left: 50%;
-  top: calc(50% - 2px);
-  transform: translateX(-50%);
-
-  border: 1px solid var(--control-stroke);
-  border-radius: 11px;
-  box-sizing: border-box;
-
-  background: transparent;
-}
-
-/* floating chevron */
-.home-chev{
-  position: absolute;
-
-  width: 68px;
-  height: 18px;
-
-  left: 50%;
-  top: calc(50% - 18px);
-  transform: translateX(-50%);
+.home-icon{
+  width: 26px;
+  height: 26px;
 
   fill: none;
   stroke: var(--control-stroke);
   stroke-width: 1;
+
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
 
 /* Hide home button on home page and overlays */
 body.menu-open .home-toggle,
