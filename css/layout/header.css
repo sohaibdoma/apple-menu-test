@@ -378,6 +378,8 @@ body.menu-open .search-toggle{
   color: var(--menu-icon-color);
 
   -webkit-tap-highlight-color: transparent;
+   
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .home-icon{
