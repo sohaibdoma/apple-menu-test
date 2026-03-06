@@ -330,7 +330,7 @@ body.menu-open .search-toggle::before{
   transform: translateX(-50%);
 
   border: 1px solid var(--control-stroke);
-  border-radius: 11px;
+  border-radius: 50%;
   box-sizing: border-box;
 
   background: transparent;
