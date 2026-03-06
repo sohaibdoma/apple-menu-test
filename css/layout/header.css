@@ -398,27 +398,17 @@ body.menu-open .search-toggle{
 .home-chev{
   position: absolute;
 
-  width: 22px;
+  width: 50px;
   height: 22px;
 
   top: calc(50% - 16px);
 
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.6;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
-.home-toggle .arm{
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-
 
 /* Hide home button on home page and overlays */
 body.menu-open .home-toggle,
