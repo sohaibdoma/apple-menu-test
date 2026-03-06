@@ -351,6 +351,40 @@ body.search-open .search-toggle{
   pointer-events: none;
 }
 
+
+.home-toggle{
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  color: var(--menu-icon-color);
+
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-icon{
+  width: 20px;
+  height: 20px;
+  display: block;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
 /* ========================================
    SEARCH UI (Overlay Contents)
    - Clean, centered sheet
@@ -523,18 +557,23 @@ body.night-mode .search-result:hover{
 .menu-toggle:focus,
 .menu-toggle:focus-visible,
 .search-toggle:focus,
-.search-toggle:focus-visible{
+.search-toggle:focus-visible,
+.home-toggle:focus,
+.home-toggle:focus-visible{
   outline: none;
   box-shadow: none;
 }
 
 /* Remove mobile tap highlight */
+
 .search-input,
 .search-result,
 .menu-toggle,
-.search-toggle{
+.search-toggle,
+.home-toggle{
   -webkit-tap-highlight-color: transparent;
 }
+
 
 /* ========================================
    THEME TOGGLE (Outline Minimal)
