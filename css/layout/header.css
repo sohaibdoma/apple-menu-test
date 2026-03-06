@@ -332,7 +332,7 @@ body.search-closing #search-placeholder{
 
   -webkit-tap-highlight-color: transparent;
 
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .search-icon{
@@ -379,7 +379,7 @@ body.menu-open .search-toggle{
 
   -webkit-tap-highlight-color: transparent;
 
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
 }
 
 .home-icon{
