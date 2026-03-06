@@ -314,30 +314,6 @@ body.search-closing #search-placeholder{
   height: 29px;                 /* OPEN pill height */
 }
 
-
-/* SEARCH BUTTON: clone of menu opened pill */
-body.menu-open .search-toggle::before{
-  content: "";
-  position: absolute;
-  display: block;
-  pointer-events: none;
-
-  width: 30px;
-  height: 29px;
-
-  left: 50%;
-  top: calc(50% - 11px);
-  transform: translateX(-50%);
-
-  border: 1px solid var(--control-stroke);
-  border-radius: 50%;
-  box-sizing: border-box;
-
-  background: transparent;
-}
-
-
-
 .search-toggle{
   width: 44px;
   height: 44px;
@@ -384,21 +360,6 @@ body.menu-open .search-toggle{
 
 body.menu-open .search-toggle .search-icon{
   transform: translateY(1.6px);
-}
-
-/* ========================================
-   SEARCH BUTTON INSIDE MENU
-======================================== */
-
-body.menu-open .search-toggle{
-  opacity: 1;
-  pointer-events: auto;
-
-  position: absolute;
-  top: calc(var(--header-h) + 8px);
-  right: 19px;
-
-  z-index: 4;
 }
 
 
