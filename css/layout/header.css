@@ -102,7 +102,7 @@ body.night-mode .main-header {
 }
 
 .header-left {
- justify-self: start;
+ justify-self: center;
 }
 
 .header-right {
@@ -360,6 +360,8 @@ body.menu-open .search-toggle{
 
 
 .home-toggle{
+  justify-self: start;
+   
   width: 44px;
   height: 44px;
   padding: 0;
@@ -377,7 +379,6 @@ body.menu-open .search-toggle{
 
   -webkit-tap-highlight-color: transparent;
    
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 
