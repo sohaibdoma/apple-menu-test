@@ -102,7 +102,7 @@ body.night-mode .main-header {
 }
 
 .header-left {
-  justify-self: center;
+ justify-self: start;
 }
 
 .header-right {
