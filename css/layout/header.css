@@ -373,13 +373,13 @@ body.search-open .search-toggle{
 }
 
 .home-icon{
-  width: 25px;
-  height: 25px;
+  width: 27px;
+  height: 27px;
   display: block;
 
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
