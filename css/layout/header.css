@@ -355,13 +355,7 @@ body.search-open .search-toggle{
 body.menu-open .search-toggle{
   opacity: 0;
   pointer-events: none;
-  transform: translateY(4px);
 }
-
-body.menu-open .search-toggle .search-icon{
-  transform: translateY(1.6px);
-}
-
 
 .home-toggle{
   width: 44px;
