@@ -623,7 +623,8 @@ body:not(.menu-open) .theme-toggle{
 
   border: 1px solid var(--control-stroke);
 
-  transition: opacity 0.25s ease, border-color 0.25s ease;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+              border-color 0.25s ease;
 
   -webkit-tap-highlight-color: transparent;
 }
