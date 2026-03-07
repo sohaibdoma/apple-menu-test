@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Surah</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Surah</title>
 
-  <base href="/wahyollah/">
+<base href="/wahyollah/">
 
-  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
 
-  <script>
-    (function () {
-      try {
-        var theme = localStorage.getItem("theme");
-        var isNight = theme === "night";
-        document.documentElement.classList.toggle("night-mode", isNight);
+<script>
+(function () {
+try {
+var theme = localStorage.getItem("theme");
+var isNight = theme === "night";
+document.documentElement.classList.toggle("night-mode", isNight);
 
-        var lang = localStorage.getItem("lang") || "ar";
-        document.documentElement.setAttribute("data-lang", lang);
-      } catch (e) {}
-    })();
-  </script>
-  
-  <link rel="stylesheet" href="css/main.css" />
+var lang = localStorage.getItem("lang") || "ar";
+document.documentElement.setAttribute("data-lang", lang);
+} catch (e) {}
+})();
+</script>
+
+<link rel="stylesheet" href="css/main.css" />
 </head>
 
 <body class="surah-page" data-lang-root>
 
-  <!-- HEADER -->
-  
+<!-- HEADER -->
+
 <header class="main-header">
 
-  <!-- TOP BAR (controls only) -->
-  <div class="header-bar">
-    
-   <div class="header-controls">
-     <button id="themeToggle" class="theme-toggle"></button>
+<!-- TOP BAR (controls only) -->
+<div class="header-bar">
+
+<div class="header-controls">
+<button id="themeToggle" class="theme-toggle"></button>
 
 <a href="index.html" class="home-toggle" aria-label="Home">
-  
+
 <svg class="home-icon" viewBox="0 0 24 24">
 
 <defs>
@@ -69,126 +69,95 @@ Z
 </svg>
 </a>
 
+</div>
 
-  <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
-<svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
+<div class="header-left">
+<div class="lang-switch">
+<button data-lang="ar">AR</button>
+<button data-lang="en">EN</button>
+<button data-lang="tr">TR</button>
+</div>
+</div>
 
-  <!-- Dot that expands upward without stretching -->
-<rect class="auto-dot"
-      x="10.7"
-      y="5.2"
-      width="2.6"
-      height="2.6"
-      rx="1.3"
-      fill="currentColor" />
-  
-  <!-- Top Chevron -->
-  <path class="auto-chev auto-thin"
-        d="M8.25 10 L12 13 L15.75 10" />
+<div class="header-right">
 
-  <!-- Middle Chevron -->
-  <path class="auto-chev auto-mid"
-        d="M7 15 L12 19 L17 15" />
-
+<button id="searchToggle" class="search-toggle" aria-label="Search" aria-expanded="false" type="button">
+<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="11" cy="11" r="6.5"></circle>
+<path d="M16.2 16.2 L20 20"></path>
 </svg>
-  </button>
+</button>
 
-     
-   </div>
+<button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+<svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+<path class="arm" pathLength="100" d="M6 8 L18 20" />
+<path class="arm" pathLength="100" d="M18 8 L6 20" />
+</svg>
+</button>
 
-    
+</div>
+</div>
 
+<!-- MENU AREA -->
+<div id="menu-placeholder"></div>
+<div id="search-placeholder"></div>
 
-
-
-    
-
-    
-    <div class="header-left">
-      <div class="lang-switch">
-        <button data-lang="ar">AR</button>
-        <button data-lang="en">EN</button>
-        <button data-lang="tr">TR</button>
-      </div>
-    </div>
-
-    <div class="header-right">
-
-     <button id="searchToggle" class="search-toggle" aria-label="Search" aria-expanded="false" type="button">
-       <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
-         <circle cx="11" cy="11" r="6.5"></circle>
-         <path d="M16.2 16.2 L20 20"></path>
-       </svg>
-     </button>
-
-      
-     <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-       <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
-         <!-- FULL X diagonals (the real full size) -->
-         <path class="arm" pathLength="100" d="M6 8 L18 20" />
-         <path class="arm" pathLength="100" d="M18 8 L6 20" />
-       </svg>
-     </button>
-    </div>
-  </div>
-
-  <!-- MENU AREA (fills pill, not affected by header padding) -->
-  <div id="menu-placeholder"></div>
-  
-  <div id="search-placeholder"></div>
-
-  
 </header>
-  
-  <!-- SURAH CONTENT -->
-  <main class="surah-container">
-    <div id="surah-header"></div>
-    <div id="surah-content"></div>
-  </main>
 
+<!-- SURAH CONTENT -->
+
+<main class="surah-container">
+<div id="surah-header"></div>
+<div id="surah-content"></div>
+</main>
+
+<!-- READING BAR -->
 
 <div class="reading-bar">
 
-  <button id="autoScrollBtn"
-          class="auto-scroll-btn"
-          type="button"
-          aria-pressed="false"
-          aria-label="Auto scroll">
+<button
+id="autoScrollBtn"
+class="auto-scroll-btn"
+type="button"
+aria-pressed="false"
+aria-label="Auto scroll">
 
-    <svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
+<svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
 
-      <rect class="auto-dot"
-            x="10.7"
-            y="5.2"
-            width="2.6"
-            height="2.6"
-            rx="1.3"
-            fill="currentColor"/>
+<rect
+class="auto-dot"
+x="10.7"
+y="5.2"
+width="2.6"
+height="2.6"
+rx="1.3"
+fill="currentColor"/>
 
-      <path class="auto-chev auto-thin"
-            d="M8.25 10 L12 13 L15.75 10"/>
+<path
+class="auto-chev auto-thin"
+d="M8.25 10 L12 13 L15.75 10"/>
 
-      <path class="auto-chev auto-mid"
-            d="M7 15 L12 19 L17 15"/>
+<path
+class="auto-chev auto-mid"
+d="M7 15 L12 19 L17 15"/>
 
-    </svg>
+</svg>
 
-  </button>
+</button>
 
 </div>
 
-  
-  
-  <!-- SCRIPTS -->
-  <script src="js/config.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/theme.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/surah-engine.js"></script>
-  <script src="js/auto-scroll.js"></script>
-  <script src="js/search.js"></script>
-  <script src="script.js"></script>
-  
+<!-- SCRIPTS -->
+
+<script src="js/config.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/menu.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/api.js" defer></script>
+<script src="js/surah-engine.js" defer></script>
+<script src="js/auto-scroll.js" defer></script>
+<script src="js/search.js" defer></script>
+<script src="script.js" defer></script>
+
 </body>
 </html>
