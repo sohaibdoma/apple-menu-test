@@ -402,6 +402,117 @@ body.search-open .home-toggle{
 }
 
 
+
+
+/* ===============================
+   Auto Scroll Button
+=============================== */
+
+.auto-scroll-btn{
+  background: none;
+  border: none;
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  height: 55px; /* touch-friendly */
+  width: 55px;
+
+  color: var(--page-text);
+  cursor: pointer;
+
+  transition: color 100ms ease;
+}
+
+/* Icon size */
+.auto-icon{
+  width: 39px;
+  height: 39px;
+  display: block;
+}
+
+/* Chev style */
+.auto-chev{
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.auto-thin,
+.auto-mid,
+.auto-thick {
+  stroke-width: 2.2;
+}
+
+/* Dot-to-pill: grow upward like the navbar (no stretching) */
+.auto-dot{
+  transition:
+    y 150ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 150ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ON: increase height upwards, keep bottom locked */
+.auto-scroll-btn.is-on .auto-dot{
+  transition:
+    y 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 500ms cubic-bezier(0.22, 1, 0.36, 1);
+   
+  height: 6px;
+  y: 1.8px;
+}
+
+body.menu-open .auto-scroll-btn,
+body.search-open .auto-scroll-btn{
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ===============================
+   ACTIVE STATE
+=============================== */
+
+.auto-scroll-btn.is-on{
+  color: var(--auto-active-color);
+}
+
+.auto-scroll-btn:focus,
+.auto-scroll-btn:focus-visible{
+  outline: none;
+  box-shadow: none;
+}
+
+
+
+/* ===============================
+   Auto scroll button: remove focus / tap highlight
+=============================== */
+
+.auto-scroll-btn,
+.auto-scroll-btn * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.auto-scroll-btn:focus,
+.auto-scroll-btn:focus-visible,
+.auto-scroll-btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Safari/iOS extra glow */
+.auto-scroll-btn {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
+
+
+
+
 /* ========================================
    SEARCH UI (Overlay Contents)
    - Clean, centered sheet
