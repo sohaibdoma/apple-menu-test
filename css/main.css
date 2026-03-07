@@ -504,24 +504,23 @@ body.no-blur-transition > *:not(.main-header) {
   height: 56px;
 
   width: 70px; /* or 80px depending on padding */
-  left: auto;
+  left: 50%;
   right: 20px; /* distance from right edge */
 
+  transform: translateX(-50%);
+   
   padding: 0; /* optional */
 
-   
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 0 19px;
 
   border-radius: var(--nav-radius);
   isolation: isolate;
 
   background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 
   clip-path: inset(0 round var(--nav-radius));
   -webkit-clip-path: inset(0 round var(--nav-radius));
