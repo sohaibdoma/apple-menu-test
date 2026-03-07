@@ -527,7 +527,9 @@ body.night-mode .auto-scroll-bar{
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-
+body.surah-page .auto-scroll-bar{
+  display: none;
+}
 
 
 /* ===============================
