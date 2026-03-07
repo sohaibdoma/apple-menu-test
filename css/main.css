@@ -494,33 +494,29 @@ body.no-blur-transition > *:not(.main-header) {
 
 .reading-bar{
   position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-  bottom: var(--nav-gap);
-  left: var(--nav-inset);
-  right: var(--nav-inset);
+  height: 60px;
 
-  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  display: grid;
-  place-items: center;
-
-  border-radius: var(--nav-radius);
-
-  background-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.6);
 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
   z-index: 9000;
-
-  clip-path: inset(0 round var(--nav-radius));
 }
 
 /* night mode */
 
 html.night-mode .reading-bar,
 body.night-mode .reading-bar{
-  background-color: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.6);
 }
 
 .reading-bar{
