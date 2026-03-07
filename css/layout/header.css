@@ -1,3 +1,4 @@
+
 /* ========================================
    HEADER
 ======================================== */
@@ -81,7 +82,7 @@ body.night-mode .main-header {
 
 .header-bar {
   display: grid;
-  grid-template-columns: 120px 1fr 44px;
+  grid-template-columns: 88px 1fr 44px;
   align-items: center;
 
   height: var(--header-h);     /* key: matches header pill height */
@@ -382,8 +383,6 @@ body.menu-open .search-toggle{
   transition: opacity 0.2s ease;
 }
 
-
-
 .home-icon{
   width: 34px;
   height: 34px;
@@ -402,8 +401,6 @@ body.search-open .home-toggle{
   opacity: 0;
   pointer-events: none;
 }
-
-
 
 
 /* ========================================
