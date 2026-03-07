@@ -493,36 +493,116 @@ body.no-blur-transition > *:not(.main-header) {
 ======================================== */
 
 .reading-bar{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
 
-  height: 60px;
+  height:60px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(255,255,255,0.6);
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  z-index: 9000;
-}
-
-/* night mode */
-
-html.night-mode .reading-bar,
-body.night-mode .reading-bar{
-  background: rgba(0,0,0,0.6);
-}
-
-.reading-bar{
   display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(255,255,255,0.6);
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  z-index:9000;
 }
 
 body.surah-page .reading-bar{
+  display:flex;
+}
+
+html.night-mode .reading-bar,
+body.night-mode .reading-bar{
+  background:rgba(0,0,0,0.6);
+}
+
+padding-bottom: env(safe-area-inset-bottom);
+height: calc(60px + env(safe-area-inset-bottom));
+
+/* ========================================
+   AUTO SCROLL BUTTON (SURAH PAGE)
+======================================== */
+
+.auto-scroll-btn{
+  width:44px;
+  height:44px;
+
   display:grid;
+  place-items:center;
+
+  border:0;
+  background:transparent;
+
+  cursor:pointer;
+
+  color:var(--page-text);
+
+  transition:color 0.2s ease;
+
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* Icon */
+
+.auto-icon{
+  width:30px;
+  height:30px;
+  display:block;
+}
+
+/* Chevron */
+
+.auto-chev{
+  fill:none;
+  stroke:currentColor;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.auto-thin,
+.auto-mid{
+  stroke-width:2.2;
+}
+
+/* Dot animation */
+
+.auto-dot{
+  transition:
+  y 150ms cubic-bezier(0.22,1,0.36,1),
+  height 150ms cubic-bezier(0.22,1,0.36,1);
+}
+
+.auto-scroll-btn.is-on .auto-dot{
+  transition:
+  y 500ms cubic-bezier(0.22,1,0.36,1),
+  height 500ms cubic-bezier(0.22,1,0.36,1);
+
+  height:6px;
+  y:1.8px;
+}
+
+/* Active color */
+
+.auto-scroll-btn.is-on{
+  color:var(--auto-active-color);
+}
+
+/* Focus cleanup */
+
+.auto-scroll-btn,
+.auto-scroll-btn *{
+  -webkit-tap-highlight-color:transparent;
+}
+
+.auto-scroll-btn:focus,
+.auto-scroll-btn:focus-visible,
+.auto-scroll-btn:active{
+  outline:none;
+  box-shadow:none;
 }
