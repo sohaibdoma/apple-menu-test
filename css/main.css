@@ -501,11 +501,11 @@ body.no-blur-transition > *:not(.main-header) {
   bottom: var(--nav-gap);
   z-index: 9998;
 
-  height: 50px;
+  height: 48px;
 
-  width: 50px; /* or 80px depending on padding */
+  width: 48px; /* or 80px depending on padding */
   left: auto;
-  right: 31px; /* distance from right edge */
+  right: 31.5px; /* distance from right edge */
    
   padding: 0; /* optional */
 
