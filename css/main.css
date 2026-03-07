@@ -488,5 +488,45 @@ body.no-blur-transition > *:not(.main-header) {
   transition: none !important;
 }
 
+/* ========================================
+   SURAH READING BAR
+======================================== */
 
+.reading-bar{
+  position: fixed;
 
+  bottom: var(--nav-gap);
+  left: var(--nav-inset);
+  right: var(--nav-inset);
+
+  height: 56px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: var(--nav-radius);
+
+  background-color: rgba(255,255,255,0.6);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  z-index: 9000;
+
+  clip-path: inset(0 round var(--nav-radius));
+}
+
+/* night mode */
+
+html.night-mode .reading-bar,
+body.night-mode .reading-bar{
+  background-color: rgba(0,0,0,0.6);
+}
+
+.reading-bar{
+  display:none;
+}
+
+body.surah-page .reading-bar{
+  display:grid;
+}
