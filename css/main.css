@@ -498,13 +498,18 @@ body.no-blur-transition > *:not(.main-header) {
 
 .auto-scroll-bar{
   position: fixed;
-  left: var(--nav-inset);
-  right: var(--nav-inset);
   bottom: var(--nav-gap);
   z-index: 9998;
 
   height: 56px;
 
+  width: 70px; /* or 80px depending on padding */
+  left: auto;
+  right: 20px; /* distance from right edge */
+
+  padding: 0; /* optional */
+
+   
   display: flex;
   align-items: center;
   justify-content: center;
