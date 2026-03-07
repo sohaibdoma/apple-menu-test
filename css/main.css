@@ -513,7 +513,7 @@ body.no-blur-transition > *:not(.main-header) {
   align-items: center;
   justify-content: center;
 
-  border-radius: var(--nav-radius);
+  border-radius: 50%;
   isolation: isolate;
 
   background-color: rgba(255, 255, 255, 0.6);
