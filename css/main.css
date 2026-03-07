@@ -507,8 +507,8 @@ body.no-blur-transition > *:not(.main-header) {
 
   background:rgba(255,255,255,0.6);
 
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(1px);
+  -webkit-backdrop-filter:blur(1px);
 
   z-index:9000;
 }
@@ -522,8 +522,7 @@ body.night-mode .reading-bar{
   background:rgba(0,0,0,0.6);
 }
 
-padding-bottom: env(safe-area-inset-bottom);
-height: calc(60px + env(safe-area-inset-bottom));
+
 
 /* ========================================
    AUTO SCROLL BUTTON (SURAH PAGE)
