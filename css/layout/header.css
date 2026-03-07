@@ -81,7 +81,7 @@ body.night-mode .main-header {
 
 .header-bar {
   display: grid;
-  grid-template-columns: 88px 1fr 44px;
+  grid-template-columns: 120px 1fr 44px;
   align-items: center;
 
   height: var(--header-h);     /* key: matches header pill height */
@@ -382,6 +382,26 @@ body.menu-open .search-toggle{
   transition: opacity 0.2s ease;
 }
 
+.auto-scroll-btn{
+  background: none;
+  border: none;
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
+  height: 55px; /* touch-friendly */
+  width: 55px;
+
+  color: var(--page-text);
+  cursor: pointer;
+
+  transition: color 100ms ease;
+}
+
+
+
+
 .home-icon{
   width: 34px;
   height: 34px;
@@ -407,23 +427,6 @@ body.search-open .home-toggle{
 /* ===============================
    Auto Scroll Button
 =============================== */
-
-.auto-scroll-btn{
-  background: none;
-  border: none;
-  padding: 0;
-
-  display: grid;
-  place-items: center;
-
-  height: 55px; /* touch-friendly */
-  width: 55px;
-
-  color: var(--page-text);
-  cursor: pointer;
-
-  transition: color 100ms ease;
-}
 
 /* Icon size */
 .auto-icon{
