@@ -504,10 +504,8 @@ body.no-blur-transition > *:not(.main-header) {
   height: 56px;
 
   width: 70px; /* or 80px depending on padding */
-  left: 50%;
+  left: auto;
   right: 20px; /* distance from right edge */
-
-  transform: translateX(-50%);
    
   padding: 0; /* optional */
 
