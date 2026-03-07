@@ -382,22 +382,34 @@ body.menu-open .search-toggle{
   transition: opacity 0.2s ease;
 }
 
+
 .auto-scroll-btn{
-  background: none;
-  border: none;
-  padding: 0;
+  position: absolute;
+
+  left: 58px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 44px;
+  height: 44px;
 
   display: grid;
   place-items: center;
 
-  height: 55px; /* touch-friendly */
-  width: 55px;
+  border: 0;
+  background: transparent;
 
-  color: var(--page-text);
   cursor: pointer;
+  color: var(--menu-icon-color);
 
-  transition: color 100ms ease;
+  transition: opacity 0.2s ease;
+
+  -webkit-tap-highlight-color: transparent;
 }
+
+
+
 
 
 
