@@ -515,8 +515,8 @@ body.no-blur-transition > *:not(.main-header) {
   isolation: isolate;
 
   background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(100px);
 
   clip-path: inset(0 round var(--nav-radius));
   -webkit-clip-path: inset(0 round var(--nav-radius));
