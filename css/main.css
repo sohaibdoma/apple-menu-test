@@ -728,16 +728,20 @@ body.search-open #nav-surah-title {
   transform: translateY(1px);
 }
 
+/* Remove focus outline for navigation buttons */
+
 .next-surah-link:focus,
-.previous-surah-link:focus {
-  outline: none;
-  box-shadow: none;
+.previous-surah-link:focus,
+.next-surah-link:active,
+.previous-surah-link:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
-.next-surah-link:focus-visible,
-.previous-surah-link:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 3px;
+/* Remove mobile tap highlight */
+.next-surah-link,
+.previous-surah-link {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Desktop / tablet order in RTL:
