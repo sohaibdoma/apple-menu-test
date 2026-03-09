@@ -60,6 +60,27 @@ function toArabicDigits(n) {
   return String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
 }
 
+function getNextSurahLabel() {
+  const lang = document.documentElement.getAttribute("data-lang") || "ar";
+
+  if (lang === "en") return "Next Surah";
+  if (lang === "tr") return "Sonraki Sure";
+  return "السورة التالية";
+}
+
+function buildNextSurahLink(currentSurahId) {
+  const nextSurahId = currentSurahId + 1;
+
+  if (nextSurahId > 114) return null;
+
+  const link = document.createElement("a");
+  link.className = "next-surah-link";
+  link.href = `surah.html?surah=${nextSurahId}`;
+  link.textContent = getNextSurahLabel();
+
+  return link;
+}
+
 function renderSurah(data) {
   const header = document.getElementById("surah-header");
   const content = document.getElementById("surah-content");
@@ -84,8 +105,10 @@ function renderSurah(data) {
 
   let currentPage = null;
 
-  const appendPageFooter = (pageNum) => {
+  const appendPageFooter = (pageNum, options = {}) => {
     if (!pageNum) return;
+
+    const { isLastPage = false, chapterId = null } = options;
 
     const footer = document.createElement("div");
     footer.className = "mushaf-page-footer";
@@ -96,6 +119,17 @@ function renderSurah(data) {
 
     footer.appendChild(badge);
     content.appendChild(footer);
+
+    if (isLastPage && chapterId !== null) {
+      const nextLink = buildNextSurahLink(chapterId);
+
+      if (nextLink) {
+        const nextWrap = document.createElement("div");
+        nextWrap.className = "next-surah-wrap";
+        nextWrap.appendChild(nextLink);
+        content.appendChild(nextWrap);
+      }
+    }
   };
 
   data.verses.forEach((verse, index) => {
@@ -129,6 +163,9 @@ function renderSurah(data) {
 
   // Close last page at the bottom
   if (currentPage !== null) {
-    appendPageFooter(currentPage);
+    appendPageFooter(currentPage, {
+      isLastPage: true,
+      chapterId: data.chapter.id
+    });
   }
 }
