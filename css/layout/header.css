@@ -435,7 +435,7 @@ body.menu-open .search-toggle{
   stroke-linecap: round;
   stroke-linejoin: round;
    
-  transform: translateY(-1px); /* moves icon up */
+  transform: translateY(-0.8px); /* moves icon up */
 }
 
 /* Hide home button on home page and overlays */
