@@ -9,27 +9,39 @@
     holder.dataset.ready = "1";
 
     // Build UI (Arabic / RTL)
-holder.innerHTML = `
-  <div class="search-sheet" role="search">
-    <div class="search-head">
-      <input
-        id="searchInput"
-        class="search-input"
-        type="search"
-        autocomplete="off"
-        spellcheck="false"
-        dir="rtl"
-        placeholder="اكتب للبحث"
-        aria-label="اكتب للبحث"
-      />
-    </div>
+    const sheet = document.createElement("div");
+    sheet.className = "search-sheet";
+    sheet.setAttribute("role", "search");
 
-    <div id="searchResults" class="search-results" role="list"></div>
-  </div>
-`;
+    const head = document.createElement("div");
+    head.className = "search-head";
 
-    const input = document.getElementById("searchInput");
-    const results = document.getElementById("searchResults");
+    const inputEl = document.createElement("input");
+    inputEl.id = "searchInput";
+    inputEl.className = "search-input";
+    inputEl.type = "search";
+    inputEl.autocomplete = "off";
+    inputEl.spellcheck = false;
+    inputEl.setAttribute("data-i18n-placeholder", "search_placeholder");
+    inputEl.setAttribute("data-i18n-aria-label", "search_aria_label");
+
+    const currentDir = document.documentElement.dir || "rtl";
+    inputEl.dir = currentDir;
+
+    const resultsEl = document.createElement("div");
+    resultsEl.id = "searchResults";
+    resultsEl.className = "search-results";
+    resultsEl.setAttribute("role", "list");
+
+    head.appendChild(inputEl);
+    sheet.appendChild(head);
+    sheet.appendChild(resultsEl);
+    holder.replaceChildren(sheet);
+
+    
+
+    const input = holder.querySelector("#searchInput");
+    const results = holder.querySelector("#searchResults");
     if (!input || !results) return;
 
     // iOS: focus input when search overlay opens (best-effort, doesn't break anything)
@@ -92,7 +104,14 @@ holder.innerHTML = `
 
     function render(items) {
       if (!items.length) {
-        results.innerHTML = `<div class="search-empty">لا توجد نتائج</div>`;
+        const empty = document.createElement("div");
+        empty.className = "search-empty";
+        empty.textContent =
+          window.Wahyollah?.i18nCache?.[
+            document.documentElement.getAttribute("data-lang") || "ar"
+          ]?.search_empty || "No results found";
+
+        results.replaceChildren(empty);
         return;
       }
 
