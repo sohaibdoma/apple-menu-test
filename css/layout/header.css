@@ -315,11 +315,19 @@ body.search-closing #search-placeholder{
   height: 29px;                 /* OPEN pill height */
 }
 
-
 /* ========================================
    HOME + SEARCH BUTTON BORDERS
-   Static clone of menu-toggle OPEN pill
+   Static centered pill (menu-open style)
+   Border stays centered.
+   Icons can be moved independently.
 ======================================== */
+
+.home-toggle,
+.search-toggle{
+  position: relative;
+}
+
+/* Centered static pill border */
 
 .home-toggle::before,
 .search-toggle::before{
@@ -329,11 +337,11 @@ body.search-closing #search-placeholder{
   pointer-events: none;
 
   width: 30px;
-  height: 29px; /* same as menu-toggle open state */
+  height: 29px;
 
   left: 50%;
-  top: calc(50% - 14.5px);
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 
   border: 1px solid var(--control-stroke);
   border-radius: 11px;
@@ -342,6 +350,26 @@ body.search-closing #search-placeholder{
   background: transparent;
 }
 
+/* ========================================
+   ICON ALIGNMENT (independent movement)
+   Adjust these values freely
+======================================== */
+
+.home-icon{
+  transform: translateY(1px);
+}
+
+.search-icon{
+  transform: translateY(-1px);
+}
+
+
+/* ========================================
+   HEADER BUTTONS (Home + Search)
+   Fixed 44×44px controls inside header bar.
+   Icons centered with grid layout.
+   Buttons hide when menu or search is open.
+======================================== */
 
 .search-toggle{
   width: 44px;
