@@ -59,8 +59,6 @@
     sheet.appendChild(resultsEl);
     holder.replaceChildren(sheet);
 
-    
-
     const input = holder.querySelector("#searchInput");
     const submitBtn = holder.querySelector("#searchSubmit");
     const results = holder.querySelector("#searchResults");
@@ -91,6 +89,13 @@
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;");
+    }
+
+    function goToSearchPage() {
+      const q = input.value.trim();
+      if (!q) return;
+
+      window.location.href = `search.html?q=${encodeURIComponent(q)}`;
     }
 
     function collectMenuItems() {
@@ -198,8 +203,7 @@
       const q = norm(input.value);
       if (!q) return;
 
-      // Step 2 will replace this with real page navigation
-      doSearch();
+      goToSearchPage();
     });
 
     input.addEventListener("keydown", (e) => {
@@ -207,8 +211,7 @@
         const q = norm(input.value);
         if (!q) return;
 
-        // Step 2 will replace this with real page navigation
-        doSearch();
+        goToSearchPage();
       }
     });
 
