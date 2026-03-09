@@ -356,7 +356,7 @@ body.search-closing #search-placeholder{
 ======================================== */
 
 .home-icon{
-  transform: translateY(2px);
+  transform: translateY(1px);
 }
 
 .search-icon{
@@ -449,6 +449,8 @@ body.menu-open .search-toggle{
 
   stroke-linecap: round;
   stroke-linejoin: round;
+   
+  transform: translateY(-2px); /* moves icon up */
 }
 
 /* Hide home button on home page and overlays */
