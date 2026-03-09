@@ -68,7 +68,15 @@ function getNextSurahLabel() {
   return "السورة التالية";
 }
 
-function buildNextSurahLink(currentSurahId) {
+function getPreviousSurahLabel() {
+  const lang = document.documentElement.getAttribute("data-lang") || "ar";
+
+  if (lang === "en") return "Previous Surah";
+  if (lang === "tr") return "Önceki Sure";
+  return "السورة السابقة";
+}
+
+async function buildNextSurahLink(currentSurahId) {
   const nextSurahId = currentSurahId + 1;
 
   if (nextSurahId > 114) return null;
@@ -76,7 +84,50 @@ function buildNextSurahLink(currentSurahId) {
   const link = document.createElement("a");
   link.className = "next-surah-link";
   link.href = `surah.html?surah=${nextSurahId}`;
-  link.textContent = getNextSurahLabel();
+
+  const lang = document.documentElement.getAttribute("data-lang") || "ar";
+  const api = window.Wahyollah?.api;
+
+  let nextName = "";
+
+  try {
+    const res = await api.getChapter(nextSurahId);
+
+    if (lang === "ar") nextName = res.chapter.name_arabic;
+    else nextName = res.chapter.name_simple;
+  } catch (e) {
+    nextName = "";
+  }
+
+  link.textContent = `${getNextSurahLabel()}: ${nextName}`;
+
+  return link;
+}
+
+async function buildPreviousSurahLink(currentSurahId) {
+  const previousSurahId = currentSurahId - 1;
+
+  if (previousSurahId < 1) return null;
+
+  const link = document.createElement("a");
+  link.className = "previous-surah-link";
+  link.href = `surah.html?surah=${previousSurahId}`;
+
+  const lang = document.documentElement.getAttribute("data-lang") || "ar";
+  const api = window.Wahyollah?.api;
+
+  let previousName = "";
+
+  try {
+    const res = await api.getChapter(previousSurahId);
+
+    if (lang === "ar") previousName = res.chapter.name_arabic;
+    else previousName = res.chapter.name_simple;
+  } catch (e) {
+    previousName = "";
+  }
+
+  link.textContent = `${getPreviousSurahLabel()}: ${previousName}`;
 
   return link;
 }
@@ -126,14 +177,25 @@ function renderSurah(data) {
     content.appendChild(footer);
 
     if (isLastPage && chapterId !== null) {
-      const nextLink = buildNextSurahLink(chapterId);
+      Promise.all([
+        buildPreviousSurahLink(chapterId),
+        buildNextSurahLink(chapterId)
+      ]).then(([previousLink, nextLink]) => {
+        if (previousLink || nextLink) {
+          const navWrap = document.createElement("div");
+          navWrap.className = "surah-nav-wrap";
 
-      if (nextLink) {
-        const nextWrap = document.createElement("div");
-        nextWrap.className = "next-surah-wrap";
-        nextWrap.appendChild(nextLink);
-        content.appendChild(nextWrap);
-      }
+          if (nextLink) {
+            navWrap.appendChild(nextLink);
+          }
+
+          if (previousLink) {
+            navWrap.appendChild(previousLink);
+          }
+
+          content.appendChild(navWrap);
+        }
+      });
     }
   };
 
