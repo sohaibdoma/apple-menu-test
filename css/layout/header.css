@@ -403,6 +403,24 @@ body.search-open .home-toggle{
 }
 
 
+/* ===============================
+   HEADER BUTTON ACTIVE BORDERS
+   Matches menu-toggle open state
+=============================== */
+
+body.menu-open .home-toggle,
+body.menu-open .search-toggle {
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+}
+
+body.search-open .home-toggle,
+body.search-open .menu-toggle {
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+}
+
+
 /* ========================================
    SEARCH UI (Overlay Contents)
    - Clean, centered sheet
