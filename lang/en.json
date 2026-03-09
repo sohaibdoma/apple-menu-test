@@ -3,7 +3,16 @@
   "dir": "ltr",
 
   "home_title": "The Holy Quran",
-  "home_subtitle": "Read the Holy Quran and choose a surah from the list",
+  "home_subtitle": "",
+  "home_pick_surah": "Choose a surah from the list",
+
+  "search_placeholder": "Type to search",
+  "search_aria_label": "Type to search",
+  "search_empty": "No results found",
+
+  "surah_invalid_id": "Invalid Surah ID.",
+  "surah_load_failed": "Failed to load Surah.",
+  "surah_meta_ayahs": "Ayahs",
 
   "menu.home": "Home",
   "menu.001": "Al-Fatihah",
