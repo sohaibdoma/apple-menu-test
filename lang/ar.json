@@ -4,6 +4,15 @@
 
   "home_title": "القرآن الكريم",
   "home_subtitle": "",
+  "home_pick_surah": "إختر سورة من القائمة",
+
+  "search_placeholder": "اكتب للبحث",
+  "search_aria_label": "اكتب للبحث",
+  "search_empty": "لا توجد نتائج",
+
+  "surah_invalid_id": "رقم السورة غير صالح.",
+  "surah_load_failed": "فشل تحميل السورة.",
+  "surah_meta_ayahs": "آيات",
 
   "menu.home": "الرئيسية",
   "menu.001": "الفاتحة",
