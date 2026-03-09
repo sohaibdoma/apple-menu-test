@@ -389,7 +389,7 @@ body.menu-open .search-toggle{
 .home-toggle{
   position: absolute;
   left: 19px;
-  top: 47%;
+  top: 50%;
   transform: translate(-10px, -50%); /* moves 5px left */
 
   width: 44px;
