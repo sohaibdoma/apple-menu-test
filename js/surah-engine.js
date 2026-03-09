@@ -84,6 +84,11 @@ function buildNextSurahLink(currentSurahId) {
 function renderSurah(data) {
   const header = document.getElementById("surah-header");
   const content = document.getElementById("surah-content");
+  const navTitle = document.getElementById("nav-surah-title");
+
+  if (navTitle) {
+    navTitle.textContent = data.chapter.name_arabic;
+  }
 
   header.innerHTML = `
     <div class="surah-title">
