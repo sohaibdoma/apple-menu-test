@@ -16,6 +16,9 @@
     const head = document.createElement("div");
     head.className = "search-head";
 
+    const inputWrap = document.createElement("div");
+    inputWrap.className = "search-input-wrap";
+
     const inputEl = document.createElement("input");
     inputEl.id = "searchInput";
     inputEl.className = "search-input";
@@ -28,12 +31,30 @@
     const currentDir = document.documentElement.dir || "rtl";
     inputEl.dir = currentDir;
 
+    const actionBtn = document.createElement("button");
+    actionBtn.type = "button";
+    actionBtn.className = "search-submit";
+    actionBtn.id = "searchSubmit";
+    actionBtn.setAttribute("aria-label", "Search");
+    actionBtn.setAttribute("aria-disabled", "true");
+    actionBtn.disabled = true;
+
+    actionBtn.innerHTML = `
+      <svg class="search-submit-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5"></circle>
+        <path d="M16.2 16.2 L20 20"></path>
+      </svg>
+    `;
+
+    inputWrap.appendChild(inputEl);
+    inputWrap.appendChild(actionBtn);
+
     const resultsEl = document.createElement("div");
     resultsEl.id = "searchResults";
     resultsEl.className = "search-results";
     resultsEl.setAttribute("role", "list");
 
-    head.appendChild(inputEl);
+    head.appendChild(inputWrap);
     sheet.appendChild(head);
     sheet.appendChild(resultsEl);
     holder.replaceChildren(sheet);
@@ -41,8 +62,9 @@
     
 
     const input = holder.querySelector("#searchInput");
+    const submitBtn = holder.querySelector("#searchSubmit");
     const results = holder.querySelector("#searchResults");
-    if (!input || !results) return;
+    if (!input || !submitBtn || !results) return;
 
     // iOS: focus input when search overlay opens (best-effort, doesn't break anything)
     const searchToggle = document.getElementById("searchToggle");
@@ -144,7 +166,17 @@
       });
     }
 
+    function updateSubmitState() {
+      const hasValue = norm(input.value).length > 0;
+
+      submitBtn.disabled = !hasValue;
+      submitBtn.setAttribute("aria-disabled", String(!hasValue));
+      submitBtn.classList.toggle("is-active", hasValue);
+    }
+
     function doSearch() {
+      updateSubmitState();
+
       const q = norm(input.value);
 
       if (!q) {
@@ -162,8 +194,27 @@
 
     input.addEventListener("input", doSearch);
 
+    submitBtn.addEventListener("click", () => {
+      const q = norm(input.value);
+      if (!q) return;
+
+      // Step 2 will replace this with real page navigation
+      doSearch();
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const q = norm(input.value);
+        if (!q) return;
+
+        // Step 2 will replace this with real page navigation
+        doSearch();
+      }
+    });
+
     // initial state
     results.innerHTML = "";
+    updateSubmitState();
   }
 
   window.Wahyollah = window.Wahyollah || {};
