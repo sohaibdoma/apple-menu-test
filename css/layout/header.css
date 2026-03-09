@@ -472,7 +472,7 @@ body.night-mode .search-input{
 .search-submit{
   position: absolute;
   top: 50%;
-  inset-inline-start: 14px;
+  inset-inline-end: 14px;
   transform: translateY(-50%);
 
   width: 32px;
