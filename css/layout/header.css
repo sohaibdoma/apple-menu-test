@@ -315,6 +315,34 @@ body.search-closing #search-placeholder{
   height: 29px;                 /* OPEN pill height */
 }
 
+
+/* ========================================
+   HOME + SEARCH BUTTON BORDERS
+   Static clone of menu-toggle OPEN pill
+======================================== */
+
+.home-toggle::before,
+.search-toggle::before{
+  content: "";
+  position: absolute;
+  display: block;
+  pointer-events: none;
+
+  width: 30px;
+  height: 29px; /* same as menu-toggle open state */
+
+  left: 50%;
+  top: calc(50% - 14.5px);
+  transform: translateX(-50%);
+
+  border: 1px solid var(--control-stroke);
+  border-radius: 11px;
+  box-sizing: border-box;
+
+  background: transparent;
+}
+
+
 .search-toggle{
   width: 44px;
   height: 44px;
@@ -402,23 +430,6 @@ body.search-open .home-toggle{
   pointer-events: none;
 }
 
-
-/* ===============================
-   HEADER BUTTON ACTIVE BORDERS
-   Matches menu-toggle open state
-=============================== */
-
-body.menu-open .home-toggle,
-body.menu-open .search-toggle {
-  border: 1.5px solid currentColor;
-  border-radius: 999px;
-}
-
-body.search-open .home-toggle,
-body.search-open .menu-toggle {
-  border: 1.5px solid currentColor;
-  border-radius: 999px;
-}
 
 
 /* ========================================
