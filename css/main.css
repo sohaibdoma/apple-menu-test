@@ -634,64 +634,6 @@ body.night-mode .auto-scroll-bar{
 }
 
 
-/* ===============================
-   NEXT SURAH NAVIGATION
-=============================== */
-
-.next-surah-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 6px;
-  margin-bottom: 34px;
-}
-
-.next-surah-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 44px;
-  padding: 12px 22px;
-
-  border-radius: 999px;
-  text-decoration: none;
-
-  background: rgba(0, 0, 0, 0.06);
-  color: #000;
-
-  font-family: "Scheherazade New", serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
-
-  transition: background-color 0.25s ease,
-              color 0.25s ease,
-              transform 0.2s ease;
-}
-
-.next-surah-link:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.next-surah-link:active {
-  transform: translateY(1px);
-}
-
-.next-surah-link:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 3px;
-}
-
-body.night-mode .next-surah-link,
-html.night-mode .next-surah-link {
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-}
-
-body.night-mode .next-surah-link:hover,
-html.night-mode .next-surah-link:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
 
 /* ===============================
    NAVBAR SURAH TITLE
@@ -716,6 +658,28 @@ html.night-mode .next-surah-link:hover {
   white-space: nowrap;
 }
 
+/* Hide Surah title everywhere by default */
+#nav-surah-title {
+  display: none;
+}
+
+/* Show it only on Surah pages */
+body[data-surah] #nav-surah-title {
+  display: flex;
+}
+
+/* ==================================================
+   SURAH NAVIGATION (Previous / Next Surah Buttons)
+   --------------------------------------------------
+   Bottom navigation displayed after the final page
+   of a Surah. Provides links to the previous and
+   next Surahs with their names.
+
+   - Works in both light and night mode
+   - Fully responsive
+   - Shared styling for both buttons
+================================================== */
+
 .surah-nav-wrap {
   display: flex;
   align-items: center;
@@ -731,17 +695,24 @@ html.night-mode .next-surah-link:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   min-height: 44px;
   padding: 12px 22px;
+
   border-radius: 999px;
   text-decoration: none;
+
   background: rgba(0, 0, 0, 0.06);
   color: #000;
+
   font-family: "Scheherazade New", serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 1;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+
+  transition: background-color 0.25s ease,
+              color 0.25s ease,
+              transform 0.2s ease;
 }
 
 .next-surah-link:hover,
@@ -759,6 +730,8 @@ html.night-mode .next-surah-link:hover {
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
+
+/* Night mode */
 
 body.night-mode .next-surah-link,
 body.night-mode .previous-surah-link,
