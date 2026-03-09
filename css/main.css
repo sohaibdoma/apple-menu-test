@@ -674,9 +674,13 @@ body.search-open #nav-surah-title {
    of a Surah. Provides links to the previous and
    next Surahs with their names.
 
-   - Works in both light and night mode
-   - Fully responsive
-   - Shared styling for both buttons
+   Desktop / tablet RTL layout:
+   - Next Surah on the left
+   - Previous Surah on the right
+
+   Mobile layout:
+   - Previous Surah on top
+   - Next Surah below
 ================================================== */
 
 .surah-nav-wrap {
@@ -730,6 +734,16 @@ body.search-open #nav-surah-title {
   outline-offset: 3px;
 }
 
+/* Desktop / tablet order in RTL:
+   Next on the left, Previous on the right */
+.next-surah-link {
+  order: 1;
+}
+
+.previous-surah-link {
+  order: 2;
+}
+
 /* Night mode */
 
 body.night-mode .next-surah-link,
@@ -745,4 +759,26 @@ body.night-mode .previous-surah-link:hover,
 html.night-mode .next-surah-link:hover,
 html.night-mode .previous-surah-link:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile:
+   Previous on top, Next below */
+@media (max-width: 768px) {
+  .surah-nav-wrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .previous-surah-link {
+    order: 1;
+  }
+
+  .next-surah-link {
+    order: 2;
+  }
+
+  .next-surah-link,
+  .previous-surah-link {
+    width: 100%;
+  }
 }
