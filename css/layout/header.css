@@ -61,9 +61,7 @@ body.search-open .main-header::after {
 }
 
 html.night-mode body.menu-open .main-header::after,
-body.night-mode body.menu-open .main-header::after,
-html.night-mode body.search-open .main-header::after,
-body.night-mode body.search-open .main-header::after {
+html.night-mode body.search-open .main-header::after {
   background: #000000;
 }
 
@@ -230,7 +228,7 @@ body.search-closing #search-placeholder{
 /* ========================================
    HEADER BUTTONS (Menu + Search)
    - Menu: morphing chevron-to-X + animated outline pill
-   - Search: icon-only button (no pill)
+   - Search: icon button with static outline pill
    - Focus states: removed for a clean “tap” feel
 ======================================== */
 
@@ -350,19 +348,6 @@ body.search-closing #search-placeholder{
   background: transparent;
 }
 
-/* ========================================
-   ICON ALIGNMENT (independent movement)
-   Adjust these values freely
-======================================== */
-
-.home-icon{
-  transform: translateY(1px);
-}
-
-.search-icon{
-  transform: translateY(-1px);
-}
-
 
 /* ========================================
    HEADER BUTTONS (Home + Search)
@@ -450,7 +435,7 @@ body.menu-open .search-toggle{
   stroke-linecap: round;
   stroke-linejoin: round;
    
-  transform: translateY(-1.3px); /* moves icon up */
+  transform: translateY(-1.1px); /* moves icon up */
 }
 
 /* Hide home button on home page and overlays */
