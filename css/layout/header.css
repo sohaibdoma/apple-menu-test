@@ -435,7 +435,6 @@ body.search-open .home-toggle{
 
 
 /* Search input */
-
 .search-input{
   width: 100%;
   height: 56px;
@@ -449,7 +448,8 @@ body.search-open .home-toggle{
   padding-block: 0;
   line-height: 44px;
 
-  padding-inline: 16px 68px;
+  /* start side = search icon, end side = native clear X */
+  padding-inline: 52px 36px;
 
   font: inherit;
   outline: none;
@@ -460,7 +460,7 @@ body.search-open .home-toggle{
   margin-top: 0;
 
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 html.night-mode .search-input,
@@ -472,7 +472,7 @@ body.night-mode .search-input{
 .search-submit{
   position: absolute;
   top: 50%;
-  inset-inline-end: 14px;
+  inset-inline-start: 14px;
   transform: translateY(-50%);
 
   width: 32px;
@@ -492,6 +492,8 @@ body.night-mode .search-input{
   pointer-events: none;
 
   -webkit-tap-highlight-color: transparent;
+
+  z-index: 3;
 }
 
 .search-submit-icon{
