@@ -637,36 +637,35 @@ body.night-mode .auto-scroll-bar{
 
 /* ===============================
    NAVBAR SURAH TITLE
+   - Hidden by default
+   - Visible only on Surah pages
+   - Hidden again when menu/search overlay is open
 =============================== */
 
 .nav-surah-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-
-  display: flex;
   align-items: center;
   justify-content: center;
-
   height: 100%;
-
   font-family: "Scheherazade New", serif;
   font-size: 22px;
   font-weight: 700;
-
   pointer-events: none;
   white-space: nowrap;
-}
-
-/* Hide Surah title everywhere by default */
-#nav-surah-title {
   display: none;
 }
 
-/* Show it only on Surah pages */
 body[data-surah] #nav-surah-title {
   display: flex;
 }
+
+body.menu-open #nav-surah-title,
+body.search-open #nav-surah-title {
+  display: none;
+}
+
 
 /* ==================================================
    SURAH NAVIGATION (Previous / Next Surah Buttons)
