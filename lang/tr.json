@@ -3,7 +3,16 @@
   "dir": "ltr",
 
   "home_title": "Kur'an-ı Kerim",
-  "home_subtitle": "Kur'an-ı Kerim'i okuyun ve listeden sure seçin",
+  "home_subtitle": "",
+  "home_pick_surah": "Listeden bir sure seçin",
+
+  "search_placeholder": "Aramak için yazın",
+  "search_aria_label": "Aramak için yazın",
+  "search_empty": "Sonuç bulunamadı",
+
+  "surah_invalid_id": "Geçersiz sure kimliği.",
+  "surah_load_failed": "Sure yüklenemedi.",
+  "surah_meta_ayahs": "Ayet",
 
   "menu.home": "Ana Sayfa",
   "menu.001": "Fâtiha",
