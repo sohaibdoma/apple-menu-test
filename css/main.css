@@ -728,6 +728,12 @@ body.search-open #nav-surah-title {
   transform: translateY(1px);
 }
 
+.next-surah-link:focus,
+.previous-surah-link:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .next-surah-link:focus-visible,
 .previous-surah-link:focus-visible {
   outline: 2px solid currentColor;
