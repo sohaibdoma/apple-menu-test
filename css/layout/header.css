@@ -284,69 +284,24 @@ body.search-closing #search-placeholder{
   stroke-dasharray: 100 0;
 }
 
-/* The pill is a separate layer that we animate (expands DOWN only) */
-.menu-toggle::before{
-  content: "";
-  position: absolute;
-  display: block;          
-  pointer-events: none;   
 
-  width: 30px;
-  height: 22px;
 
-  left: 50%;
-  top: calc(50% - 11px);
-  transform: translateX(-50%);
 
-  border: 1px solid var(--control-stroke);
-  border-radius: 11px;
-  box-sizing: border-box;
 
-  background: transparent;
 
-  will-change: height; 
-  transition: height 300ms cubic-bezier(0.22, 1, 0.36, 1);
-}
 
-/* OPEN: pill grows downward only */
-.menu-toggle.is-open::before{
-  height: 29px;                 /* OPEN pill height */
-}
 
-/* ========================================
-   HOME + SEARCH BUTTON BORDERS
-   Static centered pill (menu-open style)
-   Border stays centered.
-   Icons can be moved independently.
-======================================== */
 
-.home-toggle,
-.search-toggle{
-  position: relative;
-}
 
-/* Centered static pill border */
 
-.home-toggle::before,
-.search-toggle::before{
-  content: "";
-  position: absolute;
-  display: block;
-  pointer-events: none;
 
-  width: 30px;
-  height: 29px;
 
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 
-  border: 1px solid var(--control-stroke);
-  border-radius: 11px;
-  box-sizing: border-box;
 
-  background: transparent;
-}
+
+
+
+
 
 
 /* ========================================
