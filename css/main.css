@@ -861,7 +861,7 @@ html.night-mode .previous-surah-link:hover {
   line-height: 44px;
 
   /* start side = search icon, end side = native clear X */
-  padding-inline: 36px 52px;
+  padding-inline: 52px 36px;
 
   font: inherit;
   outline: none;
@@ -884,7 +884,7 @@ body.night-mode .search-input{
 .search-submit{
   position: absolute;
   top: 50%;
-  inset-inline-end: 14px;
+  inset-inline-start: 14px;
   transform: translateY(-50%);
    
 
