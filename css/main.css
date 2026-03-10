@@ -1047,6 +1047,20 @@ body.night-mode .search-result-meta {
   text-align: right;
 }
 
+
+.ayah-targeted {
+  background: rgba(255, 210, 80, 0.22);
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(255, 210, 80, 0.28);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+html.night-mode .ayah-targeted,
+body.night-mode .ayah-targeted {
+  background: rgba(255, 210, 80, 0.16);
+  box-shadow: 0 0 0 1px rgba(255, 210, 80, 0.22);
+}
+
 /* ========================================
    FOCUS CLEANUP (Search + Header Controls)
    Removes browser focus outlines and tap highlights
