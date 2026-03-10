@@ -297,23 +297,35 @@ body.night-mode .quran-mode-btn.is-active {
 /* ========================================
    TAJWEED MODE
    - Unicode tajweed rendering
+   - Improved spacing and shaping
    - Applies only in tajweed mode
-   - Keeps reading mode untouched
 ======================================== */
+
+body[data-quran-mode="tajweed"] .ayah {
+  align-items: baseline;
+}
 
 body[data-quran-mode="tajweed"] .ayah-text {
   display: inline;
   direction: rtl;
   unicode-bidi: plaintext;
+
   font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-size: 1.08em;
   font-weight: 400;
-  font-variant-ligatures: contextual common-ligatures;
-  line-height: 2.2;
+
+  line-height: 2.35;
   letter-spacing: 0;
-  word-spacing: 0;
+  word-spacing: 0.02em;
+
   white-space: normal;
   text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-variant-ligatures: contextual common-ligatures;
+  font-feature-settings: "calt" 1, "liga" 1, "kern" 1;
+
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Tajweed tags returned by the API */
@@ -321,11 +333,26 @@ body[data-quran-mode="tajweed"] .ayah-text tajweed {
   display: inline;
   font: inherit;
   line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
 }
 
 /* Quiet ayah ending markers inside tajweed markup */
 body[data-quran-mode="tajweed"] .ayah-text .end {
   color: inherit;
+}
+
+/* Improve badge alignment next to taller tajweed text */
+body[data-quran-mode="tajweed"] .q-badge--ayah {
+  align-self: center;
+}
+
+/* Slightly tighter spacing on small screens so lines stay balanced */
+@media (max-width: 768px) {
+  body[data-quran-mode="tajweed"] .ayah-text {
+    font-size: 1.03em;
+    line-height: 2.2;
+  }
 }
 
 /* ========================================
