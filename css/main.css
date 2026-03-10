@@ -243,6 +243,58 @@ body {
 
 
 /* ========================================
+   QURAN MODE SWITCH
+   Reading / Tajweed segmented control
+======================================== */
+
+#quran-mode-switch {
+  margin-bottom: 18px;
+}
+
+.quran-mode-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.quran-mode-btn {
+  min-width: 92px;
+  height: 38px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--page-text);
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.quran-mode-btn.is-active {
+  background: rgba(0, 0, 0, 0.10);
+}
+
+html.night-mode .quran-mode-switch,
+body.night-mode .quran-mode-switch {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html.night-mode .quran-mode-btn,
+body.night-mode .quran-mode-btn {
+  color: #ffffff;
+}
+
+html.night-mode .quran-mode-btn.is-active,
+body.night-mode .quran-mode-btn.is-active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* ========================================
    TAJWEED MODE
    - Unicode tajweed rendering
    - Applies only in tajweed mode
