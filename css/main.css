@@ -1056,16 +1056,11 @@ body.night-mode .search-result-meta {
 .ayah-targeted{
   background: rgba(0,0,0,0.10);
   border-radius: 18px;
-
-  animation: ayahFlash 3.5s ease forwards;
+  animation: ayahFlashLight 3.5s ease forwards;
 }
 
-html.night-mode .ayah-targeted,
-body.night-mode .ayah-targeted{
-  background: rgba(255,255,255,0.10);
-}
-
-@keyframes ayahFlash{
+/* Light mode animation */
+@keyframes ayahFlashLight{
   0%{
     background: rgba(0,0,0,0.16);
   }
@@ -1079,19 +1074,26 @@ body.night-mode .ayah-targeted{
   }
 }
 
-html.night-mode @keyframes ayahFlash{
+/* Dark mode (slightly brighter grey) */
+html.night-mode .ayah-targeted,
+body.night-mode .ayah-targeted{
+  animation: ayahFlashDark 3.5s ease forwards;
+}
+
+@keyframes ayahFlashDark{
   0%{
-    background: rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.20);
   }
 
   60%{
-    background: rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.14);
   }
 
   100%{
     background: transparent;
   }
 }
+
 
 /* ========================================
    FOCUS CLEANUP (Search + Header Controls)
