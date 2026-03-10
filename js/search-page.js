@@ -84,40 +84,72 @@
     document.title = query ? `${getPageTitle()} - ${query}` : getPageTitle();
   }
 
-  function collectMenuItems() {
-    const menu = document.getElementById("main-menu");
-    if (!menu) return [];
+  async function loadAllSurahs() {
+    const api = window.Wahyollah?.api;
+    if (!api) {
+      throw new Error("API module not loaded");
+    }
 
-    return [...menu.querySelectorAll("a[href]")].map((a) => {
-      const href = a.getAttribute("href") || "";
-      const label = a.textContent.trim();
+    const requests = [];
 
-      const surahMatch = href.match(/surah\.html\?(?:surah|id)=(\d+)/i);
-      const surahId = surahMatch ? Number.parseInt(surahMatch[1], 10) : null;
+    for (let id = 1; id <= 114; id += 1) {
+      requests.push(api.getChapter(id));
+    }
+
+    const responses = await Promise.all(requests);
+
+    return responses.map((res) => {
+      const chapter = res.chapter;
 
       return {
         type: "surah",
-        label,
-        href,
-        surahId
+        surahId: chapter.id,
+        href: `surah.html?surah=${chapter.id}`,
+        nameArabic: chapter.name_arabic || "",
+        nameSimple: chapter.name_simple || "",
+        revelationPlace: chapter.revelation_place || "",
+        versesCount: chapter.verses_count || ""
       };
     });
   }
 
-  function searchItems(query) {
+  function searchItems(items, query) {
     const q = norm(query);
     if (!q) return [];
 
-    const items = collectMenuItems();
-
     return items.filter((item) => {
-      const labelMatch = norm(item.label).includes(q);
-      const idMatch =
-        item.surahId !== null &&
-        String(item.surahId).includes(q);
-
-      return labelMatch || idMatch;
+      return (
+        norm(item.nameArabic).includes(q) ||
+        norm(item.nameSimple).includes(q) ||
+        norm(item.revelationPlace).includes(q) ||
+        String(item.surahId).includes(q) ||
+        String(item.versesCount).includes(q)
+      );
     });
+  }
+
+  function getPrimaryLabel(item) {
+    const lang = document.documentElement.getAttribute("data-lang") || "ar";
+
+    if (lang === "ar") {
+      return item.nameArabic || item.nameSimple;
+    }
+
+    return item.nameSimple || item.nameArabic;
+  }
+
+  function getSecondaryLabel(item) {
+    const lang = document.documentElement.getAttribute("data-lang") || "ar";
+
+    if (lang === "ar") {
+      const simple = item.nameSimple || "";
+      const number = item.surahId || "";
+      return `${simple} • ${number}`;
+    }
+
+    const arabic = item.nameArabic || "";
+    const number = item.surahId || "";
+    return `${arabic} • ${number}`;
   }
 
   function renderResults(items, query) {
@@ -133,42 +165,23 @@
 
     resultsEl.innerHTML = items
       .map((item) => {
-        const safeLabel = escapeHtml(item.label);
         const safeHref = escapeHtml(item.href);
         const typeLabel = escapeHtml(getTypeLabel(item.type));
+        const primaryLabel = escapeHtml(getPrimaryLabel(item));
+        const secondaryLabel = escapeHtml(getSecondaryLabel(item));
 
         return `
           <a class="search-result" href="${safeHref}">
             <span class="search-result-type">${typeLabel}</span>
-            <span class="search-result-text">${safeLabel}</span>
+            <span class="search-result-text">${primaryLabel}</span>
+            <span class="search-result-meta">${secondaryLabel}</span>
           </a>
         `;
       })
       .join("");
   }
 
-  function waitForMenuAndRender(query) {
-    let tries = 0;
-    const maxTries = 60;
-
-    function attempt() {
-      const menu = document.getElementById("main-menu");
-
-      if (menu || tries >= maxTries) {
-        const items = searchItems(query);
-        setPageHeader(query, items.length);
-        renderResults(items, query);
-        return;
-      }
-
-      tries += 1;
-      setTimeout(attempt, 100);
-    }
-
-    attempt();
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
+  async function initSearchPage() {
     const query = getQueryFromURL();
 
     setPageHeader(query, 0);
@@ -178,6 +191,19 @@
       return;
     }
 
-    waitForMenuAndRender(query);
+    try {
+      const allSurahs = await loadAllSurahs();
+      const items = searchItems(allSurahs, query);
+
+      setPageHeader(query, items.length);
+      renderResults(items, query);
+    } catch (error) {
+      console.error(error);
+      renderResults([], query);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initSearchPage();
   });
 })();
