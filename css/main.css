@@ -1050,20 +1050,48 @@ body.night-mode .search-result-meta {
 
 /* ========================================
    AYAH LANDING HIGHLIGHT
-   Temporary highlight when jumping to ayah
+   Smooth fade highlight when jumping to ayah
 ======================================== */
 
 .ayah-targeted{
-  background: rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.10);
   border-radius: 18px;
-  transition: background-color 0.6s ease;
+
+  animation: ayahFlash 3.5s ease forwards;
 }
 
 html.night-mode .ayah-targeted,
 body.night-mode .ayah-targeted{
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.10);
 }
 
+@keyframes ayahFlash{
+  0%{
+    background: rgba(0,0,0,0.16);
+  }
+
+  60%{
+    background: rgba(0,0,0,0.10);
+  }
+
+  100%{
+    background: transparent;
+  }
+}
+
+html.night-mode @keyframes ayahFlash{
+  0%{
+    background: rgba(255,255,255,0.16);
+  }
+
+  60%{
+    background: rgba(255,255,255,0.10);
+  }
+
+  100%{
+    background: transparent;
+  }
+}
 
 /* ========================================
    FOCUS CLEANUP (Search + Header Controls)
