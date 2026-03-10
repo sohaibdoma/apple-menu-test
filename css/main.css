@@ -875,6 +875,16 @@ html.night-mode .previous-surah-link:hover {
   z-index: 1;
 }
 
+.search-input-wrap[dir="rtl"] .search-input{
+  padding-right: 52px;
+  padding-left: 36px;
+}
+
+.search-input-wrap[dir="ltr"] .search-input{
+  padding-left: 52px;
+  padding-right: 36px;
+}
+
 html.night-mode .search-input,
 body.night-mode .search-input{
   background: #000000;
@@ -884,9 +894,7 @@ body.night-mode .search-input{
 .search-submit{
   position: absolute;
   top: 50%;
-  inset-inline-start: 14px;
   transform: translateY(-50%);
-   
 
   width: 32px;
   height: 32px;
@@ -907,6 +915,16 @@ body.night-mode .search-input{
   -webkit-tap-highlight-color: transparent;
 
   z-index: 3;
+}
+
+.search-input-wrap[dir="rtl"] .search-submit{
+  right: 14px;
+  left: auto;
+}
+
+.search-input-wrap[dir="ltr"] .search-submit{
+  left: 14px;
+  right: auto;
 }
 
 .search-submit-icon{
