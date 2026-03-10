@@ -32,6 +32,7 @@
 
     const currentDir = document.documentElement.dir || "rtl";
     inputEl.dir = currentDir;
+    inputWrap.setAttribute("dir", currentDir);
 
     const actionBtn = document.createElement("button");
     actionBtn.type = "button";
