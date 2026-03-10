@@ -572,7 +572,9 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 
 /* Result row (button) — no borders, keep hover */
 .search-result{
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   width: calc(100% - 80px);
   
   border: none !important;
@@ -603,6 +605,12 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   transition: background 0.15s ease;
 }
 
+.search-result-meta {
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0.65;
+}
+
 /* Hover */
 .search-result:hover{
   background: rgba(0,0,0,0.04);
@@ -611,6 +619,11 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 html.night-mode .search-result:hover,
 body.night-mode .search-result:hover{
   background: rgba(255,255,255,0.10);
+}
+
+html.night-mode .search-result-meta,
+body.night-mode .search-result-meta {
+  color: rgba(255, 255, 255, 0.68);
 }
 
 /* Empty / hint text */
