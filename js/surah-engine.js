@@ -27,7 +27,7 @@ function flashAyahTarget(target) {
   if (!target) return;
 
   target.classList.remove("ayah-targeted");
-  void target.offsetWidth; // restart animation
+  void target.offsetWidth;
   target.classList.add("ayah-targeted");
 }
 
@@ -40,7 +40,6 @@ function scrollToAyahHashTarget() {
 
   requestAnimationFrame(() => {
     setTimeout(() => {
-
       const header = document.querySelector(".main-header");
       const headerHeight = header ? header.offsetHeight : 0;
 
@@ -48,7 +47,7 @@ function scrollToAyahHashTarget() {
         target.getBoundingClientRect().top +
         window.pageYOffset -
         headerHeight -
-        24; // small breathing space
+        24;
 
       window.scrollTo({
         top: y,
@@ -56,9 +55,22 @@ function scrollToAyahHashTarget() {
       });
 
       flashAyahTarget(target);
-
     }, 120);
   });
+}
+
+function getQuranMode() {
+  const configuredMode = window.Wahyollah?.config?.defaultQuranMode;
+
+  if (
+    configuredMode === "reading" ||
+    configuredMode === "tajweed" ||
+    configuredMode === "mushaf"
+  ) {
+    return configuredMode;
+  }
+
+  return "reading";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -74,13 +86,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  const currentMode = getQuranMode();
+
   document.body.dataset.surah = String(surahId);
+  document.body.dataset.quranMode = currentMode;
+
   if (window.Wahyollah?.markCurrentSurah) {
     window.Wahyollah.markCurrentSurah();
   }
 
   try {
-    const surahData = await fetchSurah(surahId);
+    const surahData = await fetchSurah(surahId, currentMode);
     renderSurah(surahData);
     scrollToAyahHashTarget();
   } catch (error) {
@@ -89,16 +105,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-async function fetchSurah(id) {
+async function fetchSurah(id, mode) {
   const api = window.Wahyollah?.api;
   if (!api) throw new Error("API module not loaded");
 
   const chapterRes = await api.getChapter(id);
-  const versesRes = await api.getUthmaniVersesByChapter(id);
+
+  let versesRes;
+
+  if (mode === "tajweed") {
+    versesRes = await api.getTajweedVersesByChapter(id);
+  } else {
+    versesRes = await api.getUthmaniVersesByChapter(id);
+  }
 
   return {
     chapter: chapterRes.chapter,
-    verses: versesRes.verses
+    verses: versesRes.verses,
+    mode
   };
 }
 
@@ -248,7 +272,6 @@ function renderSurah(data) {
   data.verses.forEach((verse, index) => {
     const pageNum = verse.page_number ?? null;
 
-    // If we moved to a new page, close the previous page at the bottom
     if (currentPage !== null && pageNum !== currentPage) {
       appendPageFooter(currentPage);
     }
@@ -264,12 +287,16 @@ function renderSurah(data) {
 
     const text = document.createElement("span");
     text.className = "ayah-text";
-    text.textContent = verse.text_uthmani;
+
+    if (data.mode === "tajweed") {
+      text.innerHTML = verse.text_uthmani_tajweed || "";
+    } else {
+      text.textContent = verse.text_uthmani || "";
+    }
 
     const badge = document.createElement("span");
     badge.className = "q-badge q-badge--ayah";
 
-    // Prefer API verse number, fallback to index + 1
     const verseNo = verse.verse_number ?? (index + 1);
     badge.textContent = toArabicDigits(verseNo);
 
@@ -278,7 +305,6 @@ function renderSurah(data) {
     content.appendChild(ayah);
   });
 
-  // Close last page at the bottom
   if (currentPage !== null) {
     appendPageFooter(currentPage, {
       isLastPage: true,
