@@ -1,3 +1,5 @@
+const QURAN_MODE_STORAGE_KEY = "quranMode";
+
 function getSurahIdFromURL() {
   const params = new URLSearchParams(window.location.search);
 
@@ -59,18 +61,95 @@ function scrollToAyahHashTarget() {
   });
 }
 
+function isSupportedQuranMode(mode) {
+  return mode === "reading" || mode === "tajweed" || mode === "mushaf";
+}
+
+function getStoredQuranMode() {
+  try {
+    const stored = localStorage.getItem(QURAN_MODE_STORAGE_KEY);
+    return isSupportedQuranMode(stored) ? stored : "";
+  } catch (e) {
+    return "";
+  }
+}
+
+function setStoredQuranMode(mode) {
+  if (!isSupportedQuranMode(mode)) return;
+
+  try {
+    localStorage.setItem(QURAN_MODE_STORAGE_KEY, mode);
+  } catch (e) {}
+}
+
 function getQuranMode() {
+  const storedMode = getStoredQuranMode();
+  if (storedMode) return storedMode;
+
   const configuredMode = window.Wahyollah?.config?.defaultQuranMode;
 
-  if (
-    configuredMode === "reading" ||
-    configuredMode === "tajweed" ||
-    configuredMode === "mushaf"
-  ) {
+  if (isSupportedQuranMode(configuredMode)) {
     return configuredMode;
   }
 
   return "reading";
+}
+
+function getModeLabel(mode) {
+  const lang = document.documentElement.getAttribute("data-lang") || "ar";
+
+  if (mode === "reading") {
+    if (lang === "en") return "Reading";
+    if (lang === "tr") return "Okuma";
+    return "قراءة";
+  }
+
+  if (mode === "tajweed") {
+    if (lang === "en") return "Tajweed";
+    if (lang === "tr") return "Tecvid";
+    return "تجويد";
+  }
+
+  return mode;
+}
+
+function renderModeSwitch(currentMode) {
+  const holder = document.getElementById("quran-mode-switch");
+  if (!holder) return;
+
+  holder.innerHTML = `
+    <div class="quran-mode-switch" role="group" aria-label="Quran mode switch">
+      <button
+        type="button"
+        class="quran-mode-btn${currentMode === "reading" ? " is-active" : ""}"
+        data-mode="reading"
+        aria-pressed="${currentMode === "reading" ? "true" : "false"}"
+      >
+        ${getModeLabel("reading")}
+      </button>
+
+      <button
+        type="button"
+        class="quran-mode-btn${currentMode === "tajweed" ? " is-active" : ""}"
+        data-mode="tajweed"
+        aria-pressed="${currentMode === "tajweed" ? "true" : "false"}"
+      >
+        ${getModeLabel("tajweed")}
+      </button>
+    </div>
+  `;
+
+  const buttons = holder.querySelectorAll(".quran-mode-btn");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextMode = button.getAttribute("data-mode");
+      if (!nextMode || nextMode === currentMode) return;
+
+      setStoredQuranMode(nextMode);
+      window.location.reload();
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -94,6 +173,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (window.Wahyollah?.markCurrentSurah) {
     window.Wahyollah.markCurrentSurah();
   }
+
+  renderModeSwitch(currentMode);
 
   try {
     const surahData = await fetchSurah(surahId, currentMode);
