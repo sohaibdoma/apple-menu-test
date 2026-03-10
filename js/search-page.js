@@ -336,7 +336,12 @@
     }
 
     const currentDir = document.documentElement.dir || "rtl";
+    const inputWrap = input.closest(".search-input-wrap");
+
     input.dir = currentDir;
+    if (inputWrap) {
+      inputWrap.setAttribute("dir", currentDir);
+    }
     input.value = initialQuery;
 
     updateSubmitState(input, submitBtn);
