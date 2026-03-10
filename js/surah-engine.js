@@ -26,11 +26,9 @@ function getInitialAyahHashTarget() {
 function flashAyahTarget(target) {
   if (!target) return;
 
+  target.classList.remove("ayah-targeted");
+  void target.offsetWidth; // restart animation
   target.classList.add("ayah-targeted");
-
-  window.setTimeout(() => {
-    target.classList.remove("ayah-targeted");
-  }, 3500);
 }
 
 function scrollToAyahHashTarget() {
