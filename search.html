@@ -116,12 +116,41 @@
 
   <!-- SEARCH PAGE CONTENT -->
   <main class="search-page">
-    <div class="search-page-header">
-      <h1 class="search-page-title" data-i18n="search_page_title"></h1>
-      <p class="search-page-subtitle" id="search-page-query"></p>
-    </div>
+    
+<div class="search-page-header">
+  <h1 class="search-page-title" data-i18n="search_page_title"></h1>
+  <p class="search-page-subtitle" id="search-page-query"></p>
+</div>
 
-    <div id="search-page-results" class="search-page-results"></div>
+<div class="search-page-input-wrap">
+  <div class="search-input-wrap">
+    <input
+      id="searchPageInput"
+      class="search-input"
+      type="search"
+      autocomplete="off"
+      spellcheck="false"
+      data-i18n-placeholder="search_placeholder"
+      data-i18n-aria-label="search_aria_label"
+    />
+    <button
+      type="button"
+      class="search-submit"
+      id="searchPageSubmit"
+      aria-label="Search"
+      aria-disabled="true"
+      disabled
+    >
+      <svg class="search-submit-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5"></circle>
+        <path d="M16.2 16.2 L20 20"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div id="search-page-results" class="search-page-results"></div>
+    
   </main>
 
   <!-- SCRIPTS -->
