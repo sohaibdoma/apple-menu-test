@@ -1047,6 +1047,26 @@ body.night-mode .search-result-meta {
   text-align: right;
 }
 
+/* ========================================
+   SEARCH MATCH HIGHLIGHT
+   Highlight matched text inside search results
+======================================== */
+
+.search-highlight{
+  background: rgba(0, 0, 0, 0.10);
+  color: inherit;
+  border-radius: 4px;
+  padding: 0 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+html.night-mode .search-highlight,
+body.night-mode .search-highlight{
+  background: rgba(255, 255, 255, 0.14);
+  color: inherit;
+}
+
 
 /* ========================================
    AYAH LANDING HIGHLIGHT
