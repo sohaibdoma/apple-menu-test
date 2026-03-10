@@ -407,10 +407,6 @@ body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah {
   color: #0891b2;
 }
 
-/* Safe fallback for any tajweed class not yet explicitly mapped */
-body[data-quran-mode="tajweed"] .ayah-text tajweed[class] {
-  color: inherit;
-}
 
 /* ========================================
    TAJWEED COLORS — DARK MODE
@@ -474,11 +470,6 @@ body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_necessa
 html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah,
 body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah {
   color: #67e8f9;
-}
-
-html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed[class],
-body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed[class] {
-  color: inherit;
 }
 
 
