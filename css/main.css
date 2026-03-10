@@ -363,6 +363,10 @@ body[data-quran-mode="tajweed"] .ayah-text tajweed.ham_wasl {
   color: #a16207;
 }
 
+body[data-quran-mode="tajweed"] .ayah-text tajweed.laam_shamsiyah {
+  color: #9333ea;
+}
+
 body[data-quran-mode="tajweed"] .ayah-text tajweed.silent {
   color: #6b7280;
 }
@@ -403,6 +407,11 @@ body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah {
   color: #0891b2;
 }
 
+/* Safe fallback for any tajweed class not yet explicitly mapped */
+body[data-quran-mode="tajweed"] .ayah-text tajweed[class] {
+  color: inherit;
+}
+
 /* ========================================
    TAJWEED COLORS — DARK MODE
 ======================================== */
@@ -410,6 +419,11 @@ body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah {
 html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.ham_wasl,
 body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.ham_wasl {
   color: #fbbf24;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.laam_shamsiyah,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.laam_shamsiyah {
+  color: #d8b4fe;
 }
 
 html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.silent,
@@ -462,6 +476,10 @@ body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah {
   color: #67e8f9;
 }
 
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed[class],
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed[class] {
+  color: inherit;
+}
 
 
 /* ===============================
