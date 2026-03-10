@@ -30,7 +30,7 @@ function flashAyahTarget(target) {
 
   window.setTimeout(() => {
     target.classList.remove("ayah-targeted");
-  }, 1800);
+  }, 5000);
 }
 
 function scrollToAyahHashTarget() {
