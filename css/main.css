@@ -1276,3 +1276,7 @@ html.night-mode .search-page-results .search-result-meta,
 body.night-mode .search-page-results .search-result-meta {
   color: rgba(255, 255, 255, 0.68);
 }
+
+.search-page-input-wrap {
+  margin-bottom: 20px;
+}
