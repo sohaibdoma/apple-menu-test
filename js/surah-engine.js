@@ -23,6 +23,16 @@ function getInitialAyahHashTarget() {
   return decodeURIComponent(hash.slice(1));
 }
 
+function flashAyahTarget(target) {
+  if (!target) return;
+
+  target.classList.add("ayah-targeted");
+
+  window.setTimeout(() => {
+    target.classList.remove("ayah-targeted");
+  }, 1800);
+}
+
 function scrollToAyahHashTarget() {
   const targetId = getInitialAyahHashTarget();
   if (!targetId) return;
@@ -33,6 +43,7 @@ function scrollToAyahHashTarget() {
   requestAnimationFrame(() => {
     setTimeout(() => {
       target.scrollIntoView({ behavior: "smooth", block: "center" });
+      flashAyahTarget(target);
     }, 120);
   });
 }
