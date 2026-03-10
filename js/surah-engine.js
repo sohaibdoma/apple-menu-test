@@ -152,6 +152,19 @@ function renderModeSwitch(currentMode) {
   });
 }
 
+function debugTajweedClasses() {
+  if (getQuranMode() !== "tajweed") return;
+
+  const nodes = document.querySelectorAll(".ayah-text tajweed[class]");
+  const classNames = [...nodes]
+    .map((node) => node.getAttribute("class"))
+    .filter(Boolean);
+
+  const unique = [...new Set(classNames)].sort();
+
+  console.log("Tajweed classes found:", unique);
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const headerEl = document.getElementById("surah-header");
   const contentEl = document.getElementById("surah-content");
@@ -179,6 +192,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const surahData = await fetchSurah(surahId, currentMode);
     renderSurah(surahData);
+    debugTajweedClasses();
     scrollToAyahHashTarget();
   } catch (error) {
     contentEl.innerHTML = "<p>Failed to load Surah.</p>";
