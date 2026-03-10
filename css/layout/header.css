@@ -381,20 +381,28 @@ body.search-open .home-toggle{
 }
 
 
+/* ========================================
+   FOCUS CLEANUP (Header Controls)
+   Removes browser focus outlines and tap highlights
+======================================== */
 
+.menu-toggle:focus,
+.menu-toggle:focus-visible,
+.search-toggle:focus,
+.search-toggle:focus-visible,
+.home-toggle:focus,
+.home-toggle:focus-visible{
+  outline: none;
+  box-shadow: none;
+}
 
+/* Remove mobile tap highlight */
 
-
-
-
-
-
-
-
-
-
-
-
+.menu-toggle,
+.search-toggle,
+.home-toggle{
+  -webkit-tap-highlight-color: transparent;
+}
 
 
 /* ========================================
