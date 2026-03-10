@@ -10,6 +10,7 @@ window.Wahyollah = window.Wahyollah || {};
   const chapterCache = new Map();
   let allChaptersPromise = null;
   let allAyahsPromise = null;
+  let allTajweedAyahsPromise = null;
 
   const REQUEST_TIMEOUT_MS = 10000;
 
@@ -128,6 +129,32 @@ window.Wahyollah = window.Wahyollah || {};
     return { verses };
   }
 
+  async function getTajweedVersesByChapter(chapterNumber) {
+    const perPage = 50;
+    let page = 1;
+    let verses = [];
+
+    while (true) {
+      const url =
+        `${API_BASE}/verses/by_chapter/${chapterNumber}` +
+        `?fields=text_uthmani_tajweed,page_number,verse_number,verse_key,chapter_id` +
+        `&per_page=${perPage}&page=${page}`;
+
+      const data = await fetchJson(url);
+
+      if (Array.isArray(data?.verses) && data.verses.length) {
+        verses = verses.concat(data.verses);
+      }
+
+      const next = data?.pagination?.next_page;
+      if (!next) break;
+
+      page = next;
+    }
+
+    return { verses };
+  }
+
   async function getAllAyahs() {
     if (allAyahsPromise) return allAyahsPromise;
 
@@ -170,10 +197,54 @@ window.Wahyollah = window.Wahyollah || {};
     return allAyahsPromise;
   }
 
+  async function getAllTajweedAyahs() {
+    if (allTajweedAyahsPromise) return allTajweedAyahsPromise;
+
+    allTajweedAyahsPromise = (async () => {
+      const chapterRequests = [];
+
+      for (let chapterNumber = 1; chapterNumber <= 114; chapterNumber += 1) {
+        chapterRequests.push(getTajweedVersesByChapter(chapterNumber));
+      }
+
+      const chapterResponses = await Promise.all(chapterRequests);
+      const allAyahs = [];
+
+      chapterResponses.forEach((response) => {
+        const verses = Array.isArray(response?.verses) ? response.verses : [];
+
+        verses.forEach((verse) => {
+          const verseKey = verse?.verse_key || "";
+          const chapterIdFromKey = Number.parseInt(String(verseKey).split(":")[0], 10);
+
+          allAyahs.push({
+            type: "ayah",
+            surahId: Number.isInteger(verse?.chapter_id)
+              ? verse.chapter_id
+              : chapterIdFromKey,
+            ayahNumber: verse?.verse_number ?? null,
+            verseKey,
+            pageNumber: verse?.page_number ?? null,
+            textTajweed: verse?.text_uthmani_tajweed || "",
+            href: verseKey
+              ? `surah.html?surah=${Number.parseInt(String(verseKey).split(":")[0], 10)}#ayah-${String(verseKey).replace(":", "-")}`
+              : ""
+          });
+        });
+      });
+
+      return allAyahs;
+    })();
+
+    return allTajweedAyahsPromise;
+  }
+
   window.Wahyollah.api = {
     getChapter,
     getAllChapters,
     getUthmaniVersesByChapter,
-    getAllAyahs
+    getTajweedVersesByChapter,
+    getAllAyahs,
+    getAllTajweedAyahs
   };
 })();
