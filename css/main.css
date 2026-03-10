@@ -939,3 +939,14 @@ body.night-mode .search-page-results .search-result:hover {
     font-size: 20px;
   }
 }
+
+.search-page-results .search-result-meta {
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.65;
+}
+
+html.night-mode .search-page-results .search-result-meta,
+body.night-mode .search-page-results .search-result-meta {
+  color: rgba(255, 255, 255, 0.68);
+}
