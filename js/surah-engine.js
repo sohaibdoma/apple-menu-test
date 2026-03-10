@@ -40,8 +40,23 @@ function scrollToAyahHashTarget() {
 
   requestAnimationFrame(() => {
     setTimeout(() => {
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      const header = document.querySelector(".main-header");
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      const y =
+        target.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerHeight -
+        24; // small breathing space
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+
       flashAyahTarget(target);
+
     }, 120);
   });
 }
