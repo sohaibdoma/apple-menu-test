@@ -242,6 +242,148 @@ body {
 
 
 
+/* ========================================
+   TAJWEED MODE
+   - Unicode tajweed rendering
+   - Applies only in tajweed mode
+   - Keeps reading mode untouched
+======================================== */
+
+body[data-quran-mode="tajweed"] .ayah-text {
+  display: inline;
+  direction: rtl;
+  unicode-bidi: plaintext;
+  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-weight: 400;
+  font-variant-ligatures: contextual common-ligatures;
+  line-height: 2.2;
+  letter-spacing: 0;
+  word-spacing: 0;
+  white-space: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tajweed tags returned by the API */
+body[data-quran-mode="tajweed"] .ayah-text tajweed {
+  display: inline;
+  font: inherit;
+  line-height: inherit;
+}
+
+/* Quiet ayah ending markers inside tajweed markup */
+body[data-quran-mode="tajweed"] .ayah-text .end {
+  color: inherit;
+}
+
+/* ========================================
+   TAJWEED COLORS — LIGHT MODE
+======================================== */
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.ham_wasl {
+  color: #a16207;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.silent {
+  color: #6b7280;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.ghunnah {
+  color: #059669;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.idgham_wo_ghunnah {
+  color: #7c3aed;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.idgham_wi_ghunnah {
+  color: #0f766e;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.iqlab {
+  color: #2563eb;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.ikhafa {
+  color: #dc2626;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_normal {
+  color: #ea580c;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_permissible {
+  color: #d97706;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_necessary {
+  color: #b91c1c;
+}
+
+body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah {
+  color: #0891b2;
+}
+
+/* ========================================
+   TAJWEED COLORS — DARK MODE
+======================================== */
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.ham_wasl,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.ham_wasl {
+  color: #fbbf24;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.silent,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.silent {
+  color: #9ca3af;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.ghunnah,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.ghunnah {
+  color: #34d399;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.idgham_wo_ghunnah,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.idgham_wo_ghunnah {
+  color: #c084fc;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.idgham_wi_ghunnah,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.idgham_wi_ghunnah {
+  color: #2dd4bf;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.iqlab,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.iqlab {
+  color: #60a5fa;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.ikhafa,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.ikhafa {
+  color: #f87171;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_normal,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_normal {
+  color: #fb923c;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_permissible,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_permissible {
+  color: #fbbf24;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_necessary,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.madda_necessary {
+  color: #fca5a5;
+}
+
+html.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah,
+body.night-mode body[data-quran-mode="tajweed"] .ayah-text tajweed.qalaqah {
+  color: #67e8f9;
+}
+
+
 
 /* ===============================
    Mushaf page footer line
