@@ -16,6 +16,27 @@ function getSurahIdFromURL() {
   return 1;
 }
 
+function getInitialAyahHashTarget() {
+  const hash = window.location.hash || "";
+  if (!hash.startsWith("#ayah-")) return "";
+
+  return decodeURIComponent(hash.slice(1));
+}
+
+function scrollToAyahHashTarget() {
+  const targetId = getInitialAyahHashTarget();
+  if (!targetId) return;
+
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 120);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const headerEl = document.getElementById("surah-header");
   const contentEl = document.getElementById("surah-content");
@@ -37,6 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const surahData = await fetchSurah(surahId);
     renderSurah(surahData);
+    scrollToAyahHashTarget();
   } catch (error) {
     contentEl.innerHTML = "<p>Failed to load Surah.</p>";
     console.error(error);
@@ -211,6 +233,10 @@ function renderSurah(data) {
 
     const ayah = document.createElement("div");
     ayah.classList.add("ayah");
+
+    const verseKey = verse.verse_key || `${data.chapter.id}:${verse.verse_number ?? (index + 1)}`;
+    ayah.id = `ayah-${String(verseKey).replace(":", "-")}`;
+    ayah.setAttribute("data-verse-key", verseKey);
 
     const text = document.createElement("span");
     text.className = "ayah-text";
