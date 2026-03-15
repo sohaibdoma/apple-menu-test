@@ -1081,7 +1081,7 @@ html.night-mode .previous-surah-link:hover {
   width: 100%;
   height: 56px;
 
-  border-radius: 999px;
+  border-radius: 22px;
   border: 1px solid var(--control-stroke);
 
   background: #ffffff;
@@ -1133,7 +1133,7 @@ body.night-mode .search-input{
 
   border: 0;
   background: transparent;
-  color: rgba(0, 0, 0, 0.35);
+  color: var(--control-stroke);
 
   display: inline-flex;
   align-items: center;
