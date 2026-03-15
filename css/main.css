@@ -786,8 +786,8 @@ body.night-mode .auto-scroll-bar{
 
 /* Icon size */
 .auto-icon{
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   display: block;
 }
 
@@ -802,7 +802,7 @@ body.night-mode .auto-scroll-bar{
 .auto-thin,
 .auto-mid,
 .auto-thick {
-  stroke-width: 2.2;
+  stroke-width: 1.5;
 }
 
 /* Dot-to-pill: grow upward like the navbar (no stretching) */
