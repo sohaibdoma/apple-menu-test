@@ -36,49 +36,36 @@
       <div class="header-controls">
         <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
 
-        <a href="index.html" class="home-toggle" aria-label="Home">
-          <svg class="home-icon" viewBox="0 0 24 24">
+<a href="index.html" class="home-toggle" aria-label="Home">
+<svg class="home-icon" viewBox="0 0 24 24">
 
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="
-              M5.5 10.8
-              Q5.5 10.1 6.2 9.6
-              L11.2 6
-              Q12 5.4 12.8 6
-              L17.8 9.6
-              Q18.5 10.1 18.5 10.8
-              V18
-              Q18.5 19.6 16.7 19.6
-              H13.8
-              M10.2 19.6
-              H7.3
-              Q5.5 19.6 5.5 18
-              V10.8
-              "
-            />
+<defs>
+<mask id="doorCut">
+<rect width="24" height="24" fill="white"/>
+<path d="M10.2 20 V15.5 Q10.2 14 12 14 Q13.8 14 13.8 15.5 V20 Z" fill="black"/>
+</mask>
+</defs>
 
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="
-              M10.2 19.6
-              V15.5
-              Q10.2 14 12 14
-              Q13.8 14 13.8 15.5
-              V19.6
-              "
-            />
+<path
+fill="currentColor"
+mask="url(#doorCut)"
+d="
+M5.5 10.8
+Q5.5 10.1 6.2 9.6
+L11.2 6
+Q12 5.4 12.8 6
+L17.8 9.6
+Q18.5 10.1 18.5 10.8
+V18
+Q18.5 19.6 16.7 19.6
+H7.3
+Q5.5 19.6 5.5 18
+Z
+"
+/>
 
-          </svg>
-        </a>
+</svg>
+</a>
       </div>
 
       <div class="header-left">
