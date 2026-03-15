@@ -276,7 +276,7 @@ body.search-closing #search-placeholder{
 .arm{
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.8;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 
@@ -306,7 +306,7 @@ body.search-closing #search-placeholder{
   top: calc(50% - 11px);
   transform: translateX(-50%);
 
-  border: 1px solid var(--control-stroke);
+  border: 1px solid black;
   border-radius: 11px;
   box-sizing: border-box;
 
