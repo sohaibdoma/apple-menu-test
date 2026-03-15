@@ -299,7 +299,7 @@ body.search-closing #search-placeholder{
   top: calc(50% - 11px);
   transform: translateX(-50%);
 
-  border: 1px solid black;
+  border: 1px solid var(--control-stroke);
   border-radius: 11px;
   box-sizing: border-box;
 
@@ -508,7 +508,7 @@ body:not(.menu-open) .theme-toggle{
 
 html.night-mode .theme-toggle,
 body.night-mode .theme-toggle {
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 html.night-mode .theme-toggle::after,
