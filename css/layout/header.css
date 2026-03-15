@@ -249,7 +249,7 @@ body.search-closing #search-placeholder{
   place-items: center;
 
   cursor: pointer;
-  color: var(--menu-icon-color);
+  color: solid var(--control-stroke);
 
   -webkit-tap-highlight-color: transparent;
 }
