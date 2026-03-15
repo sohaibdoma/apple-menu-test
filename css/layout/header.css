@@ -256,8 +256,8 @@ body.search-closing #search-placeholder{
 
 /* Your icon size (keep 28x28 like you want) */
 .chev{
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   display: block;
 }
 
@@ -355,8 +355,8 @@ body.night-mode .menu-toggle.is-open::before {
 }
 
 .search-icon{
-  width: 22px;
-  height: 22px;
+  width: 19px;
+  height: 19px;
   display: block;
 
   fill: none;
