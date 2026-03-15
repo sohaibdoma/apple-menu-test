@@ -256,8 +256,8 @@ body.search-closing #search-placeholder{
 
 /* Your icon size (keep 28x28 like you want) */
 .chev{
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   display: block;
 }
 
@@ -269,7 +269,7 @@ body.search-closing #search-placeholder{
 .arm{
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 
