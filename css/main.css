@@ -1507,7 +1507,7 @@ body.night-mode .search-page-results .search-result:hover {
 
   .search-page-results .search-result {
     padding: 14px 16px;
-    border-radius: 20px;
+    border-radius: 13px;
   }
 
   .search-page-results .search-result-text {
