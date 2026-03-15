@@ -256,8 +256,8 @@ body.search-closing #search-placeholder{
 
 /* Your icon size (keep 28x28 like you want) */
 .chev{
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   display: block;
 }
 
@@ -269,7 +269,7 @@ body.search-closing #search-placeholder{
 .arm{
   fill: none;
   stroke: currentColor;
-  stroke-width: 1;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 
@@ -361,7 +361,7 @@ body.night-mode .menu-toggle.is-open::before {
 
   fill: none;
   stroke: currentColor;
-  stroke-width: 1;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
