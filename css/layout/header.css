@@ -293,7 +293,7 @@ body.search-closing #search-placeholder{
   pointer-events: none;   
 
   width: 35px;
-  height: 26px;
+  height: 23px;
 
   left: 50%;
   top: calc(50% - 11px);
