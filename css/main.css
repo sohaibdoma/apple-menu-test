@@ -1091,7 +1091,7 @@ html.night-mode .previous-surah-link:hover {
   line-height: 44px;
 
   /* start side = search icon, end side = native clear X */
-  padding-inline: 36px 36px;
+  padding-inline: 52px 36px;
 
   font: inherit;
   outline: none;
