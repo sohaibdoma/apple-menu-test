@@ -1081,7 +1081,7 @@ html.night-mode .previous-surah-link:hover {
   width: 100%;
   height: 56px;
 
-  border-radius: 22px;
+  border-radius: 18px;
   border: 1px solid var(--control-stroke);
 
   background: #ffffff;
@@ -1431,7 +1431,7 @@ body.night-mode .ayah-targeted{
   width: 100%;
   padding: 16px 18px;
 
-  border-radius: 22px;
+  border-radius: 18px;
   text-decoration: none;
 
   background: rgba(0, 0, 0, 0.035);
