@@ -1081,7 +1081,7 @@ html.night-mode .previous-surah-link:hover {
   width: 100%;
   height: 56px;
 
-  border-radius: 16px;
+  border-radius: 13px;
   border: 1px solid var(--control-stroke);
 
   background: #ffffff;
@@ -1256,7 +1256,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   cursor: pointer;
   color: var(--page-text);
 
-  border-radius: 16px;
+  border-radius: 13px;
    
   font-family: "Scheherazade New", serif;
   font-size: 17px;
@@ -1324,7 +1324,7 @@ body.night-mode .search-highlight{
 
 .ayah-targeted{
   background: rgba(0,0,0,0.10);
-  border-radius: 18px;
+  border-radius: 13px;
   animation: ayahFlashLight 3.5s ease forwards;
 }
 
@@ -1431,7 +1431,7 @@ body.night-mode .ayah-targeted{
   width: 100%;
   padding: 16px 18px;
 
-  border-radius: 16px;
+  border-radius: 13px;
   text-decoration: none;
 
   background: rgba(0, 0, 0, 0.035);
