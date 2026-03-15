@@ -299,7 +299,7 @@ body.search-closing #search-placeholder{
   top: calc(50% - 11px);
   transform: translateX(-50%);
 
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 11px;
   box-sizing: border-box;
 
