@@ -361,7 +361,7 @@ body.night-mode .menu-toggle.is-open::before {
 
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.2;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
