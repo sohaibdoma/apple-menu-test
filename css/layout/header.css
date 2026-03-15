@@ -314,6 +314,17 @@ body.search-closing #search-placeholder{
   height: 29px;                 /* OPEN pill height */
 }
 
+/* NIGHT MODE — pill outline white */
+html.night-mode .menu-toggle::before,
+body.night-mode .menu-toggle::before {
+  border-color: white;
+}
+
+/* NIGHT MODE — pill fill white when open */
+html.night-mode .menu-toggle.is-open::before,
+body.night-mode .menu-toggle.is-open::before {
+  border-color: white;
+}
 
 /* ========================================
    HEADER BUTTONS (Home + Search)
