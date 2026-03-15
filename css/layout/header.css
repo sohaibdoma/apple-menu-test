@@ -256,8 +256,8 @@ body.search-closing #search-placeholder{
 
 /* Your icon size (keep 28x28 like you want) */
 .chev{
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   display: block;
 }
 
@@ -292,8 +292,8 @@ body.search-closing #search-placeholder{
   display: block;          
   pointer-events: none;   
 
-  width: 30px;
-  height: 22px;
+  width: 35px;
+  height: 26px;
 
   left: 50%;
   top: calc(50% - 11px);
@@ -311,7 +311,7 @@ body.search-closing #search-placeholder{
 
 /* OPEN: pill grows downward only */
 .menu-toggle.is-open::before{
-  height: 29px;                 /* OPEN pill height */
+  height: 33px;                 /* OPEN pill height */
 }
 
 /* NIGHT MODE — pill outline white */
