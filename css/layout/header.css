@@ -249,7 +249,7 @@ body.search-closing #search-placeholder{
   place-items: center;
 
   cursor: pointer;
-  color: solid var(--control-stroke);
+  color: var(--control-stroke);
 
   -webkit-tap-highlight-color: transparent;
 }
@@ -347,7 +347,7 @@ body.night-mode .menu-toggle.is-open::before {
   place-items: center;
 
   cursor: pointer;
-  color: solid var(--control-stroke);;
+  color: var(--control-stroke);
 
   -webkit-tap-highlight-color: transparent;
 
@@ -394,7 +394,7 @@ body.menu-open .search-toggle{
   place-items: center;
 
   cursor: pointer;
-  color: solid var(--control-stroke);
+  color: var(--control-stroke);
 
   -webkit-tap-highlight-color: transparent;
 
