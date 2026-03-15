@@ -317,13 +317,13 @@ body.search-closing #search-placeholder{
 /* NIGHT MODE — pill outline white */
 html.night-mode .menu-toggle::before,
 body.night-mode .menu-toggle::before {
-  border-color: white;
+  border-color: solid rgba(255, 255, 255, 0.25);
 }
 
 /* NIGHT MODE — pill fill white when open */
 html.night-mode .menu-toggle.is-open::before,
 body.night-mode .menu-toggle.is-open::before {
-  border-color: white;
+  border-color: solid rgba(255, 255, 255, 0.25);
 }
 
 /* ========================================
@@ -475,7 +475,7 @@ body:not(.menu-open) .theme-toggle{
 
   background: transparent; /* no fill */
 
-  border: 1px solid black;
+  border: 1px solid var(--control-stroke);
 
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s,
               border-color 0.25s ease;
