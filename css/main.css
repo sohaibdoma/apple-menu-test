@@ -786,8 +786,8 @@ body.night-mode .auto-scroll-bar{
 
 /* Icon size */
 .auto-icon{
-  width: 39px;
-  height: 39px;
+  width: 30px;
+  height: 30px;
   display: block;
 }
 
@@ -1091,7 +1091,7 @@ html.night-mode .previous-surah-link:hover {
   line-height: 44px;
 
   /* start side = search icon, end side = native clear X */
-  padding-inline: 52px 36px;
+  padding-inline: 36px 36px;
 
   font: inherit;
   outline: none;
@@ -1256,7 +1256,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   cursor: pointer;
   color: var(--page-text);
 
-  border-radius: 25px;
+  border-radius: 18px;
    
   font-family: "Scheherazade New", serif;
   font-size: 17px;
