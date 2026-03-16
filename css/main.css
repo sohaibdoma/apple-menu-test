@@ -248,6 +248,12 @@ body {
 ======================================== */
 
 #quran-mode-switch {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 120;
+  pointer-events: auto;
   margin-bottom: 18px;
 }
 
