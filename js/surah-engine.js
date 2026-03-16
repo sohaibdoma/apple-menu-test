@@ -180,6 +180,62 @@ function debugTajweedClasses() {
   console.log("Tajweed classes found:", unique);
 }
 
+function sanitizeTajweedMarkup(html) {
+  if (!html || typeof html !== "string") {
+    return document.createDocumentFragment();
+  }
+
+  const template = document.createElement("template");
+  template.innerHTML = html;
+
+  const allowedTags = new Set(["SPAN"]);
+  const allowedClassPattern = /^[a-zA-Z0-9_-]+$/;
+
+  const sanitizeNode = (node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      return document.createTextNode(node.textContent || "");
+    }
+
+    if (node.nodeType !== Node.ELEMENT_NODE) {
+      return document.createTextNode("");
+    }
+
+    const tagName = node.tagName.toUpperCase();
+
+    if (!allowedTags.has(tagName)) {
+      const fragment = document.createDocumentFragment();
+      Array.from(node.childNodes).forEach((child) => {
+        fragment.appendChild(sanitizeNode(child));
+      });
+      return fragment;
+    }
+
+    const cleanEl = document.createElement("span");
+
+    const classList = Array.from(node.classList).filter((className) =>
+      allowedClassPattern.test(className)
+    );
+
+    if (classList.length > 0) {
+      cleanEl.className = classList.join(" ");
+    }
+
+    Array.from(node.childNodes).forEach((child) => {
+      cleanEl.appendChild(sanitizeNode(child));
+    });
+
+    return cleanEl;
+  };
+
+  const fragment = document.createDocumentFragment();
+
+  Array.from(template.content.childNodes).forEach((child) => {
+    fragment.appendChild(sanitizeNode(child));
+  });
+
+  return fragment;
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   const headerEl = document.getElementById("surah-header");
   const contentEl = document.getElementById("surah-content");
@@ -403,7 +459,9 @@ function renderSurah(data) {
     text.className = "ayah-text";
 
     if (data.mode === "tajweed") {
-      text.innerHTML = verse.text_uthmani_tajweed || "";
+      text.appendChild(
+        sanitizeTajweedMarkup(verse.text_uthmani_tajweed || "")
+      );
     } else if (data.mode === "mushaf") {
       text.textContent = verse.text_uthmani || "";
     } else {
