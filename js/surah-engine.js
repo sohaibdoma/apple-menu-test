@@ -188,7 +188,7 @@ function sanitizeTajweedMarkup(html) {
   const template = document.createElement("template");
   template.innerHTML = html;
 
-  const allowedTags = new Set(["SPAN"]);
+  const allowedTags = new Set(["SPAN", "TAJWEED"]);
   const allowedClassPattern = /^[a-zA-Z0-9_-]+$/;
 
   const sanitizeNode = (node) => {
@@ -210,7 +210,9 @@ function sanitizeTajweedMarkup(html) {
       return fragment;
     }
 
-    const cleanEl = document.createElement("span");
+    const cleanEl = document.createElement(
+      tagName === "TAJWEED" ? "tajweed" : "span"
+    );
 
     const classList = Array.from(node.classList).filter((className) =>
       allowedClassPattern.test(className)
