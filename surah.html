@@ -117,9 +117,44 @@ Z
     <div id="surah-content"></div>
   </main>
 
-  <div class="auto-scroll-bar" aria-hidden="false">
-    
-  <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
+  <div class="surah-bottom-controls" aria-hidden="false">
+    <div class="surah-bottom-left">
+      <button
+        id="leftUtilityBtn"
+        class="left-utility-btn"
+        type="button"
+        aria-label="Left utility button"
+      ></button>
+    </div>
+
+    <div class="surah-bottom-pill">
+      <button
+        id="scrollToTopBtn"
+        class="surah-bottom-pill-btn surah-bottom-pill-btn--top"
+        type="button"
+        aria-label="Scroll to top"
+      >
+        <svg class="surah-bottom-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="6"></line>
+          <path d="M8 14 L12 10 L16 14"></path>
+        </svg>
+      </button>
+
+      <button
+        id="scrollToBottomBtn"
+        class="surah-bottom-pill-btn surah-bottom-pill-btn--bottom"
+        type="button"
+        aria-label="Scroll to bottom"
+      >
+        <svg class="surah-bottom-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8 10 L12 14 L16 10"></path>
+          <line x1="6" y1="18" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="auto-scroll-bar">
+      <button id="autoScrollBtn" class="auto-scroll-btn" type="button" aria-pressed="false" aria-label="Auto scroll">
 <svg class="auto-icon" viewBox="0 0 24 24" aria-hidden="true">
 
   <!-- Dot that expands upward without stretching -->
@@ -140,8 +175,8 @@ Z
         d="M7 15 L12 19 L17 15" />
 
 </svg>
-  </button>
-    
+      </button>
+    </div>
   </div>
   
   <!-- SCRIPTS -->
