@@ -8,54 +8,47 @@
     const btn = document.getElementById("autoScrollBtn");
     if (!btn) return;
 
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    const scrollToBottomBtn = document.getElementById("scrollToBottomBtn");
+
     const prefersReduced =
       window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
     const scroller = document.scrollingElement || document.documentElement;
 
-    // =========================
-    // STATE
-    // =========================
-    let isOn = false;                 // TRUE ON/OFF (only auto button or menu/page exit changes this)
-    let isPausedByTap = false;        // temporary pause/resume by tapping the page
+    let isOn = false;
+    let isPausedByTap = false;
 
     let rafId = 0;
     let lastT = 0;
-    let scrollYFloat = 0;             // float scroll position for smooth slow speeds
+    let scrollYFloat = 0;
     let programmaticScroll = false;
 
-    // Set speed here (7 / 10 / 15 etc.)
     const SPEED = prefersReduced ? 0 : 0.2;
 
-    // =========================
-    // WAKE LOCK (Stop screen timeout)
-    // =========================
     let wakeLock = null;
 
     async function requestWakeLock() {
-      // Only when ON
       if (!isOn) return;
 
-      // Wake Lock API (works on many mobile browsers, not all)
       if (!("wakeLock" in navigator) || typeof navigator.wakeLock?.request !== "function") {
         return;
       }
 
       try {
-        // Release old lock if any
         if (wakeLock) {
-          try { await wakeLock.release(); } catch (_) {}
+          try {
+            await wakeLock.release();
+          } catch (_) {}
           wakeLock = null;
         }
 
         wakeLock = await navigator.wakeLock.request("screen");
 
-        // If the lock is released by the system, keep our state consistent
         wakeLock.addEventListener("release", () => {
           wakeLock = null;
         });
       } catch (_) {
-        // If it fails (permissions / not supported), we just ignore safely.
         wakeLock = null;
       }
     }
@@ -68,20 +61,14 @@
       wakeLock = null;
     }
 
-    // Re-acquire wake lock after returning to the tab (common Wake Lock behavior)
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) return;
       if (isOn) requestWakeLock();
     });
 
-    // =========================
-    // UI
-    // =========================
     function setUi() {
       btn.setAttribute("aria-pressed", String(isOn));
       btn.classList.toggle("is-on", isOn);
-
-      // Optional: if you ever want a visual paused state in CSS
       btn.classList.toggle("is-paused", isOn && isPausedByTap);
 
       btn.setAttribute(
@@ -90,11 +77,7 @@
       );
     }
 
-    // =========================
-    // CORE
-    // =========================
     function stopAll() {
-      // TRUE OFF
       isOn = false;
       isPausedByTap = false;
 
@@ -115,7 +98,6 @@
       lastT = 0;
 
       setUi();
-      // Keep Wake Lock ON while paused (video behavior)
       requestWakeLock();
     }
 
@@ -173,14 +155,27 @@
     }
 
     function toggleAutoButton() {
-      // Only auto button can turn ON/OFF
       isOn ? stopAll() : start();
     }
 
-    // =========================
-    // 1) Normal scroll must work, must not stop auto.
-    //    Auto must "follow" manual scroll position.
-    // =========================
+    function scrollToTop() {
+      if (isOn) stopAll();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function scrollToBottom() {
+      if (isOn) stopAll();
+
+      window.scrollTo({
+        top: scroller.scrollHeight,
+        behavior: "smooth"
+      });
+    }
+
     window.addEventListener(
       "scroll",
       () => {
@@ -188,26 +183,20 @@
         if (isPausedByTap) return;
         if (programmaticScroll) return;
 
-        // User scrolled manually → continue auto from here
         scrollYFloat = scroller.scrollTop;
         lastT = 0;
       },
       { passive: true }
     );
 
-    // =========================
-    // 2) Tap/click ANYWHERE toggles pause/resume
-    //    EXCEPT excluded controls.
-    // =========================
-
-    // Exclude: auto button, menu button, any button/link/form control, and anything inside header/menu UI.
     const EXCLUDE_SELECTORS = [
       "#autoScrollBtn",
+      "#scrollToTopBtn",
+      "#scrollToBottomBtn",
+      "#leftUtilityBtn",
       ".menu-toggle",
       ".main-header",
       "#menu-placeholder",
-
-      // generic interactive stuff
       "button",
       "a",
       "input",
@@ -215,7 +204,7 @@
       "select",
       "[role='button']",
       "[role='link']",
-      "[data-no-autopause='true']",
+      "[data-no-autopause='true']"
     ];
 
     function isExcludedTarget(target) {
@@ -227,13 +216,9 @@
       if (!isOn) return;
       if (isExcludedTarget(e.target)) return;
 
-      // Toggle pause/resume like tapping a video
       isPausedByTap ? resumeFromTap() : pauseForTap();
     });
 
-    // =========================
-    // 3) Menu button click = TRUE STOP (OFF)
-    // =========================
     const menuBtn = document.querySelector(".menu-toggle");
     if (menuBtn) {
       menuBtn.addEventListener("click", () => {
@@ -241,9 +226,6 @@
       });
     }
 
-    // =========================
-    // 4) Page exited = TRUE STOP (OFF)
-    // =========================
     document.addEventListener("visibilitychange", () => {
       if (document.hidden && isOn) stopAll();
     });
@@ -252,15 +234,21 @@
       if (isOn) stopAll();
     });
 
-    // =========================
-    // INIT
-    // =========================
     btn.addEventListener("click", toggleAutoButton);
 
-    // Initial UI
+    if (scrollToTopBtn) {
+      scrollToTopBtn.addEventListener("click", scrollToTop);
+    }
+
+    if (scrollToBottomBtn) {
+      scrollToBottomBtn.addEventListener("click", scrollToBottom);
+    }
+
     setUi();
   }
 
   window.Wahyollah = window.Wahyollah || {};
   window.Wahyollah.initAutoScroll = initAutoScroll;
+
+  document.addEventListener("DOMContentLoaded", initAutoScroll);
 })();
