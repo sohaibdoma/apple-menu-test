@@ -155,6 +155,32 @@ window.Wahyollah = window.Wahyollah || {};
     return { verses };
   }
 
+  async function getMushafVersesByChapter(chapterNumber) {
+    const perPage = 50;
+    let page = 1;
+    let verses = [];
+
+    while (true) {
+      const url =
+        `${API_BASE}/verses/by_chapter/${chapterNumber}` +
+        `?fields=text_uthmani,code_v2,page_number,v2_page,verse_key,verse_number,chapter_id` +
+        `&per_page=${perPage}&page=${page}`;
+
+      const data = await fetchJson(url);
+
+      if (Array.isArray(data?.verses) && data.verses.length) {
+        verses = verses.concat(data.verses);
+      }
+
+      const next = data?.pagination?.next_page;
+      if (!next) break;
+
+      page = next;
+    }
+
+    return { verses };
+  }
+
   async function getAllAyahs() {
     if (allAyahsPromise) return allAyahsPromise;
 
@@ -244,6 +270,7 @@ window.Wahyollah = window.Wahyollah || {};
     getAllChapters,
     getUthmaniVersesByChapter,
     getTajweedVersesByChapter,
+    getMushafVersesByChapter,
     getAllAyahs,
     getAllTajweedAyahs
   };
