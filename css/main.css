@@ -248,26 +248,18 @@ body {
 ======================================== */
 
 #quran-mode-switch {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  right: 0;
-  width: max-content;
-  margin: 0 auto;
-  transform: translateY(-50%);
-  z-index: 9999;
-  pointer-events: auto;
+margin-bottom: 18px;
 }
 
 .quran-mode-switch {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   padding: 4px;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.05);
-  width: max-content;
 }
+
 
 .quran-mode-btn {
   min-width: 92px;
