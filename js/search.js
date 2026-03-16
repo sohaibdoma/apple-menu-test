@@ -10,7 +10,6 @@
     if (holder.dataset.ready === "1") return;
     holder.dataset.ready = "1";
 
-    // Build UI (Arabic / RTL)
     const sheet = document.createElement("div");
     sheet.className = "search-sheet";
     sheet.setAttribute("role", "search");
@@ -67,7 +66,6 @@
     const results = holder.querySelector("#searchResults");
     if (!input || !submitBtn || !results) return;
 
-    // iOS: focus input when search overlay opens (best-effort, doesn't break anything)
     const searchToggle = document.getElementById("searchToggle");
     if (searchToggle) {
       searchToggle.addEventListener("click", () => {
@@ -83,6 +81,14 @@
 
     function norm(s) {
       return (s || "").toString().trim().toLowerCase();
+    }
+
+    function normalizeSearchText(s) {
+      const normalizeArabic = window.Wahyollah?.normalizeArabic;
+      if (typeof normalizeArabic === "function") {
+        return normalizeArabic(s);
+      }
+      return norm(s);
     }
 
     function escapeHtml(s) {
@@ -150,13 +156,13 @@
     }
 
     function searchSurahs(items, query) {
-      const q = norm(query);
+      const q = normalizeSearchText(query);
       if (!q) return [];
 
       return items
         .map((item) => {
           const idText = String(item.surahId);
-          const arabic = norm(item.nameArabic);
+          const arabic = normalizeSearchText(item.nameArabic);
           const simple = norm(item.nameSimple);
           const revelation = norm(item.revelationPlace);
           const versesCount = String(item.versesCount);
@@ -186,12 +192,12 @@
     }
 
     function searchAyahs(items, query) {
-      const q = norm(query);
+      const q = normalizeSearchText(query);
       if (!q) return [];
 
       return items
         .map((item) => {
-          const text = norm(item.textArabic);
+          const text = normalizeSearchText(item.textArabic);
           const verseKey = norm(item.verseKey);
           const surahId = String(item.surahId);
           const ayahNumber = String(item.ayahNumber);
@@ -311,7 +317,7 @@
     async function doSearch() {
       updateSubmitState();
 
-      const q = norm(input.value);
+      const q = input.value.trim();
 
       if (!q) {
         results.innerHTML = "";
@@ -349,7 +355,6 @@
       }
     });
 
-    // initial state
     results.innerHTML = "";
     updateSubmitState();
   }
