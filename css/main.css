@@ -252,8 +252,11 @@ margin-bottom: 18px;
 }
 
 .quran-mode-switch {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+   
+  justify-content: center;
+   
   gap: 4px;
   padding: 4px;
   border-radius: 999px;
