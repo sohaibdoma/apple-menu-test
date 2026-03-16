@@ -110,6 +110,12 @@ function getModeLabel(mode) {
     return "تجويد";
   }
 
+  if (mode === "mushaf") {
+    if (lang === "en") return "Mushaf";
+    if (lang === "tr") return "Mushaf";
+    return "مصحف";
+  }
+
   return mode;
 }
 
@@ -135,6 +141,15 @@ function renderModeSwitch(currentMode) {
         aria-pressed="${currentMode === "tajweed" ? "true" : "false"}"
       >
         ${getModeLabel("tajweed")}
+      </button>
+
+      <button
+        type="button"
+        class="quran-mode-btn${currentMode === "mushaf" ? " is-active" : ""}"
+        data-mode="mushaf"
+        aria-pressed="${currentMode === "mushaf" ? "true" : "false"}"
+      >
+        ${getModeLabel("mushaf")}
       </button>
     </div>
   `;
@@ -210,6 +225,8 @@ async function fetchSurah(id, mode) {
 
   if (mode === "tajweed") {
     versesRes = await api.getTajweedVersesByChapter(id);
+  } else if (mode === "mushaf") {
+    versesRes = await api.getMushafVersesByChapter(id);
   } else {
     versesRes = await api.getUthmaniVersesByChapter(id);
   }
