@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  let liveSearchTimer = null;
+
   function getQueryFromURL() {
     const params = new URLSearchParams(window.location.search);
     return (params.get("q") || "").trim();
@@ -333,6 +335,19 @@
     window.history.replaceState({}, "", nextURL);
   }
 
+  function scheduleLiveSearch(input, submitBtn) {
+    window.clearTimeout(liveSearchTimer);
+
+    const query = input.value.trim();
+
+    updateSubmitState(input, submitBtn);
+    updateURL(query);
+
+    liveSearchTimer = window.setTimeout(() => {
+      runSearch(query);
+    }, 120);
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("searchPageInput");
     const submitBtn = document.getElementById("searchPageSubmit");
@@ -364,15 +379,17 @@
     });
 
     input.addEventListener("input", () => {
-      updateSubmitState(input, submitBtn);
+      scheduleLiveSearch(input, submitBtn);
+    });
+
+    input.addEventListener("search", () => {
+      scheduleLiveSearch(input, submitBtn);
     });
 
     input.addEventListener("keydown", (e) => {
       if (e.key !== "Enter") return;
 
       const query = input.value.trim();
-      if (!query) return;
-
       updateURL(query);
       runSearch(query);
     });
