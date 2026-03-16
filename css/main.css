@@ -257,9 +257,9 @@ body {
 }
 
 .quran-mode-switch {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   padding: 4px;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.05);
