@@ -242,78 +242,6 @@ function toArabicDigits(n) {
   return String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
 }
 
-function getNextSurahLabel() {
-  const lang = document.documentElement.getAttribute("data-lang") || "ar";
-
-  if (lang === "en") return "Next Surah";
-  if (lang === "tr") return "Sonraki Sure";
-  return "السورة التالية";
-}
-
-function getPreviousSurahLabel() {
-  const lang = document.documentElement.getAttribute("data-lang") || "ar";
-
-  if (lang === "en") return "Previous Surah";
-  if (lang === "tr") return "Önceki Sure";
-  return "السورة السابقة";
-}
-
-async function buildNextSurahLink(currentSurahId) {
-  const nextSurahId = currentSurahId + 1;
-
-  if (nextSurahId > 114) return null;
-
-  const link = document.createElement("a");
-  link.className = "next-surah-link";
-  link.href = `surah.html?surah=${nextSurahId}`;
-
-  const lang = document.documentElement.getAttribute("data-lang") || "ar";
-  const api = window.Wahyollah?.api;
-
-  let nextName = "";
-
-  try {
-    const res = await api.getChapter(nextSurahId);
-
-    if (lang === "ar") nextName = res.chapter.name_arabic;
-    else nextName = res.chapter.name_simple;
-  } catch (e) {
-    nextName = "";
-  }
-
-  link.textContent = `${getNextSurahLabel()}: ${nextName}`;
-
-  return link;
-}
-
-async function buildPreviousSurahLink(currentSurahId) {
-  const previousSurahId = currentSurahId - 1;
-
-  if (previousSurahId < 1) return null;
-
-  const link = document.createElement("a");
-  link.className = "previous-surah-link";
-  link.href = `surah.html?surah=${previousSurahId}`;
-
-  const lang = document.documentElement.getAttribute("data-lang") || "ar";
-  const api = window.Wahyollah?.api;
-
-  let previousName = "";
-
-  try {
-    const res = await api.getChapter(previousSurahId);
-
-    if (lang === "ar") previousName = res.chapter.name_arabic;
-    else previousName = res.chapter.name_simple;
-  } catch (e) {
-    previousName = "";
-  }
-
-  link.textContent = `${getPreviousSurahLabel()}: ${previousName}`;
-
-  return link;
-}
-
 function renderSurah(data) {
   const header = document.getElementById("surah-header");
   const content = document.getElementById("surah-content");
@@ -343,84 +271,49 @@ function renderSurah(data) {
 
   let currentPage = null;
 
-  const appendPageFooter = (pageNum, options = {}) => {
-    if (!pageNum) return;
-
-    const { isLastPage = false, chapterId = null } = options;
-
-    const footer = document.createElement("div");
-    footer.className = "mushaf-page-footer";
-
-    const badge = document.createElement("span");
-    badge.className = "q-badge q-badge--page";
-    badge.textContent = toArabicDigits(pageNum);
-
-    footer.appendChild(badge);
-    content.appendChild(footer);
-
-    if (isLastPage && chapterId !== null) {
-      Promise.all([
-        buildPreviousSurahLink(chapterId),
-        buildNextSurahLink(chapterId)
-      ]).then(([previousLink, nextLink]) => {
-        if (previousLink || nextLink) {
-          const navWrap = document.createElement("div");
-          navWrap.className = "surah-nav-wrap";
-
-          if (nextLink) {
-            navWrap.appendChild(nextLink);
-          }
-
-          if (previousLink) {
-            navWrap.appendChild(previousLink);
-          }
-
-          content.appendChild(navWrap);
-        }
-      });
-    }
-  };
-
   data.verses.forEach((verse, index) => {
     const pageNum = verse.page_number ?? null;
-
-    if (currentPage !== null && pageNum !== currentPage) {
-      appendPageFooter(currentPage);
-    }
-
     if (pageNum !== null) currentPage = pageNum;
 
     const ayah = document.createElement("div");
     ayah.classList.add("ayah");
 
-    const verseKey = verse.verse_key || `${data.chapter.id}:${verse.verse_number ?? (index + 1)}`;
+    const verseKey =
+      verse.verse_key ||
+      `${data.chapter.id}:${verse.verse_number ?? index + 1}`;
+
     ayah.id = `ayah-${String(verseKey).replace(":", "-")}`;
-    ayah.setAttribute("data-verse-key", verseKey);
 
     const text = document.createElement("span");
     text.className = "ayah-text";
 
-    if (data.mode === "tajweed") {
+    if (data.mode === "mushaf") {
+      ayah.classList.add("ayah-mushaf");
+
+      const mushafSpan = document.createElement("span");
+      mushafSpan.className = "mushaf-text";
+      mushafSpan.textContent = verse.code_v2 || "";
+
+      text.appendChild(mushafSpan);
+    }
+
+    else if (data.mode === "tajweed") {
       text.innerHTML = verse.text_uthmani_tajweed || "";
-    } else {
+    }
+
+    else {
       text.textContent = verse.text_uthmani || "";
     }
 
     const badge = document.createElement("span");
     badge.className = "q-badge q-badge--ayah";
 
-    const verseNo = verse.verse_number ?? (index + 1);
+    const verseNo = verse.verse_number ?? index + 1;
     badge.textContent = toArabicDigits(verseNo);
 
     ayah.appendChild(text);
     ayah.appendChild(badge);
+
     content.appendChild(ayah);
   });
-
-  if (currentPage !== null) {
-    appendPageFooter(currentPage, {
-      isLastPage: true,
-      chapterId: data.chapter.id
-    });
-  }
 }
