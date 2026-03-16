@@ -726,18 +726,22 @@ body.no-blur-transition > *:not(.main-header) {
    AUTO SCROLL BAR (Surah pages only)
 ======================================== */
 
-.auto-scroll-bar{
+.surah-bottom-controls{
   position: fixed;
+  left: 50%;
   bottom: var(--nav-gap);
+  transform: translateX(-50%);
   z-index: 9998;
 
-  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-  width: 48px; /* or 80px depending on padding */
-  left: auto;
-  right: 34.7px; /* distance from right edge */
-   
-  padding: 0; /* optional */
+.surah-bottom-left,
+.auto-scroll-bar{
+  height: 48px;
+  width: 48px;
 
   display: flex;
   align-items: center;
@@ -754,19 +758,37 @@ body.no-blur-transition > *:not(.main-header) {
   -webkit-clip-path: inset(0 round var(--nav-radius));
 }
 
-/* Night mode like your header pill */
+.surah-bottom-pill{
+  height: 48px;
+  min-width: 108px;
+  padding: 0 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+
+  border-radius: 999px;
+  isolation: isolate;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  clip-path: inset(0 round 999px);
+  -webkit-clip-path: inset(0 round 999px);
+}
+
+html.night-mode .surah-bottom-left,
+body.night-mode .surah-bottom-left,
+html.night-mode .surah-bottom-pill,
+body.night-mode .surah-bottom-pill,
 html.night-mode .auto-scroll-bar,
 body.night-mode .auto-scroll-bar{
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-
-
-
-/* ===============================
-   Auto Scroll Button
-=============================== */
-
+.left-utility-btn,
 .auto-scroll-btn{
   background: none;
   border: none;
@@ -775,7 +797,7 @@ body.night-mode .auto-scroll-bar{
   display: grid;
   place-items: center;
 
-  height: 55px; /* touch-friendly */
+  height: 55px;
   width: 55px;
 
   color: var(--page-text);
@@ -784,14 +806,16 @@ body.night-mode .auto-scroll-bar{
   transition: color 100ms ease;
 }
 
-/* Icon size */
+.left-utility-btn{
+  cursor: default;
+}
+
 .auto-icon{
   width: 34px;
   height: 34px;
   display: block;
 }
 
-/* Chev style */
 .auto-chev{
   fill: none;
   stroke: currentColor;
@@ -805,63 +829,101 @@ body.night-mode .auto-scroll-bar{
   stroke-width: 2;
 }
 
-/* Dot-to-pill: grow upward like the navbar (no stretching) */
 .auto-dot{
   transition:
     y 150ms cubic-bezier(0.22, 1, 0.36, 1),
     height 150ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ON: increase height upwards, keep bottom locked */
 .auto-scroll-btn.is-on .auto-dot{
   transition:
     y 900ms cubic-bezier(0.22, 1, 0.36, 1),
     height 900ms cubic-bezier(0.22, 1, 0.36, 1);
-   
+
   height: 6px;
   y: 1.8px;
 }
-
-
-
-
-/* ===============================
-   ACTIVE STATE
-=============================== */
 
 .auto-scroll-btn.is-on{
   color: var(--auto-active-color);
 }
 
+.left-utility-btn:focus,
+.left-utility-btn:focus-visible,
 .auto-scroll-btn:focus,
-.auto-scroll-btn:focus-visible{
+.auto-scroll-btn:focus-visible,
+.surah-bottom-pill-btn:focus,
+.surah-bottom-pill-btn:focus-visible{
   outline: none;
   box-shadow: none;
 }
 
-
-
-/* ===============================
-   Auto scroll button: remove focus / tap highlight
-=============================== */
-
+.left-utility-btn,
+.left-utility-btn *,
 .auto-scroll-btn,
-.auto-scroll-btn * {
+.auto-scroll-btn *,
+.surah-bottom-pill-btn,
+.surah-bottom-pill-btn *{
   -webkit-tap-highlight-color: transparent;
 }
 
+.left-utility-btn:focus,
+.left-utility-btn:focus-visible,
+.left-utility-btn:active,
 .auto-scroll-btn:focus,
 .auto-scroll-btn:focus-visible,
-.auto-scroll-btn:active {
+.auto-scroll-btn:active,
+.surah-bottom-pill-btn:focus,
+.surah-bottom-pill-btn:focus-visible,
+.surah-bottom-pill-btn:active{
   outline: none !important;
   box-shadow: none !important;
 }
 
-/* Safari/iOS extra glow */
-.auto-scroll-btn {
+.left-utility-btn,
+.auto-scroll-btn,
+.surah-bottom-pill-btn{
   -webkit-appearance: none;
   appearance: none;
 }
+
+.surah-bottom-pill-btn{
+  height: 36px;
+  min-width: 44px;
+  padding: 0 10px;
+  margin: 0;
+
+  border: none;
+  background: none;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--page-text);
+  cursor: pointer;
+  transition: color 100ms ease, opacity 100ms ease;
+}
+
+.surah-bottom-pill-btn:hover{
+  opacity: 0.82;
+}
+
+.surah-bottom-pill-icon{
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.surah-bottom-pill-icon path,
+.surah-bottom-pill-icon line{
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
 
 
 
