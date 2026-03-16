@@ -225,8 +225,10 @@ async function fetchSurah(id, mode) {
 
   if (mode === "tajweed") {
     versesRes = await api.getTajweedVersesByChapter(id);
+
   } else if (mode === "mushaf") {
-    versesRes = await api.getUthmaniVersesByChapter(id);
+    versesRes = await api.getMushafVersesByChapter(id);
+    
   } else {
     versesRes = await api.getUthmaniVersesByChapter(id);
   }
