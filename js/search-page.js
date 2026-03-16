@@ -10,6 +10,14 @@
     return (s || "").toString().trim().toLowerCase();
   }
 
+  function normalizeSearchText(s) {
+    const normalizeArabic = window.Wahyollah?.normalizeArabic;
+    if (typeof normalizeArabic === "function") {
+      return normalizeArabic(s);
+    }
+    return norm(s);
+  }
+
   function escapeHtml(s) {
     return (s || "")
       .replace(/&/g, "&amp;")
@@ -133,13 +141,13 @@
   }
 
   function searchSurahs(items, query) {
-    const q = norm(query);
+    const q = normalizeSearchText(query);
     if (!q) return [];
 
     return items
       .map((item) => {
         const idText = String(item.surahId);
-        const arabic = norm(item.nameArabic);
+        const arabic = normalizeSearchText(item.nameArabic);
         const simple = norm(item.nameSimple);
         const revelation = norm(item.revelationPlace);
         const versesCount = String(item.versesCount);
@@ -169,12 +177,12 @@
   }
 
   function searchAyahs(items, query) {
-    const q = norm(query);
+    const q = normalizeSearchText(query);
     if (!q) return [];
 
     return items
       .map((item) => {
-        const text = norm(item.textArabic);
+        const text = normalizeSearchText(item.textArabic);
         const verseKey = norm(item.verseKey);
         const surahId = String(item.surahId);
         const ayahNumber = String(item.ayahNumber);
