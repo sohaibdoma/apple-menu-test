@@ -910,8 +910,8 @@ body.night-mode .auto-scroll-bar{
 }
 
 .surah-bottom-pill-icon{
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   display: block;
 }
 
@@ -919,7 +919,7 @@ body.night-mode .auto-scroll-bar{
 .surah-bottom-pill-icon line{
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
