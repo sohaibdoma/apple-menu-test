@@ -1042,6 +1042,67 @@ html.night-mode .previous-surah-link:hover {
 
 
 
+
+
+
+/* ========================================
+   MUSHAF MODE
+   Single-font Mushaf rendering
+======================================== */
+
+body[data-quran-mode="mushaf"] .ayah {
+  align-items: baseline;
+}
+
+body[data-quran-mode="mushaf"] .ayah-text {
+  display: inline;
+  direction: rtl;
+  unicode-bidi: plaintext;
+
+  font-family: "Amiri Quran", "Amiri", serif;
+  font-size: 1.36rem;
+  font-weight: 400;
+
+  line-height: 2.45;
+  letter-spacing: 0;
+  word-spacing: 0.01em;
+
+  white-space: normal;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-variant-ligatures: contextual common-ligatures;
+  font-feature-settings: "calt" 1, "liga" 1, "kern" 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body[data-quran-mode="mushaf"] .bismillah {
+  font-family: "Amiri Quran", "Amiri", serif;
+  font-size: 2rem;
+  line-height: 1.9;
+}
+
+body[data-quran-mode="mushaf"] .q-badge--ayah {
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+  body[data-quran-mode="mushaf"] .ayah-text {
+    font-size: 1.2rem;
+    line-height: 2.25;
+  }
+
+  body[data-quran-mode="mushaf"] .bismillah {
+    font-size: 1.7rem;
+  }
+}
+
+
+
+
+
+
 /* ========================================
    SEARCH UI (Overlay Contents)
    - Clean, centered sheet
