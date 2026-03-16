@@ -767,7 +767,7 @@ body.no-blur-transition > *:not(.main-header) {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
 
   border-radius: 999px;
   isolation: isolate;
@@ -910,8 +910,8 @@ body.night-mode .auto-scroll-bar{
 }
 
 .surah-bottom-pill-icon{
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   display: block;
 }
 
