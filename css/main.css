@@ -254,7 +254,6 @@ body {
   transform: translate(-50%, -50%);
   z-index: 120;
   pointer-events: auto;
-  margin-bottom: 18px;
 }
 
 .quran-mode-switch {
