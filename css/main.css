@@ -139,6 +139,75 @@ body {
 }
 
 
+/* ========================================
+   HOME - CHOOSE SURAH BUTTON
+   - Centered button on homepage
+   - Opens menu overlay
+======================================== */
+
+.choose-surah-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 18px;
+
+  padding: 12px 22px;
+  min-height: 44px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--page-text);
+
+  font-family: "Scheherazade New", serif;
+  font-size: 18px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+/* Hover effect */
+.choose-surah-btn:hover {
+  background: rgba(0, 0, 0, 0.14);
+}
+
+/* Press effect */
+.choose-surah-btn:active {
+  transform: translateY(1px);
+}
+
+/* Remove default focus outline */
+.choose-surah-btn:focus,
+.choose-surah-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Remove mobile tap highlight */
+.choose-surah-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===============================
+   NIGHT MODE
+=============================== */
+
+html.night-mode .choose-surah-btn,
+body.night-mode .choose-surah-btn {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+html.night-mode .choose-surah-btn:hover,
+body.night-mode .choose-surah-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+
 
 
 /* ========================================
