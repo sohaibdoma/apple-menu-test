@@ -121,9 +121,11 @@ body {
    HOME PAGE
    =============================== */
 .home {
-  padding-top: 40px;
-  padding-left: 24px;
-  padding-right: 24px;
+  min-height: calc(100vh - 120px);
+  padding: 40px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -245,6 +247,15 @@ body.night-mode .home-footer-copy {
 }
 
 
+body[data-surah="0"] {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body[data-surah="0"] .home {
+  flex: 1;
+}
 
 
 /* ========================================
