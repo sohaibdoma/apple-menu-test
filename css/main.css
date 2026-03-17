@@ -122,10 +122,13 @@ body {
 .home {
   min-height: calc(100vh + 160px);
   padding: 40px 24px;
+
   display: flex;
-  align-items: center;
+  align-items: flex-start;   /* 🔥 was center */
   justify-content: center;
   text-align: center;
+
+  padding-top: 80px;         /* 🔥 controls how high */
 }
 
 .home-title {
