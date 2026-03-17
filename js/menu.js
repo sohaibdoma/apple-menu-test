@@ -48,7 +48,7 @@
 
       lockedScrollY = window.scrollY;
       document.body.style.top = `-${lockedScrollY}px`;
-      document.body.classList.add("menu-open-lock"); // internal only (no CSS needed)
+      document.body.classList.add("menu-open-lock");
       document.body.style.position = "fixed";
       document.body.style.width = "100%";
       document.body.style.overflow = "hidden";
@@ -84,7 +84,6 @@
       const current = getOverlayMode();
       if (current === mode) return;
 
-      // if switching from menu <-> search while already open, just swap classes (no re-lock)
       const wasOpen = isOverlayOpen();
       if (!wasOpen) lockScroll();
 
@@ -147,45 +146,41 @@
       }, 420);
     }
 
-    // MENU BUTTON:
-    // - if overlay open (menu/search) => CLOSE ONLY
-    // - if overlay closed => open MENU
     menuButton.addEventListener("click", () => {
       isOverlayOpen() ? closeOverlay() : openOverlay("menu");
     });
 
-    // SEARCH BUTTON toggles SEARCH overlay
     if (searchButton) {
       searchButton.addEventListener("click", () => {
         getOverlayMode() === "search" ? closeOverlay() : openOverlay("search");
       });
     }
 
-    // CHOOSE SURAH BUTTON opens MENU overlay
     if (chooseSurahButton) {
-      chooseSurahButton.addEventListener("click", () => {
+      chooseSurahButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+
         if (getOverlayMode() !== "menu") {
           openOverlay("menu");
         }
       });
     }
 
-    // ESC closes any overlay
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && isOverlayOpen()) {
         closeOverlay();
       }
     });
 
-    // Click outside closes any overlay (same rule as menu)
     document.addEventListener("click", (e) => {
       if (!isOverlayOpen()) return;
 
       const clickedInsideHeader = header.contains(e.target);
       const clickedMenuButton = menuButton.contains(e.target);
       const clickedSearchButton = searchButton ? searchButton.contains(e.target) : false;
+      const clickedChooseSurahButton = chooseSurahButton ? chooseSurahButton.contains(e.target) : false;
 
-      if (!clickedInsideHeader && !clickedMenuButton && !clickedSearchButton) {
+      if (!clickedInsideHeader && !clickedMenuButton && !clickedSearchButton && !clickedChooseSurahButton) {
         closeOverlay();
       }
     });
@@ -194,8 +189,6 @@
 
     window.Wahyollah = window.Wahyollah || {};
     window.Wahyollah.markCurrentSurah = markCurrentSurah;
-
-    // expose overlay controls for search.js if needed
     window.Wahyollah.openOverlay = openOverlay;
     window.Wahyollah.closeOverlay = closeOverlay;
     window.Wahyollah.getOverlayMode = getOverlayMode;
