@@ -115,14 +115,12 @@ body {
 }
 
 
-
-
 /* ========================================
    HOME
 ======================================== */
 
 .home {
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh + 160px);
   padding: 40px 24px;
   display: flex;
   align-items: center;
