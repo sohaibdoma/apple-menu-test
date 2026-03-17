@@ -5,6 +5,7 @@
     const menuButton = document.querySelector(".menu-toggle");
     const searchButton = document.getElementById("searchToggle");
     const chooseSurahButton = document.getElementById("chooseSurahBtn");
+    const openSearchButton = document.getElementById("openSearchBtn");
     const menuNav = document.getElementById("main-menu");
     const header = document.querySelector(".main-header");
 
@@ -166,6 +167,16 @@
       });
     }
 
+    if (openSearchButton) {
+      openSearchButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        if (getOverlayMode() !== "search") {
+          openOverlay("search");
+        }
+      });
+    }
+
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && isOverlayOpen()) {
         closeOverlay();
@@ -179,8 +190,15 @@
       const clickedMenuButton = menuButton.contains(e.target);
       const clickedSearchButton = searchButton ? searchButton.contains(e.target) : false;
       const clickedChooseSurahButton = chooseSurahButton ? chooseSurahButton.contains(e.target) : false;
+      const clickedOpenSearchButton = openSearchButton ? openSearchButton.contains(e.target) : false;
 
-      if (!clickedInsideHeader && !clickedMenuButton && !clickedSearchButton && !clickedChooseSurahButton) {
+      if (
+        !clickedInsideHeader &&
+        !clickedMenuButton &&
+        !clickedSearchButton &&
+        !clickedChooseSurahButton &&
+        !clickedOpenSearchButton
+      ) {
         closeOverlay();
       }
     });
