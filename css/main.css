@@ -120,8 +120,8 @@ body {
 /* ===============================
    HOME PAGE
    =============================== */
+
 .home {
-  min-height: calc(100vh - 120px);
   padding: 40px 24px;
   display: flex;
   align-items: center;
@@ -223,6 +223,31 @@ body.night-mode .choose-surah-btn:hover {
 }
 
 
+
+
+/* ========================================
+   HOME PAGE LAYOUT + BACKGROUND
+======================================== */
+
+body[data-surah="0"] {
+  background: var(--page-bg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)), url("../images/sunrise.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+body[data-surah="0"] .home {
+  min-height: calc(100vh - 140px);
+}
+
+body[data-surah="0"] .home-footer {
+  margin-top: auto;
+}
+
+
+
 /* ========================================
    HOME FOOTER (STICKY BOTTOM - NOT FIXED)
    - Stays at bottom when page is short
@@ -230,41 +255,6 @@ body.night-mode .choose-surah-btn:hover {
    - No overlap, no floating
 ======================================== */
 
-/* Layout system for home page */
-html, body {
-  height: 100%;
-}
-
-body[data-surah="0"] {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-image: url("../images/sunrise.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-body[data-surah="0"]::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.28);
-  z-index: 0;
-  pointer-events: none;
-}
-
-body[data-surah="0"] .main-header,
-body[data-surah="0"] .home,
-body[data-surah="0"] .home-footer {
-  position: relative;
-  z-index: 1;
-}
-
-/* Home content pushes footer down */
-body[data-surah="0"] .home {
-  flex: 1;
-}
 
 /* Footer base */
 .home-footer {
