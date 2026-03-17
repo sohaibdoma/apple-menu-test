@@ -4,6 +4,7 @@
   function initMenu() {
     const menuButton = document.querySelector(".menu-toggle");
     const searchButton = document.getElementById("searchToggle");
+    const chooseSurahButton = document.getElementById("chooseSurahBtn");
     const menuNav = document.getElementById("main-menu");
     const header = document.querySelector(".main-header");
 
@@ -157,6 +158,15 @@
     if (searchButton) {
       searchButton.addEventListener("click", () => {
         getOverlayMode() === "search" ? closeOverlay() : openOverlay("search");
+      });
+    }
+
+    // CHOOSE SURAH BUTTON opens MENU overlay
+    if (chooseSurahButton) {
+      chooseSurahButton.addEventListener("click", () => {
+        if (getOverlayMode() !== "menu") {
+          openOverlay("menu");
+        }
       });
     }
 
