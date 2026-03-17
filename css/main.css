@@ -212,40 +212,16 @@ body.night-mode .choose-surah-btn:hover {
 
 
 /* ========================================
-   HOME FOOTER
+   HOME FOOTER (STICKY BOTTOM - NOT FIXED)
+   - Stays at bottom when page is short
+   - Moves naturally when page grows
+   - No overlap, no floating
 ======================================== */
 
-.home-footer {
-  width: 100%;
-  padding: 24px 24px 34px;
+/* Layout system for home page */
+html, body {
+  height: 100%;
 }
-
-.home-footer-inner {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.home-footer-brand {
-  margin: 0;
-  font-family: "Scheherazade New", serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--page-text);
-}
-
-.home-footer-copy {
-  margin: 6px 0 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.58);
-}
-
-html.night-mode .home-footer-copy,
-body.night-mode .home-footer-copy {
-  color: rgba(255, 255, 255, 0.62);
-}
-
 
 body[data-surah="0"] {
   min-height: 100vh;
@@ -253,9 +229,47 @@ body[data-surah="0"] {
   flex-direction: column;
 }
 
+/* Home content pushes footer down */
 body[data-surah="0"] .home {
   flex: 1;
 }
+
+/* Footer base */
+.home-footer {
+  width: 100%;
+  padding: 20px 24px 28px;
+}
+
+/* Inner container */
+.home-footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Brand text */
+.home-footer-brand {
+  margin: 0;
+  font-family: "Scheherazade New", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--page-text);
+}
+
+/* Copyright text */
+.home-footer-copy {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* Night mode */
+html.night-mode .home-footer-copy,
+body.night-mode .home-footer-copy {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 
 
 /* ========================================
