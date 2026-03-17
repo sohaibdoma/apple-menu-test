@@ -198,51 +198,33 @@ body.night-mode .choose-surah-btn:hover {
 }
 
 /* ========================================
-   HOME LAYOUT
+   HOME BACKGROUND
 ======================================== */
 
 body[data-surah="0"] {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: transparent;
-}
-
-body[data-surah="0"]::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-
+  background-color: var(--page-bg);
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)),
     url("../images/sunrise.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-body[data-surah="0"] .main-header,
-body[data-surah="0"] .home,
-body[data-surah="0"] .home-footer {
-  position: relative;
-  z-index: 1;
-}
-
-body[data-surah="0"] .home {
-  flex: 1;
-}
+/* ========================================
+   HOME FOOTER
+======================================== */
 
 .home-footer {
   width: 100%;
   padding: 20px 24px 28px;
+  text-align: center;
 }
 
 .home-footer-inner {
   max-width: 800px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .home-footer-brand {
@@ -264,8 +246,6 @@ html.night-mode .home-footer-copy,
 body.night-mode .home-footer-copy {
   color: rgba(255, 255, 255, 0.6);
 }
-
-
 
 
 /* ========================================
