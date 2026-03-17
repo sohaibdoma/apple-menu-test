@@ -117,11 +117,12 @@ body {
 
 
 
-/* ===============================
-   HOME PAGE
-   =============================== */
+/* ========================================
+   HOME
+======================================== */
 
 .home {
+  min-height: calc(100vh - 140px);
   padding: 40px 24px;
   display: flex;
   align-items: center;
@@ -140,12 +141,12 @@ body {
   line-height: 1.6;
 }
 
-
-/* ========================================
-   HOME - CHOOSE SURAH BUTTON
-   - Centered button on homepage
-   - Opens menu overlay
-======================================== */
+.home-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
 
 .choose-surah-btn {
   display: inline-flex;
@@ -153,7 +154,6 @@ body {
   justify-content: center;
 
   margin-top: 18px;
-
   padding: 12px 22px;
   min-height: 44px;
 
@@ -168,35 +168,23 @@ body {
   font-weight: 700;
 
   cursor: pointer;
-
   transition: background-color 0.2s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Hover effect */
 .choose-surah-btn:hover {
   background: rgba(0, 0, 0, 0.14);
 }
 
-/* Press effect */
 .choose-surah-btn:active {
   transform: translateY(1px);
 }
 
-/* Remove default focus outline */
 .choose-surah-btn:focus,
 .choose-surah-btn:focus-visible {
   outline: none;
   box-shadow: none;
 }
-
-/* Remove mobile tap highlight */
-.choose-surah-btn {
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* ===============================
-   NIGHT MODE
-=============================== */
 
 html.night-mode .choose-surah-btn,
 body.night-mode .choose-surah-btn {
@@ -209,67 +197,54 @@ body.night-mode .choose-surah-btn:hover {
   background: rgba(255, 255, 255, 0.22);
 }
 
-
-
 /* ========================================
-   HOME ACTIONS
-======================================== */
-
-.home-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-
-
-
-/* ========================================
-   HOME PAGE LAYOUT + BACKGROUND
+   HOME LAYOUT
 ======================================== */
 
 body[data-surah="0"] {
-  background: var(--page-bg);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)), url("../images/sunrise.jpg");
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+body[data-surah="0"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)),
+    url("../images/sunrise.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll;
+}
+
+body[data-surah="0"] .main-header,
+body[data-surah="0"] .home,
+body[data-surah="0"] .home-footer {
+  position: relative;
+  z-index: 1;
 }
 
 body[data-surah="0"] .home {
-  min-height: calc(100vh - 140px);
+  flex: 1;
 }
 
-body[data-surah="0"] .home-footer {
-  margin-top: auto;
-}
-
-
-
-/* ========================================
-   HOME FOOTER (STICKY BOTTOM - NOT FIXED)
-   - Stays at bottom when page is short
-   - Moves naturally when page grows
-   - No overlap, no floating
-======================================== */
-
-
-/* Footer base */
 .home-footer {
   width: 100%;
   padding: 20px 24px 28px;
 }
 
-/* Inner container */
 .home-footer-inner {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
 
-/* Brand text */
 .home-footer-brand {
   margin: 0;
   font-family: "Scheherazade New", serif;
@@ -278,7 +253,6 @@ body[data-surah="0"] .home-footer {
   color: var(--page-text);
 }
 
-/* Copyright text */
 .home-footer-copy {
   margin: 4px 0 0;
   font-size: 13px;
@@ -286,11 +260,11 @@ body[data-surah="0"] .home-footer {
   color: rgba(0, 0, 0, 0.55);
 }
 
-/* Night mode */
 html.night-mode .home-footer-copy,
 body.night-mode .home-footer-copy {
   color: rgba(255, 255, 255, 0.6);
 }
+
 
 
 
