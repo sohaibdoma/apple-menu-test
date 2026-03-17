@@ -212,6 +212,18 @@ body.night-mode .choose-surah-btn:hover {
 
 
 /* ========================================
+   HOME ACTIONS
+======================================== */
+
+.home-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+
+/* ========================================
    HOME FOOTER (STICKY BOTTOM - NOT FIXED)
    - Stays at bottom when page is short
    - Moves naturally when page grows
