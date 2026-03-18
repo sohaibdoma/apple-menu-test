@@ -334,25 +334,37 @@
     updateNavbarSurahTitle();
   }
 
-  async function loadNextPageIfNeeded() {
+  function isNearBottom() {
+    return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 500;
+  }
+
+  async function loadNextPagesIfNeeded() {
     if (isLoadingMore) return;
 
-    const nearBottom =
-      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 500;
-
-    if (!nearBottom) return;
+    if (!isNearBottom()) return;
 
     isLoadingMore = true;
 
     try {
-      const nextPage = highestRenderedPage + 1;
-      const appended = await renderPageWhenReady(nextPage);
+      let didAppend = false;
 
-      if (appended) {
+      while (isNearBottom()) {
+        const nextPage = highestRenderedPage + 1;
+        if (nextPage > 604) break;
+
+        const appended = await renderPageWhenReady(nextPage);
+        if (!appended) break;
+
+        didAppend = true;
+
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+      }
+
+      if (didAppend) {
         updateNavbarSurahTitle();
       }
     } catch (error) {
-      console.error("Failed to load next Mushaf page:", error);
+      console.error("Failed to load next Mushaf pages:", error);
     } finally {
       isLoadingMore = false;
     }
@@ -366,14 +378,18 @@
 
   document.addEventListener("scroll", () => {
     updateNavbarSurahTitle();
-    loadNextPageIfNeeded();
+    loadNextPagesIfNeeded();
   }, { passive: true });
 
-  window.addEventListener("resize", updateNavbarSurahTitle);
+  window.addEventListener("resize", () => {
+    updateNavbarSurahTitle();
+    loadNextPagesIfNeeded();
+  });
 
   document.addEventListener("DOMContentLoaded", async () => {
     try {
       await loadInitialMushafData();
+      await loadNextPagesIfNeeded();
     } catch (error) {
       console.error("Failed to load Mushaf pages:", error);
 
