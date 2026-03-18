@@ -1765,8 +1765,8 @@ body.night-mode .search-page-results .search-result-meta {
   max-width: 800px;
   margin: 0 auto;
 
-  padding: 40px 20px;
-  padding-bottom: 120px;
+  padding-top: 20px;
+  padding-bottom: 60px;
 
   position: relative;
 }
@@ -1778,6 +1778,8 @@ body.night-mode .search-page-results .search-result-meta {
   height: 100vh;              /* 🔥 fixed page height */
   max-height: 900px;          /* prevents huge screens */
 
+  padding: 10px 0;
+   
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1800,7 +1802,10 @@ body.night-mode .search-page-results .search-result-meta {
   letter-spacing: 0;
 
   flex: 1;
-  overflow: hidden;
+  max-height: 100%;
+  overflow: visible;
+
+  text-wrap: pretty;
    
   white-space: normal;
 
