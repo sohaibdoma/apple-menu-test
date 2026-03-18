@@ -1778,7 +1778,7 @@ body.night-mode .search-page-results .search-result-meta {
   min-height: 82vh;
   max-height: 860px;
 
-  padding: 10px 22px;
+  padding: 10px 14px;
    
   display: flex;
   flex-direction: column;
