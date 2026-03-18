@@ -1780,16 +1780,33 @@ body.night-mode .search-page-results .search-result-meta {
 /* Quran text block (core layout) */
 .mushaf-text {
   direction: rtl;
+
   text-align: justify;
   text-align-last: right;
 
   font-family: "Amiri Quran", "Scheherazade New", serif;
-  font-size: 26px;
+  font-size: 28px;
 
-  line-height: 2.4;
-  word-spacing: 0.08em;
+  line-height: 2.65;
+  word-spacing: 0.02em;
+  letter-spacing: 0;
 
-  color: var(--page-text);
+  white-space: normal;
+
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+
+  font-feature-settings:
+    "calt" 1,
+    "liga" 1,
+    "kern" 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mushaf-ayah-inline {
+  display: inline;
 }
 
 /* Inline ayah */
@@ -1844,21 +1861,22 @@ body.night-mode .mushaf-page-number {
   align-items: center;
   justify-content: center;
 
-  min-width: 24px;
-  height: 24px;
-  padding: 0 8px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
 
-  margin-inline: 6px;
+  margin-inline: 4px;
 
   border-radius: 999px;
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 
   background: rgba(0, 0, 0, 0.08);
   color: var(--page-text);
 
   line-height: 1;
+  vertical-align: middle;
 }
 
 html.night-mode .mushaf-text .end,
