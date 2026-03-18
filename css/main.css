@@ -1887,12 +1887,13 @@ body.night-mode .mushaf-page-number {
 }
 
 .mushaf-surah-title {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 
+  width: 100%;                 /* 🔥 FULL WIDTH */
   min-height: 48px;
-  padding: 0 22px;
+
   margin-bottom: 10px;
 
   border-radius: 999px;
@@ -1903,9 +1904,8 @@ body.night-mode .mushaf-page-number {
   font-family: "Scheherazade New", "Amiri Quran", serif;
   font-size: 24px;
   font-weight: 700;
-  line-height: 1;
+
   text-align: center;
-  white-space: nowrap;
 }
 
 .mushaf-bismillah {
