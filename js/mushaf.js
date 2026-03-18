@@ -187,6 +187,12 @@
     highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
   }
 
+  async function loadAllRemainingSurahs() {
+    while (highestLoadedSurah < 114) {
+      await loadSurahIntoCache(highestLoadedSurah + 1);
+    }
+  }
+
   function isPageComplete(pageNumber) {
     const currentPageVerses = getPageVerses(pageNumber);
     if (currentPageVerses.length === 0) return false;
@@ -334,6 +340,8 @@
   }
 
   async function appendAllRemainingPagesToEnd() {
+    await loadAllRemainingSurahs();
+
     while (highestRenderedPage < 604) {
       const nextPage = highestRenderedPage + 1;
       const appended = await renderPageWhenReady(nextPage);
@@ -363,11 +371,6 @@
         await new Promise((resolve) => requestAnimationFrame(resolve));
       }
 
-      if (highestLoadedSurah === 114 && highestRenderedPage < 604) {
-        await appendAllRemainingPagesToEnd();
-        didAppend = true;
-      }
-
       if (didAppend) {
         updateNavbarSurahTitle();
       }
@@ -389,25 +392,21 @@
     if (!scrollBottomBtn) return;
 
     scrollBottomBtn.addEventListener("click", async () => {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: "smooth"
-      });
+      try {
+        scrollBottomBtn.disabled = true;
 
-      const maxPasses = 20;
-
-      for (let i = 0; i < maxPasses; i += 1) {
-        await new Promise((resolve) => setTimeout(resolve, 250));
-        await loadNextPagesIfNeeded();
+        await appendAllRemainingPagesToEnd();
 
         window.scrollTo({
           top: document.documentElement.scrollHeight,
-          behavior: "auto"
+          behavior: "smooth"
         });
 
-        if (highestRenderedPage >= 604) {
-          break;
-        }
+        updateNavbarSurahTitle();
+      } catch (error) {
+        console.error("Failed to force-load Mushaf end:", error);
+      } finally {
+        scrollBottomBtn.disabled = false;
       }
     });
   }
