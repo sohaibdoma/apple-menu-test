@@ -6,6 +6,9 @@
   let highestRenderedPage = 0;
   let isLoadingMore = false;
 
+  let highestLoadedSurah = 0;
+  const loadedSurahIds = new Set();
+
   const SURAH_NAMES_AR = {
     1: "الفاتحة",
     2: "البقرة",
@@ -173,21 +176,17 @@
     return SURAH_NAMES_AR[surahId] || "";
   }
 
-  function groupVersesByPage(verses) {
-    const map = new Map();
-
+  function addVersesToPagesMap(verses) {
     verses.forEach((verse) => {
       const pageNumber = verse.page_number;
       if (!pageNumber) return;
 
-      if (!map.has(pageNumber)) {
-        map.set(pageNumber, []);
+      if (!pagesMap.has(pageNumber)) {
+        pagesMap.set(pageNumber, []);
       }
 
-      map.get(pageNumber).push(verse);
+      pagesMap.get(pageNumber).push(verse);
     });
-
-    return map;
   }
 
   function createSurahHeaderBlock(surahId) {
@@ -250,18 +249,19 @@
 
   function appendPage(pageNumber) {
     const pagesRoot = document.getElementById("mushaf-pages");
-    if (!pagesRoot) return;
+    if (!pagesRoot) return false;
 
-    if (renderedPages.has(pageNumber)) return;
+    if (renderedPages.has(pageNumber)) return false;
 
     const verses = pagesMap.get(pageNumber) || [];
-    if (verses.length === 0) return;
+    if (verses.length === 0) return false;
 
     const pageEl = createMushafPage(pageNumber, verses);
     pagesRoot.appendChild(pageEl);
 
     renderedPages.add(pageNumber);
     highestRenderedPage = Math.max(highestRenderedPage, pageNumber);
+    return true;
   }
 
   function renderInitialPages() {
@@ -279,7 +279,37 @@
     updateNavbarSurahTitle();
   }
 
-  function loadNextPageIfNeeded() {
+  async function loadSurahIntoCache(surahId) {
+    const api = window.Wahyollah?.api;
+    if (!api) {
+      throw new Error("API module not loaded");
+    }
+
+    if (loadedSurahIds.has(surahId)) return;
+
+    const result = await api.getTajweedVersesByChapter(surahId);
+    const verses = result?.verses || [];
+
+    addVersesToPagesMap(verses);
+    loadedSurahIds.add(surahId);
+    highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
+  }
+
+  async function ensureNextPageExists() {
+    const nextPage = highestRenderedPage + 1;
+
+    if (pagesMap.has(nextPage)) {
+      return true;
+    }
+
+    while (!pagesMap.has(nextPage) && highestLoadedSurah < 114) {
+      await loadSurahIntoCache(highestLoadedSurah + 1);
+    }
+
+    return pagesMap.has(nextPage);
+  }
+
+  async function loadNextPageIfNeeded() {
     if (isLoadingMore) return;
 
     const nearBottom =
@@ -287,36 +317,28 @@
 
     if (!nearBottom) return;
 
-    const nextPage = highestRenderedPage + 1;
-    if (!pagesMap.has(nextPage)) return;
-
     isLoadingMore = true;
-    appendPage(nextPage);
-    updateNavbarSurahTitle();
-    isLoadingMore = false;
+
+    try {
+      const hasNextPage = await ensureNextPageExists();
+      if (hasNextPage) {
+        appendPage(highestRenderedPage + 1);
+        updateNavbarSurahTitle();
+      }
+    } catch (error) {
+      console.error("Failed to load next Mushaf page:", error);
+    } finally {
+      isLoadingMore = false;
+    }
   }
 
   async function loadInitialMushafData() {
-    const api = window.Wahyollah?.api;
     const pagesRoot = document.getElementById("mushaf-pages");
-
-    if (!api) {
-      throw new Error("API module not loaded");
-    }
-
     if (!pagesRoot) return;
 
-    const [surah1, surah2] = await Promise.all([
-      api.getTajweedVersesByChapter(1),
-      api.getTajweedVersesByChapter(2)
-    ]);
+    await loadSurahIntoCache(1);
+    await loadSurahIntoCache(2);
 
-    const allVerses = [
-      ...(surah1?.verses || []),
-      ...(surah2?.verses || [])
-    ];
-
-    pagesMap = groupVersesByPage(allVerses);
     renderInitialPages();
   }
 
