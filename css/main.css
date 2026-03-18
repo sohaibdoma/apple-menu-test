@@ -1778,7 +1778,7 @@ body.night-mode .search-page-results .search-result-meta {
   min-height: 88vh;
   max-height: none;
 
-  padding: 10px 14px;
+  padding: 10px 0;
    
   display: flex;
   flex-direction: column;
@@ -1791,7 +1791,7 @@ body.night-mode .search-page-results .search-result-meta {
 .mushaf-text {
   direction: rtl;
 
-  padding: 0 20px;
+  padding: 0 16px;
    
   text-align: justify;
   text-align-last: right;
