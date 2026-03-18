@@ -1787,11 +1787,11 @@ body.night-mode .search-page-results .search-result-meta {
   margin-bottom: 40px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   .mushaf-page {
     min-height: 88vh;
     max-height: none;
-    padding: 10px 14px;
+    padding: 10px 20px;
     margin-bottom: 32px;
   }
 }
@@ -1827,6 +1827,12 @@ body.night-mode .search-page-results .search-result-meta {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 769px) {
+  .mushaf-text {
+    line-height: 3.35;
+  }
 }
 
 .mushaf-ayah-inline {
