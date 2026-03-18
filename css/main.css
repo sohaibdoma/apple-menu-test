@@ -279,7 +279,7 @@ body[data-surah="0"] {
 .bismillah {
   text-align: center;
   font-family: 'Amiri Quran', serif;
-  font-size: 18px;
+  font-size: 22px;
   margin-bottom: 32px;
 }
 
@@ -1914,9 +1914,9 @@ body.night-mode .mushaf-page-number {
 
 .mushaf-bismillah {
   font-family: "Amiri Quran", "Scheherazade New", serif;
-  font-size: 25px;
+  font-size: 22px;
   line-height: 1.8;
-  margin-bottom: 10px;
+  margin-bottom: 32px;
 }
 
 
