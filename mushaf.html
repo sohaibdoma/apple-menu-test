@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mushaf</title>
+
+  <base href="/wahyollah/">
+
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem("theme");
+        var isNight = theme === "night";
+        document.documentElement.classList.toggle("night-mode", isNight);
+
+        var lang = localStorage.getItem("lang") || "ar";
+        document.documentElement.setAttribute("data-lang", lang);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body data-lang-root data-surah="1" data-page-type="mushaf">
+
+  <header class="main-header">
+
+    <div class="header-bar">
+
+      <div class="header-controls">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+
+        <a href="index.html" class="home-toggle" aria-label="Home">
+          <svg class="home-icon" viewBox="0 0 24 24">
+            <defs>
+              <mask id="doorCut">
+                <rect width="24" height="24" fill="white"/>
+                <path d="M10.2 20 V15.5 Q10.2 14 12 14 Q13.8 14 13.8 15.5 V20 Z" fill="black"/>
+              </mask>
+            </defs>
+
+            <path
+              fill="currentColor"
+              mask="url(#doorCut)"
+              d="
+              M5.5 10.8
+              Q5.5 10.1 6.2 9.6
+              L11.2 6
+              Q12 5.4 12.8 6
+              L17.8 9.6
+              Q18.5 10.1 18.5 10.8
+              V18
+              Q18.5 19.6 16.7 19.6
+              H7.3
+              Q5.5 19.6 5.5 18
+              Z
+              "
+            />
+          </svg>
+        </a>
+      </div>
+
+      <div id="nav-surah-title" class="nav-surah-title"></div>
+
+      <div class="header-left">
+        <div class="lang-switch">
+          <button data-lang="ar">AR</button>
+          <button data-lang="en">EN</button>
+          <button data-lang="tr">TR</button>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button id="searchToggle" class="search-toggle" aria-label="Search" aria-expanded="false" type="button">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="M16.2 16.2 L20 20"></path>
+          </svg>
+        </button>
+
+        <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false">
+          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="arm" pathLength="100" d="M6 8 L18 20" />
+            <path class="arm" pathLength="100" d="M18 8 L6 20" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <div id="menu-placeholder"></div>
+    <div id="search-placeholder"></div>
+
+  </header>
+
+  <main class="mushaf-container">
+    <div id="mushaf-top-spacer"></div>
+    <div id="mushaf-pages"></div>
+    <div id="mushaf-bottom-spacer"></div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/arabic-normalizer.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/mushaf.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
