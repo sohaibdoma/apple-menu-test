@@ -115,6 +115,7 @@ body {
 }
 
 
+
 /* ========================================
    HOME
 ======================================== */
@@ -124,11 +125,11 @@ body {
   padding: 40px 24px;
 
   display: flex;
-  align-items: flex-start;   /* 🔥 was center */
+  align-items: flex-start;
   justify-content: center;
   text-align: center;
 
-  padding-top: 80px;         /* 🔥 controls how high */
+  padding-top: 80px;
 }
 
 .home-title {
@@ -149,6 +150,10 @@ body {
   gap: 14px;
 }
 
+/* ========================================
+   HOME BUTTONS (ALWAYS DARK)
+======================================== */
+
 .choose-surah-btn {
   display: inline-flex;
   align-items: center;
@@ -161,8 +166,8 @@ body {
   border: none;
   border-radius: 999px;
 
-  background: rgba(0, 0, 0, 0.08);
-  color: var(--page-text);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
 
   font-family: "Scheherazade New", serif;
   font-size: 18px;
@@ -174,7 +179,7 @@ body {
 }
 
 .choose-surah-btn:hover {
-  background: rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .choose-surah-btn:active {
@@ -185,17 +190,6 @@ body {
 .choose-surah-btn:focus-visible {
   outline: none;
   box-shadow: none;
-}
-
-html.night-mode .choose-surah-btn,
-body.night-mode .choose-surah-btn {
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-}
-
-html.night-mode .choose-surah-btn:hover,
-body.night-mode .choose-surah-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
 }
 
 /* ========================================
@@ -214,7 +208,7 @@ body[data-surah="0"] {
 }
 
 /* ========================================
-   HOME FOOTER
+   HOME FOOTER (ALWAYS DARK)
 ======================================== */
 
 .home-footer {
@@ -233,20 +227,16 @@ body[data-surah="0"] {
   font-family: "Scheherazade New", serif;
   font-size: 16px;
   font-weight: 700;
-  color: var(--page-text);
+  color: #ffffff;
 }
 
 .home-footer-copy {
   margin: 4px 0 0;
   font-size: 13px;
   line-height: 1.5;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html.night-mode .home-footer-copy,
-body.night-mode .home-footer-copy {
   color: rgba(255, 255, 255, 0.6);
 }
+
 
 
 /* ========================================
