@@ -1751,3 +1751,87 @@ body.night-mode .search-page-results .search-result-meta {
 .search-page-input-wrap {
   margin-bottom: 20px;
 }
+
+
+
+/* ========================================
+   MUSHAF PAGE
+   - Clean continuous Quran layout
+   - Page-based structure (virtualization ready)
+======================================== */
+
+/* Main container */
+.mushaf-container {
+  max-width: 800px;
+  margin: 0 auto;
+
+  padding: 40px 20px;
+  padding-bottom: 120px;
+
+  position: relative;
+}
+
+/* Each Mushaf page */
+.mushaf-page {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* Quran text block (core layout) */
+.mushaf-text {
+  direction: rtl;
+  text-align: justify;
+  text-align-last: right;
+
+  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-size: 26px;
+
+  line-height: 2.4;
+  word-spacing: 0.08em;
+
+  color: var(--page-text);
+}
+
+/* Inline ayah */
+.mushaf-text span {
+  display: inline;
+}
+
+/* Page separator (clean line) */
+.mushaf-page::after {
+  content: "";
+  display: block;
+
+  width: 100%;
+  height: 1px;
+
+  margin-top: 28px;
+
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+}
+
+/* Dark mode separator */
+html.night-mode .mushaf-page::after,
+body.night-mode .mushaf-page::after {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* Page number (simple, NOT pill) */
+.mushaf-page-number {
+  text-align: center;
+
+  margin-top: 14px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  opacity: 0.6;
+}
+
+/* Dark mode page number */
+html.night-mode .mushaf-page-number,
+body.night-mode .mushaf-page-number {
+  opacity: 0.7;
+}
+
