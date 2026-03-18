@@ -1799,7 +1799,7 @@ body.night-mode .search-page-results .search-result-meta {
   font-family: "Amiri Quran", "Scheherazade New", serif;
   font-size: 27px;
 
-  line-height: 2.2;
+  line-height: 2.5;
   word-spacing: 0.02em;
   letter-spacing: 0;
 
@@ -1859,7 +1859,7 @@ body.night-mode .mushaf-page::after {
 .mushaf-page-number {
   text-align: center;
 
-  margin-top: 12px;
+  margin-top: 32px;
 
   font-size: 25px;
   font-weight: 700;
@@ -1896,7 +1896,7 @@ body.night-mode .mushaf-page-number {
   justify-content: center;
 
   width: 100%;
-  margin: 20px auto 20px;
+  margin: 32px auto 32px;
    
   height: var(--header-h);
 
