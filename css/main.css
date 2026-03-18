@@ -1806,7 +1806,7 @@ body.night-mode .search-page-results .search-result-meta {
   font-family: "Amiri Quran", "Scheherazade New", serif;
   font-size: 28px;
 
-  line-height: 2.65;
+  line-height: 2.95;
   word-spacing: 0.02em;
   letter-spacing: 0;
 
@@ -1815,7 +1815,6 @@ body.night-mode .search-page-results .search-result-meta {
   overflow: visible;
 
   text-wrap: pretty;
-   
   white-space: normal;
 
   text-rendering: optimizeLegibility;
@@ -1832,6 +1831,7 @@ body.night-mode .search-page-results .search-result-meta {
 
 .mushaf-ayah-inline {
   display: inline;
+  vertical-align: baseline;
 }
 
 /* Inline ayah */
