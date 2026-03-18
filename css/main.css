@@ -1892,7 +1892,7 @@ body.night-mode .mushaf-page-number {
   justify-content: center;
 
   width: 100%;                 /* 🔥 FULL WIDTH */
-  min-height: 48px;
+  height: var(--header-h);
 
   margin-bottom: 10px;
 
