@@ -1835,3 +1835,34 @@ body.night-mode .mushaf-page-number {
   opacity: 0.7;
 }
 
+/* ========================================
+   MUSHAF AYAH NUMBER (API BASED)
+======================================== */
+
+.mushaf-text .end {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+
+  margin-inline: 6px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--page-text);
+
+  line-height: 1;
+}
+
+html.night-mode .mushaf-text .end,
+body.night-mode .mushaf-text .end {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
