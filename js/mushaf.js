@@ -5,26 +5,17 @@
     return String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
   }
 
-  function createAyahBadge(number) {
-    const badge = document.createElement("span");
-    badge.className = "q-badge q-badge--ayah";
-    badge.textContent = toArabicDigits(number);
-    return badge;
-  }
-
-  function stripTajweedMarkup(html) {
+  function cleanTajweedHtml(html) {
     if (!html || typeof html !== "string") return "";
 
     const template = document.createElement("template");
     template.innerHTML = html;
 
-    return (template.content.textContent || "")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
+    template.content.querySelectorAll("tajweed").forEach((el) => {
+      el.replaceWith(...el.childNodes);
+    });
 
-  function getVersePlainText(verse) {
-    return stripTajweedMarkup(verse.text_uthmani_tajweed || "");
+    return template.innerHTML;
   }
 
   function renderMushafPage(pageNumber, verses) {
@@ -55,10 +46,8 @@
       const inlineAyah = document.createElement("span");
       inlineAyah.className = "mushaf-ayah-inline";
 
-      const verseText = getVersePlainText(verse);
-      inlineAyah.appendChild(document.createTextNode(verseText + " "));
-      inlineAyah.appendChild(createAyahBadge(verse.verse_number));
-      inlineAyah.appendChild(document.createTextNode(" "));
+      const verseHtml = cleanTajweedHtml(verse.text_uthmani_tajweed || "");
+      inlineAyah.innerHTML = verseHtml + " ";
 
       text.appendChild(inlineAyah);
     });
