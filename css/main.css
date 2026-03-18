@@ -1887,10 +1887,9 @@ body.night-mode .mushaf-page-number {
   flex-direction: column;
   align-items: center;
 
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  width: calc(100% + 40px);   /* escape .mushaf-text padding */
+  margin-right: -20px;
+  margin-left: -20px;
 
   margin-bottom: 18px;
 }
@@ -1900,8 +1899,7 @@ body.night-mode .mushaf-page-number {
   align-items: center;
   justify-content: center;
 
-  width: calc(100vw - 38px);   /* same left/right inset as navbar */
-  max-width: calc(100vw - 38px);
+  width: calc(100% - 38px);   /* same visual inset as navbar */
   height: var(--header-h);
 
   margin: 25px auto 10px;
@@ -1917,7 +1915,6 @@ body.night-mode .mushaf-page-number {
   line-height: 1;
 
   text-align: center;
-  white-space: nowrap;
 }
 
 .mushaf-bismillah {
