@@ -18,9 +18,37 @@
     return template.innerHTML;
   }
 
+  function updateNavbarSurahTitle() {
+    const navTitle = document.getElementById("nav-surah-title");
+    const pages = Array.from(document.querySelectorAll(".mushaf-page"));
+
+    if (!navTitle || pages.length === 0) return;
+
+    let bestPage = null;
+    let bestVisibleHeight = 0;
+
+    pages.forEach((page) => {
+      const rect = page.getBoundingClientRect();
+      const visibleTop = Math.max(rect.top, 0);
+      const visibleBottom = Math.min(rect.bottom, window.innerHeight);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+      if (visibleHeight > bestVisibleHeight) {
+        bestVisibleHeight = visibleHeight;
+        bestPage = page;
+      }
+    });
+
+    if (!bestPage) return;
+
+    const surahName = bestPage.getAttribute("data-surah-name") || "";
+    if (surahName) {
+      navTitle.textContent = surahName;
+    }
+  }
+
   function renderMushafPage(pageNumber, verses) {
     const pagesRoot = document.getElementById("mushaf-pages");
-    const navTitle = document.getElementById("nav-surah-title");
 
     if (!pagesRoot) return;
 
@@ -31,13 +59,15 @@
       return;
     }
 
-    if (navTitle) {
-      navTitle.textContent = "الفاتحة";
-    }
+    const firstVerse = verses[0];
+    const surahId = firstVerse?.chapter_id || 1;
+    const surahName = surahId === 1 ? "الفاتحة" : "البقرة";
 
     const page = document.createElement("section");
     page.className = "mushaf-page";
     page.setAttribute("data-page-number", String(pageNumber));
+    page.setAttribute("data-surah-id", String(surahId));
+    page.setAttribute("data-surah-name", surahName);
 
     const text = document.createElement("div");
     text.className = "mushaf-text";
@@ -59,6 +89,8 @@
     page.appendChild(text);
     page.appendChild(pageNumberEl);
     pagesRoot.appendChild(page);
+
+    updateNavbarSurahTitle();
   }
 
   async function loadRealFirstMushafPage() {
@@ -85,6 +117,9 @@
 
     renderMushafPage(1, page1Verses);
   }
+
+  document.addEventListener("scroll", updateNavbarSurahTitle, { passive: true });
+  window.addEventListener("resize", updateNavbarSurahTitle);
 
   document.addEventListener("DOMContentLoaded", async () => {
     try {
