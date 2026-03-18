@@ -384,6 +384,34 @@
     await renderInitialPages();
   }
 
+  function initScrollBottomButton() {
+    const scrollBottomBtn = document.getElementById("mushafScrollBottomBtn");
+    if (!scrollBottomBtn) return;
+
+    scrollBottomBtn.addEventListener("click", async () => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth"
+      });
+
+      const maxPasses = 20;
+
+      for (let i = 0; i < maxPasses; i += 1) {
+        await new Promise((resolve) => setTimeout(resolve, 250));
+        await loadNextPagesIfNeeded();
+
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "auto"
+        });
+
+        if (highestRenderedPage >= 604) {
+          break;
+        }
+      }
+    });
+  }
+
   document.addEventListener("scroll", () => {
     updateNavbarSurahTitle();
     loadNextPagesIfNeeded();
@@ -398,6 +426,7 @@
     try {
       await loadInitialMushafData();
       await loadNextPagesIfNeeded();
+      initScrollBottomButton();
     } catch (error) {
       console.error("Failed to load Mushaf pages:", error);
 
