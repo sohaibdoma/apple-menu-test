@@ -1791,6 +1791,8 @@ body.night-mode .search-page-results .search-result-meta {
 .mushaf-text {
   direction: rtl;
 
+  padding: 0 20px;
+   
   text-align: justify;
   text-align-last: right;
 
