@@ -1,6 +1,11 @@
 (function () {
   "use strict";
 
+  let pagesMap = new Map();
+  let renderedPages = new Set();
+  let highestRenderedPage = 0;
+  let isLoadingMore = false;
+
   function toArabicDigits(n) {
     return String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
   }
@@ -54,68 +59,105 @@
   }
 
   function groupVersesByPage(verses) {
-    const pagesMap = new Map();
+    const map = new Map();
 
     verses.forEach((verse) => {
       const pageNumber = verse.page_number;
       if (!pageNumber) return;
 
-      if (!pagesMap.has(pageNumber)) {
-        pagesMap.set(pageNumber, []);
+      if (!map.has(pageNumber)) {
+        map.set(pageNumber, []);
       }
 
-      pagesMap.get(pageNumber).push(verse);
+      map.get(pageNumber).push(verse);
     });
 
-    return pagesMap;
+    return map;
   }
 
-  function renderMushafPages(pageNumbers, pagesMap) {
+  function createMushafPage(pageNumber, verses) {
+    const firstVerse = verses[0];
+    const surahId = firstVerse?.chapter_id || 1;
+    const surahName = getSurahNameArabicById(surahId);
+
+    const page = document.createElement("section");
+    page.className = "mushaf-page";
+    page.setAttribute("data-page-number", String(pageNumber));
+    page.setAttribute("data-surah-id", String(surahId));
+    page.setAttribute("data-surah-name", surahName);
+
+    const text = document.createElement("div");
+    text.className = "mushaf-text";
+
+    verses.forEach((verse) => {
+      const inlineAyah = document.createElement("span");
+      inlineAyah.className = "mushaf-ayah-inline";
+
+      const verseHtml = cleanTajweedHtml(verse.text_uthmani_tajweed || "");
+      inlineAyah.innerHTML = verseHtml + " ";
+
+      text.appendChild(inlineAyah);
+    });
+
+    const pageNumberEl = document.createElement("div");
+    pageNumberEl.className = "mushaf-page-number";
+    pageNumberEl.textContent = toArabicDigits(pageNumber);
+
+    page.appendChild(text);
+    page.appendChild(pageNumberEl);
+
+    return page;
+  }
+
+  function appendPage(pageNumber) {
+    const pagesRoot = document.getElementById("mushaf-pages");
+    if (!pagesRoot) return;
+
+    if (renderedPages.has(pageNumber)) return;
+
+    const verses = pagesMap.get(pageNumber) || [];
+    if (verses.length === 0) return;
+
+    const pageEl = createMushafPage(pageNumber, verses);
+    pagesRoot.appendChild(pageEl);
+
+    renderedPages.add(pageNumber);
+    highestRenderedPage = Math.max(highestRenderedPage, pageNumber);
+  }
+
+  function renderInitialPages() {
     const pagesRoot = document.getElementById("mushaf-pages");
     if (!pagesRoot) return;
 
     pagesRoot.innerHTML = "";
+    renderedPages.clear();
+    highestRenderedPage = 0;
 
-    pageNumbers.forEach((pageNumber) => {
-      const verses = pagesMap.get(pageNumber) || [];
-      if (verses.length === 0) return;
-
-      const firstVerse = verses[0];
-      const surahId = firstVerse?.chapter_id || 1;
-      const surahName = getSurahNameArabicById(surahId);
-
-      const page = document.createElement("section");
-      page.className = "mushaf-page";
-      page.setAttribute("data-page-number", String(pageNumber));
-      page.setAttribute("data-surah-id", String(surahId));
-      page.setAttribute("data-surah-name", surahName);
-
-      const text = document.createElement("div");
-      text.className = "mushaf-text";
-
-      verses.forEach((verse) => {
-        const inlineAyah = document.createElement("span");
-        inlineAyah.className = "mushaf-ayah-inline";
-
-        const verseHtml = cleanTajweedHtml(verse.text_uthmani_tajweed || "");
-        inlineAyah.innerHTML = verseHtml + " ";
-
-        text.appendChild(inlineAyah);
-      });
-
-      const pageNumberEl = document.createElement("div");
-      pageNumberEl.className = "mushaf-page-number";
-      pageNumberEl.textContent = toArabicDigits(pageNumber);
-
-      page.appendChild(text);
-      page.appendChild(pageNumberEl);
-      pagesRoot.appendChild(page);
+    [1, 2, 3].forEach((pageNumber) => {
+      appendPage(pageNumber);
     });
 
     updateNavbarSurahTitle();
   }
 
-  async function loadInitialMushafPages() {
+  function loadNextPageIfNeeded() {
+    if (isLoadingMore) return;
+
+    const nearBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 500;
+
+    if (!nearBottom) return;
+
+    const nextPage = highestRenderedPage + 1;
+    if (!pagesMap.has(nextPage)) return;
+
+    isLoadingMore = true;
+    appendPage(nextPage);
+    updateNavbarSurahTitle();
+    isLoadingMore = false;
+  }
+
+  async function loadInitialMushafData() {
     const api = window.Wahyollah?.api;
     const pagesRoot = document.getElementById("mushaf-pages");
 
@@ -135,17 +177,20 @@
       ...(surah2?.verses || [])
     ];
 
-    const pagesMap = groupVersesByPage(allVerses);
-
-    renderMushafPages([1, 2, 3], pagesMap);
+    pagesMap = groupVersesByPage(allVerses);
+    renderInitialPages();
   }
 
-  document.addEventListener("scroll", updateNavbarSurahTitle, { passive: true });
+  document.addEventListener("scroll", () => {
+    updateNavbarSurahTitle();
+    loadNextPageIfNeeded();
+  }, { passive: true });
+
   window.addEventListener("resize", updateNavbarSurahTitle);
 
   document.addEventListener("DOMContentLoaded", async () => {
     try {
-      await loadInitialMushafPages();
+      await loadInitialMushafData();
     } catch (error) {
       console.error("Failed to load Mushaf pages:", error);
 
