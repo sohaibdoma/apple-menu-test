@@ -1774,6 +1774,14 @@ body.night-mode .search-page-results .search-result-meta {
 /* Each Mushaf page */
 .mushaf-page {
   width: 100%;
+
+  height: 100vh;              /* 🔥 fixed page height */
+  max-height: 900px;          /* prevents huge screens */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   margin-bottom: 40px;
 }
 
@@ -1791,6 +1799,9 @@ body.night-mode .search-page-results .search-result-meta {
   word-spacing: 0.02em;
   letter-spacing: 0;
 
+  flex: 1;
+  overflow: hidden;
+   
   white-space: normal;
 
   text-rendering: optimizeLegibility;
@@ -1822,10 +1833,12 @@ body.night-mode .search-page-results .search-result-meta {
   width: 100%;
   height: 1px;
 
-  margin-top: 28px;
+  margin-top: 18px;
 
   background: rgba(0, 0, 0, 0.12);
   border-radius: 999px;
+
+  flex-shrink: 0;
 }
 
 /* Dark mode separator */
@@ -1838,12 +1851,14 @@ body.night-mode .mushaf-page::after {
 .mushaf-page-number {
   text-align: center;
 
-  margin-top: 14px;
+  margin-top: 10px;
 
   font-size: 14px;
   font-weight: 600;
 
   opacity: 0.6;
+
+  flex-shrink: 0;
 }
 
 /* Dark mode page number */
