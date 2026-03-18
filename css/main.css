@@ -1894,9 +1894,9 @@ body.night-mode .mushaf-page-number {
   justify-content: center;
 
   width: calc(100% - 32px);
-  margin: 0 auto 10px;
+  margin: 20px auto 20px;
    
-  height: var(--header-h);
+  height: 40px;
 
   margin-bottom: 10px;
 
