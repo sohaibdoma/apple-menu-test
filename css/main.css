@@ -1881,6 +1881,32 @@ body.night-mode .mushaf-page-number {
   opacity: 0.7;
 }
 
+
+/* ========================================
+   MUSHAF SURAH START
+======================================== */
+
+.mushaf-surah-start {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.mushaf-surah-title {
+  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-size: 34px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.mushaf-bismillah {
+  font-family: "Amiri Quran", "Scheherazade New", serif;
+  font-size: 30px;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
 /* ========================================
    MUSHAF AYAH NUMBER (API BASED)
 ======================================== */
