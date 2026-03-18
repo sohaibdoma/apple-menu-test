@@ -1784,7 +1784,7 @@ body.night-mode .search-page-results .search-result-meta {
   flex-direction: column;
   justify-content: space-between;
 
-  margin-bottom: 32px;
+  margin-bottom: 10px;
 }
 
 /* Quran text block (core layout) */
@@ -1896,7 +1896,9 @@ body.night-mode .mushaf-page-number {
   justify-content: center;
 
   width: 100%;
-  margin: 32px auto 32px;
+  margin: 25px auto 25px;
+   
+  padding: 0 19px;  
    
   height: var(--header-h);
 
