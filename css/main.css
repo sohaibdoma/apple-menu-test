@@ -1913,20 +1913,12 @@ body.night-mode .mushaf-page-number {
 }
 
 .mushaf-bismillah {
-  width: 100%;
-
-  padding: 0 16px;   /* 🔥 SAME AS .mushaf-text */
-
-  box-sizing: border-box;
-
   font-family: "Amiri Quran", "Scheherazade New", serif;
   font-size: 30px;
   line-height: 1.8;
-
-  text-align: center;
-
   margin-bottom: 10px;
 }
+
 
 html.night-mode .mushaf-surah-title,
 body.night-mode .mushaf-surah-title {
