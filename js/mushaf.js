@@ -333,6 +333,16 @@
     return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 500;
   }
 
+  async function appendAllRemainingPagesToEnd() {
+    while (highestRenderedPage < 604) {
+      const nextPage = highestRenderedPage + 1;
+      const appended = await renderPageWhenReady(nextPage);
+      if (!appended) break;
+
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+    }
+  }
+
   async function loadNextPagesIfNeeded() {
     if (isLoadingMore) return;
     if (!isNearBottom()) return;
@@ -351,6 +361,11 @@
 
         didAppend = true;
         await new Promise((resolve) => requestAnimationFrame(resolve));
+      }
+
+      if (highestLoadedSurah === 114 && highestRenderedPage < 604) {
+        await appendAllRemainingPagesToEnd();
+        didAppend = true;
       }
 
       if (didAppend) {
