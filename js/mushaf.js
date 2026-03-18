@@ -190,11 +190,14 @@
   }
 
   function getPageVerses(pageNumber) {
-    return pagesMap.get(pageNumber) || [];
-  }
+    const verses = pagesMap.get(pageNumber) || [];
 
-  function getPageVerseCount(pageNumber) {
-    return getPageVerses(pageNumber).length;
+    return [...verses].sort((a, b) => {
+      if (a.chapter_id !== b.chapter_id) {
+        return a.chapter_id - b.chapter_id;
+      }
+      return a.verse_number - b.verse_number;
+    });
   }
 
   async function loadSurahIntoCache(surahId) {
@@ -213,27 +216,22 @@
     highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
   }
 
+  function isPageComplete(pageNumber) {
+    const currentPageVerses = getPageVerses(pageNumber);
+    if (currentPageVerses.length === 0) return false;
+
+    if (pageNumber === 604) return true;
+
+    const nextPageVerses = getPageVerses(pageNumber + 1);
+    return nextPageVerses.length > 0;
+  }
+
   async function ensurePageIsComplete(pageNumber) {
-    let previousCount = -1;
-    let currentCount = getPageVerseCount(pageNumber);
-
-    while (highestLoadedSurah < 114) {
-      if (currentCount === 0) {
-        await loadSurahIntoCache(highestLoadedSurah + 1);
-        currentCount = getPageVerseCount(pageNumber);
-        continue;
-      }
-
-      if (currentCount === previousCount) {
-        return true;
-      }
-
-      previousCount = currentCount;
+    while (!isPageComplete(pageNumber) && highestLoadedSurah < 114) {
       await loadSurahIntoCache(highestLoadedSurah + 1);
-      currentCount = getPageVerseCount(pageNumber);
     }
 
-    return currentCount > 0;
+    return isPageComplete(pageNumber);
   }
 
   function createSurahHeaderBlock(surahId) {
