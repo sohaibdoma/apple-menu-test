@@ -1,18 +1,44 @@
 (function () {
   "use strict";
 
+  function toArabicDigits(n) {
+    return String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
+  }
+
   function createAyahBadge(number) {
     const badge = document.createElement("span");
     badge.className = "q-badge q-badge--ayah";
-    badge.textContent = String(number).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
+    badge.textContent = toArabicDigits(number);
     return badge;
   }
 
-  function renderTestPage() {
+  function stripTajweedMarkup(html) {
+    if (!html || typeof html !== "string") return "";
+
+    const template = document.createElement("template");
+    template.innerHTML = html;
+
+    return (template.content.textContent || "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function getVersePlainText(verse) {
+    return stripTajweedMarkup(verse.text_uthmani_tajweed || "");
+  }
+
+  function renderMushafPage(pageNumber, verses) {
     const pagesRoot = document.getElementById("mushaf-pages");
     const navTitle = document.getElementById("nav-surah-title");
 
     if (!pagesRoot) return;
+
+    pagesRoot.innerHTML = "";
+
+    if (!verses || verses.length === 0) {
+      pagesRoot.innerHTML = "<p>Failed to load Mushaf page.</p>";
+      return;
+    }
 
     if (navTitle) {
       navTitle.textContent = "الفاتحة";
@@ -20,44 +46,67 @@
 
     const page = document.createElement("section");
     page.className = "mushaf-page";
-    page.setAttribute("data-page-number", "1");
-    page.setAttribute("data-surah-id", "1");
-    page.setAttribute("data-surah-name", "الفاتحة");
+    page.setAttribute("data-page-number", String(pageNumber));
 
     const text = document.createElement("div");
     text.className = "mushaf-text";
 
-    const ayahs = [
-      "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
-      "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
-      "الرَّحْمَٰنِ الرَّحِيمِ",
-      "مَالِكِ يَوْمِ الدِّينِ",
-      "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
-      "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
-      "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ"
-    ];
-
-    ayahs.forEach((ayahText, index) => {
+    verses.forEach((verse) => {
       const inlineAyah = document.createElement("span");
       inlineAyah.className = "mushaf-ayah-inline";
-      inlineAyah.textContent = ayahText + " ";
 
-      inlineAyah.appendChild(createAyahBadge(index + 1));
+      const verseText = getVersePlainText(verse);
+      inlineAyah.appendChild(document.createTextNode(verseText + " "));
+      inlineAyah.appendChild(createAyahBadge(verse.verse_number));
       inlineAyah.appendChild(document.createTextNode(" "));
 
       text.appendChild(inlineAyah);
     });
 
-    const pageNumber = document.createElement("div");
-    pageNumber.className = "mushaf-page-number";
-    pageNumber.textContent = "١";
+    const pageNumberEl = document.createElement("div");
+    pageNumberEl.className = "mushaf-page-number";
+    pageNumberEl.textContent = toArabicDigits(pageNumber);
 
     page.appendChild(text);
-    page.appendChild(pageNumber);
-
-    pagesRoot.innerHTML = "";
+    page.appendChild(pageNumberEl);
     pagesRoot.appendChild(page);
   }
 
-  document.addEventListener("DOMContentLoaded", renderTestPage);
+  async function loadRealFirstMushafPage() {
+    const api = window.Wahyollah?.api;
+    const pagesRoot = document.getElementById("mushaf-pages");
+
+    if (!api) {
+      throw new Error("API module not loaded");
+    }
+
+    if (!pagesRoot) return;
+
+    const [surah1, surah2] = await Promise.all([
+      api.getTajweedVersesByChapter(1),
+      api.getTajweedVersesByChapter(2)
+    ]);
+
+    const allVerses = [
+      ...(surah1?.verses || []),
+      ...(surah2?.verses || [])
+    ];
+
+    const page1Verses = allVerses.filter((verse) => verse.page_number === 1);
+
+    renderMushafPage(1, page1Verses);
+  }
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      await loadRealFirstMushafPage();
+    } catch (error) {
+      console.error("Failed to load Mushaf page:", error);
+
+      const pagesRoot = document.getElementById("mushaf-pages");
+      if (pagesRoot) {
+        pagesRoot.innerHTML = "<p>Failed to load Mushaf page.</p>";
+      }
+    }
+  });
 })();
