@@ -1879,17 +1879,33 @@ body.night-mode .mushaf-page-number {
 ======================================== */
 
 .mushaf-surah-start {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  text-align: center;
   margin-bottom: 18px;
 }
 
 .mushaf-surah-title {
-  font-family: "Amiri Quran", "Scheherazade New", serif;
-  font-size: 34px;
-  line-height: 1.7;
-  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 0 22px;
+  margin-bottom: 10px;
+
+  border-radius: 999px;
+
+  background: #000000;
+  color: #ffffff;
+
+  font-family: "Scheherazade New", "Amiri Quran", serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .mushaf-bismillah {
@@ -1898,6 +1914,13 @@ body.night-mode .mushaf-page-number {
   line-height: 1.8;
   margin-bottom: 10px;
 }
+
+html.night-mode .mushaf-surah-title,
+body.night-mode .mushaf-surah-title {
+  background: #ffffff;
+  color: #000000;
+}
+
 
 /* ========================================
    MUSHAF AYAH NUMBER (API BASED)
