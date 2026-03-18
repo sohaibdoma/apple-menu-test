@@ -1775,25 +1775,16 @@ body.night-mode .search-page-results .search-result-meta {
 .mushaf-page {
   width: 100%;
 
-  min-height: 82vh;
-  max-height: 860px;
+  min-height: 88vh;
+  max-height: none;
 
-  padding: 10px 18px;
+  padding: 10px 14px;
    
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  margin-bottom: 40px;
-}
-
-@media (max-width: 769px) {
-  .mushaf-page {
-    min-height: 88vh;
-    max-height: none;
-    padding: 10px 20px;
-    margin-bottom: 32px;
-  }
+  margin-bottom: 32px;
 }
 
 /* Quran text block (core layout) */
@@ -1804,9 +1795,9 @@ body.night-mode .search-page-results .search-result-meta {
   text-align-last: right;
 
   font-family: "Amiri Quran", "Scheherazade New", serif;
-  font-size: 28px;
+  font-size: 27px;
 
-  line-height: 2.95;
+  line-height: 3.2;
   word-spacing: 0.02em;
   letter-spacing: 0;
 
@@ -1829,11 +1820,6 @@ body.night-mode .search-page-results .search-result-meta {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (min-width: 769px) {
-  .mushaf-text {
-    line-height: 3.35;
-  }
-}
 
 .mushaf-ayah-inline {
   display: inline;
