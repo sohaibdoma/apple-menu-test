@@ -147,35 +147,6 @@
     return SURAH_NAMES_AR[surahId] || "";
   }
 
-  function updateNavbarSurahTitle() {
-    const navTitle = document.getElementById("nav-surah-title");
-    const pages = Array.from(document.querySelectorAll(".mushaf-page"));
-
-    if (!navTitle || pages.length === 0) return;
-
-    let bestPage = null;
-    let bestVisibleHeight = 0;
-
-    pages.forEach((page) => {
-      const rect = page.getBoundingClientRect();
-      const visibleTop = Math.max(rect.top, 0);
-      const visibleBottom = Math.min(rect.bottom, window.innerHeight);
-      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-
-      if (visibleHeight > bestVisibleHeight) {
-        bestVisibleHeight = visibleHeight;
-        bestPage = page;
-      }
-    });
-
-    if (!bestPage) return;
-
-    const surahName = bestPage.getAttribute("data-surah-name") || "";
-    if (surahName) {
-      navTitle.textContent = surahName;
-    }
-  }
-
   function addVersesToPagesMap(verses) {
     verses.forEach((verse) => {
       const pageNumber = verse.page_number;
@@ -237,6 +208,8 @@
   function createSurahHeaderBlock(surahId) {
     const wrapper = document.createElement("div");
     wrapper.className = "mushaf-surah-start";
+    wrapper.setAttribute("data-surah-id", String(surahId));
+    wrapper.setAttribute("data-surah-name", getSurahNameArabicById(surahId));
 
     const title = document.createElement("div");
     title.className = "mushaf-surah-title";
@@ -252,6 +225,28 @@
     }
 
     return wrapper;
+  }
+
+  function updateNavbarSurahTitle() {
+    const navTitle = document.getElementById("nav-surah-title");
+    const headers = Array.from(document.querySelectorAll(".mushaf-surah-start"));
+
+    if (!navTitle || headers.length === 0) return;
+
+    const headerOffset = 140;
+    let currentHeader = headers[0];
+
+    headers.forEach((header) => {
+      const rect = header.getBoundingClientRect();
+      if (rect.top <= headerOffset) {
+        currentHeader = header;
+      }
+    });
+
+    const surahName = currentHeader.getAttribute("data-surah-name") || "";
+    if (surahName) {
+      navTitle.textContent = surahName;
+    }
   }
 
   function createMushafPage(pageNumber, verses) {
@@ -340,7 +335,6 @@
 
   async function loadNextPagesIfNeeded() {
     if (isLoadingMore) return;
-
     if (!isNearBottom()) return;
 
     isLoadingMore = true;
@@ -356,7 +350,6 @@
         if (!appended) break;
 
         didAppend = true;
-
         await new Promise((resolve) => requestAnimationFrame(resolve));
       }
 
