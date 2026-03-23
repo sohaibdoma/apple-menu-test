@@ -1895,10 +1895,15 @@ body.night-mode .mushaf-page-number {
   align-items: center;
   justify-content: center;
 
-  width: calc(100% - 50px);   /* same side gap idea, but inside page */
+  width: 100%;
+  max-width: 800px;       /* 🔥 EXACT same as navbar */
+  margin: 25px auto 10px;
+
   height: 46px;
 
-  margin: 25px auto 10px;
+  padding: 0 19px;        /* 🔥 SAME as navbar */
+
+  box-sizing: border-box;
 
   border-radius: 999px;
 
@@ -1908,10 +1913,8 @@ body.night-mode .mushaf-page-number {
   font-family: "Scheherazade New", "Amiri Quran", serif;
   font-size: 24px;
   font-weight: 700;
-  line-height: 1;
 
   text-align: center;
-  white-space: nowrap;
 }
 
 .mushaf-bismillah {
