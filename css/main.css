@@ -834,7 +834,7 @@ body.no-blur-transition > *:not(.main-header) {
 
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 }
 
 .surah-bottom-left,
