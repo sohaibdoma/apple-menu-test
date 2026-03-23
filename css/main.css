@@ -1895,7 +1895,7 @@ body.night-mode .mushaf-page-number {
   align-items: center;
   justify-content: center;
 
-  width: calc(100% - 38px);   /* same side gap idea, but inside page */
+  width: calc(100% - 42px);   /* same side gap idea, but inside page */
   height: 46px;
 
   margin: 25px auto 10px;
