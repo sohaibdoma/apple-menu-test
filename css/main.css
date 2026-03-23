@@ -1886,12 +1886,7 @@ body.night-mode .mushaf-page-number {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-
+  width: 100%;
   margin-bottom: 18px;
 }
 
@@ -1900,9 +1895,8 @@ body.night-mode .mushaf-page-number {
   align-items: center;
   justify-content: center;
 
-  width: calc(100vw - 38px);      /* same visual width as navbar */
-  max-width: calc(100vw - 38px);
-  height: 46px;                   /* same as reading mode switch container */
+  width: calc(100% - 38px);   /* same side gap idea, but inside page */
+  height: 46px;
 
   margin: 25px auto 10px;
 
@@ -1917,6 +1911,7 @@ body.night-mode .mushaf-page-number {
   line-height: 1;
 
   text-align: center;
+  white-space: nowrap;
 }
 
 .mushaf-bismillah {
