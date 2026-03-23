@@ -1887,7 +1887,7 @@ body.night-mode .mushaf-page-number {
   flex-direction: column;
   align-items: center;
 
-  width: 100vw;
+  width: calc(100% + 40px);
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -1900,8 +1900,8 @@ body.night-mode .mushaf-page-number {
   align-items: center;
   justify-content: center;
 
-  width: calc(100vw - 38px);      /* same visual width as navbar */
-  max-width: calc(100vw - 38px);
+  width: calc(100% - 38px);      /* same visual width as navbar */
+  
   height: 46px;                   /* same as reading mode switch container */
 
   margin: 25px auto 10px;
