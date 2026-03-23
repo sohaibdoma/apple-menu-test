@@ -839,8 +839,8 @@ body.no-blur-transition > *:not(.main-header) {
 
 .surah-bottom-left,
 .auto-scroll-bar{
-  height: 48px;
-  width: 48px;
+  height: var(--header-h);
+  width: var(--header-h);
 
   display: flex;
   align-items: center;
@@ -858,7 +858,7 @@ body.no-blur-transition > *:not(.main-header) {
 }
 
 .surah-bottom-pill{
-  height: 48px;
+  height: var(--header-h);
   min-width: 108px;
   padding: 0 6px;
 
