@@ -517,3 +517,43 @@ body.night-mode .theme-toggle::after {
   transform: translateX(8px);
   background: #ffffff;
 }
+
+
+
+
+
+
+
+
+.settings-toggle {
+  height: var(--header-h);
+  width: var(--header-h);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+  color: var(--page-text);
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.settings-icon {
+  width: 22px;
+  height: 22px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.settings-toggle:focus,
+.settings-toggle:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
