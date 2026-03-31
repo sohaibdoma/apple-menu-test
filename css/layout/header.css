@@ -404,15 +404,12 @@ body.menu-open .search-toggle{
 
 .home-icon{
   width: 30px;
-  height: 30px;
-
-  fill: none;
-
-  stroke-linecap: round;
-  stroke-linejoin: round;
-   
-  transform: translateY(-0.8px); /* moves icon up */
+  height: 29px;
+  display: block;
+  fill: currentColor;
+  transform: translateY(-0.4px);
 }
+
 
 /* Hide home button on home page and overlays */
 body.menu-open .home-toggle,
