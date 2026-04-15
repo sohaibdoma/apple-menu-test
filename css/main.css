@@ -121,7 +121,7 @@ body {
 ======================================== */
 
 .home {
-  min-height: calc(100vh + 160px);
+  min-height: calc(100vh - 40px);
   padding: 40px 24px;
 
   display: flex;
