@@ -193,20 +193,6 @@ body {
   box-shadow: none;
 }
 
-/* ========================================
-   HOME BACKGROUND
-======================================== */
-
-body[data-surah="0"] {
-  background-color: var(--page-bg);
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)),
-    url("../images/sunrise.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
 
 /* ========================================
    HOME FOOTER (ALWAYS DARK)
