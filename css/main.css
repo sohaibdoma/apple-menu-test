@@ -121,15 +121,13 @@ body {
 ======================================== */
 
 .home {
-  min-height: calc(100vh - 40px);
-  padding: 40px 24px;
+  height: 100vh;
+  padding: 0 24px;
 
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   text-align: center;
-
-  padding-top: 80px;
 }
 
 .home-title {
