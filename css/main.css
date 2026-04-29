@@ -2013,3 +2013,18 @@ body.night-mode .mushaf-scroll-bottom-btn {
   color: #fff;
 }
 
+body.auto-scroll-active .main-header {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+body.auto-scroll-active .surah-bottom-controls {
+  transform: translate3d(-50%, 0, 0);
+  will-change: transform;
+}
+
+body.auto-scroll-active:not(.menu-open):not(.search-open) .main-header,
+body.auto-scroll-active .surah-bottom-controls {
+  touch-action: none;
+  overscroll-behavior: contain;
+}
