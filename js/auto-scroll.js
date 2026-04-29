@@ -18,20 +18,26 @@
 
     let isOn = false;
     let isPausedByTap = false;
-
     let rafId = 0;
-    let lastT = 0;
-    let scrollYFloat = 0;
+    let lastTime = 0;
+    let scrollPosition = 0;
     let programmaticScroll = false;
-
-    const SPEED = prefersReduced ? 0 : 0.2;
-
     let wakeLock = null;
+
+    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 18;
+    const BOTTOM_THRESHOLD = 3;
+
+    function getMaxScrollTop() {
+      return Math.max(0, scroller.scrollHeight - window.innerHeight);
+    }
 
     async function requestWakeLock() {
       if (!isOn) return;
 
-      if (!("wakeLock" in navigator) || typeof navigator.wakeLock?.request !== "function") {
+      if (
+        !("wakeLock" in navigator) ||
+        typeof navigator.wakeLock?.request !== "function"
+      ) {
         return;
       }
 
@@ -55,16 +61,13 @@
 
     async function releaseWakeLock() {
       if (!wakeLock) return;
+
       try {
         await wakeLock.release();
       } catch (_) {}
+
       wakeLock = null;
     }
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) return;
-      if (isOn) requestWakeLock();
-    });
 
     function setUi() {
       btn.setAttribute("aria-pressed", String(isOn));
@@ -83,7 +86,7 @@
 
       cancelAnimationFrame(rafId);
       rafId = 0;
-      lastT = 0;
+      lastTime = 0;
 
       setUi();
       releaseWakeLock();
@@ -91,46 +94,53 @@
 
     function pauseForTap() {
       if (!isOn || isPausedByTap) return;
+
       isPausedByTap = true;
 
       cancelAnimationFrame(rafId);
       rafId = 0;
-      lastT = 0;
+      lastTime = 0;
 
       setUi();
-      requestWakeLock();
     }
 
     function resumeFromTap() {
       if (!isOn || !isPausedByTap) return;
 
       isPausedByTap = false;
-
-      scrollYFloat = scroller.scrollTop;
-      lastT = 0;
-      rafId = requestAnimationFrame(tick);
+      scrollPosition = scroller.scrollTop;
+      lastTime = 0;
 
       setUi();
-      requestWakeLock();
+      rafId = requestAnimationFrame(tick);
     }
 
-    function tick(t) {
-      if (!isOn) return;
-      if (isPausedByTap) return;
+    function tick(currentTime) {
+      if (!isOn || isPausedByTap) return;
 
-      if (!lastT) lastT = t;
-      const dt = t - lastT;
-      lastT = t;
+      if (!lastTime) {
+        lastTime = currentTime;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
 
-      scrollYFloat += (SPEED * dt) / 16;
+      const deltaSeconds = Math.min((currentTime - lastTime) / 1000, 0.05);
+      lastTime = currentTime;
+
+      const maxScrollTop = getMaxScrollTop();
+
+      scrollPosition = Math.min(
+        scrollPosition + SPEED_PX_PER_SECOND * deltaSeconds,
+        maxScrollTop
+      );
 
       programmaticScroll = true;
-      scroller.scrollTop = scrollYFloat;
-      programmaticScroll = false;
+      scroller.scrollTop = scrollPosition;
+      requestAnimationFrame(() => {
+        programmaticScroll = false;
+      });
 
-      const atBottom =
-        window.innerHeight + scroller.scrollTop >=
-        scroller.scrollHeight - 2;
+      const atBottom = maxScrollTop - scroller.scrollTop <= BOTTOM_THRESHOLD;
 
       if (atBottom) {
         stopAll();
@@ -143,14 +153,15 @@
     async function start() {
       if (prefersReduced || isOn) return;
 
-      scrollYFloat = scroller.scrollTop;
-      lastT = 0;
+      scrollPosition = scroller.scrollTop;
+      lastTime = 0;
 
       isOn = true;
       isPausedByTap = false;
 
       setUi();
       await requestWakeLock();
+
       rafId = requestAnimationFrame(tick);
     }
 
@@ -179,12 +190,21 @@
     window.addEventListener(
       "scroll",
       () => {
-        if (!isOn) return;
-        if (isPausedByTap) return;
-        if (programmaticScroll) return;
+        if (!isOn || isPausedByTap || programmaticScroll) return;
 
-        scrollYFloat = scroller.scrollTop;
-        lastT = 0;
+        scrollPosition = scroller.scrollTop;
+        lastTime = 0;
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      () => {
+        if (!isOn) return;
+
+        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+        lastTime = 0;
       },
       { passive: true }
     );
@@ -209,12 +229,12 @@
 
     function isExcludedTarget(target) {
       if (!target || !target.closest) return false;
-      return EXCLUDE_SELECTORS.some((sel) => target.closest(sel));
+      return EXCLUDE_SELECTORS.some((selector) => target.closest(selector));
     }
 
-    document.addEventListener("click", (e) => {
+    document.addEventListener("click", (event) => {
       if (!isOn) return;
-      if (isExcludedTarget(e.target)) return;
+      if (isExcludedTarget(event.target)) return;
 
       isPausedByTap ? resumeFromTap() : pauseForTap();
     });
@@ -227,7 +247,14 @@
     }
 
     document.addEventListener("visibilitychange", () => {
-      if (document.hidden && isOn) stopAll();
+      if (document.hidden && isOn) {
+        stopAll();
+        return;
+      }
+
+      if (!document.hidden && isOn) {
+        requestWakeLock();
+      }
     });
 
     window.addEventListener("beforeunload", () => {
