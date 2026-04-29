@@ -62,7 +62,7 @@ function scrollToAyahHashTarget() {
 }
 
 function isSupportedQuranMode(mode) {
-  return mode === "reading" || mode === "tajweed" || mode === "mushaf";
+  return mode === "tajweed";
 }
 
 function getStoredQuranMode() {
