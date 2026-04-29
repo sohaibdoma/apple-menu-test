@@ -11,62 +11,22 @@
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
     const scrollToBottomBtn = document.getElementById("scrollToBottomBtn");
 
-    const prefersReduced =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-
     const scroller = document.scrollingElement || document.documentElement;
 
     let isOn = false;
     let isPausedByTap = false;
+    let isUserScrolling = false;
     let rafId = 0;
     let lastTime = 0;
     let scrollPosition = 0;
-    let programmaticScroll = false;
-    let wakeLock = null;
+    let userScrollTimer = 0;
 
-    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 18;
-    const BOTTOM_THRESHOLD = 3;
+    const SPEED_PX_PER_SECOND = 18;
+    const USER_SCROLL_RESUME_DELAY = 650;
+    const BOTTOM_THRESHOLD = 4;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
-    }
-
-    async function requestWakeLock() {
-      if (!isOn) return;
-
-      if (
-        !("wakeLock" in navigator) ||
-        typeof navigator.wakeLock?.request !== "function"
-      ) {
-        return;
-      }
-
-      try {
-        if (wakeLock) {
-          try {
-            await wakeLock.release();
-          } catch (_) {}
-          wakeLock = null;
-        }
-
-        wakeLock = await navigator.wakeLock.request("screen");
-
-        wakeLock.addEventListener("release", () => {
-          wakeLock = null;
-        });
-      } catch (_) {
-        wakeLock = null;
-      }
-    }
-
-    async function releaseWakeLock() {
-      if (!wakeLock) return;
-
-      try {
-        await wakeLock.release();
-      } catch (_) {}
-
-      wakeLock = null;
     }
 
     function setUi() {
@@ -74,29 +34,31 @@
       btn.classList.toggle("is-on", isOn);
       btn.classList.toggle("is-paused", isOn && isPausedByTap);
 
+      document.body.classList.toggle("auto-scroll-active", isOn);
+
       btn.setAttribute(
         "aria-label",
-        isOn ? "Pause auto scroll" : "Start auto scroll"
+        isOn ? "Stop auto scroll" : "Start auto scroll"
       );
     }
 
-    function stopAll() {
+    function stopAutoScroll() {
       isOn = false;
       isPausedByTap = false;
+      isUserScrolling = false;
 
       cancelAnimationFrame(rafId);
       rafId = 0;
       lastTime = 0;
 
+      clearTimeout(userScrollTimer);
       setUi();
-      releaseWakeLock();
     }
 
     function pauseForTap() {
       if (!isOn || isPausedByTap) return;
 
       isPausedByTap = true;
-
       cancelAnimationFrame(rafId);
       rafId = 0;
       lastTime = 0;
@@ -115,8 +77,28 @@
       rafId = requestAnimationFrame(tick);
     }
 
-    function tick(currentTime) {
+    function handleUserScrollIntent() {
       if (!isOn || isPausedByTap) return;
+
+      isUserScrolling = true;
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+      lastTime = 0;
+
+      clearTimeout(userScrollTimer);
+
+      userScrollTimer = setTimeout(() => {
+        if (!isOn || isPausedByTap) return;
+
+        isUserScrolling = false;
+        scrollPosition = scroller.scrollTop;
+        lastTime = 0;
+        rafId = requestAnimationFrame(tick);
+      }, USER_SCROLL_RESUME_DELAY);
+    }
+
+    function tick(currentTime) {
+      if (!isOn || isPausedByTap || isUserScrolling) return;
 
       if (!lastTime) {
         lastTime = currentTime;
@@ -134,43 +116,36 @@
         maxScrollTop
       );
 
-      programmaticScroll = true;
       scroller.scrollTop = scrollPosition;
-      requestAnimationFrame(() => {
-        programmaticScroll = false;
-      });
 
-      const atBottom = maxScrollTop - scroller.scrollTop <= BOTTOM_THRESHOLD;
-
-      if (atBottom) {
-        stopAll();
+      if (maxScrollTop - scroller.scrollTop <= BOTTOM_THRESHOLD) {
+        stopAutoScroll();
         return;
       }
 
       rafId = requestAnimationFrame(tick);
     }
 
-    async function start() {
-      if (prefersReduced || isOn) return;
+    function startAutoScroll() {
+      if (isOn) return;
 
       scrollPosition = scroller.scrollTop;
       lastTime = 0;
 
       isOn = true;
       isPausedByTap = false;
+      isUserScrolling = false;
 
       setUi();
-      await requestWakeLock();
-
       rafId = requestAnimationFrame(tick);
     }
 
-    function toggleAutoButton() {
-      isOn ? stopAll() : start();
+    function toggleAutoScroll() {
+      isOn ? stopAutoScroll() : startAutoScroll();
     }
 
     function scrollToTop() {
-      if (isOn) stopAll();
+      if (isOn) stopAutoScroll();
 
       window.scrollTo({
         top: 0,
@@ -179,7 +154,7 @@
     }
 
     function scrollToBottom() {
-      if (isOn) stopAll();
+      if (isOn) stopAutoScroll();
 
       window.scrollTo({
         top: scroller.scrollHeight,
@@ -187,16 +162,9 @@
       });
     }
 
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!isOn || programmaticScroll) return;
-
-        scrollPosition = scroller.scrollTop;
-        lastTime = 0;
-      },
-      { passive: true }
-    );
+    window.addEventListener("wheel", handleUserScrollIntent, { passive: true });
+    window.addEventListener("touchmove", handleUserScrollIntent, { passive: true });
+    window.addEventListener("keydown", handleUserScrollIntent);
 
     window.addEventListener(
       "resize",
@@ -214,17 +182,21 @@
       "#scrollToTopBtn",
       "#scrollToBottomBtn",
       "#leftUtilityBtn",
+      ".surah-bottom-controls",
       ".menu-toggle",
+      ".search-toggle",
+      ".theme-toggle",
+      ".lang-switch",
       ".main-header",
       "#menu-placeholder",
+      "#search-placeholder",
       "button",
       "a",
       "input",
       "textarea",
       "select",
       "[role='button']",
-      "[role='link']",
-      "[data-no-autopause='true']"
+      "[role='link']"
     ];
 
     function isExcludedTarget(target) {
@@ -239,29 +211,13 @@
       isPausedByTap ? resumeFromTap() : pauseForTap();
     });
 
-    const menuBtn = document.querySelector(".menu-toggle");
-    if (menuBtn) {
-      menuBtn.addEventListener("click", () => {
-        if (isOn) stopAll();
-      });
-    }
-
     document.addEventListener("visibilitychange", () => {
       if (document.hidden && isOn) {
-        stopAll();
-        return;
-      }
-
-      if (!document.hidden && isOn) {
-        requestWakeLock();
+        stopAutoScroll();
       }
     });
 
-    window.addEventListener("beforeunload", () => {
-      if (isOn) stopAll();
-    });
-
-    btn.addEventListener("click", toggleAutoButton);
+    btn.addEventListener("click", toggleAutoScroll);
 
     if (scrollToTopBtn) {
       scrollToTopBtn.addEventListener("click", scrollToTop);
