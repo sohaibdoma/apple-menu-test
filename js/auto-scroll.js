@@ -188,15 +188,36 @@
     }
 
     window.addEventListener(
-      "scroll",
+      "wheel",
       () => {
-        if (!isOn || isPausedByTap || programmaticScroll) return;
-
-        scrollPosition = scroller.scrollTop;
-        lastTime = 0;
+        if (isOn) stopAll();
       },
       { passive: true }
     );
+
+    window.addEventListener(
+      "touchmove",
+      () => {
+        if (isOn) stopAll();
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("keydown", (event) => {
+      const scrollKeys = [
+        "ArrowUp",
+        "ArrowDown",
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End",
+        " "
+      ];
+
+      if (isOn && scrollKeys.includes(event.key)) {
+        stopAll();
+      }
+    });
 
     window.addEventListener(
       "resize",
