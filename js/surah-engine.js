@@ -92,28 +92,16 @@ function getQuranMode() {
     return configuredMode;
   }
 
-  return "reading";
+  return "tajweed";
 }
 
 function getModeLabel(mode) {
   const lang = document.documentElement.getAttribute("data-lang") || "ar";
 
-  if (mode === "reading") {
-    if (lang === "en") return "Reading";
-    if (lang === "tr") return "Okuma";
-    return "قراءة";
-  }
-
   if (mode === "tajweed") {
     if (lang === "en") return "Tajweed";
     if (lang === "tr") return "Tecvid";
     return "تجويد";
-  }
-
-  if (mode === "mushaf") {
-    if (lang === "en") return "Mushaf";
-    if (lang === "tr") return "Mushaf";
-    return "مصحف";
   }
 
   return mode;
@@ -123,48 +111,7 @@ function renderModeSwitch(currentMode) {
   const holder = document.getElementById("quran-mode-switch");
   if (!holder) return;
 
-  holder.innerHTML = `
-    <div class="quran-mode-switch" role="group" aria-label="Quran mode switch">
-      <button
-        type="button"
-        class="quran-mode-btn${currentMode === "reading" ? " is-active" : ""}"
-        data-mode="reading"
-        aria-pressed="${currentMode === "reading" ? "true" : "false"}"
-      >
-        ${getModeLabel("reading")}
-      </button>
-
-      <button
-        type="button"
-        class="quran-mode-btn${currentMode === "tajweed" ? " is-active" : ""}"
-        data-mode="tajweed"
-        aria-pressed="${currentMode === "tajweed" ? "true" : "false"}"
-      >
-        ${getModeLabel("tajweed")}
-      </button>
-
-      <button
-        type="button"
-        class="quran-mode-btn${currentMode === "mushaf" ? " is-active" : ""}"
-        data-mode="mushaf"
-        aria-pressed="${currentMode === "mushaf" ? "true" : "false"}"
-      >
-        ${getModeLabel("mushaf")}
-      </button>
-    </div>
-  `;
-
-  const buttons = holder.querySelectorAll(".quran-mode-btn");
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const nextMode = button.getAttribute("data-mode");
-      if (!nextMode || nextMode === currentMode) return;
-
-      setStoredQuranMode(nextMode);
-      window.location.reload();
-    });
-  });
+  holder.innerHTML = "";
 }
 
 function debugTajweedClasses() {
@@ -279,17 +226,7 @@ async function fetchSurah(id, mode) {
 
   const chapterRes = await api.getChapter(id);
 
-  let versesRes;
-
-  if (mode === "tajweed") {
-    versesRes = await api.getTajweedVersesByChapter(id);
-
-  } else if (mode === "mushaf") {
-    versesRes = await api.getMushafVersesByChapter(id);
-    
-  } else {
-    versesRes = await api.getUthmaniVersesByChapter(id);
-  }
+  const versesRes = await api.getTajweedVersesByChapter(id);
 
   return {
     chapter: chapterRes.chapter,
@@ -453,27 +390,20 @@ function renderSurah(data) {
     const ayah = document.createElement("div");
     ayah.classList.add("ayah");
 
-    const verseKey = verse.verse_key || `${data.chapter.id}:${verse.verse_number ?? (index + 1)}`;
+    const verseKey =
+      verse.verse_key || `${data.chapter.id}:${verse.verse_number ?? index + 1}`;
     ayah.id = `ayah-${String(verseKey).replace(":", "-")}`;
     ayah.setAttribute("data-verse-key", verseKey);
 
     const text = document.createElement("span");
     text.className = "ayah-text";
 
-    if (data.mode === "tajweed") {
-      text.appendChild(
-        sanitizeTajweedMarkup(verse.text_uthmani_tajweed || "")
-      );
-    } else if (data.mode === "mushaf") {
-      text.textContent = verse.text_uthmani || "";
-    } else {
-      text.textContent = verse.text_uthmani || "";
-    }
+    text.appendChild(sanitizeTajweedMarkup(verse.text_uthmani_tajweed || ""));
 
     const badge = document.createElement("span");
     badge.className = "q-badge q-badge--ayah";
 
-    const verseNo = verse.verse_number ?? (index + 1);
+    const verseNo = verse.verse_number ?? index + 1;
     badge.textContent = toArabicDigits(verseNo);
 
     ayah.appendChild(text);
