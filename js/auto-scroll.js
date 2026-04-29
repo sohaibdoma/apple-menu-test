@@ -11,6 +11,9 @@
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
     const scrollToBottomBtn = document.getElementById("scrollToBottomBtn");
 
+    const prefersReduced =
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
     const scroller = document.scrollingElement || document.documentElement;
 
     let isOn = false;
@@ -18,12 +21,52 @@
     let rafId = 0;
     let lastTime = 0;
     let scrollPosition = 0;
+    let programmaticScroll = false;
+    let wakeLock = null;
 
-    const SPEED_PX_PER_SECOND = 18;
-    const BOTTOM_THRESHOLD = 4;
+    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 18;
+    const BOTTOM_THRESHOLD = 3;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
+    }
+
+    async function requestWakeLock() {
+      if (!isOn) return;
+
+      if (
+        !("wakeLock" in navigator) ||
+        typeof navigator.wakeLock?.request !== "function"
+      ) {
+        return;
+      }
+
+      try {
+        if (wakeLock) {
+          try {
+            await wakeLock.release();
+          } catch (_) {}
+          wakeLock = null;
+        }
+
+        wakeLock = await navigator.wakeLock.request("screen");
+
+        wakeLock.addEventListener("release", () => {
+          wakeLock = null;
+        });
+      } catch (_) {
+        wakeLock = null;
+      }
+    }
+
+    async function releaseWakeLock() {
+      if (!wakeLock) return;
+
+      try {
+        await wakeLock.release();
+      } catch (_) {}
+
+      wakeLock = null;
     }
 
     function setUi() {
@@ -31,17 +74,13 @@
       btn.classList.toggle("is-on", isOn);
       btn.classList.toggle("is-paused", isOn && isPausedByTap);
 
-      document.body.classList.toggle("auto-scroll-active", isOn);
-
       btn.setAttribute(
         "aria-label",
-        isOn ? "Stop auto scroll" : "Start auto scroll"
+        isOn ? "Pause auto scroll" : "Start auto scroll"
       );
     }
 
-    function stopAutoScroll() {
-      if (!isOn) return;
-
+    function stopAll() {
       isOn = false;
       isPausedByTap = false;
 
@@ -50,6 +89,7 @@
       lastTime = 0;
 
       setUi();
+      releaseWakeLock();
     }
 
     function pauseForTap() {
@@ -94,18 +134,24 @@
         maxScrollTop
       );
 
+      programmaticScroll = true;
       scroller.scrollTop = scrollPosition;
+      requestAnimationFrame(() => {
+        programmaticScroll = false;
+      });
 
-      if (maxScrollTop - scroller.scrollTop <= BOTTOM_THRESHOLD) {
-        stopAutoScroll();
+      const atBottom = maxScrollTop - scroller.scrollTop <= BOTTOM_THRESHOLD;
+
+      if (atBottom) {
+        stopAll();
         return;
       }
 
       rafId = requestAnimationFrame(tick);
     }
 
-    function startAutoScroll() {
-      if (isOn) return;
+    async function start() {
+      if (prefersReduced || isOn) return;
 
       scrollPosition = scroller.scrollTop;
       lastTime = 0;
@@ -114,20 +160,17 @@
       isPausedByTap = false;
 
       setUi();
+      await requestWakeLock();
+
       rafId = requestAnimationFrame(tick);
     }
 
-    function toggleAutoScroll() {
-      isOn ? stopAutoScroll() : startAutoScroll();
-    }
-
-    function stopAutoScrollFromManualScroll() {
-      if (!isOn) return;
-      stopAutoScroll();
+    function toggleAutoButton() {
+      isOn ? stopAll() : start();
     }
 
     function scrollToTop() {
-      if (isOn) stopAutoScroll();
+      if (isOn) stopAll();
 
       window.scrollTo({
         top: 0,
@@ -136,7 +179,7 @@
     }
 
     function scrollToBottom() {
-      if (isOn) stopAutoScroll();
+      if (isOn) stopAll();
 
       window.scrollTo({
         top: scroller.scrollHeight,
@@ -144,15 +187,16 @@
       });
     }
 
-    window.addEventListener("wheel", stopAutoScrollFromManualScroll, {
-      passive: true
-    });
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!isOn || isPausedByTap || programmaticScroll) return;
 
-    window.addEventListener("touchmove", stopAutoScrollFromManualScroll, {
-      passive: true
-    });
-
-    window.addEventListener("keydown", stopAutoScrollFromManualScroll);
+        scrollPosition = scroller.scrollTop;
+        lastTime = 0;
+      },
+      { passive: true }
+    );
 
     window.addEventListener(
       "resize",
@@ -170,21 +214,17 @@
       "#scrollToTopBtn",
       "#scrollToBottomBtn",
       "#leftUtilityBtn",
-      ".surah-bottom-controls",
       ".menu-toggle",
-      ".search-toggle",
-      ".theme-toggle",
-      ".lang-switch",
       ".main-header",
       "#menu-placeholder",
-      "#search-placeholder",
       "button",
       "a",
       "input",
       "textarea",
       "select",
       "[role='button']",
-      "[role='link']"
+      "[role='link']",
+      "[data-no-autopause='true']"
     ];
 
     function isExcludedTarget(target) {
@@ -199,13 +239,29 @@
       isPausedByTap ? resumeFromTap() : pauseForTap();
     });
 
+    const menuBtn = document.querySelector(".menu-toggle");
+    if (menuBtn) {
+      menuBtn.addEventListener("click", () => {
+        if (isOn) stopAll();
+      });
+    }
+
     document.addEventListener("visibilitychange", () => {
       if (document.hidden && isOn) {
-        stopAutoScroll();
+        stopAll();
+        return;
+      }
+
+      if (!document.hidden && isOn) {
+        requestWakeLock();
       }
     });
 
-    btn.addEventListener("click", toggleAutoScroll);
+    window.addEventListener("beforeunload", () => {
+      if (isOn) stopAll();
+    });
+
+    btn.addEventListener("click", toggleAutoButton);
 
     if (scrollToTopBtn) {
       scrollToTopBtn.addEventListener("click", scrollToTop);
