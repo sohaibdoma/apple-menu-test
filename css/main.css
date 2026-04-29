@@ -810,13 +810,13 @@ html.night-mode .menu-content a:focus-visible {
 }
 
 /* Smooth blur for page behind menu */
-body > *:not(.main-header) {
+body > *:not(.main-header):not(.surah-bottom-controls) {
   transition: filter 0.35s ease-in-out;
   will-change: filter;
 }
 
-body.menu-open > *:not(.main-header),
-body.search-open > *:not(.main-header) {
+body.menu-open > *:not(.main-header):not(.surah-bottom-controls),
+body.search-open > *:not(.main-header):not(.surah-bottom-controls) {
   filter: blur(6px);
 }
 
