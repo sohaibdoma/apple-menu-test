@@ -835,13 +835,14 @@ body.no-blur-transition > *:not(.main-header) {
 .surah-bottom-controls{
   position: fixed;
   left: var(--nav-inset);
+  right: var(--nav-inset);
   bottom: var(--nav-gap);
-  transform: none;
-  z-index: 9998;
 
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+
+  z-index: 9998;
 }
 
 .surah-bottom-left,
