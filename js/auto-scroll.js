@@ -190,7 +190,7 @@
     window.addEventListener(
       "scroll",
       () => {
-        if (!isOn || isPausedByTap || programmaticScroll) return;
+        if (!isOn || programmaticScroll) return;
 
         scrollPosition = scroller.scrollTop;
         lastTime = 0;
