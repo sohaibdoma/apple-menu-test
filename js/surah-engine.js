@@ -157,12 +157,16 @@ function sanitizeTajweedMarkup(html) {
       return fragment;
     }
 
-    const cleanEl = document.createElement(
-      tagName === "TAJWEED" ? "tajweed" : "span"
-    );
-
     const classList = Array.from(node.classList).filter((className) =>
       allowedClassPattern.test(className)
+    );
+
+    if (classList.includes("end")) {
+      return document.createTextNode("");
+    }
+
+    const cleanEl = document.createElement(
+      tagName === "TAJWEED" ? "tajweed" : "span"
     );
 
     if (classList.length > 0) {
