@@ -834,14 +834,14 @@ body.no-blur-transition > *:not(.main-header) {
 
 .surah-bottom-controls{
   position: fixed;
-  left: 50%;
+  left: var(--nav-inset);
   bottom: var(--nav-gap);
-  transform: translateX(-50%);
+  transform: none;
   z-index: 9998;
 
   display: flex;
   align-items: center;
-  gap: 42px;
+  gap: 12px;
 }
 
 .surah-bottom-left,
@@ -2013,3 +2013,6 @@ body.night-mode .mushaf-scroll-bottom-btn {
   color: #fff;
 }
 
+.surah-bottom-left {
+  display: none !important;
+}
