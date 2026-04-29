@@ -15,14 +15,11 @@
 
     let isOn = false;
     let isPausedByTap = false;
-    let isUserScrolling = false;
     let rafId = 0;
     let lastTime = 0;
     let scrollPosition = 0;
-    let userScrollTimer = 0;
 
     const SPEED_PX_PER_SECOND = 18;
-    const USER_SCROLL_RESUME_DELAY = 650;
     const BOTTOM_THRESHOLD = 4;
 
     function getMaxScrollTop() {
@@ -43,15 +40,15 @@
     }
 
     function stopAutoScroll() {
+      if (!isOn) return;
+
       isOn = false;
       isPausedByTap = false;
-      isUserScrolling = false;
 
       cancelAnimationFrame(rafId);
       rafId = 0;
       lastTime = 0;
 
-      clearTimeout(userScrollTimer);
       setUi();
     }
 
@@ -59,6 +56,7 @@
       if (!isOn || isPausedByTap) return;
 
       isPausedByTap = true;
+
       cancelAnimationFrame(rafId);
       rafId = 0;
       lastTime = 0;
@@ -77,28 +75,8 @@
       rafId = requestAnimationFrame(tick);
     }
 
-    function handleUserScrollIntent() {
-      if (!isOn || isPausedByTap) return;
-
-      isUserScrolling = true;
-      cancelAnimationFrame(rafId);
-      rafId = 0;
-      lastTime = 0;
-
-      clearTimeout(userScrollTimer);
-
-      userScrollTimer = setTimeout(() => {
-        if (!isOn || isPausedByTap) return;
-
-        isUserScrolling = false;
-        scrollPosition = scroller.scrollTop;
-        lastTime = 0;
-        rafId = requestAnimationFrame(tick);
-      }, USER_SCROLL_RESUME_DELAY);
-    }
-
     function tick(currentTime) {
-      if (!isOn || isPausedByTap || isUserScrolling) return;
+      if (!isOn || isPausedByTap) return;
 
       if (!lastTime) {
         lastTime = currentTime;
@@ -134,7 +112,6 @@
 
       isOn = true;
       isPausedByTap = false;
-      isUserScrolling = false;
 
       setUi();
       rafId = requestAnimationFrame(tick);
@@ -142,6 +119,11 @@
 
     function toggleAutoScroll() {
       isOn ? stopAutoScroll() : startAutoScroll();
+    }
+
+    function stopAutoScrollFromManualScroll() {
+      if (!isOn) return;
+      stopAutoScroll();
     }
 
     function scrollToTop() {
@@ -162,9 +144,15 @@
       });
     }
 
-    window.addEventListener("wheel", handleUserScrollIntent, { passive: true });
-    window.addEventListener("touchmove", handleUserScrollIntent, { passive: true });
-    window.addEventListener("keydown", handleUserScrollIntent);
+    window.addEventListener("wheel", stopAutoScrollFromManualScroll, {
+      passive: true
+    });
+
+    window.addEventListener("touchmove", stopAutoScrollFromManualScroll, {
+      passive: true
+    });
+
+    window.addEventListener("keydown", stopAutoScrollFromManualScroll);
 
     window.addEventListener(
       "resize",
