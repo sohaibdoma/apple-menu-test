@@ -2013,18 +2013,3 @@ body.night-mode .mushaf-scroll-bottom-btn {
   color: #fff;
 }
 
-.main-header {
-  position: fixed !important;
-  top: var(--nav-gap) !important;
-  left: var(--nav-inset) !important;
-  right: var(--nav-inset) !important;
-  z-index: 9999 !important;
-}
-
-.surah-bottom-controls {
-  position: fixed !important;
-  left: 50% !important;
-  bottom: var(--nav-gap) !important;
-  transform: translateX(-50%) !important;
-  z-index: 9998 !important;
-}
