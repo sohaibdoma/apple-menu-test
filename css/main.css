@@ -2053,17 +2053,6 @@ body[data-page-type="mushaf"] .mushaf-next-surah-arrow {
   font-weight: 600;
 }
 
-/* Make arrow thicker */
-.mushaf-next-surah-arrow {
-  font-weight: 800;
-  font-size: 18px;
-}
-
-.mushaf-arrow-icon {
-  width: 18px;
-  height: 18px;
-}
-
 .mushaf-arrow-icon path,
 .mushaf-arrow-icon line {
   fill: none;
@@ -2071,4 +2060,31 @@ body[data-page-type="mushaf"] .mushaf-next-surah-arrow {
   stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.mushaf-next-surah-btn {
+  display: inline-grid !important;
+  grid-template-columns: minmax(0, auto) 22px;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+}
+
+#mushafNextSurahName {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.mushaf-next-surah-arrow {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 22px;
+}
+
+.mushaf-arrow-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
