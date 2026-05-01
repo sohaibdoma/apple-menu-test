@@ -162,8 +162,50 @@
     const nextName = getSurahNameArabicById(nextSurahId);
 
     nameEl.textContent = nextName;
-    btn.href = `surah.html?surah=${nextSurahId}`;
+    btn.href = "#";
+    btn.dataset.nextSurahId = String(nextSurahId);
     btn.style.display = "inline-flex";
+  }
+
+  async function scrollToNextSurahInMushaf(event) {
+    event.preventDefault();
+
+    const btn = document.getElementById("mushafNextSurahBtn");
+    if (!btn) return;
+
+    const nextSurahId = Number(btn.dataset.nextSurahId);
+    if (!nextSurahId) return;
+
+    while (
+      !document.querySelector(`.mushaf-surah-start[data-surah-id="${nextSurahId}"]`) &&
+      highestRenderedPage < 604
+    ) {
+      const nextPage = highestRenderedPage + 1;
+      const appended = await renderPageWhenReady(nextPage);
+      if (!appended) break;
+
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+    }
+
+    const target = document.querySelector(
+      `.mushaf-surah-start[data-surah-id="${nextSurahId}"]`
+    );
+
+    if (!target) return;
+
+    const header = document.querySelector(".main-header");
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    const y =
+      target.getBoundingClientRect().top +
+      window.pageYOffset -
+      headerHeight -
+      24;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth"
+    });
   }
 
   function addVersesToPagesMap(verses) {
@@ -448,6 +490,11 @@
       await loadInitialMushafData();
       await loadNextPagesIfNeeded();
       initScrollBottomButton();
+
+      const nextSurahBtn = document.getElementById("mushafNextSurahBtn");
+      if (nextSurahBtn) {
+        nextSurahBtn.addEventListener("click", scrollToNextSurahInMushaf);
+      }
     } catch (error) {
       console.error("Failed to load Mushaf pages:", error);
 
