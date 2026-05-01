@@ -873,7 +873,7 @@ body.no-blur-transition > *:not(.main-header) {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
 
   border-radius: 999px;
   isolation: isolate;
