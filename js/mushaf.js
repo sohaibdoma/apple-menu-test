@@ -240,11 +240,12 @@
 
     if (loadedSurahIds.has(surahId)) return;
 
+    loadedSurahIds.add(surahId);
+
     const result = await api.getTajweedVersesByChapter(surahId);
     const verses = result?.verses || [];
 
     addVersesToPagesMap(verses);
-    loadedSurahIds.add(surahId);
     highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
   }
 
