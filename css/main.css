@@ -2047,3 +2047,14 @@ body[data-page-type="mushaf"] .mushaf-next-surah-arrow {
   font-size: 18px;
   line-height: 1;
 }
+
+/* Make next surah name bold */
+.mushaf-next-surah-btn span:first-child {
+  font-weight: 600;
+}
+
+/* Make arrow thicker */
+.mushaf-next-surah-arrow {
+  font-weight: 800;
+  font-size: 18px;
+}
