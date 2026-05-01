@@ -8,6 +8,7 @@
 
   let highestLoadedSurah = 0;
   const loadedSurahIds = new Set();
+  const loadingSurahPromises = new Map();
 
   const SURAH_NAMES_AR = {
     1: "الفاتحة",
@@ -240,13 +241,27 @@
 
     if (loadedSurahIds.has(surahId)) return;
 
-    loadedSurahIds.add(surahId);
+    if (loadingSurahPromises.has(surahId)) {
+      await loadingSurahPromises.get(surahId);
+      return;
+    }
 
-    const result = await api.getTajweedVersesByChapter(surahId);
-    const verses = result?.verses || [];
+    const loadingPromise = (async () => {
+      const result = await api.getTajweedVersesByChapter(surahId);
+      const verses = result?.verses || [];
 
-    addVersesToPagesMap(verses);
-    highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
+      addVersesToPagesMap(verses);
+      loadedSurahIds.add(surahId);
+      highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
+    })();
+
+    loadingSurahPromises.set(surahId, loadingPromise);
+
+    try {
+      await loadingPromise;
+    } finally {
+      loadingSurahPromises.delete(surahId);
+    }
   }
 
   async function loadAllRemainingSurahs() {
