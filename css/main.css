@@ -887,7 +887,7 @@ body.no-blur-transition > *:not(.main-header) {
 }
 
 .surah-bottom-pill-btn--bottom {
-  transform: translateX(-3px);
+  transform: translateX(-4px);
 }
 
 html.night-mode .surah-bottom-left,
