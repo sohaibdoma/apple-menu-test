@@ -867,7 +867,7 @@ body.no-blur-transition > *:not(.main-header) {
 
 .surah-bottom-pill{
   height: var(--header-h);
-  min-width: 115px;
+  min-width: 110px;
   padding: 0 6px;
 
   display: flex;
