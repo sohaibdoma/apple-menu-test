@@ -2058,3 +2058,17 @@ body[data-page-type="mushaf"] .mushaf-next-surah-arrow {
   font-weight: 800;
   font-size: 18px;
 }
+
+.mushaf-arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.mushaf-arrow-icon path,
+.mushaf-arrow-icon line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
