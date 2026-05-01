@@ -147,6 +147,25 @@
     return SURAH_NAMES_AR[surahId] || "";
   }
 
+  function updateNextSurahPill(currentSurahId) {
+    const btn = document.getElementById("mushafNextSurahBtn");
+    const nameEl = document.getElementById("mushafNextSurahName");
+
+    if (!btn || !nameEl) return;
+
+    if (!currentSurahId || currentSurahId >= 114) {
+      btn.style.display = "none";
+      return;
+    }
+
+    const nextSurahId = currentSurahId + 1;
+    const nextName = getSurahNameArabicById(nextSurahId);
+
+    nameEl.textContent = nextName;
+    btn.href = `surah.html?surah=${nextSurahId}`;
+    btn.style.display = "inline-flex";
+  }
+
   function addVersesToPagesMap(verses) {
     verses.forEach((verse) => {
       const pageNumber = verse.page_number;
@@ -192,6 +211,7 @@
       await loadSurahIntoCache(highestLoadedSurah + 1);
     }
   }
+
   function isPageComplete(pageNumber) {
     const currentPageVerses = getPageVerses(pageNumber);
     if (currentPageVerses.length === 0) return false;
@@ -251,6 +271,9 @@
     const surahName = currentHeader.getAttribute("data-surah-name") || "";
     if (surahName) {
       navTitle.textContent = surahName;
+
+      const currentSurahId = Number(currentHeader.getAttribute("data-surah-id"));
+      updateNextSurahPill(currentSurahId);
     }
   }
 
@@ -323,7 +346,7 @@
     const pagesRoot = document.getElementById("mushaf-pages");
     if (!pagesRoot) return;
 
-  pagesRoot.innerHTML = "";
+    pagesRoot.innerHTML = "";
     renderedPages.clear();
     highestRenderedPage = 0;
 
