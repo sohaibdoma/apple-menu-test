@@ -2,8 +2,8 @@
   "use strict";
 
   function initAutoScroll() {
-    const surahRoot = document.querySelector(".surah-container");
-    if (!surahRoot) return;
+    const pageRoot = document.querySelector(".surah-container, .mushaf-container");
+    if (!pageRoot) return;
 
     const btn = document.getElementById("autoScrollBtn");
     if (!btn) return;
