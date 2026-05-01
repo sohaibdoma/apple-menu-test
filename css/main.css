@@ -2060,4 +2060,5 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
 #mushafNextSurahName {
   white-space: nowrap;
   font-weight: 600;
+  font-size: 20px;
 }
