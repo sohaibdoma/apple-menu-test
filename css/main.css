@@ -1885,6 +1885,23 @@ body.night-mode .mushaf-page-number {
   opacity: 0.85;
 }
 
+/* Mushaf ayah number (inline end number) fix */
+.mushaf-ayah-inline .end {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 1.8em;
+  height: 1.8em;
+
+  border-radius: 999px;
+
+  margin-inline: 4px;
+
+  font-size: 0.85em;
+  line-height: 1;
+  vertical-align: middle;
+}
 
 /* ========================================
    MUSHAF SURAH START
