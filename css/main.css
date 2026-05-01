@@ -1976,7 +1976,10 @@ body.night-mode .mushaf-text .end {
 
 
 /* ========================================
-   MUSHAF TEST BUTTON
+   MUSHAF BOTTOM CONTROLS
+   - Auto scroll (left)
+   - Next Surah pill (right)
+   - Clean, minimal, no unused arrow styles
 ======================================== */
 
 .mushaf-scroll-bottom-btn {
@@ -2014,10 +2017,12 @@ body.night-mode .mushaf-scroll-bottom-btn {
   color: #fff;
 }
 
+/* Remove unused left slot */
 .surah-bottom-left {
   display: none !important;
 }
 
+/* Mushaf bottom layout */
 body[data-page-type="mushaf"] .surah-bottom-controls {
   left: var(--nav-inset);
   right: var(--nav-inset);
@@ -2030,61 +2035,29 @@ body[data-page-type="mushaf"] .surah-bottom-controls {
   direction: ltr;
 }
 
+/* Auto scroll stays left */
 body[data-page-type="mushaf"] .auto-scroll-bar {
   order: 1;
 }
 
+/* Next surah pill (right side) */
 body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   order: 2;
   direction: rtl;
-  text-decoration: none;
-  color: var(--page-text);
-  gap: 8px;
-  padding-inline: 16px;
-}
 
-body[data-page-type="mushaf"] .mushaf-next-surah-arrow {
-  font-size: 18px;
-  line-height: 1;
-}
-
-/* Make next surah name bold */
-.mushaf-next-surah-btn span:first-child {
-  font-weight: 600;
-}
-
-.mushaf-arrow-icon path,
-.mushaf-arrow-icon line {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.mushaf-next-surah-btn {
-  display: inline-grid !important;
-  grid-template-columns: minmax(0, auto) 26px;
+  display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  column-gap: 8px;
+
+  text-decoration: none;
+  color: var(--page-text);
+
+  padding-inline: 16px;
+  gap: 8px;
 }
 
+/* Surah name styling */
 #mushafNextSurahName {
-  min-width: 0;
   white-space: nowrap;
-}
-
-.mushaf-next-surah-arrow {
-  width: 26px;
-  height: 26px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 22px;
-}
-
-.mushaf-arrow-icon {
-  width: 26px;
-  height: 26px;
-  display: block;
+  font-weight: 600;
 }
