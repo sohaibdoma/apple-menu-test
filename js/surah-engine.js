@@ -243,22 +243,6 @@ function toArabicDigits(n) {
   return String(n).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]);
 }
 
-function getNextSurahLabel() {
-  const lang = document.documentElement.getAttribute("data-lang") || "ar";
-
-  if (lang === "en") return "Next Surah";
-  if (lang === "tr") return "Sonraki Sure";
-  return "السورة التالية";
-}
-
-function getPreviousSurahLabel() {
-  const lang = document.documentElement.getAttribute("data-lang") || "ar";
-
-  if (lang === "en") return "Previous Surah";
-  if (lang === "tr") return "Önceki Sure";
-  return "السورة السابقة";
-}
-
 async function buildNextSurahLink(currentSurahId) {
   const nextSurahId = currentSurahId + 1;
 
@@ -282,35 +266,7 @@ async function buildNextSurahLink(currentSurahId) {
     nextName = "";
   }
 
-  link.textContent = `${getNextSurahLabel()}: ${nextName}`;
-
-  return link;
-}
-
-async function buildPreviousSurahLink(currentSurahId) {
-  const previousSurahId = currentSurahId - 1;
-
-  if (previousSurahId < 1) return null;
-
-  const link = document.createElement("a");
-  link.className = "previous-surah-link";
-  link.href = `surah.html?surah=${previousSurahId}`;
-
-  const lang = document.documentElement.getAttribute("data-lang") || "ar";
-  const api = window.Wahyollah?.api;
-
-  let previousName = "";
-
-  try {
-    const res = await api.getChapter(previousSurahId);
-
-    if (lang === "ar") previousName = res.chapter.name_arabic;
-    else previousName = res.chapter.name_simple;
-  } catch (e) {
-    previousName = "";
-  }
-
-  link.textContent = `${getPreviousSurahLabel()}: ${previousName}`;
+  link.textContent = nextName;
 
   return link;
 }
@@ -360,18 +316,12 @@ function renderSurah(data) {
     content.appendChild(footer);
 
     if (isLastPage && chapterId !== null) {
-      Promise.all([
-        buildPreviousSurahLink(chapterId),
-        buildNextSurahLink(chapterId)
-      ]).then(([previousLink, nextLink]) => {
-        if (previousLink || nextLink) {
+      buildNextSurahLink(chapterId).then((nextLink) => {
+        if (nextLink) {
           const navWrap = document.createElement("div");
           navWrap.className = "surah-nav-wrap";
 
-          if (nextLink) {
-            navWrap.appendChild(nextLink);
-          }
-
+          navWrap.appendChild(nextLink);
 
           content.appendChild(navWrap);
         }
