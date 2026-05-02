@@ -611,15 +611,24 @@ body.night-mode .mushaf-page-footer::after {
   background: rgba(255, 255, 255, 0.16);
 }
 
-/* Page badge look (same behavior, slightly “footer” feeling) */
+
 .q-badge--page {
-  background: rgba(0, 0, 0, 0.08);
-  color: rgba(0, 0, 0, 0.75);
+  background: transparent;
+  border: none;
+
+  padding: 0;
+  min-width: 0;
+  height: auto;
+
+  border-radius: 0;
    
   margin-top: 32px;
    
-  font-size: 25px;
+  font-size: 25px;     /* adjust as you like */
   font-weight: 700;
+
+  display: block;      /* ensures clean centering in footer */
+  text-align: center;
 }
 
 html.night-mode .q-badge--page,
