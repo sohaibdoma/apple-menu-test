@@ -615,9 +615,11 @@ body.night-mode .mushaf-page-footer::after {
 .q-badge--page {
   background: rgba(0, 0, 0, 0.08);
   color: rgba(0, 0, 0, 0.75);
-
-  font-size: 18px;
-  font-weight: 600;
+   
+  margin-top: 32px;
+   
+  font-size: 25px;
+  font-weight: 700;
 }
 
 html.night-mode .q-badge--page,
