@@ -1115,7 +1115,7 @@ body.search-open #nav-surah-title {
   align-items: center;
   justify-content: center;
 
-  height: var(--header-h);
+  height: 36px;
   min-width: 108px;
   padding: 0 16px;
 
