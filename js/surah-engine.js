@@ -372,9 +372,6 @@ function renderSurah(data) {
             navWrap.appendChild(nextLink);
           }
 
-          if (previousLink) {
-            navWrap.appendChild(previousLink);
-          }
 
           content.appendChild(navWrap);
         }
