@@ -1028,7 +1028,7 @@ body.night-mode .auto-scroll-bar{
 .surah-bottom-pill-icon line{
   fill: none;
   stroke: currentColor;
-  stroke-width: 1;
+  stroke-width: 1.3;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
