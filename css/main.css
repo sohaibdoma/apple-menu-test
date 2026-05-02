@@ -1127,8 +1127,8 @@ body.search-open #nav-surah-title {
    
   box-sizing: border-box;
    
-  background: rgba(0, 0, 0, 0.06);
-  color: #000;
+  background: #000000;
+  color: #ffffff;
 
   font-family: "Scheherazade New", "Amiri Quran", serif;
   font-size: 24px;
