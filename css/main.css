@@ -886,9 +886,7 @@ body.no-blur-transition > *:not(.main-header) {
   -webkit-clip-path: inset(0 round 999px);
 }
 
-.surah-bottom-pill-btn--bottom {
-  transform: translateX(-2px);
-}
+
 
 html.night-mode .surah-bottom-left,
 body.night-mode .surah-bottom-left,
