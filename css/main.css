@@ -1110,14 +1110,14 @@ body.search-open #nav-surah-title {
   flex-wrap: wrap;
 }
 
-.next-surah-link,
-.previous-surah-link {
+.next-surah-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  min-height: 44px;
-  padding: 12px 22px;
+  height: var(--header-h);
+  min-width: 108px;
+  padding: 0 16px;
 
   border-radius: 999px;
   text-decoration: none;
@@ -1129,10 +1129,6 @@ body.search-open #nav-surah-title {
   font-size: 18px;
   font-weight: 700;
   line-height: 1;
-
-  transition: background-color 0.25s ease,
-              color 0.25s ease,
-              transform 0.2s ease;
 }
 
 .next-surah-link:hover,
