@@ -613,29 +613,24 @@ body.night-mode .mushaf-page-footer::after {
 
 
 .q-badge--page {
-  background: transparent;
-  border: none;
-
-  margin-top: 32px;
-
-  padding: 0;          /* 🔥 remove pill spacing */
-  min-width: 0;        /* 🔥 remove badge width */
-  height: auto;        /* 🔥 remove fixed height */
-  border-radius: 0;    /* 🔥 remove pill shape */
-
-  font-size: 25px;
-  font-weight: 700;
+  all: unset;
 
   display: block;
-  text-align: center;
+  margin-top: 32px;
 
+  font-family: "Scheherazade New", serif;
+  font-size: 25px;
+  font-weight: 700;
   letter-spacing: 0.5px;
+  line-height: 1;
+
+  color: rgba(0, 0, 0, 0.75);
   opacity: 0.75;
+  text-align: center;
 }
 
 html.night-mode .q-badge--page,
 body.night-mode .q-badge--page {
-  background: rgba(255, 255, 255, 0.14);
   color: rgba(255, 255, 255, 0.88);
 }
 
