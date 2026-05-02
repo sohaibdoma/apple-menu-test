@@ -1136,10 +1136,7 @@ body.search-open #nav-surah-title {
   line-height: 1;
 }
 
-.next-surah-link:hover,
-.previous-surah-link:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
+
 
 .next-surah-link:active,
 .previous-surah-link:active {
@@ -1175,19 +1172,11 @@ body.search-open #nav-surah-title {
 /* Night mode */
 
 body.night-mode .next-surah-link,
-body.night-mode .previous-surah-link,
-html.night-mode .next-surah-link,
-html.night-mode .previous-surah-link {
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
+html.night-mode .next-surah-link{
+  background: #ffffff;
+  color: #000000;
 }
 
-body.night-mode .next-surah-link:hover,
-body.night-mode .previous-surah-link:hover,
-html.night-mode .next-surah-link:hover,
-html.night-mode .previous-surah-link:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
 
 /* Mobile:
    Previous on top, Next below */
