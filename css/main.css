@@ -2064,3 +2064,39 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   font-weight: 600;
   font-size: 20px;
 }
+
+
+
+
+
+body[data-page-type="mushaf"] .mushaf-bottom-right {
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: rtl;
+}
+
+body[data-page-type="mushaf"] .mushaf-scroll-top-circle {
+  height: var(--header-h);
+  width: var(--header-h);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  isolation: isolate;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  clip-path: inset(0 round var(--nav-radius));
+  -webkit-clip-path: inset(0 round var(--nav-radius));
+}
+
+html.night-mode body[data-page-type="mushaf"] .mushaf-scroll-top-circle,
+body.night-mode[data-page-type="mushaf"] .mushaf-scroll-top-circle {
+  background-color: rgba(0, 0, 0, 0.6);
+}
