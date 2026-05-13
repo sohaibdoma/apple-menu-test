@@ -2000,15 +2000,15 @@ body.night-mode .mushaf-surah-title {
   align-items: center;
   justify-content: center;
 
-  min-width: 22px;
-  height: 22px;
-  padding: 0 6px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
 
   margin-inline: 4px;
 
   border-radius: 999px;
 
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
 
   background: rgba(0, 0, 0, 0.08);
@@ -2016,6 +2016,10 @@ body.night-mode .mushaf-surah-title {
 
   line-height: 1;
   vertical-align: middle;
+  text-align: center;
+
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
 }
 
 html.night-mode .mushaf-text .end,
