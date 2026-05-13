@@ -273,7 +273,7 @@
         empty.textContent =
           window.Wahyollah?.i18nCache?.[
             document.documentElement.getAttribute("data-lang") || "ar"
-          ]?.search_empty || "No results found";
+          ]?.search_empty || "لا توجد نتائج";
 
         results.replaceChildren(empty);
         return;
