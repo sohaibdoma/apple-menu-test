@@ -2200,8 +2200,9 @@ body.night-mode[data-page-type="mushaf"] .mushaf-scroll-top-circle {
 
 html.night-mode .font-size-pill,
 body.night-mode .font-size-pill {
-  background-color: rgba(255, 255, 255, 0.18);
+  background: var(--nav-bg);
 }
+
 
 .font-size-btn {
   height: 36px;
