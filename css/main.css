@@ -1352,6 +1352,16 @@ body.night-mode .search-input{
   background: #000000;
 }
 
+
+
+
+
+
+
+
+
+
+
 .search-submit{
   position: absolute;
   top: 50%;
@@ -1364,7 +1374,9 @@ body.night-mode .search-input{
 
   border: 0;
   background: transparent;
-  color: var(--control-stroke);
+
+  /* Light mode default: dark gray */
+  color: #8e8e93;
 
   display: inline-flex;
   align-items: center;
@@ -1376,6 +1388,8 @@ body.night-mode .search-input{
   -webkit-tap-highlight-color: transparent;
 
   z-index: 3;
+
+  transition: color 180ms ease;
 }
 
 .search-input-wrap[dir="rtl"] .search-submit{
@@ -1400,17 +1414,20 @@ body.night-mode .search-input{
   stroke-linejoin: round;
 }
 
+/* Active state in light mode: black */
 .search-submit.is-active{
   color: #000000;
   cursor: pointer;
   pointer-events: auto;
 }
 
+/* Dark mode default: light gray */
 html.night-mode .search-submit,
 body.night-mode .search-submit{
-  color: rgba(255, 255, 255, 0.35);
+  color: #8e8e93;
 }
 
+/* Active state in dark mode: white */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
   color: #ffffff;
