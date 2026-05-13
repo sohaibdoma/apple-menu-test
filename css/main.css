@@ -1456,8 +1456,8 @@ body.night-mode .search-submit.is-active{
   -webkit-appearance: none;
   appearance: none;
 
-  width: 18px;
-  height: 18px;
+  width: 32px;
+  height: 32px;
 
   border-radius: 50%;
   margin-left: -22px;
