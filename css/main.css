@@ -2004,7 +2004,7 @@ body.night-mode .mushaf-surah-title {
   min-width: 26px;
   padding: 0 5px;
 
-  margin-inline: 1px;
+  margin-inline: 0;
 
   border-radius: 999px;
 
