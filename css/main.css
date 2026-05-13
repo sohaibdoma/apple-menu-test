@@ -326,7 +326,7 @@ body.night-mode .home-footer-copy {
   border-radius: 999px;
    
   font-family: "Scheherazade New", serif;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1;              /* important */
   font-weight: 700;
 
@@ -2002,14 +2002,14 @@ body.night-mode .mushaf-surah-title {
 
   height: 26px;
   min-width: 26px;
-  padding: 0 9px;
+  padding: 0 3px;
 
   margin-inline: 4px;
 
   border-radius: 999px;
 
   font-family: "Scheherazade New", serif;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1;
   font-weight: 700;
 
