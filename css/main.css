@@ -1447,7 +1447,7 @@ body.night-mode .search-submit.is-active{
 /* Smooth fade for native clear (X) button */
 .search-input::-webkit-search-cancel-button {
   opacity: 1;
-  transition: opacity 700ms ease;
+  transition: opacity 300ms ease;
 }
 
   /* dark mode: black X */
