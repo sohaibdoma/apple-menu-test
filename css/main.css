@@ -2131,7 +2131,7 @@ body[data-page-type="mushaf"] .mushaf-bottom-right {
   display: flex;
   align-items: center;
   gap: 10px;
-  direction: rtl;
+  direction: ltr;
 }
 
 body[data-page-type="mushaf"] .mushaf-scroll-top-circle {
