@@ -2000,26 +2000,31 @@ body.night-mode .mushaf-surah-title {
   align-items: center;
   justify-content: center;
 
-  min-width: 28px;
-  height: 28px;
-  padding: 0 8px;
+  height: 26px;
+  min-width: 26px;
+  padding: 0 9px;
 
   margin-inline: 4px;
 
   border-radius: 999px;
 
-  font-size: 16px;
+  font-family: "Scheherazade New", serif;
+  font-size: 14px;
+  line-height: 1;
   font-weight: 700;
 
-  background: rgba(0, 0, 0, 0.08);
-  color: var(--page-text);
-
-  line-height: 1;
-  vertical-align: middle;
-  text-align: center;
+  white-space: nowrap;
+  user-select: none;
 
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
+
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+
+  vertical-align: middle;
+  text-align: center;
 }
 
 html.night-mode .mushaf-text .end,
