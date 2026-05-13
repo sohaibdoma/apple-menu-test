@@ -858,7 +858,7 @@ body.no-blur-transition > *:not(.main-header) {
 }
 
 body:not([data-page-type="mushaf"]) .font-size-pill {
-  margin-left: auto;
+  margin-left: 0;
   margin-right: 10px;
 }
 
@@ -2265,4 +2265,8 @@ body[data-quran-font-size="large"] .ayah-text {
 
 body[data-quran-font-size="large"] .mushaf-text {
   font-size: 32px;
+}
+
+.font-size-pill {
+  direction: rtl;
 }
