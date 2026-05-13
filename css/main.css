@@ -322,7 +322,7 @@ body.night-mode .home-footer-copy {
   height: 26px;
   min-width: 26px;
   padding: 0 5px;              /* symmetric padding */
-
+   
   border-radius: 999px;
    
   font-family: "Scheherazade New", serif;
@@ -338,7 +338,7 @@ body.night-mode .home-footer-copy {
 }
 
 .q-badge--ayah {
-  margin-inline-start: 10px;
+  margin-inline-start: 0;
 
   background: transparent;                 /* no fill */
   border: 1px solid currentColor;          /* stroke uses text color */
