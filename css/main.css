@@ -1367,8 +1367,8 @@ body.night-mode .search-input{
   top: calc(50% - 1px);
   transform: translateY(-50%);
 
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   margin: 0;
 
@@ -1456,11 +1456,11 @@ body.night-mode .search-submit.is-active{
   -webkit-appearance: none;
   appearance: none;
 
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
 
   border-radius: 0;
-  margin-left: -28px;
+  margin-left: -30px;
 
   /* Light mode: obvious dark grey circle */
   background-color: transparent;
