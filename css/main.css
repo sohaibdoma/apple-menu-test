@@ -321,7 +321,7 @@ body.night-mode .home-footer-copy {
 
   height: 26px;
   min-width: 26px;
-  padding: 0 9px;              /* symmetric padding */
+  padding: 0 1px;              /* symmetric padding */
 
   border-radius: 999px;
    
@@ -2002,7 +2002,7 @@ body.night-mode .mushaf-surah-title {
 
   height: 26px;
   min-width: 26px;
-  padding: 0 3px;
+  padding: 0 1px;
 
   margin-inline: 4px;
 
