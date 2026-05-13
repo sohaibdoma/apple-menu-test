@@ -1389,7 +1389,7 @@ body.night-mode .search-input{
 
   z-index: 3;
 
-  transition: color 180ms ease;
+  transition: color 300ms ease;
 }
 
 .search-input-wrap[dir="rtl"] .search-submit{
@@ -1409,7 +1409,7 @@ body.night-mode .search-input{
 
   fill: none;
   stroke: currentColor;
-  stroke-width: 2.2;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -1433,6 +1433,19 @@ body.night-mode .search-submit.is-active{
   color: #ffffff;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ========================================
    SEARCH INPUT CLEAR BUTTON (Native X)
    - Native behavior preserved
@@ -1449,15 +1462,18 @@ body.night-mode .search-submit.is-active{
   border-radius: 50%;
   margin-left: -22px;
 
-  background-color: var(--control-stroke);
+  /* Light mode: obvious dark grey circle */
+  background-color: #8e8e93;
   background-size: 18px 18px;
 
   background-repeat: no-repeat;
   background-position: center;
 
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 300ms ease;
 
-  /* white X (light mode) */
+  /* Light mode: white X */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
@@ -1467,9 +1483,10 @@ body.night-mode .search-submit.is-active{
   transition: opacity 300ms ease;
 }
 
-  /* dark mode: black X */
+/* Dark mode: obvious light grey circle + black X */
 html.night-mode .search-input::-webkit-search-cancel-button,
 body.night-mode .search-input::-webkit-search-cancel-button{
+  background-color: #d1d1d6;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 7 L17 17 M17 7 L7 17' fill='none' stroke='%23000000' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
