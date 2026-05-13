@@ -1459,11 +1459,11 @@ body.night-mode .search-submit.is-active{
   width: 32px;
   height: 32px;
 
-  border-radius: 50%;
+  border-radius: 0;
   margin-left: -22px;
 
   /* Light mode: obvious dark grey circle */
-  background-color: #8e8e93;
+  background-color: transparent;
   background-size: 18px 18px;
 
   background-repeat: no-repeat;
@@ -1474,7 +1474,7 @@ body.night-mode .search-submit.is-active{
   transition: opacity 200ms ease;
 
   /* Light mode: white X */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.5 8.5 L15.5 15.5 M15.5 8.5 L8.5 15.5' fill='none' stroke='%23ffffff' stroke-width='2.0' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='9' fill='%238e8e93'/%3E%3Cpath d='M6.5 6.5 L11.5 11.5 M11.5 6.5 L6.5 11.5' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 /* Smooth fade for native clear (X) button */
