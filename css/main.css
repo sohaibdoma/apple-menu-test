@@ -1456,11 +1456,11 @@ body.night-mode .search-submit.is-active{
   -webkit-appearance: none;
   appearance: none;
 
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
 
   border-radius: 0;
-  margin-left: -30px;
+  margin-left: -34px;
 
   /* Light mode: obvious dark grey circle */
   background-color: transparent;
