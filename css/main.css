@@ -1393,7 +1393,7 @@ body.night-mode .search-input{
 }
 
 .search-input-wrap[dir="rtl"] .search-submit{
-  right: 10px;
+  right: 5px;
   left: auto;
 }
 
@@ -1460,7 +1460,7 @@ body.night-mode .search-submit.is-active{
   height: 18px;
 
   border-radius: 50%;
-  margin-left: -25px;
+  margin-left: -28px;
 
   /* Light mode: obvious dark grey circle */
   background-color: #8e8e93;
