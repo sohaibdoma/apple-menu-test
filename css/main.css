@@ -1393,7 +1393,7 @@ body.night-mode .search-input{
 }
 
 .search-input-wrap[dir="rtl"] .search-submit{
-  right: 13px;
+  right: 10px;
   left: auto;
 }
 
