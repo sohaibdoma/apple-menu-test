@@ -851,8 +851,10 @@ body.no-blur-transition > *:not(.main-header) {
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
+   
+  justify-content: flex-start;
+  gap: 10px;
+   
   z-index: 9998;
 }
 
@@ -2200,9 +2202,10 @@ body.night-mode[data-page-type="mushaf"] .mushaf-scroll-top-circle {
 
 html.night-mode .font-size-pill,
 body.night-mode .font-size-pill {
-  background: var(--nav-bg);
+  background-color: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
-
 
 .font-size-btn {
   height: 36px;
