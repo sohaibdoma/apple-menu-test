@@ -1460,7 +1460,7 @@ body.night-mode .search-submit.is-active{
   height: 18px;
 
   border-radius: 50%;
-  margin-left: -12px;
+  margin-left: -25px;
 
   /* Light mode: obvious dark grey circle */
   background-color: #8e8e93;
