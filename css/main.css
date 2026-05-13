@@ -852,11 +852,16 @@ body.no-blur-transition > *:not(.main-header) {
   display: flex;
   align-items: center;
    
-  justify-content: flex-start;
-  gap: 10px;
+  justify-content: space-between;
    
   z-index: 9998;
 }
+
+body:not([data-page-type="mushaf"]) .font-size-pill {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
 
 .surah-bottom-left,
 .auto-scroll-bar{
@@ -2206,7 +2211,7 @@ body.night-mode[data-page-type="mushaf"] .mushaf-scroll-top-circle {
 
 html.night-mode .font-size-pill,
 body.night-mode .font-size-pill {
-  background-color: rgba(255, 255, 255, 0.18);
+  background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
 }
