@@ -2136,6 +2136,21 @@ body[data-page-type="mushaf"] .mushaf-bottom-right {
   direction: ltr;
 }
 
+body[data-page-type="mushaf"] .font-size-pill {
+  order: 1;
+}
+
+body[data-page-type="mushaf"] .mushaf-next-surah-btn {
+  order: 2;
+}
+
+body[data-page-type="mushaf"] .mushaf-scroll-top-circle {
+  order: 3;
+}
+
+
+
+
 
 body[data-page-type="mushaf"] .mushaf-scroll-top-circle {
   height: var(--header-h);
