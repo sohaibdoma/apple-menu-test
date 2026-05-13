@@ -1364,7 +1364,7 @@ body.night-mode .search-input{
 
 .search-submit{
   position: absolute;
-  top: 50%;
+  top: calc(50% - 1px);
   transform: translateY(-50%);
 
   width: 32px;
@@ -1393,12 +1393,12 @@ body.night-mode .search-input{
 }
 
 .search-input-wrap[dir="rtl"] .search-submit{
-  right: 14px;
+  right: 13px;
   left: auto;
 }
 
 .search-input-wrap[dir="ltr"] .search-submit{
-  left: 14px;
+  left: 13px;
   right: auto;
 }
 
