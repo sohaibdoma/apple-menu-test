@@ -2269,13 +2269,23 @@ body.night-mode .font-size-pill {
 }
 
 /* Apply larger Quran text size */
+body[data-quran-font-size="small"] .ayah-text {
+  font-size: 0.9em;
+}
+
+body[data-quran-font-size="small"] .mushaf-text {
+  font-size: 24px;
+}
+
 body[data-quran-font-size="large"] .ayah-text {
   font-size: 1.2em;
 }
 
 body[data-quran-font-size="large"] .mushaf-text {
-  font-size: 33px;
+  font-size: 32px;
 }
+
+
 
 .font-size-pill {
   direction: rtl;
