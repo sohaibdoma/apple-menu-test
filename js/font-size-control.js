@@ -2,7 +2,7 @@
   "use strict";
 
   const STORAGE_KEY = "quranFontSize";
-  const VALID_SIZES = new Set(["normal", "large"]);
+  const VALID_SIZES = new Set(["small", "normal", "large"]);
 
   function getSavedSize() {
     try {
