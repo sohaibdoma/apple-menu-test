@@ -2245,6 +2245,11 @@ body.night-mode .font-size-pill {
   opacity: 0.82;
 }
 
+
+.font-size-btn--small {
+  font-size: 13px;
+}
+
 .font-size-btn--normal {
   font-size: 16px;
 }
@@ -2252,6 +2257,8 @@ body.night-mode .font-size-pill {
 .font-size-btn--large {
   font-size: 22px;
 }
+
+
 
 .font-size-btn.is-active {
   opacity: 1;
