@@ -1475,7 +1475,7 @@ body.night-mode .search-submit.is-active{
 
   /* Light mode: obvious dark grey circle */
   background-color: transparent;
-  background-size: 44px 44px;
+  background-size: 20px 20px;
 
   background-repeat: no-repeat;
   background-position: center;
