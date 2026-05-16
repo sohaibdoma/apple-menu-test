@@ -1427,7 +1427,7 @@ body.night-mode .search-input{
 
 /* Active state in light mode: black */
 .search-submit.is-active{
-  color: #000000;
+  color: #8e8e93;
   cursor: pointer;
   pointer-events: auto;
 }
@@ -1441,9 +1441,19 @@ body.night-mode .search-submit{
 /* Active state in dark mode: white */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
-  color: #ffffff;
+  color: #d1d1d6;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .search-submit.is-active:hover{
+    color: #000000;
+  }
+
+  html.night-mode .search-submit.is-active:hover,
+  body.night-mode .search-submit.is-active:hover{
+    color: #ffffff;
+  }
+}
 
 
 
