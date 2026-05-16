@@ -666,12 +666,13 @@ body.easy-read .surah-title {
 ======================================== */
 
 /* LOCK SCROLL WHEN MENU OPEN */
-body.menu-open {
+body.menu-open,
+body.search-open {
   position: fixed;
   width: 100%;
   overflow: hidden;
+  touch-action: none;
 }
-
 
 
 
@@ -1458,6 +1459,38 @@ body.night-mode .search-submit.is-active{
 
 
 
+
+
+
+
+
+
+
+
+body.search-open .main-header {
+  position: fixed;
+  inset-inline: var(--nav-inset);
+  top: var(--nav-gap);
+  bottom: var(--nav-gap);
+
+  height: auto;
+  max-height: none;
+
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+body.search-open .search-sheet {
+  height: 100%;
+  overflow: hidden;
+}
+
+body.search-open .search-results {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
 
 
 
