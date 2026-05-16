@@ -1601,8 +1601,8 @@ body.night-mode .search-result-meta {
 .search-highlight{
   background: rgba(0, 0, 0, 0.10);
   color: inherit;
-  border-radius: 4px;
-  padding: 0 3px;
+  border-radius: 6px;
+  padding: 2px 5px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
