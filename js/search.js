@@ -139,9 +139,14 @@
           versesCount: chapter.verses_count || ""
         }));
 
+        const surahNameById = new Map(
+          allSurahs.map((chapter) => [chapter.id, chapter.name_arabic || ""])
+        );
+
         const ayahs = allAyahs.map((ayah) => ({
           type: "ayah",
           surahId: ayah.surahId,
+          surahNameArabic: surahNameById.get(ayah.surahId) || "",
           ayahNumber: ayah.ayahNumber,
           verseKey: ayah.verseKey,
           pageNumber: ayah.pageNumber,
@@ -252,9 +257,7 @@
           return `Sure ${item.surahId} • Ayet ${item.ayahNumber}`;
         }
 
-        const surahNames = window.Wahyollah?.i18nCache?.ar || {};
-        const key = `menu.${String(item.surahId).padStart(3, "0")}`;
-        const surahName = surahNames[key] || `سورة ${item.surahId}`;
+        const surahName = item.surahNameArabic || `سورة ${item.surahId}`;
 
         return `${surahName} • آية ${item.ayahNumber}`;
       }
