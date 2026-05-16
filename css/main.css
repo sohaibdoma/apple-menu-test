@@ -1602,7 +1602,7 @@ body.night-mode .search-result-meta {
   background: rgba(0, 0, 0, 0.10);
   color: inherit;
   border-radius: 6px;
-  padding: 2px 5px;
+  padding: 4px 7px
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
