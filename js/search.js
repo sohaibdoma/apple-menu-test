@@ -64,7 +64,7 @@
     const input = holder.querySelector("#searchInput");
     const submitBtn = holder.querySelector("#searchSubmit");
     const results = holder.querySelector("#searchResults");
-    if (!input  !submitBtn  !results) return;
+    if (!input || !submitBtn || !results) return;
 
     const searchToggle = document.getElementById("searchToggle");
     if (searchToggle) {
@@ -112,7 +112,7 @@
       const q = input.value.trim();
       if (!q) return;
 
-      window.location.href = search.html?q=${encodeURIComponent(q)};
+      window.location.href = `search.html?q=${encodeURIComponent(q)}`;
     }
 
     async function loadSearchData() {
@@ -129,10 +129,10 @@
           api.getAllAyahs()
         ]);
 
-const surahs = allSurahs.map((chapter) => ({
+        const surahs = allSurahs.map((chapter) => ({
           type: "surah",
           surahId: chapter.id,
-          href: surah.html?surah=${chapter.id},
+          href: `surah.html?surah=${chapter.id}`,
           nameArabic: chapter.name_arabic || "",
           nameSimple: chapter.name_simple || "",
           revelationPlace: chapter.revelation_place || "",
@@ -245,28 +245,32 @@ const surahs = allSurahs.map((chapter) => ({
 
       if (item.type === "ayah") {
         if (lang === "en") {
-          return Surah ${item.surahId} • Ayah ${item.ayahNumber};
+          return `Surah ${item.surahId} • Ayah ${item.ayahNumber}`;
         }
 
         if (lang === "tr") {
-          return Sure ${item.surahId} • Ayet ${item.ayahNumber};
+          return `Sure ${item.surahId} • Ayet ${item.ayahNumber}`;
         }
 
-        return سورة ${item.surahId} • آية ${item.ayahNumber};
+        const surahNames = window.Wahyollah?.i18nCache?.ar || {};
+        const key = `menu.${String(item.surahId).padStart(3, "0")}`;
+        const surahName = surahNames[key] || `سورة ${item.surahId}`;
+
+        return `${surahName} • آية ${item.ayahNumber}`;
       }
 
       if (lang === "ar") {
         const simple = item.nameSimple || "";
         const number = item.surahId || "";
-        return ${simple} • ${number};
+        return `${simple} • ${number}`;
       }
 
       const arabic = item.nameArabic || "";
       const number = item.surahId || "";
-      return ${arabic} • ${number};
+      return `${arabic} • ${number}`;
     }
 
-function renderQuickLinks() {
+    function renderQuickLinks() {
       results.innerHTML = `
         <div class="search-quick-links" aria-label="روابط سريعة">
           <div class="search-quick-title">روابط سريعة</div>
