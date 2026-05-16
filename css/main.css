@@ -1602,8 +1602,8 @@ body.night-mode .search-result-meta {
   display: inline-block;
   background: rgba(0, 0, 0, 0.10);
   color: inherit;
-  border-radius: 6px;
-  padding: 3px 6px;
+  border-radius: 4px;
+  padding: 6px 12px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
