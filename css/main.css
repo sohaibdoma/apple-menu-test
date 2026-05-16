@@ -1599,10 +1599,11 @@ body.night-mode .search-result-meta {
 ======================================== */
 
 .search-highlight{
+  display: inline-block;
   background: rgba(0, 0, 0, 0.10);
   color: inherit;
   border-radius: 6px;
-  padding: 4px 7px
+  padding: 3px 6px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
