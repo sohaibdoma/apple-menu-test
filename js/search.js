@@ -252,7 +252,8 @@
           return `Sure ${item.surahId} • Ayet ${item.ayahNumber}`;
         }
 
-        return `سورة ${item.surahId} • آية ${item.ayahNumber}`;
+        const surah = window.Wahyollah?.i18nCache?.ar?.[`menu.${String(item.surahId).padStart(3, "0")}`] || `سورة ${item.surahId}`;
+return `${surah} • آية ${item.ayahNumber}`;
       }
 
       if (lang === "ar") {
