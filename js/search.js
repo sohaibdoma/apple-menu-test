@@ -69,12 +69,12 @@
     const searchToggle = document.getElementById("searchToggle");
     if (searchToggle) {
       searchToggle.addEventListener("click", () => {
+        input.focus({ preventScroll: true });
+
         requestAnimationFrame(() => {
-          setTimeout(() => {
-            if (document.body.classList.contains("search-open")) {
-              input.focus({ preventScroll: true });
-            }
-          }, 250);
+          if (document.body.classList.contains("search-open")) {
+            input.focus({ preventScroll: true });
+          }
         });
       });
     }
