@@ -252,9 +252,11 @@
           return `Sure ${item.surahId} • Ayet ${item.ayahNumber}`;
         }
 
-        const surah = window.Wahyollah?.i18nCache?.ar?.[`menu.${String(item.surahId).padStart(3, "0")}`] || `سورة ${item.surahId}`;
-return `${surah} • آية ${item.ayahNumber}`;
-      }
+        const surahNames = window.Wahyollah?.i18nCache?.ar || {};
+const key = `menu.${String(item.surahId).padStart(3, "0")}`;
+const surahName = surahNames[key] || `سورة ${item.surahId}`;
+
+return `${surahName} • آية ${item.ayahNumber}`;
 
       if (lang === "ar") {
         const simple = item.nameSimple || "";
