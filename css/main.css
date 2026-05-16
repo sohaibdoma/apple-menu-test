@@ -1601,12 +1601,8 @@ body.night-mode .search-result-meta {
 .search-highlight{
   background: rgba(0, 0, 0, 0.10);
   color: inherit;
-
   border-radius: 4px;
-  padding: 1px 2px;
-
-  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.10);
-
+  padding: 0 3px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -1614,10 +1610,8 @@ body.night-mode .search-result-meta {
 html.night-mode .search-highlight,
 body.night-mode .search-highlight{
   background: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14);
   color: inherit;
 }
-
 
 /* ========================================
    AYAH LANDING HIGHLIGHT
