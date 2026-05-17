@@ -66,6 +66,20 @@
     const results = holder.querySelector("#searchResults");
     if (!input || !submitBtn || !results) return;
 
+    holder.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!document.body.classList.contains("search-open")) return;
+
+        const isInsideScrollableResults = e.target.closest(".search-results");
+
+        if (!isInsideScrollableResults) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+
     const searchToggle = document.getElementById("searchToggle");
     if (searchToggle) {
       searchToggle.addEventListener("click", () => {
