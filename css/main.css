@@ -1821,9 +1821,11 @@ body.night-mode .search-page-results .search-result-meta {
 
 
 body[data-page-type="search"] .main-header {
-  position: static;
+  position: sticky;
+  top: var(--nav-gap);
+  left: var(--nav-inset);
+  right: var(--nav-inset);
 }
-
 
 
 
