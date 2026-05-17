@@ -1820,15 +1820,6 @@ body.night-mode .search-page-results .search-result-meta {
 
 
 
-.search-page .header-bar,
-.search-page .header-shell,
-.search-page .header-pill {
-  touch-action: auto;
-}
-
-
-
-
 /* ========================================
    MUSHAF PAGE
    - Clean continuous Quran layout
