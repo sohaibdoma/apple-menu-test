@@ -71,11 +71,7 @@
       (e) => {
         if (!document.body.classList.contains("search-open")) return;
 
-        const isInsideScrollableResults = e.target.closest(".search-results");
-
-        if (!isInsideScrollableResults) {
-          e.preventDefault();
-        }
+        e.preventDefault();
       },
       { passive: false }
     );
@@ -296,8 +292,20 @@
             <span class="search-result-text">آية الكرسي</span>
           </button>
 
+          <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=2#ayah-2-285">
+            <span class="search-result-text">آمن الرسول</span>
+          </button>
+
           <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=2">
             <span class="search-result-text">سورة البقرة</span>
+          </button>
+
+          <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=18">
+            <span class="search-result-text">سورة الكهف</span>
+          </button>
+
+          <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=55">
+            <span class="search-result-text">سورة الرحمن</span>
           </button>
         </div>
       `;
