@@ -358,6 +358,8 @@
       return;
     }
 
+    input.placeholder = "ابحث في القرآن";
+
     const searchPage = document.querySelector(".search-page");
 
     if (searchPage) {
