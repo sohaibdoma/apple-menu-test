@@ -66,14 +66,21 @@
     const results = holder.querySelector("#searchResults");
     if (!input || !submitBtn || !results) return;
 
+    holder.addEventListener("pointerdown", (e) => {
+      if (!document.body.classList.contains("search-open")) return;
+      if (e.target.closest(".search-input")) return;
+
+      input.blur();
+    });
+
     holder.addEventListener(
       "touchmove",
-      (e) => {
+      () => {
         if (!document.body.classList.contains("search-open")) return;
 
-        e.preventDefault();
+        input.blur();
       },
-      { passive: false }
+      { passive: true }
     );
 
     const searchToggle = document.getElementById("searchToggle");
@@ -283,44 +290,6 @@
       return `${arabic} • ${number}`;
     }
 
-    function renderQuickLinks() {
-      results.innerHTML = `
-        <div class="search-quick-links" aria-label="روابط سريعة">
-          <div class="search-quick-title">روابط سريعة</div>
-
-          <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=2#ayah-2-255">
-            <span class="search-result-text">آية الكرسي</span>
-          </button>
-
-          <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=2#ayah-2-285">
-            <span class="search-result-text">آمن الرسول</span>
-          </button>
-
-          <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=2">
-            <span class="search-result-text">سورة البقرة</span>
-          </button>
-
-          <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=18">
-            <span class="search-result-text">سورة الكهف</span>
-          </button>
-
-          <button class="search-result search-quick-link" type="button" data-href="surah.html?surah=55">
-            <span class="search-result-text">سورة الرحمن</span>
-          </button>
-        </div>
-      `;
-
-      results.querySelectorAll(".search-quick-link").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const href = btn.getAttribute("data-href");
-          if (!href) return;
-
-          window.Wahyollah?.closeOverlay?.();
-          window.location.href = href;
-        });
-      });
-    }
-
     function render(items, query) {
       if (!items.length) {
         const empty = document.createElement("div");
@@ -375,7 +344,7 @@
       const q = input.value.trim();
 
       if (!q) {
-        renderQuickLinks();
+        results.innerHTML = "";
         return;
       }
 
@@ -410,7 +379,7 @@
       }
     });
 
-    renderQuickLinks();
+    results.innerHTML = "";
     updateSubmitState();
   }
 
