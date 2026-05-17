@@ -2282,53 +2282,8 @@ body[data-quran-font-size="large"] .mushaf-text {
   font-size: 32px;
 }
 
-
-
 .font-size-pill {
   direction: rtl;
 }
 
 
-
-
-
-
-
-/* ========================================
-   SEARCH QUICK LINKS
-======================================== */
-
-.search-quick-links {
-  width: calc(100% - 80px);
-  margin: 20px auto 0;
-
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  direction: rtl;
-  text-align: right;
-}
-
-.search-quick-title {
-  padding: 4px 14px 2px;
-
-  font-family: "Scheherazade New", serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.4;
-
-  color: var(--page-text);
-  opacity: 0.55;
-}
-
-.search-quick-link {
-  width: 100% !important;
-  margin-inline: 0 !important;
-}
-
-html.night-mode .search-quick-title,
-body.night-mode .search-quick-title {
-  color: #ffffff;
-  opacity: 0.58;
-}
