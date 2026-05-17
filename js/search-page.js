@@ -358,6 +358,24 @@
       return;
     }
 
+    const searchPage = document.querySelector(".search-page");
+
+    if (searchPage) {
+      searchPage.addEventListener("pointerdown", (e) => {
+        if (e.target.closest(".search-input")) return;
+
+        input.blur();
+      });
+
+      searchPage.addEventListener(
+        "touchmove",
+        () => {
+          input.blur();
+        },
+        { passive: true }
+      );
+    }
+
     const currentDir = document.documentElement.dir || "rtl";
     const inputWrap = input.closest(".search-input-wrap");
 
