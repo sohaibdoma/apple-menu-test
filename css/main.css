@@ -1374,10 +1374,10 @@ body.night-mode .search-input{
 .search-submit{
   position: absolute;
   top: 50%;
-  right: 4px;          /* Force icon to the right side */
+  right: 6px;          /* Force icon to the right side */
   left: auto;          /* Remove any left positioning */
   inset-inline-end: auto;
-  transform: translateY(-50%);
+  transform: translateY(calc(-50% - 1px)); /* Move up by 1px */
 
   width: 44px;
   height: 44px;
@@ -1405,8 +1405,8 @@ body.night-mode .search-input{
 
 
 .search-submit-icon{
-  width: 33px;
-  height: 33px;
+  width: 30px;
+  height: 30px;
   display: block;
 
   fill: none;
