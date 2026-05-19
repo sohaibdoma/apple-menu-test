@@ -1356,13 +1356,13 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
 }
 
 .search-input-wrap[dir="rtl"] .search-input{
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .search-input-wrap[dir="ltr"] .search-input{
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 52px;
+  padding-right: 36px;
 }
 
 html.night-mode .search-input,
