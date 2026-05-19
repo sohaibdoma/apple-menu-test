@@ -1331,7 +1331,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
   flex: 1;
   height: 56px;
 
-  border-radius: 25px;
+  border-radius: 20px;
   border: 1px solid var(--control-stroke);
 
   background: #ffffff;
@@ -1356,12 +1356,12 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
 }
 
 .search-input-wrap[dir="rtl"] .search-input{
-  padding-right: 52px;
+  padding-right: 40px;
   padding-left: 36px;
 }
 
 .search-input-wrap[dir="ltr"] .search-input{
-  padding-left: 52px;
+  padding-left: 40px;
   padding-right: 36px;
 }
 
@@ -1379,8 +1379,8 @@ body.night-mode .search-input{
   inset-inline-end: auto;
   transform: translateY(-50%);
 
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   margin: 0;
 
@@ -1405,8 +1405,8 @@ body.night-mode .search-input{
 
 
 .search-submit-icon{
-  width: 30px;
-  height: 30px;
+  width: 33px;
+  height: 33px;
   display: block;
 
   fill: none;
