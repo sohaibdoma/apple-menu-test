@@ -86,7 +86,8 @@
   function setPageHeader(query, count) {
     const titleEl = document.querySelector(".search-page-title");
     const subtitleEl = document.getElementById("search-page-query");
-    const inputWrap = document.querySelector(".search-input-wrap");
+    const input = document.getElementById("searchPageInput");
+    const inputWrap = input ? input.closest(".search-input-wrap") : null;
 
     if (titleEl) {
       titleEl.textContent = "";
@@ -294,9 +295,10 @@
   }
 
   async function runSearch(query) {
-    setPageHeader(query, 0);
+    document.title = query ? `${getPageTitle()} - ${query}` : getPageTitle();
 
     if (!query) {
+      setPageHeader("", 0);
       renderResults([], "");
       return;
     }
@@ -307,10 +309,11 @@
       const ayahMatches = searchAyahs(ayahs, query);
       const items = mergeResults(surahMatches, ayahMatches);
 
-      setPageHeader(query, items.length);
       renderResults(items, query);
+      setPageHeader(query, items.length);
     } catch (error) {
       console.error(error);
+      setPageHeader("", 0);
       renderResults([], query);
     }
   }
