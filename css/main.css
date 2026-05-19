@@ -1429,11 +1429,11 @@ transform: none;
 
 
 
-/* Active state in light mode: black + filled box */
+/* Active state in light mode: X-button style stroke */
 .search-submit.is-active{
   color: #5a5a5f;
-  background: rgba(0, 0, 0, 0.08);
-  border: none;
+  background: transparent;
+  border: 1px solid rgba(60, 60, 67, 0.18);
   cursor: pointer;
   pointer-events: auto;
 }
@@ -1444,27 +1444,26 @@ body.night-mode .search-submit{
   color: #8e8e93;
 }
 
-/* Active state in dark mode: white + filled box */
+/* Active state in dark mode: X-button style stroke */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
   color: #c7c7cc;
-  background: rgba(255, 255, 255, 0.12);
-  border: none;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .search-submit.is-active:hover{
     color: #000000;
-    background: rgba(0, 0, 0, 0.12);
+    border-color: rgba(60, 60, 67, 0.28);
   }
 
   html.night-mode .search-submit.is-active:hover,
   body.night-mode .search-submit.is-active:hover{
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.22);
   }
 }
-
 
 /* ========================================
    SEARCH INPUT CLEAR BUTTON (Native X)
