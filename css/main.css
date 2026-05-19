@@ -1329,9 +1329,9 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
 .search-input{
  width: 100%;
   flex: 1;
-  height: 56px;
+  height: 40px;
 
-  border-radius: 11px;
+  border-radius: 999px;
   border: 1px solid var(--control-stroke);
 
   background: #ffffff;
