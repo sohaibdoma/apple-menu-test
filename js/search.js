@@ -26,6 +26,8 @@
     inputEl.type = "search";
     inputEl.autocomplete = "off";
     inputEl.spellcheck = false;
+    inputEl.placeholder = "ابحث في القرآن";
+    inputEl.setAttribute("aria-label", "ابحث في القرآن");
     inputEl.setAttribute("data-i18n-placeholder", "search_placeholder");
     inputEl.setAttribute("data-i18n-aria-label", "search_aria_label");
 
@@ -292,14 +294,7 @@
 
     function render(items, query) {
       if (!items.length) {
-        const empty = document.createElement("div");
-        empty.className = "search-empty";
-        empty.textContent =
-          window.Wahyollah?.i18nCache?.[
-            document.documentElement.getAttribute("data-lang") || "ar"
-          ]?.search_empty || "لا توجد نتائج";
-
-        results.replaceChildren(empty);
+        results.innerHTML = "";
         return;
       }
 
