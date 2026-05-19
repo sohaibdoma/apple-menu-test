@@ -1321,6 +1321,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-direction: row-reverse;
 }
 
 
