@@ -1403,8 +1403,8 @@ body.night-mode .search-input{
 }
 
 .search-submit-icon{
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   display: block;
 
   fill: none;
@@ -1414,18 +1414,11 @@ body.night-mode .search-input{
   stroke-linejoin: round;
 }
 
-/* Active state in light mode: exact clone of menu-toggle OPEN pill */
+/* Active state in light mode: icon only */
 .search-submit.is-active{
-  width: 30px;
-  height: 29px;
-  padding: 0;
-  box-sizing: border-box;
-
   color: #5a5a5f;
   background: transparent;
-
-  border: 1px solid var(--menu-icon-color);
-  border-radius: 11px;
+  border: none;
 
   cursor: pointer;
   pointer-events: auto;
@@ -1437,19 +1430,12 @@ body.night-mode .search-submit{
   color: #8e8e93;
 }
 
-/* Active state in dark mode: exact clone of menu-toggle OPEN pill */
+/* Active state in dark mode: icon only */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
-  width: 30px;
-  height: 29px;
-  padding: 0;
-  box-sizing: border-box;
-
   color: #c7c7cc;
   background: transparent;
-
-  border: 1px solid var(--menu-icon-color);
-  border-radius: 11px;
+  border: none;
 
   cursor: pointer;
   pointer-events: auto;
