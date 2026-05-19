@@ -1331,7 +1331,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
   flex: 1;
   height: 56px;
 
-  border-radius: 999px;
+  border-radius: 50px;
   border: 1px solid var(--control-stroke);
 
   background: #ffffff;
