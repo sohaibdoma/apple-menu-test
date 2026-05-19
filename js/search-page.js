@@ -96,6 +96,7 @@
   function setPageHeader(query, count) {
     const titleEl = document.querySelector(".search-page-title");
     const subtitleEl = document.getElementById("search-page-query");
+    const inputWrap = document.querySelector(".search-input-wrap");
 
     if (titleEl) {
       titleEl.textContent = "";
@@ -104,6 +105,10 @@
 
     if (subtitleEl) {
       subtitleEl.textContent = query ? getResultsLabel(count, query) : "";
+
+      if (inputWrap) {
+        inputWrap.insertAdjacentElement("afterend", subtitleEl);
+      }
     }
 
     document.title = query ? `${getPageTitle()} - ${query}` : getPageTitle();
