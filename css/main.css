@@ -1372,19 +1372,22 @@ body.night-mode .search-input{
 
 
 .search-submit{
-position: static;
-transform: none;
+  position: static;
+  transform: none;
 
-  width: 44px;
-  height: 44px;
+  width: 30px;
+  height: 29px;
+  min-width: 30px;
+  flex: 0 0 30px;
+
   padding: 0;
   margin: 0;
 
-  border: 0;
+  border: none;
+  border-radius: 11px;
   background: transparent;
 
-  /* Light mode default: dark gray */
-  color: #8e8e93;
+  color: var(--control-stroke);
 
   display: inline-flex;
   align-items: center;
@@ -1396,10 +1399,7 @@ transform: none;
   -webkit-tap-highlight-color: transparent;
 
   z-index: 3;
-
-  transition: color 200ms ease;
 }
-
 
 
 
@@ -1433,12 +1433,6 @@ transform: none;
 .search-submit.is-active{
   color: #5a5a5f;
   background: rgba(0, 0, 0, 0.08);
-
-  /* Same size as .menu-toggle.is-open::before */
-  width: 30px;
-  height: 29px;
-  padding: 0;
-  box-sizing: border-box;
 
   /* Same radius as the menu button */
   border: none;
