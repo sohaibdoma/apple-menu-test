@@ -1372,19 +1372,24 @@ body.night-mode .search-input{
 
 
 .search-submit{
-position: static;
-transform: none;
+  position: absolute;
+  top: 50%;
+  right: 8px;          /* Force icon to the right side */
+  left: auto;          /* Remove any left positioning */
+  inset-inline-end: auto;
+  transform: translateY(-50%);
 
-  width: 44px;
-  height: 44px;
+  width: 28px;
+  height: 28px;
   padding: 0;
   margin: 0;
 
-  border: 0;
+  border: none;
   background: transparent;
+  border-radius: 0;
+  box-sizing: border-box;
 
-  /* Light mode default: dark gray */
-  color: #8e8e93;
+  color: var(--control-stroke);
 
   display: inline-flex;
   align-items: center;
@@ -1396,9 +1401,8 @@ transform: none;
   -webkit-tap-highlight-color: transparent;
 
   z-index: 3;
-
-  transition: color 200ms ease;
 }
+
 
 .search-submit-icon{
   width: 30px;
