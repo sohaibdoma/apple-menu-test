@@ -1334,7 +1334,9 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
   border-radius: 20px;
   border: 1px solid var(--control-stroke);
 
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.55);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
   color: var(--page-text);
 
   padding-block: 0;
@@ -1367,9 +1369,10 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
 
 html.night-mode .search-input,
 body.night-mode .search-input{
-  background: #000000;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
-
 
 .search-submit{
   position: absolute;
