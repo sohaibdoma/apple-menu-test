@@ -49,14 +49,14 @@
     const lang = document.documentElement.getAttribute("data-lang") || "ar";
 
     if (lang === "en") {
-      return `${count} result${count === 1 ? "" : "s"} for "${query}"`;
+      return `${count} results found`;
     }
 
     if (lang === "tr") {
-      return `"${query}" için ${count} sonuç`;
+      return `${count} sonuç bulundu`;
     }
 
-    return `"${query}" لـ ${count} نتيجة`;
+    return `${count} نتيجة`;
   }
 
   function getEmptyLabel(query) {
@@ -279,13 +279,15 @@
         const safeHref = escapeHtml(item.href);
         const typeLabel = escapeHtml(getTypeLabel(item.type));
 
-        const primaryLabel = item.type === "ayah"
-          ? highlightMatch(getAyahPrimaryLabel(item), query)
-          : highlightMatch(getSurahPrimaryLabel(item), query);
+        const primaryLabel =
+          item.type === "ayah"
+            ? highlightMatch(getAyahPrimaryLabel(item), query)
+            : highlightMatch(getSurahPrimaryLabel(item), query);
 
-        const secondaryLabel = item.type === "ayah"
-          ? highlightMatch(getAyahSecondaryLabel(item), query)
-          : highlightMatch(getSurahSecondaryLabel(item), query);
+        const secondaryLabel =
+          item.type === "ayah"
+            ? highlightMatch(getAyahSecondaryLabel(item), query)
+            : highlightMatch(getSurahSecondaryLabel(item), query);
 
         return `
           <a class="search-result" href="${safeHref}">
@@ -366,7 +368,6 @@
     if (searchPage) {
       searchPage.addEventListener("pointerdown", (e) => {
         if (e.target.closest(".search-input")) return;
-
         input.blur();
       });
 
@@ -386,6 +387,7 @@
     if (inputWrap) {
       inputWrap.setAttribute("dir", currentDir);
     }
+
     input.value = initialQuery;
 
     updateSubmitState(input, submitBtn);
