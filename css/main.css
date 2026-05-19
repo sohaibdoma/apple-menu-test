@@ -2286,4 +2286,31 @@ body[data-quran-font-size="large"] .mushaf-text {
   direction: rtl;
 }
 
+/* ========================================
+   SEARCH PAGE LOCKED HEADER
+======================================== */
 
+body[data-page-type="search"] {
+  overflow: hidden;
+}
+
+body[data-page-type="search"] .main-header {
+  position: fixed;
+  top: var(--nav-gap);
+  left: var(--nav-inset);
+  right: var(--nav-inset);
+  z-index: 9999;
+}
+
+body[data-page-type="search"] .search-page {
+  height: 100dvh;
+  overflow: hidden;
+  padding-top: calc(var(--header-h) + 42px);
+}
+
+body[data-page-type="search"] .search-page-results {
+  max-height: calc(100dvh - var(--header-h) - 160px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
