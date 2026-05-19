@@ -1372,21 +1372,20 @@ body.night-mode .search-input{
 
 
 .search-submit{
-  position: static;
-  transform: none;
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 8px;
+  transform: translateY(-50%);
 
-  width: 30px;
-  height: 30px;
-  min-width: 30px;
-  flex: 0 0 30px;
-
+  width: 28px;
+  height: 28px;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 
   border: none;
-  border-radius: 11px;
   background: transparent;
+  border-radius: 0;
+  box-sizing: border-box;
 
   color: var(--control-stroke);
 
@@ -1414,7 +1413,7 @@ body.night-mode .search-input{
   stroke-linejoin: round;
 }
 
-/* Active state in light mode: icon only */
+/* Active state in light mode */
 .search-submit.is-active{
   color: #5a5a5f;
   background: transparent;
@@ -1430,7 +1429,7 @@ body.night-mode .search-submit{
   color: #8e8e93;
 }
 
-/* Active state in dark mode: icon only */
+/* Active state in dark mode */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
   color: #c7c7cc;
