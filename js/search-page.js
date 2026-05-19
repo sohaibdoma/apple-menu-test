@@ -97,8 +97,9 @@
     const titleEl = document.querySelector(".search-page-title");
     const subtitleEl = document.getElementById("search-page-query");
 
-    if (titleEl && !titleEl.textContent.trim()) {
-      titleEl.textContent = getPageTitle();
+    if (titleEl) {
+      titleEl.textContent = "";
+      titleEl.style.display = "none";
     }
 
     if (subtitleEl) {
