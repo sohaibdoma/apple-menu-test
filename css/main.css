@@ -1329,7 +1329,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
 .search-input{
  width: 100%;
   flex: 1;
-  height: 45px;
+  height: 50px;
 
   border-radius: 999px;
   border: 1px solid var(--control-stroke);
@@ -1341,7 +1341,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
   line-height: 44px;
 
   /* start side = search icon, end side = native clear X */
-  padding-inline: 52px 36px;
+  padding-inline: 5px 36px;
 
   font: inherit;
   outline: none;
