@@ -1414,17 +1414,17 @@ body.night-mode .search-input{
   stroke-linejoin: round;
 }
 
-/* Active state in light mode */
+/* Active state in light mode: exact clone of menu-toggle OPEN pill */
 .search-submit.is-active{
-  width: 33px;
-  height: 32px;
+  width: 30px;
+  height: 29px;
   padding: 0;
   box-sizing: border-box;
 
   color: #5a5a5f;
-  background: rgba(0, 0, 0, 0.08);
+  background: transparent;
 
-  border: none;
+  border: 1px solid var(--menu-icon-color);
   border-radius: 11px;
 
   cursor: pointer;
@@ -1437,18 +1437,18 @@ body.night-mode .search-submit{
   color: #8e8e93;
 }
 
-/* Active state in dark mode */
+/* Active state in dark mode: exact clone of menu-toggle OPEN pill */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
-  width: 33px;
-  height: 32px;
+  width: 30px;
+  height: 29px;
   padding: 0;
   box-sizing: border-box;
 
   color: #c7c7cc;
-  background: rgba(255, 255, 255, 0.12);
+  background: transparent;
 
-  border: none;
+  border: 1px solid var(--menu-icon-color);
   border-radius: 11px;
 
   cursor: pointer;
@@ -1458,13 +1458,11 @@ body.night-mode .search-submit.is-active{
 @media (hover: hover) and (pointer: fine) {
   .search-submit.is-active:hover{
     color: #000000;
-    background: rgba(0, 0, 0, 0.12);
   }
 
   html.night-mode .search-submit.is-active:hover,
   body.night-mode .search-submit.is-active:hover{
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.18);
   }
 }
 
