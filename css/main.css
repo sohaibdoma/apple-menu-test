@@ -2290,11 +2290,27 @@ body[data-quran-font-size="large"] .mushaf-text {
 
 
 
-/* Search page only: keep navbar fixed when keyboard opens */
-body[data-page-type="search"] .main-header {
+/* Search page only: lock navbar against iOS keyboard movement */
+body[data-page-type="search"] {
   position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body[data-page-type="search"] .main-header {
+  position: fixed !important;
   top: var(--nav-gap);
   left: var(--nav-inset);
   right: var(--nav-inset);
   z-index: 9999;
+
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+body[data-page-type="search"] .search-page {
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
