@@ -1341,7 +1341,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
   line-height: 44px;
 
   /* start side = search icon, end side = native clear X */
-  padding-inline: 5px 36px;
+  padding-inline: 5px 5px;
 
   font: inherit;
   outline: none;
