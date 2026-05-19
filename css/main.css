@@ -1429,13 +1429,10 @@ transform: none;
 
 
 
-/* Active state in light mode: exact menu-toggle OPEN pill geometry */
+/* Active state in light mode: exact menu-toggle OPEN pill geometry with fill */
 .search-submit.is-active{
   color: #5a5a5f;
-  background: transparent;
-
-  /* Same border as the open menu button */
-  border: 1px solid rgba(60, 60, 67, 0.18);
+  background: rgba(0, 0, 0, 0.08);
 
   /* Same size as .menu-toggle.is-open::before */
   width: 30px;
@@ -1444,6 +1441,7 @@ transform: none;
   box-sizing: border-box;
 
   /* Same radius as the menu button */
+  border: none;
   border-radius: 11px;
 
   cursor: pointer;
@@ -1456,30 +1454,31 @@ body.night-mode .search-submit{
   color: #8e8e93;
 }
 
-/* Active state in dark mode: exact menu-toggle OPEN pill geometry */
+/* Active state in dark mode: exact menu-toggle OPEN pill geometry with fill */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
   color: #c7c7cc;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.12);
 
   width: 30px;
   height: 29px;
   padding: 0;
   box-sizing: border-box;
+
+  border: none;
   border-radius: 11px;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .search-submit.is-active:hover{
     color: #000000;
-    border-color: rgba(60, 60, 67, 0.28);
+    background: rgba(0, 0, 0, 0.12);
   }
 
   html.night-mode .search-submit.is-active:hover,
   body.night-mode .search-submit.is-active:hover{
     color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.18);
   }
 }
 
