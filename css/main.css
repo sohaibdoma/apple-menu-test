@@ -2286,3 +2286,15 @@ body[data-quran-font-size="large"] .mushaf-text {
   direction: rtl;
 }
 
+
+
+
+
+/* Search page only: keep navbar fixed when keyboard opens */
+body[data-page-type="search"] .main-header {
+  position: fixed;
+  top: var(--nav-gap);
+  left: var(--nav-inset);
+  right: var(--nav-inset);
+  z-index: 9999;
+}
