@@ -1429,21 +1429,21 @@ transform: none;
 
 
 
-/* Active state in light mode: exact menu-toggle pill geometry */
+/* Active state in light mode: exact menu-toggle OPEN pill geometry */
 .search-submit.is-active{
   color: #5a5a5f;
   background: transparent;
 
-  /* Same border as menu-toggle::before */
+  /* Same border as the open menu button */
   border: 1px solid rgba(60, 60, 67, 0.18);
 
-  /* Same size as menu-toggle::before */
+  /* Same size as .menu-toggle.is-open::before */
   width: 30px;
-  height: 22px;
+  height: 29px;
   padding: 0;
   box-sizing: border-box;
 
-  /* Same radius as menu-toggle::before */
+  /* Same radius as the menu button */
   border-radius: 11px;
 
   cursor: pointer;
@@ -1456,7 +1456,7 @@ body.night-mode .search-submit{
   color: #8e8e93;
 }
 
-/* Active state in dark mode: exact menu-toggle pill geometry */
+/* Active state in dark mode: exact menu-toggle OPEN pill geometry */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
   color: #c7c7cc;
@@ -1464,7 +1464,7 @@ body.night-mode .search-submit.is-active{
   border: 1px solid rgba(255, 255, 255, 0.12);
 
   width: 30px;
-  height: 22px;
+  height: 29px;
   padding: 0;
   box-sizing: border-box;
   border-radius: 11px;
@@ -1482,6 +1482,7 @@ body.night-mode .search-submit.is-active{
     border-color: rgba(255, 255, 255, 0.22);
   }
 }
+
 /* ========================================
    SEARCH INPUT CLEAR BUTTON (Native X)
    - Native behavior preserved
