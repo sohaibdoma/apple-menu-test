@@ -1372,22 +1372,19 @@ body.night-mode .search-input{
 
 
 .search-submit{
-  position: absolute;
-  top: 50%;
-  inset-inline-end: 8px;
-  transform: translateY(-50%);
+position: static;
+transform: none;
 
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   margin: 0;
 
-  border: none;
+  border: 0;
   background: transparent;
-  border-radius: 0;
-  box-sizing: border-box;
 
-  color: var(--control-stroke);
+  /* Light mode default: dark gray */
+  color: #8e8e93;
 
   display: inline-flex;
   align-items: center;
@@ -1399,6 +1396,8 @@ body.night-mode .search-input{
   -webkit-tap-highlight-color: transparent;
 
   z-index: 3;
+
+  transition: color 200ms ease;
 }
 
 .search-submit-icon{
