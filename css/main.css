@@ -1426,9 +1426,14 @@ transform: none;
   stroke-linejoin: round;
 }
 
-/* Active state in light mode: black */
+
+
+
+/* Active state in light mode: black + filled box */
 .search-submit.is-active{
   color: #5a5a5f;
+  background: rgba(0, 0, 0, 0.08);
+  border: none;
   cursor: pointer;
   pointer-events: auto;
 }
@@ -1439,23 +1444,26 @@ body.night-mode .search-submit{
   color: #8e8e93;
 }
 
-/* Active state in dark mode: white */
+/* Active state in dark mode: white + filled box */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
   color: #c7c7cc;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .search-submit.is-active:hover{
     color: #000000;
+    background: rgba(0, 0, 0, 0.12);
   }
 
   html.night-mode .search-submit.is-active:hover,
   body.night-mode .search-submit.is-active:hover{
     color: #ffffff;
+    background: rgba(255, 255, 255, 0.18);
   }
 }
-
 
 
 /* ========================================
