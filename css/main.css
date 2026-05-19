@@ -2293,12 +2293,12 @@ body[data-quran-font-size="large"] .mushaf-text {
 /* Search page only: lock navbar against iOS keyboard movement */
 body[data-page-type="search"] .main-header {
   position: fixed !important;
-  top: var(--nav-gap);
-  left: var(--nav-inset);
-  right: var(--nav-inset);
+  top: max(var(--nav-gap), env(safe-area-inset-top)) !important;
+  left: var(--nav-inset) !important;
+  right: var(--nav-inset) !important;
   z-index: 9999;
 
-  touch-action: none;
-  overscroll-behavior: none;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
-
