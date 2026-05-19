@@ -1356,7 +1356,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
 }
 
 .search-input-wrap[dir="rtl"] .search-input{
-  padding-right: 10px;
+  padding-right: 15px;
   padding-left: 36px;
 }
 
