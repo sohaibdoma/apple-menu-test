@@ -1382,6 +1382,7 @@ body.night-mode .search-input{
 
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 
   border: none;
   border-radius: 11px;
@@ -1401,19 +1402,6 @@ body.night-mode .search-input{
   z-index: 3;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .search-submit-icon{
   width: 30px;
   height: 30px;
@@ -1426,15 +1414,16 @@ body.night-mode .search-input{
   stroke-linejoin: round;
 }
 
-
-
-
-/* Active state in light mode: exact menu-toggle OPEN pill geometry with fill */
+/* Active state in light mode */
 .search-submit.is-active{
+  width: 30px;
+  height: 29px;
+  padding: 0;
+  box-sizing: border-box;
+
   color: #5a5a5f;
   background: rgba(0, 0, 0, 0.08);
 
-  /* Same radius as the menu button */
   border: none;
   border-radius: 11px;
 
@@ -1442,25 +1431,28 @@ body.night-mode .search-input{
   pointer-events: auto;
 }
 
-/* Dark mode default: light gray */
+/* Dark mode default */
 html.night-mode .search-submit,
 body.night-mode .search-submit{
   color: #8e8e93;
 }
 
-/* Active state in dark mode: exact menu-toggle OPEN pill geometry with fill */
+/* Active state in dark mode */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
-  color: #c7c7cc;
-  background: rgba(255, 255, 255, 0.12);
-
   width: 30px;
   height: 29px;
   padding: 0;
   box-sizing: border-box;
 
+  color: #c7c7cc;
+  background: rgba(255, 255, 255, 0.12);
+
   border: none;
   border-radius: 11px;
+
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 @media (hover: hover) and (pointer: fine) {
