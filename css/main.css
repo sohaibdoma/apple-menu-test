@@ -1331,7 +1331,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
   flex: 1;
   height: 56px;
 
-  border-radius: 20px;
+  border-radius: 30px;
   border: 1px solid var(--control-stroke);
 
   background: #ffffff;
@@ -1356,7 +1356,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
 }
 
 .search-input-wrap[dir="rtl"] .search-input{
-  padding-right: 15px;
+  padding-right: 36px;
   padding-left: 36px;
 }
 
@@ -1468,7 +1468,7 @@ body.night-mode .search-submit.is-active{
   height: 44px;
 
   border-radius: 0;
-  margin-left: -31px;
+  margin-left: -25px;
 
   /* Light mode: obvious dark grey circle */
   background-color: transparent;
