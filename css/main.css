@@ -1374,7 +1374,7 @@ body.night-mode .search-input{
 .search-submit{
   position: absolute;
   top: 50%;
-  right: 1px;          /* Force icon to the right side */
+  right: 4px;          /* Force icon to the right side */
   left: auto;          /* Remove any left positioning */
   inset-inline-end: auto;
   transform: translateY(calc(-50% - 1px)); /* Move up by 1px */
