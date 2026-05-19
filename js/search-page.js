@@ -126,9 +126,14 @@
       versesCount: chapter.verses_count || ""
     }));
 
+    const surahNameById = new Map(
+      allSurahs.map((chapter) => [chapter.id, chapter.name_arabic || ""])
+    );
+
     const ayahs = allAyahs.map((ayah) => ({
       type: "ayah",
       surahId: ayah.surahId,
+      surahNameArabic: surahNameById.get(ayah.surahId) || "",
       ayahNumber: ayah.ayahNumber,
       verseKey: ayah.verseKey,
       pageNumber: ayah.pageNumber,
@@ -240,16 +245,17 @@
 
   function getAyahSecondaryLabel(item) {
     const lang = document.documentElement.getAttribute("data-lang") || "ar";
+    const surahNameArabic = item.surahNameArabic || `سورة ${item.surahId}`;
 
     if (lang === "en") {
-      return `Surah ${item.surahId} • Ayah ${item.ayahNumber}`;
+      return `${surahNameArabic} • Ayah ${item.ayahNumber}`;
     }
 
     if (lang === "tr") {
-      return `Sure ${item.surahId} • Ayet ${item.ayahNumber}`;
+      return `${surahNameArabic} • Ayet ${item.ayahNumber}`;
     }
 
-    return `سورة ${item.surahId} • آية ${item.ayahNumber}`;
+    return `${surahNameArabic} • آية ${item.ayahNumber}`;
   }
 
   function mergeResults(surahItems, ayahItems) {
