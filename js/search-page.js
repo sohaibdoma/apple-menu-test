@@ -1,5 +1,3 @@
-js/search-page.js
-—-
 
 (function () {
   "use strict";
