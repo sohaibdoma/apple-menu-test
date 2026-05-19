@@ -1336,7 +1336,7 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
 
   /* Exact same glass effect as the nav bar */
   background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
    
