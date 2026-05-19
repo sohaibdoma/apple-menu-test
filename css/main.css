@@ -2285,16 +2285,3 @@ body[data-quran-font-size="large"] .mushaf-text {
 .font-size-pill {
   direction: rtl;
 }
-
-
-
-
-
-/* Search page only: lock navbar against iOS keyboard movement */
-body[data-page-type="search"] .main-header {
-  position: fixed !important;
-  top: var(--nav-gap) !important;
-  left: var(--nav-inset) !important;
-  right: var(--nav-inset) !important;
-  z-index: 9999;
-}
