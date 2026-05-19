@@ -1,4 +1,3 @@
-
 (function () {
   "use strict";
 
@@ -50,28 +49,28 @@
     const lang = document.documentElement.getAttribute("data-lang") || "ar";
 
     if (lang === "en") {
-      return ${count} result${count === 1 ? "" : "s"} for "${query}";
+      return `${count} result${count === 1 ? "" : "s"} for "${query}"`;
     }
 
     if (lang === "tr") {
-      return "${query}" için ${count} sonuç;
+      return `"${query}" için ${count} sonuç`;
     }
 
-    return "${query}" لـ ${count} نتيجة;
+    return `"${query}" لـ ${count} نتيجة`;
   }
 
   function getEmptyLabel(query) {
     const lang = document.documentElement.getAttribute("data-lang") || "ar";
 
     if (lang === "en") {
-      return No results found for "${query}";
+      return `No results found for "${query}"`;
     }
 
     if (lang === "tr") {
-      return "${query}" için sonuç bulunamadı;
+      return `"${query}" için sonuç bulunamadı`;
     }
 
-    return لا توجد نتائج لـ "${query}";
+    return `لا توجد نتائج لـ "${query}"`;
   }
 
   function getTypeLabel(type) {
@@ -106,7 +105,7 @@
       subtitleEl.textContent = query ? getResultsLabel(count, query) : "";
     }
 
-    document.title = query ? ${getPageTitle()} - ${query} : getPageTitle();
+    document.title = query ? `${getPageTitle()} - ${query}` : getPageTitle();
   }
 
   async function loadSearchData() {
@@ -123,7 +122,7 @@
     const surahs = allSurahs.map((chapter) => ({
       type: "surah",
       surahId: chapter.id,
-      href: surah.html?surah=${chapter.id},
+      href: `surah.html?surah=${chapter.id}`,
       nameArabic: chapter.name_arabic || "",
       nameSimple: chapter.name_simple || "",
       revelationPlace: chapter.revelation_place || "",
@@ -147,7 +146,7 @@
     const q = normalizeSearchText(query);
     if (!q) return [];
 
-  return items
+    return items
       .map((item) => {
         const idText = String(item.surahId);
         const arabic = normalizeSearchText(item.nameArabic);
@@ -230,12 +229,12 @@
     if (lang === "ar") {
       const simple = item.nameSimple || "";
       const number = item.surahId || "";
-      return ${simple} • ${number};
+      return `${simple} • ${number}`;
     }
 
     const arabic = item.nameArabic || "";
     const number = item.surahId || "";
-    return ${arabic} • ${number};
+    return `${arabic} • ${number}`;
   }
 
   function getAyahPrimaryLabel(item) {
@@ -246,14 +245,14 @@
     const lang = document.documentElement.getAttribute("data-lang") || "ar";
 
     if (lang === "en") {
-      return Surah ${item.surahId} • Ayah ${item.ayahNumber};
+      return `Surah ${item.surahId} • Ayah ${item.ayahNumber}`;
     }
 
     if (lang === "tr") {
-      return Sure ${item.surahId} • Ayet ${item.ayahNumber};
+      return `Sure ${item.surahId} • Ayet ${item.ayahNumber}`;
     }
 
-    return سورة ${item.surahId} • آية ${item.ayahNumber};
+    return `سورة ${item.surahId} • آية ${item.ayahNumber}`;
   }
 
   function mergeResults(surahItems, ayahItems) {
@@ -283,7 +282,7 @@
           ? highlightMatch(getAyahPrimaryLabel(item), query)
           : highlightMatch(getSurahPrimaryLabel(item), query);
 
-   const secondaryLabel = item.type === "ayah"
+        const secondaryLabel = item.type === "ayah"
           ? highlightMatch(getAyahSecondaryLabel(item), query)
           : highlightMatch(getSurahSecondaryLabel(item), query);
 
@@ -330,7 +329,7 @@
 
   function updateURL(query) {
     const nextURL = query
-      ? search.html?q=${encodeURIComponent(query)}
+      ? `search.html?q=${encodeURIComponent(query)}`
       : "search.html";
 
     window.history.replaceState({}, "", nextURL);
@@ -415,4 +414,4 @@
       runSearch(query);
     });
   });
-})();        
+})();
