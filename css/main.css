@@ -1434,6 +1434,7 @@ transform: none;
   color: #5a5a5f;
   background: transparent;
   border: 1px solid rgba(60, 60, 67, 0.18);
+  border-radius: var(--nav-radius);
   cursor: pointer;
   pointer-events: auto;
 }
@@ -1450,6 +1451,7 @@ body.night-mode .search-submit.is-active{
   color: #c7c7cc;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--nav-radius);
 }
 
 @media (hover: hover) and (pointer: fine) {
