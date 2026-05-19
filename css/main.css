@@ -1416,8 +1416,8 @@ body.night-mode .search-input{
 
 /* Active state in light mode */
 .search-submit.is-active{
-  width: 30px;
-  height: 29px;
+  width: 33px;
+  height: 32px;
   padding: 0;
   box-sizing: border-box;
 
@@ -1440,8 +1440,8 @@ body.night-mode .search-submit{
 /* Active state in dark mode */
 html.night-mode .search-submit.is-active,
 body.night-mode .search-submit.is-active{
-  width: 30px;
-  height: 29px;
+  width: 33px;
+  height: 32px;
   padding: 0;
   box-sizing: border-box;
 
