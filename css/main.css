@@ -1332,17 +1332,18 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
   height: 56px;
 
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: none;
 
-  background: rgba(255, 255, 255, 0.55);
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
+  /* Exact same glass effect as the nav bar */
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+   
   color: var(--page-text);
 
   padding-block: 0;
   line-height: 44px;
 
-/* start side = search icon, end side = native clear X */
   padding-inline: 52px 36px;
 
   font: inherit;
@@ -1369,10 +1370,9 @@ backdrop-filter: blur(12px);
 
 html.night-mode .search-input,
 body.night-mode .search-input{
-   border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 .search-submit{
