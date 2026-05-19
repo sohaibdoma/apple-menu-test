@@ -351,11 +351,28 @@
   document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("searchPageInput");
     const submitBtn = document.getElementById("searchPageSubmit");
+    const header = document.querySelector(".main-header");
     const initialQuery = getQueryFromURL();
 
     if (!input || !submitBtn) {
       runSearch(initialQuery);
       return;
+    }
+
+    function lockSearchHeaderPosition() {
+      if (!header || !window.visualViewport) return;
+
+      header.style.transform = `translateY(${window.visualViewport.offsetTop}px)`;
+    }
+
+    if (window.visualViewport && header) {
+      window.visualViewport.addEventListener("resize", lockSearchHeaderPosition);
+      window.visualViewport.addEventListener("scroll", lockSearchHeaderPosition);
+
+      input.addEventListener("focus", lockSearchHeaderPosition);
+      input.addEventListener("blur", () => {
+        header.style.transform = "";
+      });
     }
 
     input.placeholder = "ابحث في القرآن";
