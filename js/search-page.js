@@ -60,17 +60,7 @@
   }
 
   function getEmptyLabel(query) {
-    const lang = document.documentElement.getAttribute("data-lang") || "ar";
-
-    if (lang === "en") {
-      return `No results found for "${query}"`;
-    }
-
-    if (lang === "tr") {
-      return `"${query}" için sonuç bulunamadı`;
-    }
-
-    return `لا توجد نتائج لـ "${query}"`;
+    return "";
   }
 
   function getTypeLabel(type) {
@@ -273,9 +263,7 @@
     if (!resultsEl) return;
 
     if (!items.length) {
-      resultsEl.innerHTML = `
-        <div class="search-empty">${escapeHtml(getEmptyLabel(query))}</div>
-      `;
+      resultsEl.innerHTML = "";
       return;
     }
 
