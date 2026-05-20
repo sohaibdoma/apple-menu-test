@@ -26,9 +26,9 @@
     let manualResumeTimer = 0;
     let wakeLock = null;
 
-    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 72;
+    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 48;
     const BOTTOM_THRESHOLD = 3;
-    const MANUAL_SCROLL_GRACE_MS = 80;
+    const MANUAL_SCROLL_GRACE_MS = 60;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
@@ -123,7 +123,7 @@
     }
 
     function finishManualScroll() {
-      if (!isOn) return;
+      if (!isOn || programmaticScroll) return;
 
       manualScrollUntil = 0;
       scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
@@ -131,7 +131,7 @@
     }
 
     function holdAutoScrollForManualScroll() {
-      if (!isOn) return;
+      if (!isOn || programmaticScroll) return;
 
       manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
       scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
@@ -142,7 +142,7 @@
     }
 
     function syncManualScrollPosition() {
-      if (!isOn) return;
+      if (!isOn || programmaticScroll) return;
       if (performance.now() > manualScrollUntil) return;
 
       manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
@@ -181,6 +181,7 @@
 
       programmaticScroll = true;
       scroller.scrollTop = scrollPosition;
+
       requestAnimationFrame(() => {
         programmaticScroll = false;
       });
