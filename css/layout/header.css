@@ -462,11 +462,12 @@ body:not(.menu-open) .theme-toggle{
    
   display: none;
    
-  width: 44px;
-  height: 44px;
+width: 30px;
+height: 22px;
+padding: 11px 7px;
+box-sizing: content-box;
 
   border-radius: 999px;
-  padding: 0;
 
   cursor: pointer;
   position: relative;
