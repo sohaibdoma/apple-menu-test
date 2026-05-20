@@ -27,7 +27,7 @@
 
 const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 24;
 const BOTTOM_THRESHOLD = 3;
-const MANUAL_SCROLL_GRACE_MS = 80;
+const MANUAL_SCROLL_GRACE_MS = 0;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
@@ -156,10 +156,10 @@ const MANUAL_SCROLL_GRACE_MS = 80;
 
       const maxScrollTop = getMaxScrollTop();
 
-      scrollPosition = Math.min(
-        scrollPosition + SPEED_PX_PER_SECOND * deltaSeconds,
-        maxScrollTop
-      );
+scrollPosition = Math.min(
+  scroller.scrollTop + SPEED_PX_PER_SECOND * deltaSeconds,
+  maxScrollTop
+);
 
       programmaticScroll = true;
       scroller.scrollTop = scrollPosition;
