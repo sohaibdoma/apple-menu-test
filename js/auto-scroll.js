@@ -187,19 +187,22 @@
       });
     }
 
+     function syncAutoScrollPosition() {
+      if (!isOn) return;
+
+      scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+      lastTime = 0;
+    }
+
     window.addEventListener(
       "wheel",
-      () => {
-        if (isOn) stopAll();
-      },
+      syncAutoScrollPosition,
       { passive: true }
     );
 
     window.addEventListener(
       "touchmove",
-      () => {
-        if (isOn) stopAll();
-      },
+      syncAutoScrollPosition,
       { passive: true }
     );
 
@@ -215,7 +218,7 @@
       ];
 
       if (isOn && scrollKeys.includes(event.key)) {
-        stopAll();
+        requestAnimationFrame(syncAutoScrollPosition);
       }
     });
 
