@@ -23,11 +23,12 @@
     let scrollPosition = 0;
     let programmaticScroll = false;
     let manualScrollUntil = 0;
+    let manualResumeTimer = 0;
     let wakeLock = null;
 
-const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 24;
-const BOTTOM_THRESHOLD = 3;
-const MANUAL_SCROLL_GRACE_MS = 0;
+    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 24;
+    const BOTTOM_THRESHOLD = 3;
+    const MANUAL_SCROLL_GRACE_MS = 80;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
@@ -87,9 +88,12 @@ const MANUAL_SCROLL_GRACE_MS = 0;
       isPausedByTap = false;
 
       cancelAnimationFrame(rafId);
+      clearTimeout(manualResumeTimer);
+
       rafId = 0;
       lastTime = 0;
       manualScrollUntil = 0;
+      manualResumeTimer = 0;
 
       setUi();
       releaseWakeLock();
@@ -118,12 +122,23 @@ const MANUAL_SCROLL_GRACE_MS = 0;
       rafId = requestAnimationFrame(tick);
     }
 
+    function finishManualScroll() {
+      if (!isOn) return;
+
+      manualScrollUntil = 0;
+      scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+      lastTime = 0;
+    }
+
     function holdAutoScrollForManualScroll() {
       if (!isOn) return;
 
       manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
       scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
       lastTime = 0;
+
+      clearTimeout(manualResumeTimer);
+      manualResumeTimer = setTimeout(finishManualScroll, MANUAL_SCROLL_GRACE_MS);
     }
 
     function syncManualScrollPosition() {
@@ -133,6 +148,9 @@ const MANUAL_SCROLL_GRACE_MS = 0;
       manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
       scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
       lastTime = 0;
+
+      clearTimeout(manualResumeTimer);
+      manualResumeTimer = setTimeout(finishManualScroll, MANUAL_SCROLL_GRACE_MS);
     }
 
     function tick(currentTime) {
@@ -156,10 +174,10 @@ const MANUAL_SCROLL_GRACE_MS = 0;
 
       const maxScrollTop = getMaxScrollTop();
 
-scrollPosition = Math.min(
-  scroller.scrollTop + SPEED_PX_PER_SECOND * deltaSeconds,
-  maxScrollTop
-);
+      scrollPosition = Math.min(
+        scrollPosition + SPEED_PX_PER_SECOND * deltaSeconds,
+        maxScrollTop
+      );
 
       programmaticScroll = true;
       scroller.scrollTop = scrollPosition;
@@ -228,6 +246,10 @@ scrollPosition = Math.min(
     });
 
     window.addEventListener("scroll", syncManualScrollPosition, {
+      passive: true
+    });
+
+    window.addEventListener("scrollend", finishManualScroll, {
       passive: true
     });
 
