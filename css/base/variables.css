@@ -8,9 +8,9 @@
   --header-pad: 16px;
 
   /* Typography & Page */
-  --text-color: #000;
-  --page-bg: #e8e8e8;
-  --page-text: #000;
+  --text-color: #1C1C1C;
+  --page-bg: #F8F5EE;
+  --page-text: #1C1C1C;
 
   /* Menu Icon (Light Mode) */
   --menu-icon-color: #000000;
@@ -29,8 +29,9 @@
 html.night-mode,
 body.night-mode {
   /* Night Page Colors */
-  --page-bg: #2f2f2f;
-  --page-text: #f1f1f1;
+  --text-color: #F5F1E8;
+  --page-bg: #111111;
+  --page-text: #F5F1E8;
 
   /* Menu Icon (Night Mode) */
   --menu-icon-color: #ffffff;
@@ -40,4 +41,7 @@ body.night-mode {
 
   /* Auto Scroll Active Icon Color */
   --auto-active-color: rgba(255, 255, 255, 0.5);
+
+  --mushaf-bg: #111111;
+  --mushaf-text: #F5F1E8;
 }
