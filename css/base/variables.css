@@ -8,9 +8,9 @@
   --header-pad: 16px;
 
   /* Typography & Page */
-  --text-color: #1C1C1C;
-  --page-bg: #F8F5EE;
-  --page-text: #1C1C1C;
+  --text-color: #2A241C;
+  --page-bg: #EFE8DA;
+  --page-text: #2A241C;
 
   /* Menu Icon (Light Mode) */
   --menu-icon-color: #000000;
@@ -23,16 +23,16 @@
   --auto-active-color: rgba(0, 0, 0, 0.4);
 
   /* Mushaf Reading Colors */
-  --mushaf-bg: #F8F5EE;
-  --mushaf-text: #1C1C1C;
+  --mushaf-bg: #EFE8DA;
+  --mushaf-text: #2A241C;
 }
 
 html.night-mode,
 body.night-mode {
   /* Night Page Colors */
-  --text-color: #F5F1E8;
-  --page-bg: #1E1E1E;
-  --page-text: #F5F1E8;
+  --text-color: #F7F3EA;
+  --page-bg: #2A2A2A;
+  --page-text: #F7F3EA;
 
   /* Menu Icon (Night Mode) */
   --menu-icon-color: #ffffff;
@@ -45,6 +45,6 @@ body.night-mode {
   --auto-active-color: rgba(255, 255, 255, 0.5);
 
   /* Mushaf Reading Colors */
-  --mushaf-bg: #1E1E1E;
-  --mushaf-text: #F5F1E8;
+  --mushaf-bg: #2A2A2A;
+  --mushaf-text: #F7F3EA;
 }
