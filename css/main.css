@@ -1819,7 +1819,10 @@ body.night-mode .search-page-results .search-result-meta {
 
   padding-top: 20px;
   padding-bottom: 60px;
-
+   
+  background-color: var(--mushaf-bg);
+  color: var(--mushaf-text);
+   
   position: relative;
 }
 
