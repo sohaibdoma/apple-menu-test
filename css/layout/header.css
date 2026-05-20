@@ -447,55 +447,38 @@ body.search-open .home-toggle{
    THEME TOGGLE (Outline Minimal)
 ======================================== */
 
-body.menu-open .theme-toggle {
+body.menu-open .theme-toggle{
   display: block;
   opacity: 1;
   pointer-events: auto;
 }
 
-body:not(.menu-open) .theme-toggle {
-  opacity: 0;
+body:not(.menu-open) .theme-toggle{
+  opacity:0;
 }
 
 .theme-toggle {
   justify-self: start;
-
+   
   display: none;
-
-  /* 44 × 44 Apple touch target */
-  width: 44px;
-  height: 44px;
+   
+width: 30px;
+height: 22px;
   padding: 0;
+
+  border-radius: 999px;
 
   cursor: pointer;
   position: relative;
 
-  background: transparent;
-  border: none;
+  background: transparent; /* no fill */
 
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s;
-
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Visible switch outline (keeps original 30 × 22 shape) */
-.theme-toggle::before {
-  content: "";
-  position: absolute;
-
-  width: 30px;
-  height: 22px;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  border-radius: 999px;
   border: 1px solid var(--menu-icon-color);
 
-  background: transparent;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s,
+              border-color 0.25s ease;
 
-  transition: border-color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Knob */
@@ -508,30 +491,26 @@ body:not(.menu-open) .theme-toggle {
 
   border-radius: 50%;
 
-  top: 50%;
-  left: 50%;
-
-  /* Left position inside the 30 × 22 outline */
-  transform: translate(-11px, -50%);
+  top: 2px;
+  left: 2px;
 
   background: #000000;
 
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.25s ease;
-}
+} 
 
 /* =========================
    NIGHT MODE
 ========================= */
 
-html.night-mode .theme-toggle::before,
-body.night-mode .theme-toggle::before {
+html.night-mode .theme-toggle,
+body.night-mode .theme-toggle {
   border: 1px solid var(--menu-icon-color);
 }
 
 html.night-mode .theme-toggle::after,
 body.night-mode .theme-toggle::after {
-  /* Move knob 8px to the right from its light-mode position */
-  transform: translate(-3px, -50%);
+  transform: translateX(8px);
   background: #ffffff;
 }
