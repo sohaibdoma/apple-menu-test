@@ -25,9 +25,9 @@
     let manualScrollUntil = 0;
     let wakeLock = null;
 
-    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 18;
-    const BOTTOM_THRESHOLD = 3;
-    const MANUAL_SCROLL_GRACE_MS = 180;
+const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 24;
+const BOTTOM_THRESHOLD = 3;
+const MANUAL_SCROLL_GRACE_MS = 80;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
