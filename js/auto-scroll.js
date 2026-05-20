@@ -26,7 +26,7 @@
     let manualResumeTimer = 0;
     let wakeLock = null;
 
-    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 24;
+    const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 72;
     const BOTTOM_THRESHOLD = 3;
     const MANUAL_SCROLL_GRACE_MS = 80;
 
