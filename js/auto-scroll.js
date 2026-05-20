@@ -116,10 +116,9 @@
     }
 
     function syncAutoScrollPosition() {
-      if (!isOn) return;
+      if (!isOn || programmaticScroll) return;
 
       scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
-      lastTime = 0;
     }
 
     function tick(currentTime) {
