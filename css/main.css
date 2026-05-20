@@ -1224,10 +1224,6 @@ html.night-mode .next-surah-link{
 }
 
 
-
-
-
-
 /* ========================================
    MUSHAF MODE
    Single-font Mushaf rendering
@@ -1280,10 +1276,6 @@ body[data-quran-mode="mushaf"] .q-badge--ayah {
     font-size: 1.7rem;
   }
 }
-
-
-
-
 
 
 /* ========================================
@@ -1502,13 +1494,6 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 }
 
 
-
-
-
-
-
-
-
 /* Results stack */
 .search-results{
   margin-top: 12px;
@@ -1548,7 +1533,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
 
   border-radius: 13px;
    
-  font-family: "Scheherazade New", serif;
+  font-family: "Amiri Quran", serif;
   font-size: 17px;
   line-height: 1.6;
   font-feature-settings: "calt" 1, "liga" 1;
