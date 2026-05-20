@@ -1534,7 +1534,7 @@ body.night-mode .search-input::-webkit-search-cancel-button{
   border-radius: 13px;
    
   font-family: "Amiri Quran", serif;
-  font-size: 17px;
+  font-size: 25px;
   line-height: 1.6;
   font-feature-settings: "calt" 1, "liga" 1;
 
@@ -1677,7 +1677,7 @@ body.night-mode .ayah-targeted{
 
 .search-page-title {
   margin: 0;
-  font-family: "Scheherazade New", serif;
+  font-family: "Amiri Quran", serif;
   font-size: 34px;
   font-weight: 700;
   line-height: 1.2;
@@ -1730,8 +1730,8 @@ body.night-mode .ayah-targeted{
 }
 
 .search-page-results .search-result-text {
-  font-family: "Scheherazade New", serif;
-  font-size: 22px;
+  font-family: "Amiri Quran", serif;
+  font-size: 30px;
   line-height: 1.5;
   word-break: break-word;
 }
@@ -2117,9 +2117,6 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
 }
 
 
-
-
-
 body[data-page-type="mushaf"] .mushaf-bottom-right {
   order: 2;
   display: flex;
@@ -2139,10 +2136,6 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
 body[data-page-type="mushaf"] .mushaf-scroll-top-circle {
   order: 3;
 }
-
-
-
-
 
 body[data-page-type="mushaf"] .mushaf-scroll-top-circle {
   height: var(--header-h);
