@@ -27,7 +27,7 @@
 
     const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 18;
     const BOTTOM_THRESHOLD = 3;
-    const MANUAL_SCROLL_GRACE_MS = 180;
+    const MANUAL_SCROLL_GRACE_MS = 350;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
@@ -118,29 +118,35 @@
       rafId = requestAnimationFrame(tick);
     }
 
-    function syncAutoScrollPosition() {
-      if (!isOn || programmaticScroll) return;
+    function noteManualScroll() {
+      if (!isOn) return;
 
       manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
 
       requestAnimationFrame(() => {
-        if (!isOn || programmaticScroll) return;
+        if (!isOn) return;
 
         scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
       });
     }
 
+    function syncRealScrollPosition() {
+      if (!isOn || programmaticScroll) return;
+
+      scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+    }
+
     function tick(currentTime) {
       if (!isOn || isPausedByTap) return;
 
-      if (performance.now() < manualScrollUntil) {
-        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+      if (!lastTime) {
         lastTime = currentTime;
         rafId = requestAnimationFrame(tick);
         return;
       }
 
-      if (!lastTime) {
+      if (currentTime < manualScrollUntil) {
+        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
         lastTime = currentTime;
         rafId = requestAnimationFrame(tick);
         return;
@@ -150,14 +156,16 @@
       lastTime = currentTime;
 
       const maxScrollTop = getMaxScrollTop();
+      const currentScrollTop = Math.min(scroller.scrollTop, maxScrollTop);
 
       scrollPosition = Math.min(
-        scrollPosition + SPEED_PX_PER_SECOND * deltaSeconds,
+        currentScrollTop + SPEED_PX_PER_SECOND * deltaSeconds,
         maxScrollTop
       );
 
       programmaticScroll = true;
       scroller.scrollTop = scrollPosition;
+
       requestAnimationFrame(() => {
         programmaticScroll = false;
       });
@@ -210,17 +218,10 @@
       });
     }
 
-    window.addEventListener(
-      "wheel",
-      syncAutoScrollPosition,
-      { passive: true }
-    );
-
-    window.addEventListener(
-      "touchmove",
-      syncAutoScrollPosition,
-      { passive: true }
-    );
+    window.addEventListener("wheel", noteManualScroll, { passive: true });
+    window.addEventListener("touchstart", noteManualScroll, { passive: true });
+    window.addEventListener("touchmove", noteManualScroll, { passive: true });
+    window.addEventListener("scroll", syncRealScrollPosition, { passive: true });
 
     window.addEventListener("keydown", (event) => {
       const scrollKeys = [
@@ -234,7 +235,7 @@
       ];
 
       if (isOn && scrollKeys.includes(event.key)) {
-        syncAutoScrollPosition();
+        noteManualScroll();
       }
     });
 
