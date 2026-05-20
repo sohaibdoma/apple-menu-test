@@ -22,10 +22,12 @@
     let lastTime = 0;
     let scrollPosition = 0;
     let programmaticScroll = false;
+    let manualScrollUntil = 0;
     let wakeLock = null;
 
     const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 18;
     const BOTTOM_THRESHOLD = 3;
+    const MANUAL_SCROLL_GRACE_MS = 180;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
@@ -87,6 +89,7 @@
       cancelAnimationFrame(rafId);
       rafId = 0;
       lastTime = 0;
+      manualScrollUntil = 0;
 
       setUi();
       releaseWakeLock();
@@ -118,6 +121,8 @@
     function syncAutoScrollPosition() {
       if (!isOn || programmaticScroll) return;
 
+      manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
+
       requestAnimationFrame(() => {
         if (!isOn || programmaticScroll) return;
 
@@ -127,6 +132,13 @@
 
     function tick(currentTime) {
       if (!isOn || isPausedByTap) return;
+
+      if (performance.now() < manualScrollUntil) {
+        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+        lastTime = currentTime;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
 
       if (!lastTime) {
         lastTime = currentTime;
@@ -165,6 +177,7 @@
 
       scrollPosition = scroller.scrollTop;
       lastTime = 0;
+      manualScrollUntil = 0;
 
       isOn = true;
       isPausedByTap = false;
@@ -221,7 +234,7 @@
       ];
 
       if (isOn && scrollKeys.includes(event.key)) {
-        requestAnimationFrame(syncAutoScrollPosition);
+        syncAutoScrollPosition();
       }
     });
 
