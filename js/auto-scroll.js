@@ -118,7 +118,11 @@
     function syncAutoScrollPosition() {
       if (!isOn || programmaticScroll) return;
 
-      scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+      requestAnimationFrame(() => {
+        if (!isOn || programmaticScroll) return;
+
+        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+      });
     }
 
     function tick(currentTime) {
