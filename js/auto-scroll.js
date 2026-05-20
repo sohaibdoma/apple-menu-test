@@ -119,24 +119,21 @@
     }
 
     function markManualScroll() {
-      if (!isOn || programmaticScroll) return;
+  if (!isOn || programmaticScroll) return;
 
-      manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
+  manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
+  scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+  lastTime = 0;
+}
 
-      requestAnimationFrame(() => {
-        if (!isOn || programmaticScroll) return;
+function syncManualScrollPosition() {
+  if (!isOn || programmaticScroll) return;
 
-        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
-        lastTime = 0;
-      });
-    }
-
-    function syncManualScrollPosition() {
-      if (!isOn || programmaticScroll) return;
-
-      scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
-    }
-
+  manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
+  scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+  lastTime = 0;
+}
+    
     function tick(currentTime) {
       if (!isOn || isPausedByTap) return;
 
