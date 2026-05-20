@@ -297,6 +297,4 @@
 
   window.Wahyollah = window.Wahyollah || {};
   window.Wahyollah.initAutoScroll = initAutoScroll;
-
-  document.addEventListener("DOMContentLoaded", initAutoScroll);
 })();
