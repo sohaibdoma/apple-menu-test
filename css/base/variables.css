@@ -21,6 +21,9 @@
 
   /* Auto Scroll Active Icon Color */
   --auto-active-color: rgba(0, 0, 0, 0.4);
+
+  --mushaf-bg: #F8F5EE;
+  --mushaf-text: #1C1C1C;
 }
 
 html.night-mode,
