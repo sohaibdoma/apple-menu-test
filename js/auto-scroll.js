@@ -20,14 +20,10 @@
     let isPausedByTap = false;
     let rafId = 0;
     let lastTime = 0;
-    let scrollPosition = 0;
-    let programmaticScroll = false;
-    let manualScrollUntil = 0;
     let wakeLock = null;
 
     const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 18;
     const BOTTOM_THRESHOLD = 3;
-    const MANUAL_SCROLL_GRACE_MS = 350;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
@@ -89,7 +85,6 @@
       cancelAnimationFrame(rafId);
       rafId = 0;
       lastTime = 0;
-      manualScrollUntil = 0;
 
       setUi();
       releaseWakeLock();
@@ -111,29 +106,10 @@
       if (!isOn || !isPausedByTap) return;
 
       isPausedByTap = false;
-      scrollPosition = scroller.scrollTop;
       lastTime = 0;
 
       setUi();
       rafId = requestAnimationFrame(tick);
-    }
-
-    function noteManualScroll() {
-      if (!isOn) return;
-
-      manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
-
-      requestAnimationFrame(() => {
-        if (!isOn) return;
-
-        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
-      });
-    }
-
-    function syncRealScrollPosition() {
-      if (!isOn || programmaticScroll) return;
-
-      scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
     }
 
     function tick(currentTime) {
@@ -145,30 +121,17 @@
         return;
       }
 
-      if (currentTime < manualScrollUntil) {
-        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
-        lastTime = currentTime;
-        rafId = requestAnimationFrame(tick);
-        return;
-      }
-
       const deltaSeconds = Math.min((currentTime - lastTime) / 1000, 0.05);
       lastTime = currentTime;
 
       const maxScrollTop = getMaxScrollTop();
       const currentScrollTop = Math.min(scroller.scrollTop, maxScrollTop);
-
-      scrollPosition = Math.min(
+      const nextScrollTop = Math.min(
         currentScrollTop + SPEED_PX_PER_SECOND * deltaSeconds,
         maxScrollTop
       );
 
-      programmaticScroll = true;
-      scroller.scrollTop = scrollPosition;
-
-      requestAnimationFrame(() => {
-        programmaticScroll = false;
-      });
+      scroller.scrollTop = nextScrollTop;
 
       const atBottom = maxScrollTop - scroller.scrollTop <= BOTTOM_THRESHOLD;
 
@@ -183,9 +146,7 @@
     async function start() {
       if (prefersReduced || isOn) return;
 
-      scrollPosition = scroller.scrollTop;
       lastTime = 0;
-      manualScrollUntil = 0;
 
       isOn = true;
       isPausedByTap = false;
@@ -218,33 +179,10 @@
       });
     }
 
-    window.addEventListener("wheel", noteManualScroll, { passive: true });
-    window.addEventListener("touchstart", noteManualScroll, { passive: true });
-    window.addEventListener("touchmove", noteManualScroll, { passive: true });
-    window.addEventListener("scroll", syncRealScrollPosition, { passive: true });
-
-    window.addEventListener("keydown", (event) => {
-      const scrollKeys = [
-        "ArrowUp",
-        "ArrowDown",
-        "PageUp",
-        "PageDown",
-        "Home",
-        "End",
-        " "
-      ];
-
-      if (isOn && scrollKeys.includes(event.key)) {
-        noteManualScroll();
-      }
-    });
-
     window.addEventListener(
       "resize",
       () => {
         if (!isOn) return;
-
-        scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
         lastTime = 0;
       },
       { passive: true }
