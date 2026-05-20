@@ -27,7 +27,7 @@
 
     const SPEED_PX_PER_SECOND = prefersReduced ? 0 : 18;
     const BOTTOM_THRESHOLD = 3;
-    const MANUAL_SCROLL_GRACE_MS = 1200;
+    const MANUAL_SCROLL_GRACE_MS = 120;
 
     function getMaxScrollTop() {
       return Math.max(0, scroller.scrollHeight - window.innerHeight);
