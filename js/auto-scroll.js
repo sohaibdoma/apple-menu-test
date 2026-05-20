@@ -118,28 +118,29 @@
       rafId = requestAnimationFrame(tick);
     }
 
-    function markManualScroll() {
-  if (!isOn || programmaticScroll) return;
+    function holdAutoScrollForManualScroll() {
+      if (!isOn) return;
 
-  manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
-  scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
-  lastTime = 0;
-}
+      manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
+      scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+      lastTime = 0;
+    }
 
-function syncManualScrollPosition() {
-  if (!isOn || programmaticScroll) return;
+    function syncManualScrollPosition() {
+      if (!isOn) return;
+      if (performance.now() > manualScrollUntil) return;
 
-  manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
-  scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
-  lastTime = 0;
-}
-    
+      manualScrollUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
+      scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
+      lastTime = 0;
+    }
+
     function tick(currentTime) {
       if (!isOn || isPausedByTap) return;
 
       if (performance.now() < manualScrollUntil) {
         scrollPosition = Math.min(scroller.scrollTop, getMaxScrollTop());
-        lastTime = currentTime;
+        lastTime = 0;
         rafId = requestAnimationFrame(tick);
         return;
       }
@@ -214,9 +215,21 @@ function syncManualScrollPosition() {
       });
     }
 
-    window.addEventListener("wheel", markManualScroll, { passive: true });
-    window.addEventListener("touchmove", markManualScroll, { passive: true });
-    window.addEventListener("scroll", syncManualScrollPosition, { passive: true });
+    window.addEventListener("wheel", holdAutoScrollForManualScroll, {
+      passive: true
+    });
+
+    window.addEventListener("touchstart", holdAutoScrollForManualScroll, {
+      passive: true
+    });
+
+    window.addEventListener("touchmove", holdAutoScrollForManualScroll, {
+      passive: true
+    });
+
+    window.addEventListener("scroll", syncManualScrollPosition, {
+      passive: true
+    });
 
     window.addEventListener("keydown", (event) => {
       const scrollKeys = [
@@ -230,7 +243,7 @@ function syncManualScrollPosition() {
       ];
 
       if (isOn && scrollKeys.includes(event.key)) {
-        markManualScroll();
+        holdAutoScrollForManualScroll();
       }
     });
 
