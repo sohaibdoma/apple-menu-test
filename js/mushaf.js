@@ -339,7 +339,7 @@
 
     if (surahName) {
 navTitle.innerHTML = currentPageNumber
-  ? `<span>${surahName}</span><span class="nav-title-divider" aria-hidden="true"></span><span>${toArabicDigits(currentPageNumber)}</span>`
+  ? `<span>${toArabicDigits(currentPageNumber)}</span><span class="nav-title-divider" aria-hidden="true"></span><span>${surahName}</span>`
   : `<span>${surahName}</span>`;
 
       const currentSurahId = Number(currentHeader.getAttribute("data-surah-id"));
