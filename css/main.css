@@ -2160,64 +2160,7 @@ body[data-page-type="mushaf"] .font-size-pill {
 }
 
 
-/* ========================================
-   QURAN FONT SIZE CONTROL
-======================================== */
 
-.font-size-pill {
-  height: var(--header-h);
-  padding: 0 6px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-
-  border-radius: 999px;
-  isolation: isolate;
-
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-
-  clip-path: inset(0 round 999px);
-  -webkit-clip-path: inset(0 round 999px);
-
-  flex-shrink: 0;
-}
-
-html.night-mode .font-size-pill,
-body.night-mode .font-size-pill {
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-}
-
-.font-size-btn {
-  height: 36px;
-  min-width: 44px;
-  padding: 0 10px;
-  margin: 0;
-
-  border: none;
-  background: none;
-
-  display: grid;
-  place-items: center;
-
-  color: var(--page-text);
-  cursor: pointer;
-
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-  font-weight: 600;
-  line-height: 1;
-
-  transition: opacity 100ms ease;
-}
-
-.font-size-btn:hover {
-  opacity: 0.82;
-}
 
 
 .font-size-btn--small {
@@ -2259,35 +2202,70 @@ body[data-quran-font-size="large"] .mushaf-text {
   font-size: 32px;
 }
 
+
+/* ========================================
+   QURAN FONT SIZE CONTROL
+======================================== */
+
 .font-size-pill {
-  direction: rtl;
+  height: var(--header-h);
+  padding: 0 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 0;
+
+  direction: rtl;
+  border-radius: 999px;
+  isolation: isolate;
+
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  clip-path: inset(0 round 999px);
+  -webkit-clip-path: inset(0 round 999px);
+
+  flex-shrink: 0;
+}
+
+html.night-mode .font-size-pill,
+body.night-mode .font-size-pill {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .font-size-btn {
+  height: 36px;
   min-width: 40px;
-}
+  padding: 0 8px;
+  margin: 0;
 
-.font-size-btn--small,
-.font-size-btn--normal,
-.font-size-btn--large {
+  border: none;
+  background: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--page-text);
+  cursor: pointer;
+
   font-family: "Scheherazade New", serif;
-}
+  font-weight: 700;
+  line-height: 1;
 
-.font-size-btn--small::before {
-  content: "ع";
-}
+  transition: opacity 100ms ease;
 
-.font-size-btn--normal::before {
-  content: "ع";
-}
-
-.font-size-btn--large::before {
-  content: "ع";
-}
-
-.font-size-btn {
   font-size: 0;
+
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-size-btn::before {
+  content: "ع";
 }
 
 .font-size-btn--small::before {
@@ -2300,4 +2278,40 @@ body[data-quran-font-size="large"] .mushaf-text {
 
 .font-size-btn--large::before {
   font-size: 22px;
+}
+
+.font-size-btn:hover {
+  opacity: 0.82;
+}
+
+.font-size-btn:focus,
+.font-size-btn:focus-visible,
+.font-size-btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.font-size-btn.is-active {
+  opacity: 1;
+}
+
+.font-size-btn:not(.is-active) {
+  opacity: 0.45;
+}
+
+/* Apply larger Quran text size */
+body[data-quran-font-size="small"] .ayah-text {
+  font-size: 0.9em;
+}
+
+body[data-quran-font-size="small"] .mushaf-text {
+  font-size: 24px;
+}
+
+body[data-quran-font-size="large"] .ayah-text {
+  font-size: 1.2em;
+}
+
+body[data-quran-font-size="large"] .mushaf-text {
+  font-size: 32px;
 }
