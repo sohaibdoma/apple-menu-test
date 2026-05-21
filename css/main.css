@@ -167,12 +167,12 @@ body {
   border: none;
   border-radius: 999px;
 
-  background: rgba(0, 0, 0, 0.085);
+  background: rgba(0, 0, 0, 0.06);
   color: #000000;
 
   font-family: "Scheherazade New", serif;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 700;
   letter-spacing: 0.01em;
 
   cursor: pointer;
@@ -192,7 +192,7 @@ body.night-mode .choose-surah-btn:hover {
 }
 
 .choose-surah-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.085);
 }
 
 .choose-surah-btn:active {
