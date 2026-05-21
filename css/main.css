@@ -2261,4 +2261,43 @@ body[data-quran-font-size="large"] .mushaf-text {
 
 .font-size-pill {
   direction: rtl;
+  gap: 0;
+}
+
+.font-size-btn {
+  min-width: 40px;
+}
+
+.font-size-btn--small,
+.font-size-btn--normal,
+.font-size-btn--large {
+  font-family: "Scheherazade New", serif;
+}
+
+.font-size-btn--small::before {
+  content: "ع";
+}
+
+.font-size-btn--normal::before {
+  content: "ع";
+}
+
+.font-size-btn--large::before {
+  content: "ع";
+}
+
+.font-size-btn {
+  font-size: 0;
+}
+
+.font-size-btn--small::before {
+  font-size: 13px;
+}
+
+.font-size-btn--normal::before {
+  font-size: 16px;
+}
+
+.font-size-btn--large::before {
+  font-size: 22px;
 }
