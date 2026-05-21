@@ -1109,7 +1109,7 @@ body.search-open #nav-surah-title {
 .nav-title-divider {
   display: inline-block;
   width: 1px;
-  height: 29px;
+  height: 25px;
   margin-inline: 10px;
   background: currentColor;
   opacity: 0.35;
