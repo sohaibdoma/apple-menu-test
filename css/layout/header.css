@@ -463,7 +463,9 @@ body.search-open .home-toggle{
 
   cursor: pointer;
   position: relative;
-
+   
+  transform: translateX(34px);
+   
   color: var(--menu-icon-color);
 
   -webkit-tap-highlight-color: transparent;
