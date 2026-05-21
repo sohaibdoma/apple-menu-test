@@ -498,10 +498,10 @@ body.search-open .theme-toggle {
   fill: currentColor;
 
   transition:
-    x 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    y 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    width 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    height 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    x 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    y 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html.night-mode .theme-ray,
