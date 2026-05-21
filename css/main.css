@@ -167,12 +167,13 @@ body {
   border: none;
   border-radius: 999px;
 
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.085);
   color: #000000;
 
   font-family: "Scheherazade New", serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.15s ease;
@@ -1100,7 +1101,7 @@ body.night-mode .auto-scroll-bar{
   height: 100%;
 
   font-family: "Scheherazade New", serif;
-  font-size: 29px;
+  font-size: 19px;
   font-weight: 700;
 
   pointer-events: none;
