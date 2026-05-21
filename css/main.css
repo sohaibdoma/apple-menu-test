@@ -882,18 +882,18 @@ body.no-blur-transition > *:not(.main-header) {
   z-index: 9998;
 }
 
-body:not([data-page-type="mushaf"]) .font-size-pill {
-  margin-left: auto;
-  margin-right: 10px;
-  order: 3;
+body:not([data-page-type="mushaf"]) .auto-scroll-bar {
+  order: 1;
 }
 
 body:not([data-page-type="mushaf"]) .surah-bottom-pill {
   order: 2;
 }
 
-body:not([data-page-type="mushaf"]) .auto-scroll-bar {
-  order: 1;
+body:not([data-page-type="mushaf"]) .font-size-pill {
+  order: 3;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .surah-bottom-left,
