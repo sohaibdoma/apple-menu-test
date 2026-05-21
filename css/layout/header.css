@@ -508,8 +508,8 @@ html.night-mode .theme-ray,
 body.night-mode .theme-ray {
   x: -1.5px;
   y: -1.5px;
-  width: 2px;
-  height: 2px;
+  width: 3px;
+  height: 3px;
   rx: 1.5px;
 }
 
