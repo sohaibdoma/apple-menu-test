@@ -756,10 +756,33 @@ button:focus-visible {
 
 body,
 .surah-container,
-.menu-content a {
-  transition: background-color 0.25s ease, 
-              color 0.25s ease, 
-              border-color 0.25s ease;
+.menu-content a,
+.main-header,
+.main-header::before,
+.main-header::after,
+.search-input,
+.search-result,
+.search-page-results .search-result,
+.surah-bottom-pill,
+.auto-scroll-bar,
+.font-size-pill,
+.theme-toggle,
+.home-toggle,
+.search-toggle,
+.menu-toggle,
+.lang-switch button,
+.choose-surah-btn,
+.next-surah-link,
+.mushaf-surah-title,
+.q-badge,
+.mushaf-text .end {
+  transition:
+    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    fill 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    stroke 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body:not(.theme-ready) * {
