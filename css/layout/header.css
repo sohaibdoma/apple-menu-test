@@ -444,16 +444,16 @@ body.search-open .home-toggle{
 
 
 /* ========================================
-   THEME TOGGLE (Icon Minimal)
+   THEME TOGGLE (Home-style Cutout Icon)
 ======================================== */
 
-body.menu-open .theme-toggle{
+body.menu-open .theme-toggle {
   display: grid;
   opacity: 1;
   pointer-events: auto;
 }
 
-body:not(.menu-open) .theme-toggle{
+body:not(.menu-open) .theme-toggle {
   opacity: 0;
 }
 
@@ -467,64 +467,43 @@ body:not(.menu-open) .theme-toggle{
   height: 44px;
   padding: 0;
 
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+
   cursor: pointer;
   position: relative;
 
-  background: transparent;
-  border: none;
-
   color: var(--menu-icon-color);
 
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s;
-
   -webkit-tap-highlight-color: transparent;
+
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s;
 }
 
-/* Same 30 × 29 style border concept as the X/menu button */
-.theme-toggle::before {
-  content: "";
-  position: absolute;
-
+.theme-icon {
   width: 30px;
   height: 29px;
-
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-
-  border: 1px solid var(--menu-icon-color);
-  border-radius: 11px;
-
-  box-sizing: border-box;
-  background: transparent;
-
-  transition: border-color 0.25s ease;
+  display: block;
+  fill: currentColor;
 }
 
-/* Icon layer: moon by default */
-.theme-toggle::after {
-  content: "☾";
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -52%);
-
-  font-size: 19px;
-  line-height: 1;
-  font-weight: 400;
-
-  color: currentColor;
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+.theme-icon--sun {
+  display: none;
 }
 
-/* Night mode: show sun */
-html.night-mode .theme-toggle::after,
-body.night-mode .theme-toggle::after {
-  content: "☼";
-  transform: translate(-50%, -50%);
-  font-size: 18px;
+html.night-mode .theme-icon--moon,
+body.night-mode .theme-icon--moon {
+  display: none;
+}
+
+html.night-mode .theme-icon--sun,
+body.night-mode .theme-icon--sun {
+  display: block;
+}
+
+.theme-toggle:focus,
+.theme-toggle:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
