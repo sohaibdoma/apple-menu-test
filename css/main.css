@@ -2153,6 +2153,13 @@ body[data-page-type="mushaf"] .font-size-pill {
   order: 2;
 }
 
+#mushafNextSurahName {
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+
 /* ========================================
    QURAN FONT SIZE CONTROL
 ======================================== */
