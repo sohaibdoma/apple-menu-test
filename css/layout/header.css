@@ -98,6 +98,8 @@ body.night-mode .main-header {
   display: inline-flex;
   align-items: center;
   gap: 2px;
+   
+  margin-left: -10px;
 }
 
 .header-left {
