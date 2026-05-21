@@ -447,20 +447,10 @@ body.search-open .home-toggle{
    THEME TOGGLE (Home-style Cutout Icon)
 ======================================== */
 
-body.menu-open .theme-toggle {
-  display: grid;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-body:not(.menu-open) .theme-toggle {
-  opacity: 0;
-}
-
 .theme-toggle {
   justify-self: start;
 
-  display: none;
+  display: grid;
   place-items: center;
 
   width: 44px;
@@ -478,7 +468,13 @@ body:not(.menu-open) .theme-toggle {
 
   -webkit-tap-highlight-color: transparent;
 
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s;
+  transition: opacity 0.2s ease;
+}
+
+body.menu-open .theme-toggle,
+body.search-open .theme-toggle {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .theme-icon {
