@@ -97,7 +97,7 @@ body.night-mode .main-header {
 .header-controls{
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 2px;
 }
 
 .header-left {
@@ -378,10 +378,10 @@ body.menu-open .search-toggle{
 }
 
 .home-toggle{
-  position: absolute;
-  left: 19px;
-  top: 50%;
-  transform: translate(-10px, -50%); /* moves 5px left */
+position: relative;
+left: auto;
+top: auto;
+transform: none;
 
   width: 44px;
   height: 44px;
