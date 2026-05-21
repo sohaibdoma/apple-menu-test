@@ -2126,15 +2126,24 @@ body[data-page-type="mushaf"] .surah-bottom-controls {
   direction: ltr;
 }
 
-/* Auto scroll */
+/* Auto scroll left */
 body[data-page-type="mushaf"] .auto-scroll-bar {
   order: 1;
 }
 
-/* Next surah center pill */
-body[data-page-type="mushaf"] .mushaf-next-surah-btn {
+/* Right-side group */
+body[data-page-type="mushaf"] .mushaf-bottom-right {
   order: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  direction: ltr;
+}
 
+/* Inside right group: Next Surah first, Font second */
+body[data-page-type="mushaf"] .mushaf-next-surah-btn {
+  order: 1;
   direction: rtl;
 
   display: inline-flex !important;
@@ -2148,11 +2157,8 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   gap: 8px;
 }
 
-/* Font control right */
 body[data-page-type="mushaf"] .font-size-pill {
-  order: 3;
-  margin-left: 0;
-  margin-right: 0;
+  order: 2;
 }
 
 /* ========================================
