@@ -492,8 +492,8 @@ body.search-open .theme-toggle {
   fill: currentColor;
 
   transition:
-    y 150ms cubic-bezier(0.22, 1, 0.36, 1),
-    height 150ms cubic-bezier(0.22, 1, 0.36, 1);
+    y 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Night mode: each dot expands outward exactly like auto-scroll dot */
