@@ -2126,14 +2126,15 @@ body[data-page-type="mushaf"] .surah-bottom-controls {
   direction: ltr;
 }
 
-/* Auto scroll stays left */
+/* Auto scroll */
 body[data-page-type="mushaf"] .auto-scroll-bar {
   order: 1;
 }
 
-/* Next surah pill (right side) */
+/* Next surah center pill */
 body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   order: 2;
+
   direction: rtl;
 
   display: inline-flex !important;
@@ -2147,30 +2148,12 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   gap: 8px;
 }
 
-/* Surah name styling */
-#mushafNextSurahName {
-  white-space: nowrap;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-
-body[data-page-type="mushaf"] .mushaf-bottom-right {
-  order: 2;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  direction: ltr;
-}
-
+/* Font control right */
 body[data-page-type="mushaf"] .font-size-pill {
-  order: 1;
+  order: 3;
+  margin-left: 0;
+  margin-right: 0;
 }
-
-body[data-page-type="mushaf"] .mushaf-next-surah-btn {
-  order: 2;
-}
-
 
 /* ========================================
    QURAN FONT SIZE CONTROL
