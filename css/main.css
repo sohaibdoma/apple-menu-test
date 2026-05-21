@@ -877,9 +877,8 @@ body.no-blur-transition > *:not(.main-header) {
   display: flex;
   align-items: center;
    
-  justify-content: center;
-  gap: 10px;
-   
+  justify-content: space-between;
+  gap: 0;
   direction: ltr;
    
   z-index: 9998;
