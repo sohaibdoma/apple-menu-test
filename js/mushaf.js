@@ -313,11 +313,13 @@
   function updateNavbarSurahTitle() {
     const navTitle = document.getElementById("nav-surah-title");
     const headers = Array.from(document.querySelectorAll(".mushaf-surah-start"));
+    const pages = Array.from(document.querySelectorAll(".mushaf-page"));
 
     if (!navTitle || headers.length === 0) return;
 
     const headerOffset = 140;
     let currentHeader = headers[0];
+    let currentPageNumber = "";
 
     headers.forEach((header) => {
       const rect = header.getBoundingClientRect();
@@ -326,9 +328,19 @@
       }
     });
 
+    pages.forEach((page) => {
+      const rect = page.getBoundingClientRect();
+      if (rect.top <= headerOffset && rect.bottom > headerOffset) {
+        currentPageNumber = page.getAttribute("data-page-number") || "";
+      }
+    });
+
     const surahName = currentHeader.getAttribute("data-surah-name") || "";
+
     if (surahName) {
-      navTitle.textContent = surahName;
+      navTitle.textContent = currentPageNumber
+        ? `${surahName} · ${toArabicDigits(currentPageNumber)}`
+        : surahName;
 
       const currentSurahId = Number(currentHeader.getAttribute("data-surah-id"));
       updateNextSurahPill(currentSurahId);
