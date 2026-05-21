@@ -914,7 +914,7 @@ body:not([data-page-type="mushaf"]) .surah-bottom-pill {
 
 .surah-bottom-pill{
   height: var(--header-h);
-  min-width: 108px;
+  min-width: 104px;
   padding: 0 4px;
 
   display: flex;
