@@ -444,16 +444,16 @@ body.search-open .home-toggle{
 
 
 /* ========================================
-   THEME TOGGLE (Outline Minimal)
+   THEME TOGGLE (Icon Minimal)
 ======================================== */
 
-body.menu-open .theme-toggle {
-  display: block;
+body.menu-open .theme-toggle{
+  display: grid;
   opacity: 1;
   pointer-events: auto;
 }
 
-body:not(.menu-open) .theme-toggle {
+body:not(.menu-open) .theme-toggle{
   opacity: 0;
 }
 
@@ -461,6 +461,7 @@ body:not(.menu-open) .theme-toggle {
   justify-self: start;
 
   display: none;
+  place-items: center;
 
   width: 44px;
   height: 44px;
@@ -472,63 +473,58 @@ body:not(.menu-open) .theme-toggle {
   background: transparent;
   border: none;
 
+  color: var(--menu-icon-color);
+
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s;
 
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Visible switch outline */
+/* Same 30 × 29 style border concept as the X/menu button */
 .theme-toggle::before {
   content: "";
   position: absolute;
 
   width: 30px;
-  height: 22px;
+  height: 29px;
 
-  top: 50%;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
 
-  border-radius: 999px;
   border: 1px solid var(--menu-icon-color);
+  border-radius: 11px;
 
+  box-sizing: border-box;
   background: transparent;
 
   transition: border-color 0.25s ease;
 }
 
-/* Knob */
+/* Icon layer: moon by default */
 .theme-toggle::after {
-  content: "";
+  content: "☾";
   position: absolute;
 
-  width: 16px;
-  height: 16px;
-
-  border-radius: 50%;
-
-  top: 50%;
   left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%);
 
-  transform: translate(-11px, -50%);
+  font-size: 19px;
+  line-height: 1;
+  font-weight: 400;
 
-  background: #000000;
+  color: currentColor;
 
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              background-color 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* =========================
-   NIGHT MODE
-========================= */
-
-html.night-mode .theme-toggle::before,
-body.night-mode .theme-toggle::before {
-  border: 1px solid var(--menu-icon-color);
-}
-
+/* Night mode: show sun */
 html.night-mode .theme-toggle::after,
 body.night-mode .theme-toggle::after {
-  transform: translate(-3px, -50%);
-  background: #ffffff;
+  content: "☼";
+  transform: translate(-50%, -50%);
+  font-size: 18px;
 }
