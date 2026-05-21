@@ -1100,7 +1100,7 @@ body.night-mode .auto-scroll-bar{
   height: 100%;
 
   font-family: "Scheherazade New", serif;
-  font-size: 17px;
+  font-size: 29px;
   font-weight: 700;
 
   pointer-events: none;
@@ -1126,7 +1126,6 @@ body.menu-open #nav-surah-title,
 body.search-open #nav-surah-title {
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-50%) translateY(-4px);
 }
 
 .nav-title-divider {
