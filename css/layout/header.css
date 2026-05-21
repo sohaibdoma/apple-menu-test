@@ -447,38 +447,54 @@ body.search-open .home-toggle{
    THEME TOGGLE (Outline Minimal)
 ======================================== */
 
-body.menu-open .theme-toggle{
+body.menu-open .theme-toggle {
   display: block;
   opacity: 1;
   pointer-events: auto;
 }
 
-body:not(.menu-open) .theme-toggle{
-  opacity:0;
+body:not(.menu-open) .theme-toggle {
+  opacity: 0;
 }
 
 .theme-toggle {
   justify-self: start;
-   
-  display: none;
-   
-width: 30px;
-height: 22px;
-  padding: 0;
 
-  border-radius: 999px;
+  display: none;
+
+  width: 44px;
+  height: 44px;
+  padding: 0;
 
   cursor: pointer;
   position: relative;
 
-  background: transparent; /* no fill */
+  background: transparent;
+  border: none;
 
-  border: 1px solid var(--menu-icon-color);
-
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s,
-              border-color 0.25s ease;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.8s;
 
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Visible switch outline */
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+
+  width: 30px;
+  height: 22px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 999px;
+  border: 1px solid var(--menu-icon-color);
+
+  background: transparent;
+
+  transition: border-color 0.25s ease;
 }
 
 /* Knob */
@@ -491,26 +507,28 @@ height: 22px;
 
   border-radius: 50%;
 
-  top: 2px;
-  left: 2px;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-11px, -50%);
 
   background: #000000;
 
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
               background-color 0.25s ease;
-} 
+}
 
 /* =========================
    NIGHT MODE
 ========================= */
 
-html.night-mode .theme-toggle,
-body.night-mode .theme-toggle {
+html.night-mode .theme-toggle::before,
+body.night-mode .theme-toggle::before {
   border: 1px solid var(--menu-icon-color);
 }
 
 html.night-mode .theme-toggle::after,
 body.night-mode .theme-toggle::after {
-  transform: translateX(8px);
+  transform: translate(-3px, -50%);
   background: #ffffff;
 }
