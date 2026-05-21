@@ -880,6 +880,8 @@ body.no-blur-transition > *:not(.main-header) {
   justify-content: center;
   gap: 10px;
    
+  direction: ltr;
+   
   z-index: 9998;
 }
 
