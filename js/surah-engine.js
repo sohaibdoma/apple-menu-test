@@ -285,10 +285,15 @@ function renderSurah(data) {
     ayahs.forEach((ayah) => {
       const rect = ayah.getBoundingClientRect();
 
-      if (rect.top <= 140 && rect.bottom > 140) {
-        currentPageNumber = ayah.getAttribute("data-page-number") || "";
+      if (rect.top <= 140) {
+        currentPageNumber =
+          ayah.getAttribute("data-page-number") || currentPageNumber;
       }
     });
+
+    if (!currentPageNumber && ayahs.length > 0) {
+      currentPageNumber = ayahs[0].getAttribute("data-page-number") || "";
+    }
 
     navTitle.innerHTML = currentPageNumber
       ? `<span>${toArabicDigits(currentPageNumber)}</span><span class="nav-title-divider" aria-hidden="true"></span><span>${data.chapter.name_arabic}</span>`
