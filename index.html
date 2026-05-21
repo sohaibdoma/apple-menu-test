@@ -33,7 +33,78 @@
   <div class="header-bar">
     
    <div class="header-controls">
-     <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+     
+
+
+
+<button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">
+  <svg class="theme-icon theme-icon--moon" viewBox="0 0 30 29" aria-hidden="true">
+    <defs>
+      <mask id="themeMoonCutoutMask">
+        <rect width="30" height="29" fill="white" />
+        <path
+          fill="black"
+          d="M18.8 6.2C15.2 7.1 12.5 10.4 12.5 14.3C12.5 18.9 16.1 22.5 20.7 22.5C21.5 22.5 22.3 22.4 23 22.1C21.5 24 19.2 25.2 16.6 25.2C11.9 25.2 8.1 21.4 8.1 16.7C8.1 12.1 11.7 8.4 16.2 8.2C17.1 8.2 18 8.4 18.8 6.2Z"
+        />
+      </mask>
+    </defs>
+
+    <path
+      fill="currentColor"
+      mask="url(#themeMoonCutoutMask)"
+      d="
+        M11 0.5
+        H19
+        C25.3513 0.5 29.5 4.64873 29.5 11
+        V18
+        C29.5 24.3513 25.3513 28.5 19 28.5
+        H11
+        C4.64873 28.5 0.5 24.3513 0.5 18
+        V11
+        C0.5 4.64873 4.64873 0.5 11 0.5
+        Z
+      "
+    />
+  </svg>
+
+  <svg class="theme-icon theme-icon--sun" viewBox="0 0 30 29" aria-hidden="true">
+    <defs>
+      <mask id="themeSunCutoutMask">
+        <rect width="30" height="29" fill="white" />
+        <circle cx="15" cy="14.5" r="4.2" fill="black" />
+        <path fill="black" d="M15 5.4V8.1" />
+        <path fill="black" d="M15 20.9V23.6" />
+        <path fill="black" d="M5.9 14.5H8.6" />
+        <path fill="black" d="M21.4 14.5H24.1" />
+        <path fill="black" d="M8.6 8.1L10.5 10" />
+        <path fill="black" d="M19.5 19L21.4 20.9" />
+        <path fill="black" d="M21.4 8.1L19.5 10" />
+        <path fill="black" d="M10.5 19L8.6 20.9" />
+      </mask>
+    </defs>
+
+    <path
+      fill="currentColor"
+      mask="url(#themeSunCutoutMask)"
+      d="
+        M11 0.5
+        H19
+        C25.3513 0.5 29.5 4.64873 29.5 11
+        V18
+        C29.5 24.3513 25.3513 28.5 19 28.5
+        H11
+        C4.64873 28.5 0.5 24.3513 0.5 18
+        V11
+        C0.5 4.64873 4.64873 0.5 11 0.5
+        Z
+      "
+    />
+  </svg>
+</button>
+
+
+
+     
 
 <a href="index.html" class="home-toggle" aria-label="Home">
   <svg class="home-icon" viewBox="0 0 30 29" aria-hidden="true">
