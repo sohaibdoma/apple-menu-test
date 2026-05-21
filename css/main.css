@@ -2266,6 +2266,14 @@ body.night-mode .font-size-pill {
 
 .font-size-btn::before {
   content: "ع";
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1;
+
+  transform: translateY(1px);
 }
 
 .font-size-btn--small::before {
