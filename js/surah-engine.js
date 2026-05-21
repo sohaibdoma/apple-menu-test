@@ -276,8 +276,23 @@ function renderSurah(data) {
   const content = document.getElementById("surah-content");
   const navTitle = document.getElementById("nav-surah-title");
 
-  if (navTitle) {
-    navTitle.textContent = data.chapter.name_arabic;
+  function updateSurahNavbarPage() {
+    if (!navTitle) return;
+
+    const ayahs = Array.from(document.querySelectorAll(".ayah"));
+    let currentPageNumber = "";
+
+    ayahs.forEach((ayah) => {
+      const rect = ayah.getBoundingClientRect();
+
+      if (rect.top <= 140 && rect.bottom > 140) {
+        currentPageNumber = ayah.getAttribute("data-page-number") || "";
+      }
+    });
+
+    navTitle.innerHTML = currentPageNumber
+      ? `<span>${toArabicDigits(currentPageNumber)}</span><span class="nav-title-divider" aria-hidden="true"></span><span>${data.chapter.name_arabic}</span>`
+      : `<span>${data.chapter.name_arabic}</span>`;
   }
 
   header.innerHTML = `
@@ -346,6 +361,10 @@ function renderSurah(data) {
     ayah.id = `ayah-${String(verseKey).replace(":", "-")}`;
     ayah.setAttribute("data-verse-key", verseKey);
 
+    if (pageNum !== null) {
+      ayah.setAttribute("data-page-number", String(pageNum));
+    }
+
     const text = document.createElement("span");
     text.className = "ayah-text";
 
@@ -368,4 +387,10 @@ function renderSurah(data) {
       chapterId: data.chapter.id
     });
   }
+
+  updateSurahNavbarPage();
+
+  window.addEventListener("scroll", updateSurahNavbarPage, {
+    passive: true
+  });
 }
