@@ -490,17 +490,20 @@ body.search-open .theme-toggle {
 
 .theme-dot {
   fill: currentColor;
-
+   
+  y: -4.7px;
+  height: 6px;
+   
   transition:
-    y 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    height 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    y 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Night mode: each dot expands outward exactly like auto-scroll dot */
 html.night-mode .theme-dot,
 body.night-mode .theme-dot {
-  y: -4.7px;
-  height: 6px;
+  y: -1.3px;
+  height: 2.6px;
 }
 
 .theme-toggle:focus,
