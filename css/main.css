@@ -1086,10 +1086,10 @@ body.night-mode .auto-scroll-bar{
   opacity: 0;
   visibility: hidden;
 
-  transition:
-    opacity 0.22s ease,
-    transform 0.22s ease,
-    visibility 0.22s ease;
+transition:
+  opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+  visibility 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Show only on Surah pages */
@@ -1104,6 +1104,16 @@ body.search-open #nav-surah-title {
   opacity: 0;
   visibility: hidden;
   transform: translateX(-50%) translateY(-4px);
+}
+
+.nav-title-divider {
+  display: inline-block;
+  width: 1px;
+  height: 29px;
+  margin-inline: 10px;
+  background: currentColor;
+  opacity: 0.35;
+  vertical-align: middle;
 }
 
 
