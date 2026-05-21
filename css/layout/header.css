@@ -489,11 +489,11 @@ body.search-open .theme-toggle {
 }
 
 .theme-ray {
-  x: -1.5px;
-  y: -1.5px;
-  width: 3px;
-  height: 3px;
-  rx: 1.5px;
+  x: -1px;
+  y: -3px;
+  width: 2px;
+  height: 6px;
+  rx: 1px;
 
   fill: currentColor;
 
@@ -506,11 +506,11 @@ body.search-open .theme-toggle {
 
 html.night-mode .theme-ray,
 body.night-mode .theme-ray {
-  x: -1px;
-  y: -3px;
-  width: 2px;
-  height: 6px;
-  rx: 1px;
+  x: -1.5px;
+  y: -1.5px;
+  width: 3px;
+  height: 3px;
+  rx: 1.5px;
 }
 
 .theme-toggle:focus,
