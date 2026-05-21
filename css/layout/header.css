@@ -488,12 +488,11 @@ body.search-open .theme-toggle {
   fill: currentColor;
 }
 
-/* Light mode: expanded pills */
 .theme-ray {
-  x: -3px;
-  y: -1px;
-  width: 6px;
-  height: 2px;
+  x: -1px;
+  y: -3px;
+  width: 2px;
+  height: 6px;
   rx: 1px;
 
   fill: currentColor;
@@ -505,7 +504,6 @@ body.search-open .theme-toggle {
     height 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Night mode: compact dots */
 html.night-mode .theme-ray,
 body.night-mode .theme-ray {
   x: -1.5px;
