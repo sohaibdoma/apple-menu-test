@@ -9,7 +9,7 @@
 
   /* Typography & Page */
   --text-color: #2A241C;
-  --page-bg: #EFE8DA;
+  --page-bg: #FAF8F3;
   --page-text: #2A241C;
 
   /* Menu Icon (Light Mode) */
@@ -23,7 +23,7 @@
   --auto-active-color: rgba(0, 0, 0, 0.4);
 
   /* Mushaf Reading Colors */
-  --mushaf-bg: #EFE8DA;
+  --mushaf-bg: #FAF8F3;
   --mushaf-text: #2A241C;
 }
 
