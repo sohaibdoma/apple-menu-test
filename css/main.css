@@ -2293,22 +2293,78 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   color: #ffffff;
 }
 
-.font-size-trigger::before,
+/* Trigger */
+.font-size-trigger {
+  position: relative;
+}
+
+/* Top plus */
+.font-size-trigger::before {
+  content: "+";
+
+  position: absolute;
+
+  top: 7px;
+  left: 50%;
+
+  transform:
+    translateX(-50%)
+    rotate(0deg);
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease;
+}
+
+/* Bottom Arabic glyph */
+.font-size-trigger::after {
+  content: "ء";
+
+  position: absolute;
+
+  bottom: 7px;
+  left: 50%;
+
+  transform:
+    translateX(-50%)
+    translateY(-1px);
+
+  font-family: "Scheherazade New", serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Menu buttons */
 .font-size-btn::before {
   content: "";
   transform: translateY(-6px);
 }
 
-/* Open state → turn trigger into X */
-.font-size-pill.is-open .font-size-trigger {
-  font-size: 0;
-}
+/* OPEN STATE */
 
 .font-size-pill.is-open .font-size-trigger::before {
-  content: "×";
-  font-size: 28px;
-  line-height: 1;
-  transform: translateY(-1px);
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  font-size: 20px;
+}
+
+.font-size-pill.is-open .font-size-trigger::after {
+  opacity: 0;
+
+  transform:
+    translateX(-50%)
+    translateY(4px);
 }
 
 .font-size-menu {
