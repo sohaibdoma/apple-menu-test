@@ -2277,15 +2277,15 @@ body.night-mode .font-size-pill {
 }
 
 .font-size-btn--small::before {
-  font-size: 13px;
+  font-size: 22px;
 }
 
 .font-size-btn--normal::before {
-  font-size: 16px;
+  font-size: 26px;
 }
 
 .font-size-btn--large::before {
-  font-size: 22px;
+  font-size: 34px;
 }
 
 .font-size-btn:hover {
