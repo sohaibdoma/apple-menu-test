@@ -2313,7 +2313,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     translateY(0);
 
   font-family: "Scheherazade New", serif;
-  font-size: 27px;
+  font-size: 29px;
   font-weight: 700;
   line-height: 1;
 
@@ -2328,7 +2328,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   position: absolute;
 
-  top: 24px;
+  top: 25px;
   left: 50%;
 
   transform:
@@ -2338,7 +2338,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   transform-origin: center;
    
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
    
   transition:
