@@ -21,8 +21,6 @@
         button.dataset.fontSizeOption === size
       );
     });
-
-    closeMenu();
   }
 
   function openMenu() {
