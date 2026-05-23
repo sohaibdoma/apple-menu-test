@@ -2328,7 +2328,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   position: absolute;
 
-  top: 19px;
+  top: 21px;
   left: 50%;
 
   transform:
@@ -2348,7 +2348,7 @@ align-items: center;
 justify-content: center;
    
   transition:
-    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.19, 1, 0.22, 1),
     opacity 220ms ease;
 }
 
