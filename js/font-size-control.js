@@ -68,11 +68,9 @@
     }
   });
 
-  window.addEventListener(
-    "scroll",
-    function () {
-      closeMenu();
-    },
-    { passive: true }
-  );
+  window.addEventListener("scroll", function () {
+  closeMenu();
+}, { passive: true });
+
+  
 })();
