@@ -358,8 +358,8 @@ body.night-mode .menu-toggle.is-open::before {
 }
 
 .search-icon{
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   display: block;
 
   fill: none;
