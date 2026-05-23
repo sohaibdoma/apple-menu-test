@@ -2207,18 +2207,25 @@ body[data-quran-font-size="large"] .mushaf-text {
    QURAN FONT SIZE CONTROL
 ======================================== */
 
+.surah-bottom-controls {
+  align-items: flex-end;
+}
+
 .font-size-pill {
+  position: relative;
+
+  width: var(--header-h);
   height: var(--header-h);
-  padding: 0 6px;
+  padding: 0;
 
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: center;
-  gap: 0;
+  justify-content: flex-start;
 
-  direction: rtl;
   border-radius: 999px;
   isolation: isolate;
+  overflow: hidden;
 
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(1px);
@@ -2228,6 +2235,14 @@ body[data-quran-font-size="large"] .mushaf-text {
   -webkit-clip-path: inset(0 round 999px);
 
   flex-shrink: 0;
+
+  transition:
+    height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.font-size-pill.is-open {
+  height: 260px;
 }
 
 html.night-mode .font-size-pill,
@@ -2235,18 +2250,20 @@ body.night-mode .font-size-pill {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.font-size-trigger,
 .font-size-btn {
-  height: 36px;
-  min-width: 40px;
-  padding: 0 8px;
+  width: var(--header-h);
+  height: var(--header-h);
+  min-height: var(--header-h);
+
+  padding: 0;
   margin: 0;
 
   border: none;
   background: none;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 
   color: var(--page-text);
   cursor: pointer;
@@ -2255,71 +2272,87 @@ body.night-mode .font-size-pill {
   font-weight: 700;
   line-height: 1;
 
-  transition: opacity 100ms ease;
-
-  font-size: 0;
-
-  outline: none;
-  box-shadow: none;
   -webkit-tap-highlight-color: transparent;
 }
 
+.font-size-trigger::before,
 .font-size-btn::before {
-  content: "ء";
+  content: "";
+  transform: translateY(-1.5px);
+}
 
+.font-size-menu {
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: center;
 
-  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
 
-  transform: translateY(-6px);
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.font-size-btn--small::before {
-  font-size: 26px;
+.font-size-pill.is-open .font-size-menu {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.font-size-btn--normal::before {
-  font-size: 30px;
-}
-
-.font-size-btn--large::before {
-  font-size: 38px;
-}
-
-.font-size-btn:hover {
-  opacity: 0.82;
-}
-
-.font-size-btn:focus,
-.font-size-btn:focus-visible,
-.font-size-btn:active {
-  outline: none !important;
-  box-shadow: none !important;
+.font-size-btn {
+  opacity: 0.42;
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .font-size-btn.is-active {
   opacity: 1;
 }
 
-.font-size-btn:not(.is-active) {
-  opacity: 0.45;
-}
+.font-size-btn--xs { font-size: 15px; }
+.font-size-btn--sm { font-size: 18px; }
+.font-size-btn--md { font-size: 22px; }
+.font-size-btn--lg { font-size: 26px; }
+.font-size-btn--xl { font-size: 31px; }
 
-/* Apply larger Quran text size */
-body[data-quran-font-size="small"] .ayah-text {
-  font-size: 0.9em;
-}
-
-body[data-quran-font-size="small"] .mushaf-text {
+.font-size-trigger {
   font-size: 24px;
 }
 
+.font-size-trigger:focus,
+.font-size-trigger:focus-visible,
+.font-size-btn:focus,
+.font-size-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Apply Quran text sizes */
+body[data-quran-font-size="xsmall"] .ayah-text {
+  font-size: 0.85em;
+}
+
+body[data-quran-font-size="small"] .ayah-text {
+  font-size: 0.94em;
+}
+
 body[data-quran-font-size="large"] .ayah-text {
-  font-size: 1.2em;
+  font-size: 1.12em;
+}
+
+body[data-quran-font-size="xlarge"] .ayah-text {
+  font-size: 1.24em;
+}
+
+body[data-quran-font-size="xsmall"] .mushaf-text {
+  font-size: 23px;
+}
+
+body[data-quran-font-size="small"] .mushaf-text {
+  font-size: 25px;
 }
 
 body[data-quran-font-size="large"] .mushaf-text {
-  font-size: 32px;
+  font-size: 30px;
+}
+
+body[data-quran-font-size="xlarge"] .mushaf-text {
+  font-size: 33px;
 }
