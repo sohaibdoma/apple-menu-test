@@ -2306,7 +2306,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   position: absolute;
 
-  top: 4px;
+  top: 2px;
   left: 50%;
 
   transform:
@@ -2343,8 +2343,8 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   justify-content: center;
 
   font-family: sans-serif;
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 500;
   line-height: 1;
 
   transition:
@@ -2359,7 +2359,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 .font-size-trigger .font-size-trigger-large {
   position: absolute;
 
-  top: 24px;
+  top: 32px;
   left: 50%;
 
   transform:
