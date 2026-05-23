@@ -2299,6 +2299,18 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   transform: translateY(-6px);
 }
 
+/* Open state → turn trigger into X */
+.font-size-pill.is-open .font-size-trigger {
+  font-size: 0;
+}
+
+.font-size-pill.is-open .font-size-trigger::before {
+  content: "×";
+  font-size: 28px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
 .font-size-menu {
   display: flex;
   flex-direction: column-reverse;
