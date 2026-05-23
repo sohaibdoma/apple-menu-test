@@ -2310,8 +2310,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   transform:
     translateX(-50%)
-    rotate(0deg)
-    scale(1);
+    rotate(0deg);
 
   transform-origin: center;
 
@@ -2360,8 +2359,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 .font-size-pill.is-open .font-size-trigger::before {
   transform:
     translateX(-50%)
-    rotate(45deg)
-    scale(1.28);
+    rotate(45deg);
 }
 
 .font-size-pill.is-open .font-size-trigger::after {
