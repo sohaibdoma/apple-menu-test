@@ -67,4 +67,12 @@
       closeMenu();
     }
   });
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      closeMenu();
+    },
+    { passive: true }
+  );
 })();
