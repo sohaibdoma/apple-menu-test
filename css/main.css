@@ -2300,13 +2300,13 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 
 /* Main Arabic glyph */
-/* Small top letter */
+/* Big top letter */
 .font-size-trigger::before {
   content: "ء";
 
   position: absolute;
 
-  top: 6px;
+  top: 4px;
   left: 50%;
 
   transform:
@@ -2314,7 +2314,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     translateY(0);
 
   font-family: "Scheherazade New", serif;
-  font-size: 13px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 1;
 
@@ -2355,18 +2355,18 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 
 
-/* Large bottom letter */
+/* Small bottom letter */
 .font-size-trigger .font-size-trigger-large {
   position: absolute;
 
-  top: 20px;
+  top: 24px;
   left: 50%;
 
   transform:
     translateX(-50%);
 
   font-family: "Scheherazade New", serif;
-  font-size: 24px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1;
 
