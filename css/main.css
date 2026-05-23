@@ -2265,7 +2265,7 @@ body.night-mode .font-size-pill {
 }
 
 .font-size-btn::before {
-  content: "ع";
+  content: "أ";
 
   display: flex;
   align-items: center;
