@@ -11,7 +11,11 @@
     pill.querySelectorAll("[data-font-size-option]")
   );
 
+  let ignoreScrollClose = false;
+
   function setSize(size) {
+    ignoreScrollClose = true;
+
     document.body.setAttribute("data-quran-font-size", size);
     localStorage.setItem(STORAGE_KEY, size);
 
@@ -21,6 +25,10 @@
         button.dataset.fontSizeOption === size
       );
     });
+
+    window.setTimeout(function () {
+      ignoreScrollClose = false;
+    }, 400);
   }
 
   function openMenu() {
@@ -68,9 +76,12 @@
     }
   });
 
-  window.addEventListener("scroll", function () {
-  closeMenu();
-}, { passive: true });
-
-  
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (ignoreScrollClose) return;
+      closeMenu();
+    },
+    { passive: true }
+  );
 })();
