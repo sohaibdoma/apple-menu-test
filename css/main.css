@@ -2359,14 +2359,14 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 .font-size-trigger .font-size-trigger-large {
   position: absolute;
 
-  top: 34px;
+  top: 32px;
   left: 50%;
 
   transform:
     translateX(-50%);
 
   font-family: "Scheherazade New", serif;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1;
 
