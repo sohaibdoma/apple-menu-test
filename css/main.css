@@ -2243,12 +2243,13 @@ body[data-quran-font-size="large"] .mushaf-text {
 
 .font-size-pill.is-open {
   height: 350px;
-   background-color: #000000;
+  background-color: #ffffff;
+}
 }
 
 html.night-mode .font-size-pill.is-open,
 body.night-mode .font-size-pill.is-open {
-  background-color: #ffffff;
+  background-color: #000000;
 }
 
 html.night-mode .font-size-pill,
@@ -2283,14 +2284,14 @@ body.night-mode .font-size-pill {
 
 .font-size-pill.is-open .font-size-trigger,
 .font-size-pill.is-open .font-size-btn {
-  color: #ffffff;
+  color: #000000;
 }
 
 html.night-mode .font-size-pill.is-open .font-size-trigger,
 html.night-mode .font-size-pill.is-open .font-size-btn,
 body.night-mode .font-size-pill.is-open .font-size-trigger,
 body.night-mode .font-size-pill.is-open .font-size-btn {
-  color: #000000;
+  color: #ffffff;
 }
 
 .font-size-trigger::before,
