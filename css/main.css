@@ -2273,7 +2273,7 @@ body.night-mode .font-size-pill {
 
   line-height: 1;
 
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 .font-size-btn--small::before {
