@@ -2252,7 +2252,7 @@ body.night-mode .font-size-pill {
   cursor: pointer;
 
   font-family: "Scheherazade New", serif;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
 
   transition: opacity 100ms ease;
@@ -2273,19 +2273,19 @@ body.night-mode .font-size-pill {
 
   line-height: 1;
 
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 .font-size-btn--small::before {
-  font-size: 22px;
-}
-
-.font-size-btn--normal::before {
   font-size: 26px;
 }
 
+.font-size-btn--normal::before {
+  font-size: 30px;
+}
+
 .font-size-btn--large::before {
-  font-size: 34px;
+  font-size: 38px;
 }
 
 .font-size-btn:hover {
