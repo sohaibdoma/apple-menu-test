@@ -1126,16 +1126,6 @@ body.search-open #nav-surah-title {
   visibility: hidden;
 }
 
-.nav-title-divider {
-  display: inline-block;
-  width: 1px;
-  height: 22px;
-  margin-inline: 10px;
-  background: currentColor;
-  opacity: 0.35;
-  vertical-align: middle;
-}
-
 
 /* ==================================================
    SURAH NAVIGATION (Previous / Next Surah Buttons)
