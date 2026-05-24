@@ -2340,7 +2340,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   justify-content: center;
 
   font-family: sans-serif;
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 300;
   line-height: 1;
 
@@ -2348,7 +2348,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   transition:
     transform 620ms cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 220ms ease;
+    opacity 120ms ease;
 }
 
 
