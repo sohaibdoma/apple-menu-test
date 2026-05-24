@@ -2300,21 +2300,20 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 
 /* Main Arabic glyph */
-/* Big top letter */
+/* Big left letter */
 .font-size-trigger::before {
   content: "ء";
 
   position: absolute;
 
-  top: 1px;
-  left: 50%;
+  top: 50%;
+  left: 13px;
 
   transform:
-    translateX(-50%)
-    translateY(0);
+    translateY(-50%);
 
   font-family: "Scheherazade New", serif;
-  font-size: 28px;
+  font-size: 23px;
   font-weight: 700;
   line-height: 1;
 
@@ -2323,17 +2322,16 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Center plus / X */
 .font-size-trigger::after {
   content: "+";
 
   position: absolute;
 
-  top: 20px;
+  top: 50%;
   left: 50%;
 
   transform:
-    translateX(-50%)
+    translate(-50%, -50%)
     rotate(0deg);
 
   transform-origin: center;
@@ -2342,10 +2340,12 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   align-items: center;
   justify-content: center;
 
-  
-  font-size: 20px;
-  font-weight: 700;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 300;
   line-height: 1;
+
+  opacity: 0;
 
   transition:
     transform 620ms cubic-bezier(0.19, 1, 0.22, 1),
@@ -2355,18 +2355,18 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 
 
-/* Small bottom letter */
+/* Small right letter */
 .font-size-trigger .font-size-trigger-large {
   position: absolute;
 
-  top: 28px;
-  left: 50%;
+  top: 50%;
+  left: 25px;
 
   transform:
-    translateX(-50%);
+    translateY(-38%);
 
   font-family: "Scheherazade New", serif;
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 1;
 
