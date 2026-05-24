@@ -2347,7 +2347,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   opacity: 0;
 
   transition:
-    transform 800ms cubic-bezier(0.19, 1, 0.22, 1),
+    transform 620ms cubic-bezier(0.19, 1, 0.22, 1),
     opacity 220ms ease;
 }
 
