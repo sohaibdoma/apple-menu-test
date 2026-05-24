@@ -2390,23 +2390,19 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 .font-size-pill.is-open .font-size-trigger::before {
   opacity: 0;
-
-  transform:
-    translateX(-50%)
-    translateY(-4px);
+  transform: translateY(-50%);
 }
 
 .font-size-pill.is-open .font-size-trigger .font-size-trigger-large {
   opacity: 0;
-
-  transform:
-    translateX(-50%)
-    translateY(4px);
+  transform: translateY(-38%);
 }
 
 .font-size-pill.is-open .font-size-trigger::after {
+  opacity: 1;
+
   transform:
-    translateX(-50%)
+    translate(-50%, -50%)
     rotate(45deg);
 }
 
