@@ -2307,7 +2307,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   position: absolute;
 
   top: 50%;
-  left: 17px;
+  left: 20px;
 
   transform:
     translateY(-70%);
@@ -2360,7 +2360,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   position: absolute;
 
   top: 50%;
-  left: 32px;
+  left: 36px;
 
   transform:
     translateY(-70%);
@@ -2402,7 +2402,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   opacity: 1;
 
   transform:
-    translate(-42%, -50%)
+    translate(-46%, -50%)
     rotate(45deg);
 }
 
