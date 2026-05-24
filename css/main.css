@@ -1102,7 +1102,9 @@ body.night-mode .auto-scroll-bar{
 
   pointer-events: none;
   white-space: nowrap;
-
+   
+gap: 6px;
+   
   opacity: 0;
   visibility: hidden;
 
