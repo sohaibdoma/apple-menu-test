@@ -2318,7 +2318,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   line-height: 1;
 
   transition:
-    opacity 180ms ease,
+    opacity 100ms ease,
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -2348,7 +2348,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   transition:
     transform 620ms cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 120ms ease;
+    opacity 80ms ease;
 }
 
 
@@ -2369,7 +2369,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   line-height: 1;
 
   transition:
-    opacity 180ms ease,
+    opacity 100ms ease,
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 
   pointer-events: none;
