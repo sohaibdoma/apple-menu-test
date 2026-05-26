@@ -162,7 +162,9 @@ body {
 
   margin-top: 18px;
   padding: 12px 22px;
-  min-height: 44px;
+   
+  height: var(--header-h);
+  min-height: var(--header-h);
 
   border: none;
   border-radius: 999px;
