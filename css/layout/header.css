@@ -445,6 +445,29 @@ body.search-open .home-toggle{
 }
 
 
+
+
+/* ========================================
+   IOS TAP / SAFARI UI STABILIZATION
+======================================== */
+
+.main-header,
+.header-bar,
+.menu-toggle,
+.search-toggle,
+.theme-toggle,
+.home-toggle {
+  touch-action: manipulation;
+
+  -webkit-tap-highlight-color: transparent;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+
+
 /* ========================================
    THEME TOGGLE (Auto-scroll Dot Clone)
 ======================================== */
