@@ -2446,6 +2446,28 @@ body.night-mode .font-size-btn.is-active {
   );
 }
 
+.font-size-pill.is-open .font-size-btn.is-active {
+  color: #ffffff;
+
+  background-image: radial-gradient(
+    circle at 50% 62%,
+    #000000 0 21px,
+    transparent 22px
+  );
+}
+
+html.night-mode .font-size-pill.is-open .font-size-btn.is-active,
+body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
+  color: #000000;
+
+  background-image: radial-gradient(
+    circle at 50% 68%,
+    #ffffff 0 21px,
+    transparent 22px
+  );
+}
+
+
 
 .font-size-btn--xs { font-size: 15px; }
 .font-size-btn--sm { font-size: 18px; }
