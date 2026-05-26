@@ -2435,7 +2435,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%, -5%);
+  transform: translate(-50%, -10%);
 
   border-radius: 999px;
 
