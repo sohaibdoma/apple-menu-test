@@ -2507,36 +2507,39 @@ body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
 }
 
 /* Ayah text */
+
 body[data-quran-font-size="xsmall"] .ayah-text {
-  font-size: 0.33em;
+  font-size: 0.72em;
 }
 
 body[data-quran-font-size="small"] .ayah-text {
-  font-size: 0.5em;
+  font-size: 0.86em;
 }
 
 body[data-quran-font-size="large"] .ayah-text {
-  font-size: 2em;
+  font-size: 1.32em;
 }
 
 body[data-quran-font-size="xlarge"] .ayah-text {
-  font-size: 3em;
+  font-size: 1.72em;
 }
 
+
 /* Mushaf text */
+
 body[data-quran-font-size="xsmall"] .mushaf-text {
-  font-size: 9px;
+  font-size: 19px;
 }
 
 body[data-quran-font-size="small"] .mushaf-text {
-  font-size: 13.5px;
+  font-size: 23px;
 }
 
 body[data-quran-font-size="large"] .mushaf-text {
-  font-size: 54px;
+  font-size: 36px;
 }
 
 body[data-quran-font-size="xlarge"] .mushaf-text {
-  font-size: 81px;
+  font-size: 46px;
 }
 
