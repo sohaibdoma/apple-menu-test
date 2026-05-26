@@ -2422,6 +2422,13 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   opacity: 1;
 
   position: relative;
+
+  color: #ffffff;
+}
+
+html.night-mode .font-size-btn.is-active,
+body.night-mode .font-size-btn.is-active {
+  color: #000000;
 }
 
 .font-size-btn.is-active::after {
@@ -2429,21 +2436,24 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   position: absolute;
 
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%, -15%);
+  transform: translate(-50%, -38%);
 
   border-radius: 999px;
 
-  background-color: currentColor;
-
-  opacity: 0.12;
+  background-color: #000000;
 
   z-index: -1;
+}
+
+html.night-mode .font-size-btn.is-active::after,
+body.night-mode .font-size-btn.is-active::after {
+  background-color: #ffffff;
 }
 
 
