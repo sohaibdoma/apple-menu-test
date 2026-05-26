@@ -339,8 +339,20 @@
 
     if (surahName) {
 navTitle.innerHTML = currentPageNumber
-  ? `<span>${toArabicDigits(currentPageNumber)}</span><span>${surahName}</span>`
-  : `<span>${surahName}</span>`;
+  ? `
+      <span class="nav-page-number">
+        ${toArabicDigits(currentPageNumber)}
+      </span>
+
+      <span class="nav-surah-name">
+        ${surahName}
+      </span>
+    `
+  : `
+      <span class="nav-surah-name">
+        ${surahName}
+      </span>
+    `;
 
       const currentSurahId = Number(currentHeader.getAttribute("data-surah-id"));
       updateNextSurahPill(currentSurahId);
