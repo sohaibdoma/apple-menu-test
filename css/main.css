@@ -1113,6 +1113,10 @@ transition:
   visibility 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.nav-surah-title .nav-page-number {
+  margin-inline-end: 10px;
+}
+
 /* Show only on Surah pages */
 body[data-surah] #nav-surah-title {
   opacity: 1;
