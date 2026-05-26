@@ -2253,7 +2253,9 @@ body.night-mode .font-size-pill {
   width: var(--header-h);
   height: var(--header-h);
   min-height: var(--header-h);
-
+   
+  position: relative;
+   
   padding: 0;
   margin: 0;
 
@@ -2418,6 +2420,26 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 .font-size-btn.is-active {
   opacity: 1;
+}
+
+.font-size-btn.is-active::after {
+  content: "";
+
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  bottom: 7px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-radius: 999px;
+
+  background-color: currentColor;
+
+  opacity: 0.9;
 }
 
 .font-size-btn--xs { font-size: 15px; }
