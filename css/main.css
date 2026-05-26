@@ -2430,8 +2430,8 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   background-image: radial-gradient(
     circle at 50% 70%,
-    #000000 0 21px,
-    transparent 22px
+    #000000 0 18px,
+    transparent 19px
   );
 }
 
@@ -2441,8 +2441,8 @@ body.night-mode .font-size-btn.is-active {
 
   background-image: radial-gradient(
     circle at 50% 70%,
-    #ffffff 0 21px,
-    transparent 22px
+    #ffffff 0 18px,
+    transparent 19px
   );
 }
 
@@ -2451,8 +2451,8 @@ body.night-mode .font-size-btn.is-active {
 
   background-image: radial-gradient(
     circle at 50% 70%,
-    #000000 0 21px,
-    transparent 22px
+    #000000 0 18px,
+    transparent 19px
   );
 }
 
@@ -2462,8 +2462,8 @@ body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
 
   background-image: radial-gradient(
     circle at 50% 70%,
-    #ffffff 0 21px,
-    transparent 22px
+    #ffffff 0 18px,
+    transparent 19px
   );
 }
 
