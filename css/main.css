@@ -2255,6 +2255,7 @@ body.night-mode .font-size-pill {
   min-height: var(--header-h);
    
   position: relative;
+  z-index: 0;
    
   padding: 0;
   margin: 0;
@@ -2423,12 +2424,12 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   position: relative;
 
-  color: #000000;
+  color: #ffffff;
 }
 
 html.night-mode .font-size-btn.is-active,
 body.night-mode .font-size-btn.is-active {
-  color: #ffffff;
+  color: #000000;
 }
 
 .font-size-btn.is-active::after {
