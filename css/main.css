@@ -2429,9 +2429,9 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   color: #ffffff;
 
   background-image: radial-gradient(
-    circle at 50% 70%,
-    #000000 0 18px,
-    transparent 19px
+    circle at 50% 73%,
+    #000000 0 16px,
+    transparent 17px
   );
 }
 
@@ -2440,9 +2440,9 @@ body.night-mode .font-size-btn.is-active {
   color: #000000;
 
   background-image: radial-gradient(
-    circle at 50% 70%,
-    #ffffff 0 18px,
-    transparent 19px
+    circle at 50% 73%,
+    #ffffff 0 16px,
+    transparent 17px
   );
 }
 
@@ -2450,9 +2450,9 @@ body.night-mode .font-size-btn.is-active {
   color: #ffffff;
 
   background-image: radial-gradient(
-    circle at 50% 70%,
-    #000000 0 18px,
-    transparent 19px
+    circle at 50% 73%,
+    #000000 0 16px,
+    transparent 17px
   );
 }
 
@@ -2461,9 +2461,9 @@ body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
   color: #000000;
 
   background-image: radial-gradient(
-    circle at 50% 70%,
-    #ffffff 0 18px,
-    transparent 19px
+    circle at 50% 73%,
+    #ffffff 0 16px,
+    transparent 17px
   );
 }
 
