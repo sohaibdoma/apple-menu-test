@@ -2419,23 +2419,31 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   transition: opacity 160ms ease, transform 160ms ease;
 }
 
+
+
+
+
+
 .font-size-btn.is-active {
   opacity: 1;
   color: #ffffff;
-  background-color: #000000;
-  border-radius: 999px;
+
+  background-image: radial-gradient(
+    circle at 50% 62%,
+    #000000 0 21px,
+    transparent 22px
+  );
 }
 
 html.night-mode .font-size-btn.is-active,
 body.night-mode .font-size-btn.is-active {
   color: #000000;
-  background-color: #ffffff;
-}
 
-
-html.night-mode .font-size-btn.is-active::after,
-body.night-mode .font-size-btn.is-active::after {
-  background-color: #ffffff;
+  background-image: radial-gradient(
+    circle at 50% 62%,
+    #ffffff 0 21px,
+    transparent 22px
+  );
 }
 
 
