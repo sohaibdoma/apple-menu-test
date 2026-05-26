@@ -328,12 +328,18 @@
       }
     });
 
-    pages.forEach((page) => {
-      const rect = page.getBoundingClientRect();
-      if (rect.top <= headerOffset && rect.bottom > headerOffset) {
-        currentPageNumber = page.getAttribute("data-page-number") || "";
-      }
-    });
+pages.forEach((page) => {
+  const rect = page.getBoundingClientRect();
+
+  if (rect.top <= headerOffset) {
+    currentPageNumber =
+      page.getAttribute("data-page-number") || currentPageNumber;
+  }
+});
+
+if (!currentPageNumber && pages.length > 0) {
+  currentPageNumber = pages[0].getAttribute("data-page-number") || "";
+}
 
     const surahName = currentHeader.getAttribute("data-surah-name") || "";
 
