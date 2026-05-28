@@ -862,20 +862,22 @@ body.no-blur-transition > *:not(.main-header) {
 
 .surah-bottom-controls{
   position: fixed;
-  left: var(--nav-inset);
-  right: var(--nav-inset);
+  left: 50%;
   bottom: var(--nav-gap);
 
+  transform: translateX(-50%);
+
   display: flex;
-  align-items: center;
-   
-  justify-content: space-between;
-  gap: 0;
-   
-padding-inline: 67px;
-   
+  align-items: flex-end;
+  justify-content: center;
+
+  gap: 12px;
+  padding-inline: 0;
+
   direction: ltr;
-   
+
+  width: max-content;
+
   z-index: 9998;
 }
 
