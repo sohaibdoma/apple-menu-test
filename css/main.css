@@ -2562,3 +2562,144 @@ body[data-quran-font-size="xlarge"] .mushaf-text {
   font-size: 46px;
 }
 
+
+
+
+
+
+
+
+
+
+
+/* ========================================
+   MUSHAF SURAH PICKER
+======================================== */
+
+.mushaf-surah-picker {
+  position: fixed;
+  left: 50%;
+  bottom: var(--nav-gap);
+
+  width: min(78vw, 430px);
+  height: 50dvh;
+
+  transform: translateX(-50%) translateY(18px) scale(0.98);
+
+  border-radius: 34px;
+  overflow: hidden;
+
+  background-color: #ffffff;
+  color: #000000;
+
+  opacity: 0;
+  pointer-events: none;
+
+  z-index: 9999;
+
+  transition:
+    opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.mushaf-surah-picker-open .mushaf-surah-picker {
+  opacity: 1;
+  pointer-events: auto;
+
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+html.night-mode .mushaf-surah-picker,
+body.night-mode .mushaf-surah-picker {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.mushaf-surah-picker-open .surah-bottom-controls {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mushaf-surah-picker-panel {
+  height: 100%;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mushaf-surah-picker-search {
+  width: 100%;
+  height: var(--header-h);
+
+  border: none;
+  outline: none;
+
+  border-radius: 999px;
+  padding: 0 18px;
+
+  background: rgba(0, 0, 0, 0.06);
+  color: inherit;
+
+  font-family: "Scheherazade New", serif;
+  font-size: 19px;
+  font-weight: 700;
+
+  direction: rtl;
+}
+
+html.night-mode .mushaf-surah-picker-search,
+body.night-mode .mushaf-surah-picker-search {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mushaf-surah-picker-list {
+  flex: 1;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  direction: rtl;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mushaf-surah-picker-list::-webkit-scrollbar {
+  display: none;
+}
+
+.mushaf-surah-picker-item {
+  height: 44px;
+
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+
+  color: inherit;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Scheherazade New", serif;
+  font-size: 22px;
+  font-weight: 700;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mushaf-surah-picker-item.is-current {
+  background: #000000;
+  color: #ffffff;
+}
+
+html.night-mode .mushaf-surah-picker-item.is-current,
+body.night-mode .mushaf-surah-picker-item.is-current {
+  background: #ffffff;
+  color: #000000;
+}
