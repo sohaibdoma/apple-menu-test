@@ -10,6 +10,10 @@
   const loadedSurahIds = new Set();
   const loadingSurahPromises = new Map();
 
+  let longPressTimer = null;
+  let suppressNextSurahClick = false;
+  const SURAH_PICKER_LONG_PRESS_MS = 520;
+
   const SURAH_NAMES_AR = {
     1: "الفاتحة",
     2: "البقرة",
@@ -169,6 +173,12 @@
   }
 
   async function scrollToNextSurahInMushaf(event) {
+    if (suppressNextSurahClick) {
+      event.preventDefault();
+      suppressNextSurahClick = false;
+      return;
+    }
+
     event.preventDefault();
 
     const btn = document.getElementById("mushafNextSurahBtn");
@@ -328,25 +338,25 @@
       }
     });
 
-pages.forEach((page) => {
-  const rect = page.getBoundingClientRect();
+    pages.forEach((page) => {
+      const rect = page.getBoundingClientRect();
 
-  if (rect.top <= headerOffset) {
-    currentPageNumber =
-      page.getAttribute("data-page-number") || currentPageNumber;
-  }
-});
+      if (rect.top <= headerOffset) {
+        currentPageNumber =
+          page.getAttribute("data-page-number") || currentPageNumber;
+      }
+    });
 
-if (!currentPageNumber && pages.length > 0) {
-  currentPageNumber = pages[0].getAttribute("data-page-number") || "";
-}
+    if (!currentPageNumber && pages.length > 0) {
+      currentPageNumber = pages[0].getAttribute("data-page-number") || "";
+    }
 
     const surahName = currentHeader.getAttribute("data-surah-name") || "";
 
     if (surahName) {
-navTitle.innerHTML = currentPageNumber
-  ? `<span class="nav-page-number">${toArabicDigits(currentPageNumber)}</span><span class="nav-surah-name">${surahName}</span>`
-  : `<span class="nav-surah-name">${surahName}</span>`;
+      navTitle.innerHTML = currentPageNumber
+        ? `<span class="nav-page-number">${toArabicDigits(currentPageNumber)}</span><span class="nav-surah-name">${surahName}</span>`
+        : `<span class="nav-surah-name">${surahName}</span>`;
 
       const currentSurahId = Number(currentHeader.getAttribute("data-surah-id"));
       updateNextSurahPill(currentSurahId);
@@ -509,6 +519,156 @@ navTitle.innerHTML = currentPageNumber
     });
   }
 
+  async function loadSingleSurahForJump(surahId) {
+    const api = window.Wahyollah?.api;
+    if (!api) throw new Error("API module not loaded");
+
+    if (loadedSurahIds.has(surahId)) return;
+
+    const result = await api.getTajweedVersesByChapter(surahId);
+    const verses = result?.verses || [];
+
+    addVersesToPagesMap(verses);
+    loadedSurahIds.add(surahId);
+    highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
+  }
+
+  function getFirstPageForSurah(surahId) {
+    let firstPage = null;
+
+    pagesMap.forEach((verses, pageNumber) => {
+      if (verses.some((verse) => verse.chapter_id === surahId)) {
+        firstPage = firstPage === null ? pageNumber : Math.min(firstPage, pageNumber);
+      }
+    });
+
+    return firstPage;
+  }
+
+  async function jumpToSurahInMushaf(surahId) {
+    await loadSingleSurahForJump(surahId);
+
+    if (surahId < 114) {
+      await loadSingleSurahForJump(surahId + 1);
+    }
+
+    const firstPage = getFirstPageForSurah(surahId);
+    if (!firstPage) return;
+
+    const pagesRoot = document.getElementById("mushaf-pages");
+    if (!pagesRoot) return;
+
+    pagesRoot.innerHTML = "";
+    renderedPages.clear();
+    highestRenderedPage = firstPage - 1;
+
+    appendPage(firstPage);
+    appendPage(firstPage + 1);
+    appendPage(firstPage + 2);
+
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+
+    const target = document.querySelector(
+      `.mushaf-surah-start[data-surah-id="${surahId}"]`
+    );
+
+    if (target) {
+      const header = document.querySelector(".main-header");
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      const y =
+        target.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerHeight -
+        24;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+    }
+
+    updateNextSurahPill(surahId);
+    updateNavbarSurahTitle();
+  }
+
+  function initMushafSurahPicker() {
+    const picker = document.getElementById("mushafSurahPicker");
+    const search = document.getElementById("mushafSurahPickerSearch");
+    const list = document.getElementById("mushafSurahPickerList");
+    const trigger = document.getElementById("mushafNextSurahBtn");
+
+    if (!picker || !search || !list || !trigger) return;
+
+    function closePicker() {
+      document.body.classList.remove("mushaf-surah-picker-open");
+      picker.setAttribute("aria-hidden", "true");
+    }
+
+    function openPicker() {
+      renderList("");
+      search.value = "";
+
+      document.body.classList.add("mushaf-surah-picker-open");
+      picker.setAttribute("aria-hidden", "false");
+
+      setTimeout(() => search.focus(), 120);
+    }
+
+    function renderList(filter) {
+      const query = filter.trim();
+      list.innerHTML = "";
+
+      Object.entries(SURAH_NAMES_AR).forEach(([id, name]) => {
+        if (query && !name.includes(query) && !String(id).includes(query)) return;
+
+        const button = document.createElement("button");
+        button.className = "mushaf-surah-picker-item";
+        button.type = "button";
+        button.textContent = name;
+        button.dataset.surahId = id;
+
+        button.addEventListener("click", async () => {
+          closePicker();
+          await jumpToSurahInMushaf(Number(id));
+        });
+
+        list.appendChild(button);
+      });
+    }
+
+    trigger.addEventListener("pointerdown", () => {
+      clearTimeout(longPressTimer);
+
+      longPressTimer = setTimeout(() => {
+        suppressNextSurahClick = true;
+        openPicker();
+      }, SURAH_PICKER_LONG_PRESS_MS);
+    });
+
+    trigger.addEventListener("pointerup", () => {
+      clearTimeout(longPressTimer);
+    });
+
+    trigger.addEventListener("pointerleave", () => {
+      clearTimeout(longPressTimer);
+    });
+
+    trigger.addEventListener("pointercancel", () => {
+      clearTimeout(longPressTimer);
+    });
+
+    search.addEventListener("input", () => {
+      renderList(search.value);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closePicker();
+      }
+    });
+  }
+
   document.addEventListener("scroll", () => {
     updateNavbarSurahTitle();
     loadNextPagesIfNeeded();
@@ -524,6 +684,7 @@ navTitle.innerHTML = currentPageNumber
       await loadInitialMushafData();
       await loadNextPagesIfNeeded();
       initScrollBottomButton();
+      initMushafSurahPicker();
 
       const nextSurahBtn = document.getElementById("mushafNextSurahBtn");
       if (nextSurahBtn) {
