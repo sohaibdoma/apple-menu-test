@@ -170,8 +170,6 @@
   }
 
   async function scrollToNextSurahInMushaf(event) {
-
-
     event.preventDefault();
 
     const btn = document.getElementById("mushafNextSurahBtn");
@@ -589,7 +587,8 @@
 
     let startY = 0;
     let currentY = 0;
-    
+    const SWIPE_THRESHOLD = 90;
+
     const picker = document.getElementById("mushafSurahPicker");
     const search = document.getElementById("mushafSurahPickerSearch");
     const list = document.getElementById("mushafSurahPickerList");
@@ -599,37 +598,11 @@
 
     if (!picker || !search || !list || !trigger) return;
 
-
-    picker.addEventListener("touchstart", (event) => {
-  startY = event.touches[0].clientY;
-}, { passive: true });
-
-picker.addEventListener("touchmove", (event) => {
-  currentY = event.touches[0].clientY;
-}, { passive: true });
-
-picker.addEventListener("touchend", () => {
-  const deltaY = currentY - startY;
-
-  if (deltaY > 90) {
-    closePicker();
-  }
-
-  startY = 0;
-  currentY = 0;
-});
-
-    
-
     function closePicker() {
       document.body.classList.remove("mushaf-surah-picker-open");
       picker.setAttribute("aria-hidden", "true");
     }
 
-if (closeBtn) {
-  closeBtn.addEventListener("click", closePicker);
-}
-    
     function openPicker() {
       renderList("");
       search.value = "";
@@ -638,6 +611,46 @@ if (closeBtn) {
       picker.setAttribute("aria-hidden", "false");
 
       setTimeout(() => search.focus(), 120);
+    }
+
+    // 🔼 Swipe UP anywhere → OPEN picker
+    document.addEventListener("touchstart", (event) => {
+      startY = event.touches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener("touchend", (event) => {
+      currentY = event.changedTouches[0].clientY;
+
+      const deltaY = currentY - startY;
+
+      if (deltaY < -SWIPE_THRESHOLD) {
+        openPicker();
+      }
+
+      startY = 0;
+      currentY = 0;
+    }, { passive: true });
+
+    // 🔽 Swipe DOWN inside picker → CLOSE
+    picker.addEventListener("touchstart", (event) => {
+      startY = event.touches[0].clientY;
+    }, { passive: true });
+
+    picker.addEventListener("touchend", (event) => {
+      currentY = event.changedTouches[0].clientY;
+
+      const deltaY = currentY - startY;
+
+      if (deltaY > SWIPE_THRESHOLD) {
+        closePicker();
+      }
+
+      startY = 0;
+      currentY = 0;
+    }, { passive: true });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closePicker);
     }
 
     function renderList(filter) {
@@ -662,7 +675,6 @@ if (closeBtn) {
       });
     }
 
-   
     search.addEventListener("input", () => {
       renderList(search.value);
     });
