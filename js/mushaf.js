@@ -10,9 +10,6 @@
   const loadedSurahIds = new Set();
   const loadingSurahPromises = new Map();
 
-  let longPressTimer = null;
-  let suppressNextSurahClick = false;
-  const SURAH_PICKER_LONG_PRESS_MS = 520;
 
   const SURAH_NAMES_AR = {
     1: "الفاتحة",
@@ -173,11 +170,7 @@
   }
 
   async function scrollToNextSurahInMushaf(event) {
-    if (suppressNextSurahClick) {
-      event.preventDefault();
-      suppressNextSurahClick = false;
-      return;
-    }
+
 
     event.preventDefault();
 
@@ -593,18 +586,50 @@
   }
 
   function initMushafSurahPicker() {
+
+    let startY = 0;
+    let currentY = 0;
+    
     const picker = document.getElementById("mushafSurahPicker");
     const search = document.getElementById("mushafSurahPickerSearch");
     const list = document.getElementById("mushafSurahPickerList");
     const trigger = document.getElementById("mushafNextSurahBtn");
 
+    const closeBtn = document.getElementById("mushafSurahPickerClose");
+
     if (!picker || !search || !list || !trigger) return;
+
+
+    picker.addEventListener("touchstart", (event) => {
+  startY = event.touches[0].clientY;
+}, { passive: true });
+
+picker.addEventListener("touchmove", (event) => {
+  currentY = event.touches[0].clientY;
+}, { passive: true });
+
+picker.addEventListener("touchend", () => {
+  const deltaY = currentY - startY;
+
+  if (deltaY > 90) {
+    closePicker();
+  }
+
+  startY = 0;
+  currentY = 0;
+});
+
+    
 
     function closePicker() {
       document.body.classList.remove("mushaf-surah-picker-open");
       picker.setAttribute("aria-hidden", "true");
     }
 
+if (closeBtn) {
+  closeBtn.addEventListener("click", closePicker);
+}
+    
     function openPicker() {
       renderList("");
       search.value = "";
@@ -637,27 +662,7 @@
       });
     }
 
-    trigger.addEventListener("pointerdown", () => {
-      clearTimeout(longPressTimer);
-
-      longPressTimer = setTimeout(() => {
-        suppressNextSurahClick = true;
-        openPicker();
-      }, SURAH_PICKER_LONG_PRESS_MS);
-    });
-
-    trigger.addEventListener("pointerup", () => {
-      clearTimeout(longPressTimer);
-    });
-
-    trigger.addEventListener("pointerleave", () => {
-      clearTimeout(longPressTimer);
-    });
-
-    trigger.addEventListener("pointercancel", () => {
-      clearTimeout(longPressTimer);
-    });
-
+   
     search.addEventListener("input", () => {
       renderList(search.value);
     });
