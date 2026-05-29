@@ -613,45 +613,34 @@
       setTimeout(() => search.focus(), 120);
     }
 
-    // 🔼 Swipe UP anywhere → OPEN picker
-    document.addEventListener("touchstart", (event) => {
-      startY = event.touches[0].clientY;
-    }, { passive: true });
+    /* =========================
+       LONG PRESS TO OPEN PICKER
+       ========================= */
 
-    document.addEventListener("touchend", (event) => {
-      currentY = event.changedTouches[0].clientY;
+    const LONG_PRESS_MS = 600;
+    let longPressTimer = null;
 
-      const deltaY = currentY - startY;
-
-      if (deltaY < -SWIPE_THRESHOLD) {
+    document.addEventListener("touchstart", () => {
+      longPressTimer = setTimeout(() => {
         openPicker();
+      }, LONG_PRESS_MS);
+    }, { passive: true });
+
+    document.addEventListener("touchend", () => {
+      if (longPressTimer) {
+        clearTimeout(longPressTimer);
+        longPressTimer = null;
       }
-
-      startY = 0;
-      currentY = 0;
     }, { passive: true });
 
-    // 🔽 Swipe DOWN inside picker → CLOSE
-    picker.addEventListener("touchstart", (event) => {
-      startY = event.touches[0].clientY;
-    }, { passive: true });
-
-    picker.addEventListener("touchend", (event) => {
-      currentY = event.changedTouches[0].clientY;
-
-      const deltaY = currentY - startY;
-
-      if (deltaY > SWIPE_THRESHOLD) {
-        closePicker();
+    document.addEventListener("touchmove", () => {
+      if (longPressTimer) {
+        clearTimeout(longPressTimer);
+        longPressTimer = null;
       }
-
-      startY = 0;
-      currentY = 0;
     }, { passive: true });
 
-    if (closeBtn) {
-      closeBtn.addEventListener("click", closePicker);
-    }
+    /* ========================= */
 
     function renderList(filter) {
       const query = filter.trim();
