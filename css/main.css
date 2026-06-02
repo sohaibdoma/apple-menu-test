@@ -2576,116 +2576,108 @@ body[data-quran-font-size="xlarge"] .mushaf-text {
    MUSHAF SURAH PICKER
 ======================================== */
 
-.mushaf-surah-picker {
-  position: fixed;
-  left: 50%;
-  bottom: var(--nav-gap);
+.mushaf-surah-pill {
+  position: relative;
 
-  width: var(--header-h);
+  width: 86px;
   height: var(--header-h);
 
-  transform: translateX(-50%);
-  transform-origin: bottom center;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
 
   border-radius: 999px;
   overflow: hidden;
 
   background-color: rgba(255, 255, 255, 0.6);
-  color: #000000;
-
-  opacity: 0;
-  pointer-events: none;
-
-  z-index: 9999;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 
   clip-path: inset(0 round 999px);
   -webkit-clip-path: inset(0 round 999px);
 
+  flex-shrink: 0;
+
   transition:
-    opacity 180ms ease,
     width 420ms cubic-bezier(0.22, 1, 0.36, 1),
     height 420ms cubic-bezier(0.22, 1, 0.36, 1),
     background-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
     border-radius 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body.mushaf-surah-picker-open .mushaf-surah-picker {
-  width: min(86vw, 360px);
-  height: min(58dvh, 460px);
-
-  opacity: 1;
-  pointer-events: auto;
+body.mushaf-surah-picker-open .mushaf-surah-pill {
+  width: min(82vw, 330px);
+  height: min(54dvh, 430px);
 
   border-radius: 30px;
   background-color: #ffffff;
 }
 
+html.night-mode .mushaf-surah-pill,
+body.night-mode .mushaf-surah-pill {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 
-html.night-mode .mushaf-surah-picker,
-body.night-mode .mushaf-surah-picker {
+html.night-mode body.mushaf-surah-picker-open .mushaf-surah-pill,
+body.night-mode.mushaf-surah-picker-open .mushaf-surah-pill {
   background-color: #000000;
+}
+
+.mushaf-surah-pill .mushaf-next-surah-btn {
+  width: 100%;
+  height: var(--header-h);
+  min-height: var(--header-h);
+
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+body.mushaf-surah-picker-open .mushaf-surah-pill .mushaf-next-surah-btn {
+  color: #000000;
+}
+
+html.night-mode body.mushaf-surah-picker-open .mushaf-surah-pill .mushaf-next-surah-btn,
+body.night-mode.mushaf-surah-picker-open .mushaf-surah-pill .mushaf-next-surah-btn {
   color: #ffffff;
 }
 
-body.mushaf-surah-picker-open #mushafNextSurahBtn {
-  opacity: 0;
-  pointer-events: none;
-}
+.mushaf-surah-picker {
+  flex: 1;
+  min-height: 0;
 
-.mushaf-surah-picker-panel {
-  height: 100%;
-  padding: 16px;
+  padding: 14px 14px 10px;
 
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 180ms ease 80ms;
 }
 
-
-.mushaf-surah-picker-close {
-  border: none;
-  background: transparent;
-  color: inherit;
-
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-top: -4px;
-  margin-bottom: -2px;
-
-  padding: 0;
-
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 1;
-
-  opacity: 0.34;
-
-  cursor: pointer;
-
-  -webkit-tap-highlight-color: transparent;
+body.mushaf-surah-picker-open .mushaf-surah-picker {
+  opacity: 1;
+  pointer-events: auto;
 }
-
-
 
 .mushaf-surah-picker-search {
   width: 100%;
-  height: var(--header-h);
+  height: 44px;
 
   border: none;
   outline: none;
 
   border-radius: 999px;
-  padding: 0 18px;
+  padding: 0 16px;
 
   background: rgba(0, 0, 0, 0.06);
   color: inherit;
 
   font-family: "Scheherazade New", serif;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
 
   direction: rtl;
@@ -2698,6 +2690,7 @@ body.night-mode .mushaf-surah-picker-search {
 
 .mushaf-surah-picker-list {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
 
   display: flex;
@@ -2715,7 +2708,7 @@ body.night-mode .mushaf-surah-picker-search {
 }
 
 .mushaf-surah-picker-item {
-  height: 44px;
+  height: 42px;
 
   border: none;
   border-radius: 999px;
@@ -2728,7 +2721,7 @@ body.night-mode .mushaf-surah-picker-search {
   justify-content: center;
 
   font-family: "Scheherazade New", serif;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
 
   cursor: pointer;
