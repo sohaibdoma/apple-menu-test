@@ -625,6 +625,7 @@ trigger.addEventListener("click", (event) => {
     function closePicker() {
       document.body.classList.remove("mushaf-surah-picker-open");
       picker.setAttribute("aria-hidden", "true");
+      trigger.setAttribute("aria-expanded", "false");
     }
 
     function openPicker() {
@@ -633,6 +634,7 @@ trigger.addEventListener("click", (event) => {
 
       document.body.classList.add("mushaf-surah-picker-open");
       picker.setAttribute("aria-hidden", "false");
+      trigger.setAttribute("aria-expanded", "true");
 
       setTimeout(() => search.focus(), 120);
     }
