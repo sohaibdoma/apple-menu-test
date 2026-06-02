@@ -2152,12 +2152,13 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
+   flex-direction: column;
 
   text-decoration: none;
   color: var(--page-text);
 
-  padding-inline: 16px;
-  gap: 8px;
+  padding-inline: 12px;
+  gap: 2px;
 }
 
 body[data-page-type="mushaf"] .font-size-pill {
