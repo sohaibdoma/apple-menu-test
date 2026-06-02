@@ -2754,8 +2754,8 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
 
 
 .fihris-icon {
-  width: 22px;
-  height: 14px;
+  width: 52px;
+  height: 18px;
 
   display: flex;
   align-items: center;
@@ -2766,17 +2766,15 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
 
 .fihris-chevron-svg {
   width: 52px;
-  height: 16px;
+  height: 18px;
 
   display: block;
 
   fill: none;
   stroke: currentColor;
-
-  transform-origin: center;
-
-  transition:
-    transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .fihris-chevron-svg line {
