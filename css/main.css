@@ -2157,7 +2157,7 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   text-decoration: none;
   color: var(--page-text);
    
-  
+
    
   padding-inline: 12px;
   gap: 0px;
@@ -2170,7 +2170,7 @@ body[data-page-type="mushaf"] .font-size-pill {
 #mushafNextSurahName {
   white-space: nowrap;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 
