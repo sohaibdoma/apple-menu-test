@@ -2790,4 +2790,12 @@ body.mushaf-surah-picker-open .fihris-icon-bar-right {
   font-size: 18px;
   font-weight: 700;
   line-height: 1;
+   
+  opacity: 1;
+  transition: opacity 120ms ease;
+}
+
+body.mushaf-surah-picker-open .fihris-label {
+  opacity: 0;
+  transition: none;
 }
