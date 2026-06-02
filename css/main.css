@@ -2157,7 +2157,7 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   text-decoration: none;
   color: var(--page-text);
    
-  padding-top: 60px;
+  padding-top: 4px;
    
   padding-inline: 12px;
   gap: 0px;
@@ -2586,7 +2586,7 @@ body[data-quran-font-size="xlarge"] .mushaf-text {
   height: var(--header-h);
 
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 
   border-radius: var(--nav-radius);
   overflow: hidden;
@@ -2635,6 +2635,14 @@ body.night-mode.mushaf-surah-picker-open .mushaf-surah-pill {
   -webkit-backdrop-filter: none;
   clip-path: none;
   -webkit-clip-path: none;
+}
+
+.mushaf-surah-picker {
+  order: 1;
+}
+
+.mushaf-next-surah-btn {
+  order: 2;
 }
 
 .mushaf-surah-picker {
