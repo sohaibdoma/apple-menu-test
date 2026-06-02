@@ -628,17 +628,14 @@ trigger.addEventListener("click", (event) => {
       trigger.setAttribute("aria-expanded", "false");
     }
 
-    function openPicker() {
-      renderList("");
-      search.value = "";
+function openPicker() {
+  renderList("");
+  search.value = "";
 
-      document.body.classList.add("mushaf-surah-picker-open");
-      picker.setAttribute("aria-hidden", "false");
-      trigger.setAttribute("aria-expanded", "true");
-
-      setTimeout(() => search.focus(), 120);
-    }
-
+  document.body.classList.add("mushaf-surah-picker-open");
+  picker.setAttribute("aria-hidden", "false");
+  trigger.setAttribute("aria-expanded", "true");
+}
   
 
     function renderList(filter) {
