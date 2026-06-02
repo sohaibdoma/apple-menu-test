@@ -626,6 +626,7 @@ trigger.addEventListener("click", (event) => {
       document.body.classList.remove("mushaf-surah-picker-open");
       picker.setAttribute("aria-hidden", "true");
       trigger.setAttribute("aria-expanded", "false");
+      document.getElementById("fihrisChevronClose")?.beginElement();
     }
 
 function openPicker() {
@@ -635,6 +636,7 @@ function openPicker() {
   document.body.classList.add("mushaf-surah-picker-open");
   picker.setAttribute("aria-hidden", "false");
   trigger.setAttribute("aria-expanded", "true");
+  document.getElementById("fihrisChevronOpen")?.beginElement();
 }
   
 
