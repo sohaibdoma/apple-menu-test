@@ -599,7 +599,10 @@
     if (!picker || !search || !list || !trigger) return;
 
 
-    trigger.addEventListener("click", () => {
+trigger.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
   const isOpen = document.body.classList.contains(
     "mushaf-surah-picker-open"
   );
@@ -610,7 +613,14 @@
     openPicker();
   }
 });
-    
+
+    if (closeBtn) {
+  closeBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    closePicker();
+  });
+}
 
     function closePicker() {
       document.body.classList.remove("mushaf-surah-picker-open");
