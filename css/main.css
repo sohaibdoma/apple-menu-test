@@ -2747,51 +2747,40 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
 }
 
 
-
-
 .fihris-icon {
-  position: relative;
+  width: 22px;
+  height: 14px;
 
-  width: 30px;
-  height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  display: block;
   flex-shrink: 0;
 }
 
-.fihris-icon-bar {
-  position: absolute;
-  top: 5px;
+.fihris-chevron-svg {
+  width: 20px;
+  height: 12px;
 
-  width: 17px;
-  height: 3px;
+  display: block;
 
-  border-radius: 999px;
-  background: currentColor;
+  fill: none;
+  stroke: currentColor;
+
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 
   transform-origin: center;
 
   transition:
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.fihris-icon-bar-left {
-  left: 1px;
-  transform: rotate(-28deg);
+body.mushaf-surah-picker-open .fihris-chevron-svg {
+  transform: rotate(180deg);
 }
 
-.fihris-icon-bar-right {
-  right: 1px;
-  transform: rotate(28deg);
-}
-
-body.mushaf-surah-picker-open .fihris-icon-bar-left {
-  transform: rotate(28deg);
-}
-
-body.mushaf-surah-picker-open .fihris-icon-bar-right {
-  transform: rotate(-28deg);
-}
 
 .fihris-label {
   font-family: "Scheherazade New", serif;
