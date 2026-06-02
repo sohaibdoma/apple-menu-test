@@ -2721,13 +2721,5 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 
 body.mushaf-surah-picker-open .font-size-pill,
 body.mushaf-surah-picker-open .auto-scroll-bar {
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.92);
-}
-
-.auto-scroll-bar {
-  transition:
-    opacity 220ms ease,
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  display: none;
 }
