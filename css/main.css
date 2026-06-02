@@ -2579,19 +2579,18 @@ body[data-quran-font-size="xlarge"] .mushaf-text {
 .mushaf-surah-picker {
   position: fixed;
   left: 50%;
-  bottom: calc(var(--nav-gap) + 10px);
+  bottom: var(--nav-gap);
 
-  width: 160px;
-  height: 52px;
-  max-height: 52px;
+  width: var(--header-h);
+  height: var(--header-h);
 
-  transform: translateX(-50%) translateY(0) scale(0.96);
+  transform: translateX(-50%);
   transform-origin: bottom center;
 
   border-radius: 999px;
   overflow: hidden;
 
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.6);
   color: #000000;
 
   opacity: 0;
@@ -2599,32 +2598,36 @@ body[data-quran-font-size="xlarge"] .mushaf-text {
 
   z-index: 9999;
 
+  clip-path: inset(0 round 999px);
+  -webkit-clip-path: inset(0 round 999px);
+
   transition:
     opacity 180ms ease,
-    width 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    max-height 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-radius 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+    width 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body.mushaf-surah-picker-open .mushaf-surah-picker {
   width: min(86vw, 360px);
-  max-height: min(58dvh, 460px);
   height: min(58dvh, 460px);
 
   opacity: 1;
   pointer-events: auto;
 
   border-radius: 30px;
-  transform: translateX(-50%) translateY(0) scale(1);
+  background-color: #ffffff;
 }
+
+
 html.night-mode .mushaf-surah-picker,
 body.night-mode .mushaf-surah-picker {
   background-color: #000000;
   color: #ffffff;
 }
 
-body.mushaf-surah-picker-open .surah-bottom-controls {
+body.mushaf-surah-picker-open #mushafNextSurahBtn {
   opacity: 0;
   pointer-events: none;
 }
