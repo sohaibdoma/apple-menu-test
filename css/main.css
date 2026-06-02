@@ -2717,3 +2717,11 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 
   cursor: pointer;
 }
+
+
+body.mushaf-surah-picker-open .font-size-pill,
+body.mushaf-surah-picker-open .auto-scroll-pill {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.92);
+}
