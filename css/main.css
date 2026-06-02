@@ -2782,12 +2782,6 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
   stroke-linecap: round;
 }
 
-
-body.mushaf-surah-picker-open .fihris-chevron-svg {
-  transform: rotate(180deg);
-}
-
-
 .fihris-label {
   font-family: "Scheherazade New", serif;
   font-size: 18px;
