@@ -598,6 +598,20 @@
 
     if (!picker || !search || !list || !trigger) return;
 
+
+    trigger.addEventListener("click", () => {
+  const isOpen = document.body.classList.contains(
+    "mushaf-surah-picker-open"
+  );
+
+  if (isOpen) {
+    closePicker();
+  } else {
+    openPicker();
+  }
+});
+    
+
     function closePicker() {
       document.body.classList.remove("mushaf-surah-picker-open");
       picker.setAttribute("aria-hidden", "true");
@@ -613,34 +627,7 @@
       setTimeout(() => search.focus(), 120);
     }
 
-    /* =========================
-       LONG PRESS TO OPEN PICKER
-       ========================= */
-
-    const LONG_PRESS_MS = 600;
-    let longPressTimer = null;
-
-    document.addEventListener("touchstart", () => {
-      longPressTimer = setTimeout(() => {
-        openPicker();
-      }, LONG_PRESS_MS);
-    }, { passive: true });
-
-    document.addEventListener("touchend", () => {
-      if (longPressTimer) {
-        clearTimeout(longPressTimer);
-        longPressTimer = null;
-      }
-    }, { passive: true });
-
-    document.addEventListener("touchmove", () => {
-      if (longPressTimer) {
-        clearTimeout(longPressTimer);
-        longPressTimer = null;
-      }
-    }, { passive: true });
-
-    /* ========================= */
+  
 
     function renderList(filter) {
       const query = filter.trim();
@@ -692,10 +679,6 @@
       initScrollBottomButton();
       initMushafSurahPicker();
 
-      const nextSurahBtn = document.getElementById("mushafNextSurahBtn");
-      if (nextSurahBtn) {
-        nextSurahBtn.addEventListener("click", scrollToNextSurahInMushaf);
-      }
     } catch (error) {
       console.error("Failed to load Mushaf pages:", error);
 
