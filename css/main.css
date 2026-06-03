@@ -2692,6 +2692,12 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   direction: rtl;
 }
 
+html.night-mode .mushaf-surah-picker-search,
+body.night-mode .mushaf-surah-picker-search {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
 .mushaf-surah-picker-list {
   flex: 1;
   min-height: 0;
