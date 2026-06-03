@@ -2804,3 +2804,12 @@ body.mushaf-surah-picker-open .fihris-label {
   opacity: 0;
   transition: none;
 }
+
+#mushafNextSurahBtn,
+#mushafNextSurahBtn:focus,
+#mushafNextSurahBtn:focus-visible,
+#mushafNextSurahBtn:active {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
