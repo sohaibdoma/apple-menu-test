@@ -4,7 +4,9 @@
   let pagesMap = new Map();
   let renderedPages = new Set();
   let highestRenderedPage = 0;
+  let lowestRenderedPage = 1;
   let isLoadingMore = false;
+  let isLoadingPrevious = false;
 
   let highestLoadedSurah = 0;
   const loadedSurahIds = new Set();
@@ -409,7 +411,38 @@
     pagesRoot.appendChild(pageEl);
 
     renderedPages.add(pageNumber);
+
+    if (renderedPages.size === 1) {
+      lowestRenderedPage = pageNumber;
+      highestRenderedPage = pageNumber;
+    } else {
+      lowestRenderedPage = Math.min(lowestRenderedPage, pageNumber);
+      highestRenderedPage = Math.max(highestRenderedPage, pageNumber);
+    }
+
+    return true;
+  }
+
+  function prependPage(pageNumber) {
+    const pagesRoot = document.getElementById("mushaf-pages");
+    if (!pagesRoot) return false;
+    if (renderedPages.has(pageNumber)) return false;
+
+    const verses = getPageVerses(pageNumber);
+    if (verses.length === 0) return false;
+
+    const previousScrollHeight = document.documentElement.scrollHeight;
+
+    const pageEl = createMushafPage(pageNumber, verses);
+    pagesRoot.insertBefore(pageEl, pagesRoot.firstChild);
+
+    renderedPages.add(pageNumber);
+    lowestRenderedPage = Math.min(lowestRenderedPage, pageNumber);
     highestRenderedPage = Math.max(highestRenderedPage, pageNumber);
+
+    const newScrollHeight = document.documentElement.scrollHeight;
+    window.scrollBy(0, newScrollHeight - previousScrollHeight);
+
     return true;
   }
 
@@ -425,6 +458,7 @@
 
     pagesRoot.innerHTML = "";
     renderedPages.clear();
+    lowestRenderedPage = 1;
     highestRenderedPage = 0;
 
     await renderPageWhenReady(1);
@@ -436,6 +470,10 @@
 
   function isNearBottom() {
     return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 500;
+  }
+
+  function isNearTop() {
+    return window.scrollY <= 500;
   }
 
   async function appendAllRemainingPagesToEnd() {
@@ -477,6 +515,56 @@
       console.error("Failed to load next Mushaf pages:", error);
     } finally {
       isLoadingMore = false;
+    }
+  }
+
+  async function loadSurahAroundRenderedWindow(direction) {
+    const pages = Array.from(document.querySelectorAll(".mushaf-page"));
+    if (pages.length === 0) return;
+
+    const anchorPage =
+      direction === "previous" ? pages[0] : pages[pages.length - 1];
+
+    const anchorSurahId = Number(anchorPage.getAttribute("data-surah-id"));
+    if (!anchorSurahId) return;
+
+    const targetSurahId =
+      direction === "previous" ? anchorSurahId - 1 : anchorSurahId + 1;
+
+    if (targetSurahId >= 1 && targetSurahId <= 114) {
+      await loadSingleSurahForJump(targetSurahId);
+    }
+  }
+
+  async function loadPreviousPagesIfNeeded() {
+    if (isLoadingPrevious) return;
+    if (!isNearTop()) return;
+    if (lowestRenderedPage <= 1) return;
+
+    isLoadingPrevious = true;
+
+    try {
+      let didPrepend = false;
+
+      while (isNearTop() && lowestRenderedPage > 1) {
+        const previousPage = lowestRenderedPage - 1;
+
+        await loadSurahAroundRenderedWindow("previous");
+
+        const prepended = prependPage(previousPage);
+        if (!prepended) break;
+
+        didPrepend = true;
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+      }
+
+      if (didPrepend) {
+        updateNavbarSurahTitle();
+      }
+    } catch (error) {
+      console.error("Failed to load previous Mushaf pages:", error);
+    } finally {
+      isLoadingPrevious = false;
     }
   }
 
@@ -536,11 +624,12 @@
   }
 
 async function jumpToSurahInMushaf(surahId) {
-  await loadSingleSurahForJump(surahId);
-
-  if (surahId < 114) {
-    await loadSingleSurahForJump(surahId + 1);
-  }
+  await Promise.all([
+    surahId > 1 ? loadSingleSurahForJump(surahId - 1) : Promise.resolve(),
+    loadSingleSurahForJump(surahId),
+    surahId < 114 ? loadSingleSurahForJump(surahId + 1) : Promise.resolve(),
+    surahId < 113 ? loadSingleSurahForJump(surahId + 2) : Promise.resolve()
+  ]);
 
   const firstPage = getFirstPageForSurah(surahId);
   if (!firstPage) return;
@@ -548,10 +637,19 @@ async function jumpToSurahInMushaf(surahId) {
   const pagesRoot = document.getElementById("mushaf-pages");
   if (!pagesRoot) return;
 
-  for (let page = 1; page <= firstPage + 2 && page <= 604; page += 1) {
-    await renderPageWhenReady(page);
-    await new Promise((resolve) => requestAnimationFrame(resolve));
+  pagesRoot.innerHTML = "";
+  renderedPages.clear();
+  lowestRenderedPage = firstPage;
+  highestRenderedPage = firstPage - 1;
+
+  const startPage = Math.max(1, firstPage - 2);
+  const endPage = Math.min(604, firstPage + 3);
+
+  for (let page = startPage; page <= endPage; page += 1) {
+    appendPage(page);
   }
+
+  await new Promise((resolve) => requestAnimationFrame(resolve));
 
   const target = document.querySelector(
     `.mushaf-surah-start[data-surah-id="${surahId}"]`
@@ -670,6 +768,7 @@ function openPicker() {
 
   document.addEventListener("scroll", () => {
     updateNavbarSurahTitle();
+    loadPreviousPagesIfNeeded();
     loadNextPagesIfNeeded();
   }, { passive: true });
 
