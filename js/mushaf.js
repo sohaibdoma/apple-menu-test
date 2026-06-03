@@ -7,7 +7,7 @@
   let lowestRenderedPage = 1;
   let isLoadingMore = false;
   let isLoadingPrevious = false;
-  let lastPreviousLoadTime = 0;
+  let pickerLockedScrollY = 0;
 
   let highestLoadedSurah = 0;
   const loadedSurahIds = new Set();
@@ -170,6 +170,34 @@
     btn.href = "#";
     btn.dataset.nextSurahId = String(nextSurahId);
     btn.style.display = "inline-flex";
+  }
+
+  function lockPickerBackgroundScroll() {
+    if (document.body.classList.contains("mushaf-picker-scroll-locked")) return;
+
+    pickerLockedScrollY = window.scrollY || window.pageYOffset || 0;
+
+    document.body.classList.add("mushaf-picker-scroll-locked");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${pickerLockedScrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
+  }
+
+  function unlockPickerBackgroundScroll() {
+    if (!document.body.classList.contains("mushaf-picker-scroll-locked")) return;
+
+    document.body.classList.remove("mushaf-picker-scroll-locked");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    document.body.style.overflow = "";
+
+    window.scrollTo(0, pickerLockedScrollY);
   }
 
   async function scrollToNextSurahInMushaf(event) {
@@ -469,7 +497,7 @@ function isNearBottom() {
 }
 
 function isNearTop() {
-  return window.scrollY <= 220;
+  return window.scrollY <= 1200;
 }
 
   async function appendAllRemainingPagesToEnd() {
@@ -539,9 +567,6 @@ async function loadPreviousPagesIfNeeded() {
   if (!isNearTop()) return;
   if (lowestRenderedPage <= 1) return;
 
-  const now = Date.now();
-  if (now - lastPreviousLoadTime < 700) return;
-
   isLoadingPrevious = true;
 
   try {
@@ -550,8 +575,6 @@ async function loadPreviousPagesIfNeeded() {
     await loadSurahAroundRenderedWindow("previous");
 
     const prepended = prependPage(previousPage);
-
-    lastPreviousLoadTime = Date.now();
 
     if (prepended) {
       updateNavbarSurahTitle();
@@ -637,9 +660,8 @@ async function jumpToSurahInMushaf(surahId) {
   renderedPages.clear();
   lowestRenderedPage = firstPage;
   highestRenderedPage = firstPage - 1;
-  lastPreviousLoadTime = Date.now();
 
-  const startPage = Math.max(1, firstPage - 2);
+  const startPage = Math.max(1, firstPage - 4);
   const endPage = Math.min(604, firstPage + 8);
 
   for (let page = startPage; page <= endPage; page += 1) {
@@ -719,9 +741,32 @@ trigger.addEventListener("click", (event) => {
       picker.setAttribute("aria-hidden", "true");
       trigger.setAttribute("aria-expanded", "false");
       document.getElementById("fihrisChevronClose")?.beginElement();
+      unlockPickerBackgroundScroll();
     }
 
+function closePickerIfOpen() {
+  const isOpen = document.body.classList.contains(
+    "mushaf-surah-picker-open"
+  );
+
+  if (isOpen) {
+    closePicker();
+  }
+}
+
+function closeFontSizePillIfOpen() {
+  document.querySelectorAll(".font-size-pill.is-open").forEach((pill) => {
+    pill.classList.remove("is-open");
+  });
+
+  document.querySelectorAll(".font-size-trigger[aria-expanded='true']").forEach((triggerBtn) => {
+    triggerBtn.setAttribute("aria-expanded", "false");
+  });
+}
+
 function openPicker() {
+  closeFontSizePillIfOpen();
+
   renderList("");
   search.value = "";
 
@@ -729,7 +774,23 @@ function openPicker() {
   picker.setAttribute("aria-hidden", "false");
   trigger.setAttribute("aria-expanded", "true");
   document.getElementById("fihrisChevronOpen")?.beginElement();
+  lockPickerBackgroundScroll();
 }
+
+const bodyOverlayObserver = new MutationObserver(() => {
+  const externalOverlayOpen =
+    document.body.classList.contains("menu-open") ||
+    document.body.classList.contains("search-open");
+
+  if (externalOverlayOpen) {
+    closePickerIfOpen();
+  }
+});
+
+bodyOverlayObserver.observe(document.body, {
+  attributes: true,
+  attributeFilter: ["class"]
+});
   
 
     function renderList(filter) {
@@ -759,7 +820,13 @@ function openPicker() {
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
+      if (event.key !== "Escape") return;
+
+      const isOpen = document.body.classList.contains(
+        "mushaf-surah-picker-open"
+      );
+
+      if (isOpen) {
         closePicker();
       }
     });
