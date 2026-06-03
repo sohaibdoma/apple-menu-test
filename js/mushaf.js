@@ -830,11 +830,17 @@ bodyOverlayObserver.observe(document.body, {
     });
   }
 
-  document.addEventListener("scroll", () => {
-    updateNavbarSurahTitle();
+ let previousLoadTimer = null;
+
+document.addEventListener("scroll", () => {
+  updateNavbarSurahTitle();
+  loadNextPagesIfNeeded();
+
+  clearTimeout(previousLoadTimer);
+  previousLoadTimer = setTimeout(() => {
     loadPreviousPagesIfNeeded();
-    loadNextPagesIfNeeded();
-  }, { passive: true });
+  }, 180);
+}, { passive: true });
 
   window.addEventListener("resize", () => {
     updateNavbarSurahTitle();
