@@ -2694,7 +2694,7 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 
 html.night-mode .mushaf-surah-picker-search,
 body.night-mode .mushaf-surah-picker-search {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
 }
 
