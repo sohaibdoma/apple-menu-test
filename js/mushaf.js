@@ -473,7 +473,7 @@
   }
 
   function isNearTop() {
-    return window.scrollY <= 500;
+    return window.scrollY <= 1500;
   }
 
   async function appendAllRemainingPagesToEnd() {
