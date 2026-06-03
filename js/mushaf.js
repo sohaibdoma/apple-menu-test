@@ -483,7 +483,7 @@ function isNearBottom() {
 }
 
 function isNearTop() {
-  return window.scrollY <= 300;
+  return window.scrollY <= 80;
 }
 
   async function appendAllRemainingPagesToEnd() {
@@ -560,6 +560,10 @@ async function loadPreviousPagesIfNeeded() {
     const previousPage = lowestRenderedPage - 1;
 
     await loadSurahAroundRenderedWindow("previous");
+
+    await new Promise((resolve) => {
+      setTimeout(resolve, 180);
+    });
 
     const prepended = prependPage(previousPage);
 
