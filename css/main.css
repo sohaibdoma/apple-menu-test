@@ -2649,7 +2649,7 @@ body.night-mode.mushaf-surah-picker-open .mushaf-surah-pill {
   flex: 1;
   min-height: 0;
 
-  padding: 14px;
+  padding: 0px 14px 14px;
   display: flex;
   flex-direction: column;
   gap: 10px;
