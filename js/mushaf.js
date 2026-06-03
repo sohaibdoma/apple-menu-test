@@ -521,7 +521,6 @@
 
     addVersesToPagesMap(verses);
     loadedSurahIds.add(surahId);
-    highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
   }
 
   function getFirstPageForSurah(surahId) {
@@ -536,53 +535,49 @@
     return firstPage;
   }
 
-  async function jumpToSurahInMushaf(surahId) {
-    await loadSingleSurahForJump(surahId);
+async function jumpToSurahInMushaf(surahId) {
+  await loadSingleSurahForJump(surahId);
 
-    if (surahId < 114) {
-      await loadSingleSurahForJump(surahId + 1);
-    }
-
-    const firstPage = getFirstPageForSurah(surahId);
-    if (!firstPage) return;
-
-    const pagesRoot = document.getElementById("mushaf-pages");
-    if (!pagesRoot) return;
-
-    pagesRoot.innerHTML = "";
-    renderedPages.clear();
-    highestRenderedPage = firstPage - 1;
-
-    appendPage(firstPage);
-    appendPage(firstPage + 1);
-    appendPage(firstPage + 2);
-
-    await new Promise((resolve) => requestAnimationFrame(resolve));
-
-    const target = document.querySelector(
-      `.mushaf-surah-start[data-surah-id="${surahId}"]`
-    );
-
-    if (target) {
-      const header = document.querySelector(".main-header");
-      const headerHeight = header ? header.offsetHeight : 0;
-
-      const y =
-        target.getBoundingClientRect().top +
-        window.pageYOffset -
-        headerHeight -
-        24;
-
-      window.scrollTo({
-        top: y,
-        behavior: "smooth"
-      });
-    }
-
-    updateNextSurahPill(surahId);
-    updateNavbarSurahTitle();
+  if (surahId < 114) {
+    await loadSingleSurahForJump(surahId + 1);
   }
 
+  const firstPage = getFirstPageForSurah(surahId);
+  if (!firstPage) return;
+
+  const pagesRoot = document.getElementById("mushaf-pages");
+  if (!pagesRoot) return;
+
+  for (let page = 1; page <= firstPage + 2 && page <= 604; page += 1) {
+    await renderPageWhenReady(page);
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+  }
+
+  const target = document.querySelector(
+    `.mushaf-surah-start[data-surah-id="${surahId}"]`
+  );
+
+  if (target) {
+    const header = document.querySelector(".main-header");
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    const y =
+      target.getBoundingClientRect().top +
+      window.pageYOffset -
+      headerHeight -
+      24;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth"
+    });
+  }
+
+  updateNextSurahPill(surahId);
+  updateNavbarSurahTitle();
+}
+
+  
   function initMushafSurahPicker() {
 
     let startY = 0;
