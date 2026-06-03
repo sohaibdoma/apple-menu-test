@@ -732,6 +732,33 @@ trigger.addEventListener("click", (event) => {
   });
 }
 
+
+trigger.addEventListener("touchstart", (event) => {
+  startY = event.touches[0].clientY;
+}, { passive: true });
+
+trigger.addEventListener("touchmove", (event) => {
+  currentY = event.touches[0].clientY;
+}, { passive: true });
+
+trigger.addEventListener("touchend", () => {
+  const isOpen = document.body.classList.contains(
+    "mushaf-surah-picker-open"
+  );
+
+  if (!isOpen) return;
+
+  const distance = currentY - startY;
+
+  if (distance > SWIPE_THRESHOLD) {
+    closePicker();
+  }
+
+  startY = 0;
+  currentY = 0;
+});
+
+    
     function closePicker() {
       document.body.classList.remove("mushaf-surah-picker-open");
       picker.setAttribute("aria-hidden", "true");
