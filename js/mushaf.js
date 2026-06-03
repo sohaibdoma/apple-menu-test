@@ -431,17 +431,12 @@
     const verses = getPageVerses(pageNumber);
     if (verses.length === 0) return false;
 
-    const previousScrollHeight = document.documentElement.scrollHeight;
-
     const pageEl = createMushafPage(pageNumber, verses);
     pagesRoot.insertBefore(pageEl, pagesRoot.firstChild);
 
     renderedPages.add(pageNumber);
     lowestRenderedPage = Math.min(lowestRenderedPage, pageNumber);
     highestRenderedPage = Math.max(highestRenderedPage, pageNumber);
-
-    const newScrollHeight = document.documentElement.scrollHeight;
-    window.scrollBy(0, newScrollHeight - previousScrollHeight);
 
     return true;
   }
@@ -469,7 +464,7 @@
   }
 
 function isNearBottom() {
-  return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1500;
+  return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2500;
 }
 
 function isNearTop() {
@@ -497,8 +492,10 @@ async function loadNextPagesIfNeeded() {
   try {
     let didAppend = false;
 
-    for (let i = 0; i < 4 && highestRenderedPage < 604; i += 1) {
+    for (let i = 0; i < 8 && highestRenderedPage < 604; i += 1) {
       const nextPage = highestRenderedPage + 1;
+
+      await loadSurahAroundRenderedWindow("next");
 
       const appended = await renderPageWhenReady(nextPage);
       if (!appended) break;
@@ -601,6 +598,7 @@ async function loadPreviousPagesIfNeeded() {
 
     addVersesToPagesMap(verses);
     loadedSurahIds.add(surahId);
+    highestLoadedSurah = Math.max(highestLoadedSurah, surahId);
   }
 
   function getFirstPageForSurah(surahId) {
@@ -635,7 +633,7 @@ async function jumpToSurahInMushaf(surahId) {
   highestRenderedPage = firstPage - 1;
 
   const startPage = Math.max(1, firstPage - 2);
-  const endPage = Math.min(604, firstPage + 3);
+  const endPage = Math.min(604, firstPage + 8);
 
   for (let page = startPage; page <= endPage; page += 1) {
     appendPage(page);
