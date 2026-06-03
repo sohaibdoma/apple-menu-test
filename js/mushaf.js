@@ -751,8 +751,6 @@ function closePickerIfOpen() {
 }
 
 function closeFontSizePillIfOpen() {
-  document.querySelector(".auto-scroll-btn.is-on")?.click();
-
   document.querySelectorAll(".font-size-pill.is-open").forEach((pill) => {
     pill.classList.remove("is-open");
   });
@@ -761,7 +759,7 @@ function closeFontSizePillIfOpen() {
     triggerBtn.setAttribute("aria-expanded", "false");
   });
 }
-
+    
 function openPicker() {
   closeFontSizePillIfOpen();
   
