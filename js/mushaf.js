@@ -478,7 +478,7 @@ function isNearBottom() {
 }
 
 function isNearTop() {
-  return window.scrollY <= 1200;
+  return window.scrollY <= 300;
 }
 
   async function appendAllRemainingPagesToEnd() {
@@ -753,7 +753,9 @@ function closeFontSizePillIfOpen() {
 
 function openPicker() {
   closeFontSizePillIfOpen();
-
+  
+  document.querySelector(".auto-scroll-btn.is-on")?.click();
+  
   renderList("");
   search.value = "";
 
