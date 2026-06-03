@@ -57,7 +57,9 @@ trigger.addEventListener("click", function (event) {
 
   document.querySelector(".auto-scroll-btn.is-on")?.click();
 
-  toggleMenu();
+  requestAnimationFrame(function () {
+    toggleMenu();
+  });
 });
 
   buttons.forEach((button) => {
