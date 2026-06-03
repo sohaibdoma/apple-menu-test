@@ -546,7 +546,7 @@
     try {
       let didPrepend = false;
 
-      while (isNearTop() && lowestRenderedPage > 1) {
+      for (let i = 0; i < 4 && lowestRenderedPage > 1; i += 1) {
         const previousPage = lowestRenderedPage - 1;
 
         await loadSurahAroundRenderedWindow("previous");
