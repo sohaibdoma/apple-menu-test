@@ -1,6 +1,3 @@
-Here is the full replacement code with only those two fixes added:
-
-```js
 (function () {
   "use strict";
 
@@ -796,4 +793,3 @@ function openPicker() {
     }
   });
 })();
-```
