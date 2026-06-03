@@ -8,7 +8,7 @@
   let isLoadingMore = false;
   let isLoadingPrevious = false;
   let isJumpingToSurah = false;
-  let pickerLockedScrollY = 0;
+
 
   let highestLoadedSurah = 0;
   const loadedSurahIds = new Set();
@@ -173,33 +173,13 @@
     btn.style.display = "inline-flex";
   }
 
-  function lockPickerBackgroundScroll() {
-    if (document.body.classList.contains("mushaf-picker-scroll-locked")) return;
+function lockPickerBackgroundScroll() {
+  document.body.style.overflow = "hidden";
+}
 
-    pickerLockedScrollY = window.scrollY || window.pageYOffset || 0;
-
-    document.body.classList.add("mushaf-picker-scroll-locked");
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${pickerLockedScrollY}px`;
-    document.body.style.left = "0";
-    document.body.style.right = "0";
-    document.body.style.width = "100%";
-    document.body.style.overflow = "hidden";
-  }
-
-  function unlockPickerBackgroundScroll() {
-    if (!document.body.classList.contains("mushaf-picker-scroll-locked")) return;
-
-    document.body.classList.remove("mushaf-picker-scroll-locked");
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-    document.body.style.width = "";
-    document.body.style.overflow = "";
-
-    window.scrollTo(0, pickerLockedScrollY);
-  }
+function unlockPickerBackgroundScroll() {
+  document.body.style.overflow = "";
+}
 
   async function scrollToNextSurahInMushaf(event) {
     event.preventDefault();
