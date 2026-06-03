@@ -7,6 +7,7 @@
   let lowestRenderedPage = 1;
   let isLoadingMore = false;
   let isLoadingPrevious = false;
+  let isJumpingToSurah = false;
   let pickerLockedScrollY = 0;
 
   let highestLoadedSurah = 0;
@@ -563,6 +564,7 @@ async function loadNextPagesIfNeeded() {
   }
 
 async function loadPreviousPagesIfNeeded() {
+  if (isJumpingToSurah) return;
   if (isLoadingPrevious) return;
   if (!isNearTop()) return;
   if (lowestRenderedPage <= 1) return;
@@ -643,6 +645,7 @@ async function loadPreviousPagesIfNeeded() {
   }
 
 async function jumpToSurahInMushaf(surahId) {
+  isJumpingToSurah = true;
   await Promise.all([
     surahId > 1 ? loadSingleSurahForJump(surahId - 1) : Promise.resolve(),
     loadSingleSurahForJump(surahId),
@@ -694,6 +697,10 @@ async function jumpToSurahInMushaf(surahId) {
 
   updateNextSurahPill(surahId);
   updateNavbarSurahTitle();
+  
+  setTimeout(() => {
+  isJumpingToSurah = false;
+}, 1500);
 }
 
   
