@@ -1,3 +1,6 @@
+Here is the full replacement code with only those two fixes added:
+
+```js
 (function () {
   "use strict";
 
@@ -7,6 +10,7 @@
   let lowestRenderedPage = 1;
   let isLoadingMore = false;
   let isLoadingPrevious = false;
+  let lastPreviousLoadTime = 0;
 
   let highestLoadedSurah = 0;
   const loadedSurahIds = new Set();
@@ -468,7 +472,7 @@ function isNearBottom() {
 }
 
 function isNearTop() {
-  return window.scrollY <= 1200;
+  return window.scrollY <= 220;
 }
 
   async function appendAllRemainingPagesToEnd() {
@@ -538,6 +542,9 @@ async function loadPreviousPagesIfNeeded() {
   if (!isNearTop()) return;
   if (lowestRenderedPage <= 1) return;
 
+  const now = Date.now();
+  if (now - lastPreviousLoadTime < 700) return;
+
   isLoadingPrevious = true;
 
   try {
@@ -546,6 +553,8 @@ async function loadPreviousPagesIfNeeded() {
     await loadSurahAroundRenderedWindow("previous");
 
     const prepended = prependPage(previousPage);
+
+    lastPreviousLoadTime = Date.now();
 
     if (prepended) {
       updateNavbarSurahTitle();
@@ -631,8 +640,9 @@ async function jumpToSurahInMushaf(surahId) {
   renderedPages.clear();
   lowestRenderedPage = firstPage;
   highestRenderedPage = firstPage - 1;
+  lastPreviousLoadTime = Date.now();
 
-  const startPage = Math.max(1, firstPage - 4);
+  const startPage = Math.max(1, firstPage - 2);
   const endPage = Math.min(604, firstPage + 8);
 
   for (let page = startPage; page <= endPage; page += 1) {
@@ -786,3 +796,4 @@ function openPicker() {
     }
   });
 })();
+```
