@@ -52,10 +52,13 @@
   const savedSize = localStorage.getItem(STORAGE_KEY) || DEFAULT_SIZE;
   setSize(savedSize);
 
-  trigger.addEventListener("click", function (event) {
-    event.stopPropagation();
-    toggleMenu();
-  });
+trigger.addEventListener("click", function (event) {
+  event.stopPropagation();
+
+  document.querySelector(".auto-scroll-btn.is-on")?.click();
+
+  toggleMenu();
+});
 
   buttons.forEach((button) => {
     button.addEventListener("click", function (event) {
