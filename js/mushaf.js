@@ -433,23 +433,28 @@ function unlockPickerBackgroundScroll() {
     return true;
   }
 
-  function prependPage(pageNumber) {
-    const pagesRoot = document.getElementById("mushaf-pages");
-    if (!pagesRoot) return false;
-    if (renderedPages.has(pageNumber)) return false;
+function prependPage(pageNumber) {
+  const pagesRoot = document.getElementById("mushaf-pages");
+  if (!pagesRoot) return false;
+  if (renderedPages.has(pageNumber)) return false;
 
-    const verses = getPageVerses(pageNumber);
-    if (verses.length === 0) return false;
+  const verses = getPageVerses(pageNumber);
+  if (verses.length === 0) return false;
 
-    const pageEl = createMushafPage(pageNumber, verses);
-    pagesRoot.insertBefore(pageEl, pagesRoot.firstChild);
+  const previousScrollHeight = document.documentElement.scrollHeight;
 
-    renderedPages.add(pageNumber);
-    lowestRenderedPage = Math.min(lowestRenderedPage, pageNumber);
-    highestRenderedPage = Math.max(highestRenderedPage, pageNumber);
+  const pageEl = createMushafPage(pageNumber, verses);
+  pagesRoot.insertBefore(pageEl, pagesRoot.firstChild);
 
-    return true;
-  }
+  renderedPages.add(pageNumber);
+  lowestRenderedPage = Math.min(lowestRenderedPage, pageNumber);
+  highestRenderedPage = Math.max(highestRenderedPage, pageNumber);
+
+  const newScrollHeight = document.documentElement.scrollHeight;
+  window.scrollBy(0, newScrollHeight - previousScrollHeight);
+
+  return true;
+}
 
   async function renderPageWhenReady(pageNumber) {
     const ready = await ensurePageIsComplete(pageNumber);
