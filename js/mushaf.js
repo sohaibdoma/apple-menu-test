@@ -813,6 +813,22 @@ bodyOverlayObserver.observe(document.body, {
       });
     }
 
+document.addEventListener("click", (event) => {
+  const isOpen = document.body.classList.contains(
+    "mushaf-surah-picker-open"
+  );
+
+  if (!isOpen) return;
+
+  if (
+    !picker.contains(event.target) &&
+    !trigger.contains(event.target)
+  ) {
+    closePicker();
+  }
+});
+
+    
     search.addEventListener("input", () => {
       renderList(search.value);
     });
