@@ -468,13 +468,13 @@
     updateNavbarSurahTitle();
   }
 
-  function isNearBottom() {
-    return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 500;
-  }
+function isNearBottom() {
+  return window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1500;
+}
 
-  function isNearTop() {
-    return window.scrollY <= 1500;
-  }
+function isNearTop() {
+  return window.scrollY <= 500;
+}
 
   async function appendAllRemainingPagesToEnd() {
     await loadAllRemainingSurahs();
@@ -488,36 +488,36 @@
     }
   }
 
-  async function loadNextPagesIfNeeded() {
-    if (isLoadingMore) return;
-    if (!isNearBottom()) return;
+async function loadNextPagesIfNeeded() {
+  if (isLoadingMore) return;
+  if (!isNearBottom()) return;
 
-    isLoadingMore = true;
+  isLoadingMore = true;
 
-    try {
-      let didAppend = false;
+  try {
+    let didAppend = false;
 
-      while (isNearBottom()) {
-        const nextPage = highestRenderedPage + 1;
-        if (nextPage > 604) break;
+    for (let i = 0; i < 4 && highestRenderedPage < 604; i += 1) {
+      const nextPage = highestRenderedPage + 1;
 
-        const appended = await renderPageWhenReady(nextPage);
-        if (!appended) break;
+      const appended = await renderPageWhenReady(nextPage);
+      if (!appended) break;
 
-        didAppend = true;
-        await new Promise((resolve) => requestAnimationFrame(resolve));
-      }
-
-      if (didAppend) {
-        updateNavbarSurahTitle();
-      }
-    } catch (error) {
-      console.error("Failed to load next Mushaf pages:", error);
-    } finally {
-      isLoadingMore = false;
+      didAppend = true;
+      await new Promise((resolve) => requestAnimationFrame(resolve));
     }
-  }
 
+    if (didAppend) {
+      updateNavbarSurahTitle();
+    }
+  } catch (error) {
+    console.error("Failed to load next Mushaf pages:", error);
+  } finally {
+    isLoadingMore = false;
+  }
+}
+
+  
   async function loadSurahAroundRenderedWindow(direction) {
     const pages = Array.from(document.querySelectorAll(".mushaf-page"));
     if (pages.length === 0) return;
@@ -536,37 +536,29 @@
     }
   }
 
-  async function loadPreviousPagesIfNeeded() {
-    if (isLoadingPrevious) return;
-    if (!isNearTop()) return;
-    if (lowestRenderedPage <= 1) return;
+async function loadPreviousPagesIfNeeded() {
+  if (isLoadingPrevious) return;
+  if (!isNearTop()) return;
+  if (lowestRenderedPage <= 1) return;
 
-    isLoadingPrevious = true;
+  isLoadingPrevious = true;
 
-    try {
-      let didPrepend = false;
+  try {
+    const previousPage = lowestRenderedPage - 1;
 
-      for (let i = 0; i < 4 && lowestRenderedPage > 1; i += 1) {
-        const previousPage = lowestRenderedPage - 1;
+    await loadSurahAroundRenderedWindow("previous");
 
-        await loadSurahAroundRenderedWindow("previous");
+    const prepended = prependPage(previousPage);
 
-        const prepended = prependPage(previousPage);
-        if (!prepended) break;
-
-        didPrepend = true;
-        await new Promise((resolve) => requestAnimationFrame(resolve));
-      }
-
-      if (didPrepend) {
-        updateNavbarSurahTitle();
-      }
-    } catch (error) {
-      console.error("Failed to load previous Mushaf pages:", error);
-    } finally {
-      isLoadingPrevious = false;
+    if (prepended) {
+      updateNavbarSurahTitle();
     }
+  } catch (error) {
+    console.error("Failed to load previous Mushaf pages:", error);
+  } finally {
+    isLoadingPrevious = false;
   }
+}
 
   async function loadInitialMushafData() {
     await loadSurahIntoCache(1);
