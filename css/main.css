@@ -2638,9 +2638,6 @@ body.mushaf-surah-picker-open .mushaf-surah-pill {
   background-color: #ffffff;
 }
 
-body.picker-keyboard-open .mushaf-surah-pill {
-  height: min(520px, calc(100svh - var(--header-h) - var(--nav-gap) - 25px));
-}
 
 
 html.night-mode .mushaf-surah-pill,
