@@ -26,8 +26,8 @@
     inputEl.type = "search";
     inputEl.autocomplete = "off";
     inputEl.spellcheck = false;
-    inputEl.placeholder = "ابحث في القرآن";
-    inputEl.setAttribute("aria-label", "ابحث في القرآن");
+    inputEl.placeholder = "إبحث في القرآن";
+    inputEl.setAttribute("aria-label", "إبحث في القرآن");
     inputEl.setAttribute("data-i18n-placeholder", "search_placeholder");
     inputEl.setAttribute("data-i18n-aria-label", "search_aria_label");
 
