@@ -2411,8 +2411,8 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
   -webkit-tap-highlight-color: transparent;
    
   transition:
-    transform 420ms cubic-bezier(0.19, 1, 0.22, 1),
-    opacity 80ms ease;
+    transform 620ms cubic-bezier(0.19, 1, 0.22, 1),
+    opacity 40ms ease;
 }
 
 .font-size-pill.is-open .font-size-close-icon {
