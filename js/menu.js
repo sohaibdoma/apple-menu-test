@@ -26,9 +26,11 @@
         a.removeAttribute("aria-current");
       });
 
+      if (document.body?.dataset?.pageType === "mushaf") return;
+
       const currentSurah = document.body?.dataset?.surah;
       if (!currentSurah) return;
-
+      
       const currentLink = menuNav.querySelector(`[data-surah="${currentSurah}"]`);
       if (currentLink) currentLink.setAttribute("aria-current", "page");
     }
