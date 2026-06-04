@@ -363,7 +363,7 @@
       return;
     }
 
-    input.placeholder = "ابحث في القرآن";
+    input.placeholder = "إبحث في القرآن";
 
     const searchPage = document.querySelector(".search-page");
 
