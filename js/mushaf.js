@@ -701,6 +701,7 @@ async function jumpToSurahInMushaf(surahId) {
 
     const picker = document.getElementById("mushafSurahPicker");
     const search = document.getElementById("mushafSurahPickerSearch");
+    const pill = document.getElementById("mushafSurahPill");
 
     
     const list = document.getElementById("mushafSurahPickerList");
@@ -708,7 +709,7 @@ async function jumpToSurahInMushaf(surahId) {
 
     const closeBtn = document.getElementById("mushafSurahPickerClose");
 
-    if (!picker || !search || !list || !trigger) return;
+    if (!pill || !picker || !search || !list || !trigger) return;
 
 
 trigger.addEventListener("click", (event) => {
@@ -850,12 +851,9 @@ document.addEventListener("click", (event) => {
 
   if (!isOpen) return;
 
-  if (
-    !picker.contains(event.target) &&
-    !trigger.contains(event.target)
-  ) {
-    closePicker();
-  }
+if (!pill.contains(event.target)) {
+  closePicker();
+}
 });
 
     
