@@ -702,40 +702,6 @@ async function jumpToSurahInMushaf(surahId) {
     const picker = document.getElementById("mushafSurahPicker");
     const search = document.getElementById("mushafSurahPickerSearch");
 
-let lockedScrollY = 0;
-
-function lockPageScrollForKeyboard() {
-  if (document.body.classList.contains("picker-keyboard-open")) return;
-
-  lockedScrollY = window.scrollY;
-
-  const pill = document.getElementById("mushafSurahPill");
-  if (pill) {
-    pill.style.height = `${pill.getBoundingClientRect().height}px`;
-  }
-
-  document.body.classList.add("picker-keyboard-open");
-  document.body.style.position = "fixed";
-  document.body.style.top = `-${lockedScrollY}px`;
-  document.body.style.width = "100%";
-}
-
-    
-function unlockPageScrollForKeyboard() {
-  document.body.classList.remove("picker-keyboard-open");
-
-  document.body.style.position = "";
-  document.body.style.top = "";
-  document.body.style.width = "";
-  document.body.style.overflow = "";
-
-  const pill = document.getElementById("mushafSurahPill");
-  if (pill) {
-    pill.style.height = "";
-  }
-
-  window.scrollTo(0, lockedScrollY);
-}
     
     const list = document.getElementById("mushafSurahPickerList");
     const trigger = document.getElementById("mushafNextSurahBtn");
@@ -797,11 +763,11 @@ trigger.addEventListener("touchend", () => {
     
 function closePicker() {
   document.body.classList.remove("mushaf-surah-picker-open");
+  document.body.classList.remove("picker-keyboard-open");
   picker.setAttribute("aria-hidden", "true");
   trigger.setAttribute("aria-expanded", "false");
   document.getElementById("fihrisChevronClose")?.beginElement();
   unlockPickerBackgroundScroll();
-  unlockPageScrollForKeyboard();
 }
 
 function closePickerIfOpen() {
@@ -898,11 +864,11 @@ document.addEventListener("click", (event) => {
     });
 
     search.addEventListener("focus", () => {
-  lockPageScrollForKeyboard();
+  document.body.classList.add("picker-keyboard-open");
 });
 
 search.addEventListener("blur", () => {
-  unlockPageScrollForKeyboard();
+  document.body.classList.remove("picker-keyboard-open");
 });
 
     document.addEventListener("keydown", (event) => {
