@@ -2269,14 +2269,14 @@ body[data-quran-font-size="large"] .mushaf-text {
   background-color: #ffffff;
 }
 
-html.night-mode .font-size-pill,
-body.night-mode .font-size-pill {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
 html.night-mode .font-size-pill.is-open,
 body.night-mode .font-size-pill.is-open {
   background-color: #000000;
+}
+
+html.night-mode .font-size-pill,
+body.night-mode .font-size-pill {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .font-size-trigger,
@@ -2284,10 +2284,10 @@ body.night-mode .font-size-pill.is-open {
   width: var(--header-h);
   height: var(--header-h);
   min-height: var(--header-h);
-
+   
   position: relative;
   z-index: 0;
-
+   
   padding: 0;
   margin: 0;
 
@@ -2307,18 +2307,37 @@ body.night-mode .font-size-pill.is-open {
   -webkit-tap-highlight-color: transparent;
 }
 
-.font-size-trigger,
-.font-size-trigger:focus,
-.font-size-trigger:focus-visible,
-.font-size-trigger:active,
-.font-size-btn:focus,
-.font-size-btn:focus-visible {
-  outline: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent;
+.font-size-pill.is-open .font-size-trigger,
+.font-size-pill.is-open .font-size-btn {
+  color: #000000;
 }
 
+html.night-mode .font-size-pill.is-open .font-size-trigger,
+html.night-mode .font-size-pill.is-open .font-size-btn,
+body.night-mode .font-size-pill.is-open .font-size-trigger,
+body.night-mode .font-size-pill.is-open .font-size-btn {
+  color: #ffffff;
+}
+
+/* Trigger */
+.font-size-trigger {
+  position: relative;
+}
+
+.font-size-pill.is-open .font-size-btn:not(.is-active) {
+  color: #000000;
+  opacity: 1;
+}
+
+html.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active),
+body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
+  color: #ffffff;
+  opacity: 1;
+}
+
+
 /* Main Arabic glyph */
+/* Big left letter */
 .font-size-trigger::before {
   content: "ء";
 
@@ -2327,7 +2346,8 @@ body.night-mode .font-size-pill.is-open {
   top: 50%;
   left: 18px;
 
-  transform: translateY(-70%);
+  transform:
+    translateY(-70%);
 
   font-family: "Scheherazade New", serif;
   font-size: 30px;
@@ -2339,14 +2359,16 @@ body.night-mode .font-size-pill.is-open {
     transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Small Arabic glyph */
+
+/* Small right letter */
 .font-size-trigger .font-size-trigger-large {
   position: absolute;
 
   top: 50%;
   left: 34px;
 
-  transform: translateY(-70%);
+  transform:
+    translateY(-70%);
 
   font-family: "Scheherazade New", serif;
   font-size: 17px;
@@ -2360,7 +2382,11 @@ body.night-mode .font-size-pill.is-open {
   pointer-events: none;
 }
 
-/* SVG close icon */
+
+
+
+
+
 .font-size-close-icon {
   position: absolute;
 
@@ -2382,14 +2408,13 @@ body.night-mode .font-size-pill.is-open {
   stroke-linejoin: round;
 
   background: transparent;
+  -webkit-tap-highlight-color: transparent;
 
-  transition:
-    opacity 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 180ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.font-size-close-icon path {
-  fill: none;
-  pointer-events: none;
+.font-size-pill.is-open .font-size-close-icon {
+  opacity: 1;
 }
 
 html.night-mode .font-size-close-icon,
@@ -2397,18 +2422,30 @@ body.night-mode .font-size-close-icon {
   stroke: #ffffff;
 }
 
-/* Open state */
-.font-size-pill.is-open .font-size-trigger,
-.font-size-pill.is-open .font-size-btn {
-  color: #000000;
+.font-size-close-icon path {
+  fill: none;
+  pointer-events: none;
 }
 
-html.night-mode .font-size-pill.is-open .font-size-trigger,
-html.night-mode .font-size-pill.is-open .font-size-btn,
-body.night-mode .font-size-pill.is-open .font-size-trigger,
-body.night-mode .font-size-pill.is-open .font-size-btn {
-  color: #ffffff;
+.font-size-trigger,
+.font-size-trigger:focus,
+.font-size-trigger:focus-visible,
+.font-size-trigger:active {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
 }
+
+
+
+
+/* Menu buttons */
+.font-size-btn::before {
+  content: "";
+  transform: translateY(-6px);
+}
+
+/* OPEN STATE */
 
 .font-size-pill.is-open .font-size-trigger::before {
   opacity: 0;
@@ -2416,15 +2453,19 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 }
 
 .font-size-pill.is-open .font-size-trigger .font-size-trigger-large {
-  opacity: 0;
+  color: transparent;
+  opacity: 1;
   transform: translateY(-38%);
 }
 
-.font-size-pill.is-open .font-size-close-icon {
-  opacity: 1;
+
+html.night-mode .font-size-pill.is-open .font-size-trigger .font-size-trigger-large::before,
+body.night-mode .font-size-pill.is-open .font-size-trigger .font-size-trigger-large::before {
+  background: #ffffff;
 }
 
-/* Menu */
+
+
 .font-size-menu {
   display: flex;
   flex-direction: column-reverse;
@@ -2433,8 +2474,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   opacity: 0;
   pointer-events: none;
 
-  transition:
-    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .font-size-pill.is-open .font-size-menu {
@@ -2444,9 +2484,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 .font-size-btn {
   opacity: 1;
-  transition:
-    opacity 160ms ease,
-    transform 160ms ease;
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .font-size-btn:not(.is-active) {
@@ -2458,18 +2496,11 @@ body.night-mode .font-size-btn:not(.is-active) {
   color: #ffffff;
 }
 
-.font-size-pill.is-open .font-size-btn:not(.is-active) {
-  color: #000000;
-  opacity: 1;
-}
 
-html.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active),
-body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
-  color: #ffffff;
-}
 
-.font-size-btn.is-active,
-.font-size-pill.is-open .font-size-btn.is-active {
+
+
+.font-size-btn.is-active {
   opacity: 1;
   color: #ffffff;
 
@@ -2481,7 +2512,26 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
 }
 
 html.night-mode .font-size-btn.is-active,
-body.night-mode .font-size-btn.is-active,
+body.night-mode .font-size-btn.is-active {
+  color: #000000;
+
+  background-image: radial-gradient(
+    circle at 50% 73%,
+    #ffffff 0 15px,
+    transparent 16px
+  );
+}
+
+.font-size-pill.is-open .font-size-btn.is-active {
+  color: #ffffff;
+
+  background-image: radial-gradient(
+    circle at 50% 73%,
+    #000000 0 15px,
+    transparent 16px
+  );
+}
+
 html.night-mode .font-size-pill.is-open .font-size-btn.is-active,
 body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
   color: #000000;
@@ -2493,6 +2543,8 @@ body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
   );
 }
 
+
+
 .font-size-btn--xs { font-size: 15px; }
 .font-size-btn--sm { font-size: 18px; }
 .font-size-btn--md { font-size: 22px; }
@@ -2503,7 +2555,16 @@ body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
   font-size: 24px;
 }
 
+.font-size-trigger:focus,
+.font-size-trigger:focus-visible,
+.font-size-btn:focus,
+.font-size-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 /* Ayah text */
+
 body[data-quran-font-size="xsmall"] .ayah-text {
   font-size: 0.72em;
 }
@@ -2520,7 +2581,9 @@ body[data-quran-font-size="xlarge"] .ayah-text {
   font-size: 1.72em;
 }
 
+
 /* Mushaf text */
+
 body[data-quran-font-size="xsmall"] .mushaf-text {
   font-size: 19px;
 }
@@ -2536,8 +2599,6 @@ body[data-quran-font-size="large"] .mushaf-text {
 body[data-quran-font-size="xlarge"] .mushaf-text {
   font-size: 46px;
 }
-
-
 
 
 /* ========================================
