@@ -916,6 +916,15 @@ body:not([data-page-type="mushaf"]) .surah-bottom-right {
   -webkit-clip-path: inset(0 round var(--nav-radius));
 }
 
+.auto-scroll-bar:has(.auto-scroll-btn.is-on) {
+  background-color: #ffffff;
+}
+
+html.night-mode .auto-scroll-bar:has(.auto-scroll-btn.is-on),
+body.night-mode .auto-scroll-bar:has(.auto-scroll-btn.is-on) {
+  background-color: #000000;
+}
+
 .surah-bottom-pill{
   height: var(--header-h);
   min-width: 104px;
