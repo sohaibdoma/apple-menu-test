@@ -2624,7 +2624,7 @@ body.mushaf-surah-picker-open .mushaf-surah-pill {
 
 html.night-mode .mushaf-surah-pill,
 body.night-mode .mushaf-surah-pill {
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 html.night-mode body.mushaf-surah-picker-open .mushaf-surah-pill,
