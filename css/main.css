@@ -2386,7 +2386,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
     opacity 80ms ease;
 }
 
-.font-size-trigger .font-size-trigger-large::after {
+.font-size-trigger .font-size-trigger-large::before {
   content: "";
 
   position: absolute;
@@ -2413,7 +2413,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
     opacity 80ms ease;
 }
 
-.font-size-pill.is-open .font-size-trigger .font-size-trigger-large::after {
+.font-size-pill.is-open .font-size-trigger .font-size-trigger-large::before {
   opacity: 1;
 
   transform:
@@ -2460,7 +2460,8 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
 }
 
 .font-size-pill.is-open .font-size-trigger .font-size-trigger-large {
-  opacity: 0;
+  color: transparent;
+  opacity: 1;
   transform: translateY(-38%);
 }
 
