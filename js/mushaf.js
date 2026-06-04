@@ -705,14 +705,31 @@ async function jumpToSurahInMushaf(surahId) {
 let lockedScrollY = 0;
 
 function lockPageScrollForKeyboard() {
+  if (document.body.classList.contains("picker-keyboard-open")) return;
+
   lockedScrollY = window.scrollY;
+
+  const pill = document.getElementById("mushafSurahPill");
+  if (pill) {
+    pill.style.height = `${pill.getBoundingClientRect().height}px`;
+  }
+
   document.body.classList.add("picker-keyboard-open");
+  document.body.style.position = "fixed";
   document.body.style.top = `-${lockedScrollY}px`;
+  document.body.style.width = "100%";
 }
 
+    
 function unlockPageScrollForKeyboard() {
   document.body.classList.remove("picker-keyboard-open");
   document.body.style.top = "";
+
+  const pill = document.getElementById("mushafSurahPill");
+  if (pill) {
+    pill.style.height = "";
+  }
+
   window.scrollTo(0, lockedScrollY);
 }
     
