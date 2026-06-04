@@ -168,7 +168,7 @@
     const nextName = getSurahNameArabicById(nextSurahId);
 
     nameEl.textContent = nextName;
-    btn.href = "#";
+    btn.href = "javascript:void(0)";
     btn.dataset.nextSurahId = String(nextSurahId);
     btn.style.display = "inline-flex";
   }
