@@ -2410,11 +2410,13 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
   background: transparent;
   -webkit-tap-highlight-color: transparent;
 
-  transition: opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0ms;
 }
 
 .font-size-pill.is-open .font-size-close-icon {
   opacity: 1;
+
+  transition: opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html.night-mode .font-size-close-icon,
