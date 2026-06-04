@@ -700,7 +700,6 @@ async function jumpToSurahInMushaf(surahId) {
     const SWIPE_THRESHOLD = 90;
 
     const picker = document.getElementById("mushafSurahPicker");
-    const search = document.getElementById("mushafSurahPickerSearch");
     const pill = document.getElementById("mushafSurahPill");
 
     
@@ -709,7 +708,7 @@ async function jumpToSurahInMushaf(surahId) {
 
     const closeBtn = document.getElementById("mushafSurahPickerClose");
 
-    if (!pill || !picker || !search || !list || !trigger) return;
+    if (!pill || !picker || !list || !trigger) return;
 
 
 trigger.addEventListener("click", (event) => {
@@ -764,7 +763,6 @@ trigger.addEventListener("touchend", () => {
     
 function closePicker() {
   document.body.classList.remove("mushaf-surah-picker-open");
-  document.body.classList.remove("picker-keyboard-open");
   picker.setAttribute("aria-hidden", "true");
   trigger.setAttribute("aria-expanded", "false");
   document.getElementById("fihrisChevronClose")?.beginElement();
@@ -796,8 +794,7 @@ function openPicker() {
   
   document.querySelector(".auto-scroll-btn.is-on")?.click();
   
-  renderList("");
-  search.value = "";
+  renderList();
 
   document.body.classList.add("mushaf-surah-picker-open");
   picker.setAttribute("aria-hidden", "false");
@@ -822,13 +819,10 @@ bodyOverlayObserver.observe(document.body, {
 });
   
 
-    function renderList(filter) {
-      const query = filter.trim();
+    function renderList() {
       list.innerHTML = "";
 
       Object.entries(SURAH_NAMES_AR).forEach(([id, name]) => {
-        if (query && !name.includes(query) && !String(id).includes(query)) return;
-
         const button = document.createElement("button");
         button.className = "mushaf-surah-picker-item";
         button.type = "button";
@@ -854,19 +848,6 @@ document.addEventListener("click", (event) => {
 if (!pill.contains(event.target)) {
   closePicker();
 }
-});
-
-    
-    search.addEventListener("input", () => {
-      renderList(search.value);
-    });
-
-    search.addEventListener("focus", () => {
-  document.body.classList.add("picker-keyboard-open");
-});
-
-search.addEventListener("blur", () => {
-  document.body.classList.remove("picker-keyboard-open");
 });
 
     document.addEventListener("keydown", (event) => {
