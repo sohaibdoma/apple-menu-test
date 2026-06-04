@@ -20,7 +20,7 @@
   --control-stroke: rgba(0, 0, 0, 0.15);
 
   /* Auto Scroll Active Icon Color */
-  --auto-active-color: rgba(0, 0, 0, 0.4);
+  --auto-active-color: #000000;
 
   /* Mushaf Reading Colors */
   --mushaf-bg: #F0EFEA;
@@ -42,7 +42,7 @@ body.night-mode {
   --control-stroke: rgba(255, 255, 255, 0.25);
 
   /* Auto Scroll Active Icon Color */
-  --auto-active-color: rgba(255, 255, 255, 0.5);
+--auto-active-color: #ffffff;
 
   /* Mushaf Reading Colors */
   --mushaf-bg: #2A2A2A;
