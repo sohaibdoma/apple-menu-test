@@ -2407,6 +2407,9 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
   opacity: 0;
   pointer-events: none;
 
+  background: transparent;
+  -webkit-tap-highlight-color: transparent;
+   
   transition:
     transform 500ms cubic-bezier(0.19, 1, 0.22, 1),
     opacity 80ms ease;
@@ -2419,7 +2422,17 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
     translate(-50%, -50%);
 }
 
+.font-size-close-icon,
+.font-size-close-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 
+  vector-effect: non-scaling-stroke;
+  shape-rendering: geometricPrecision;
+}
 
 
 
