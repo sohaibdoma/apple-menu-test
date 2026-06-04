@@ -2763,6 +2763,36 @@ body.night-mode .mushaf-surah-picker-search {
 }
 
 
+
+
+
+
+
+
+
+body.mushaf-surah-picker-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+body.picker-keyboard-open {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+.mushaf-surah-picker-list {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+
+
+
+
+
+
+
 .font-size-pill {
   opacity: 1;
 
