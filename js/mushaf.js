@@ -723,7 +723,11 @@ function lockPageScrollForKeyboard() {
     
 function unlockPageScrollForKeyboard() {
   document.body.classList.remove("picker-keyboard-open");
+
+  document.body.style.position = "";
   document.body.style.top = "";
+  document.body.style.width = "";
+  document.body.style.overflow = "";
 
   const pill = document.getElementById("mushafSurahPill");
   if (pill) {
