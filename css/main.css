@@ -2597,7 +2597,7 @@ body[data-quran-font-size="xlarge"] .mushaf-text {
   display: flex;
   flex-direction: column;
 
-  border-radius: var(--nav-radius);
+  border-radius: 999px;
   overflow: hidden;
   isolation: isolate;
 
@@ -2605,8 +2605,8 @@ body[data-quran-font-size="xlarge"] .mushaf-text {
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
 
-  clip-path: inset(0 round var(--nav-radius));
-  -webkit-clip-path: inset(0 round var(--nav-radius));
+clip-path: inset(0 round 999px);
+-webkit-clip-path: inset(0 round 999px);
 
   flex-shrink: 0;
 
