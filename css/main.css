@@ -2425,7 +2425,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
 .font-size-close-icon,
 .font-size-close-icon path {
   fill: none;
-  stroke: currentColor;
+  stroke: #000000;
   stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -2433,6 +2433,28 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
   vector-effect: non-scaling-stroke;
   shape-rendering: geometricPrecision;
 }
+
+html.night-mode .font-size-close-icon,
+html.night-mode .font-size-close-icon path,
+body.night-mode .font-size-close-icon,
+body.night-mode .font-size-close-icon path {
+  stroke: #ffffff;
+}
+
+.font-size-close-icon path {
+  pointer-events: none;
+}
+
+.font-size-trigger,
+.font-size-trigger:focus,
+.font-size-trigger:focus-visible,
+.font-size-trigger:active {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
 
 
 
