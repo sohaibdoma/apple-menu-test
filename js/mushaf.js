@@ -701,6 +701,21 @@ async function jumpToSurahInMushaf(surahId) {
 
     const picker = document.getElementById("mushafSurahPicker");
     const search = document.getElementById("mushafSurahPickerSearch");
+
+let lockedScrollY = 0;
+
+function lockPageScrollForKeyboard() {
+  lockedScrollY = window.scrollY;
+  document.body.classList.add("picker-keyboard-open");
+  document.body.style.top = `-${lockedScrollY}px`;
+}
+
+function unlockPageScrollForKeyboard() {
+  document.body.classList.remove("picker-keyboard-open");
+  document.body.style.top = "";
+  window.scrollTo(0, lockedScrollY);
+}
+    
     const list = document.getElementById("mushafSurahPickerList");
     const trigger = document.getElementById("mushafNextSurahBtn");
 
@@ -759,13 +774,14 @@ trigger.addEventListener("touchend", () => {
 });
 
     
-    function closePicker() {
-      document.body.classList.remove("mushaf-surah-picker-open");
-      picker.setAttribute("aria-hidden", "true");
-      trigger.setAttribute("aria-expanded", "false");
-      document.getElementById("fihrisChevronClose")?.beginElement();
-      unlockPickerBackgroundScroll();
-    }
+function closePicker() {
+  document.body.classList.remove("mushaf-surah-picker-open");
+  picker.setAttribute("aria-hidden", "true");
+  trigger.setAttribute("aria-expanded", "false");
+  document.getElementById("fihrisChevronClose")?.beginElement();
+  unlockPickerBackgroundScroll();
+  unlockPageScrollForKeyboard();
+}
 
 function closePickerIfOpen() {
   const isOpen = document.body.classList.contains(
@@ -859,6 +875,14 @@ document.addEventListener("click", (event) => {
     search.addEventListener("input", () => {
       renderList(search.value);
     });
+
+    search.addEventListener("focus", () => {
+  lockPageScrollForKeyboard();
+});
+
+search.addEventListener("blur", () => {
+  unlockPageScrollForKeyboard();
+});
 
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
