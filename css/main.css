@@ -1006,13 +1006,6 @@ body.night-mode .auto-scroll-bar{
 
 .auto-scroll-btn.is-on{
   color: var(--auto-active-color);
-  border-radius: 50%;
-  background: #ffffff;
-}
-
-html.night-mode .auto-scroll-btn.is-on,
-body.night-mode .auto-scroll-btn.is-on{
-  background: #000000;
 }
 
 .left-utility-btn:focus,
