@@ -2383,7 +2383,7 @@ transition: none;
 .font-size-pill:not(.is-open) .font-size-trigger::before,
 .font-size-pill:not(.is-open) .font-size-trigger .font-size-trigger-large {
   transition-property: opacity;
-  transition-duration: 2000ms;
+  transition-duration: 1500ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 180ms;
 }
@@ -2420,7 +2420,7 @@ transition: none;
   opacity: 1;
 
   transition-property: opacity;
-  transition-duration: 2000ms;
+  transition-duration: 1500ms;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: 180ms;
 }
