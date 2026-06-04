@@ -2410,7 +2410,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
   background: transparent;
   -webkit-tap-highlight-color: transparent;
 
-  transition: opacity 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .font-size-pill.is-open .font-size-close-icon {
@@ -2424,6 +2424,7 @@ body.night-mode .font-size-close-icon {
 
 .font-size-close-icon path {
   fill: none;
+  stroke: inherit;
   pointer-events: none;
 }
 
@@ -2456,12 +2457,6 @@ body.night-mode .font-size-close-icon {
   color: transparent;
   opacity: 1;
   transform: translateY(-38%);
-}
-
-
-html.night-mode .font-size-pill.is-open .font-size-trigger .font-size-trigger-large::before,
-body.night-mode .font-size-pill.is-open .font-size-trigger .font-size-trigger-large::before {
-  background: #ffffff;
 }
 
 
