@@ -2415,6 +2415,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
 
 .font-size-pill.is-open .font-size-trigger .font-size-trigger-large::before {
   opacity: 1;
+  background: #000000;
 
   transform:
     translate(-50%, -50%)
@@ -2463,6 +2464,12 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
   color: transparent;
   opacity: 1;
   transform: translateY(-38%);
+}
+
+
+html.night-mode .font-size-pill.is-open .font-size-trigger .font-size-trigger-large::before,
+body.night-mode .font-size-pill.is-open .font-size-trigger .font-size-trigger-large::before {
+  background: #ffffff;
 }
 
 .font-size-pill.is-open .font-size-trigger::after {
