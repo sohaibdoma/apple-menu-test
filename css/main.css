@@ -2836,11 +2836,11 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
 .fihris-label {
   font-family: "Scheherazade New", serif;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
    
   opacity: 1;
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     transition: opacity 120ms ease;
 }
 
