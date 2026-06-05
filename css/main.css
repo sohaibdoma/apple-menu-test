@@ -1730,7 +1730,7 @@ body.night-mode .ayah-targeted{
   margin: 8px 0 0;
   font-size: 15px;
   line-height: 1.5;
-  color: var(--page-text);
+  color: #A0A0A0;
   width: 100%;
   text-align: center;
 }
@@ -1796,7 +1796,7 @@ body.night-mode .search-page-results .search-result {
 
 html.night-mode .search-page-subtitle,
 body.night-mode .search-page-subtitle {
-  color: #ffffff;
+  color: #A8A8A8;
 }
 
 html.night-mode .search-page-results .search-empty,
