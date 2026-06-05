@@ -2730,7 +2730,7 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   flex-direction: column;
   gap: 4px;
 
-  padding-top: 4px;
+  padding-top: 12px;
   padding-bottom: 26px;
 
   direction: rtl;
