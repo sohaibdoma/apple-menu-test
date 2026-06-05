@@ -2840,8 +2840,8 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
   line-height: 1;
    
   opacity: 1;
-   
-  transition: opacity 120ms ease;
+    transform: translateY(-4px);
+    transition: opacity 120ms ease;
 }
 
 body.mushaf-surah-picker-open .fihris-label {
