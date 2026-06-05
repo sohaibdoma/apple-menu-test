@@ -218,15 +218,20 @@
   </div>
 
   <div class="font-size-pill" id="fontSizePill" aria-label="Quran font size">
-    <button
-      id="fontSizeTrigger"
-      class="font-size-trigger"
-      type="button"
-      aria-label="Open font size menu"
-      aria-expanded="false"
-    >
-      <span class="font-size-trigger-large">ء</span>
-    </button>
+<button
+  id="fontSizeTrigger"
+  class="font-size-trigger"
+  type="button"
+  aria-label="Open font size menu"
+  aria-expanded="false"
+>
+  <span class="font-size-trigger-large">ء</span>
+
+  <svg class="font-size-close-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M6 8 L18 20" />
+    <path d="M18 8 L6 20" />
+  </svg>
+</button>
 
     <div class="font-size-menu" aria-label="Choose Quran font size">
       <button class="font-size-btn font-size-btn--xs" type="button" data-font-size-option="xsmall">ء</button>
