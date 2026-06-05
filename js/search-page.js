@@ -28,15 +28,7 @@
   }
 
 function highlightMatch(text, query) {
-  const safe = escapeHtml(text);
-  const cleanQuery = (query || "").trim();
-
-  if (!cleanQuery || cleanQuery.length < 2) return safe;
-
-  const q = cleanQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const regex = new RegExp(`(${q})`, "gi");
-
-  return safe.replace(regex, `<span class="search-highlight">$1</span>`);
+  return escapeHtml(text);
 }
 
   function getPageTitle() {
