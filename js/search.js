@@ -90,13 +90,14 @@
 
       
 searchToggle.addEventListener("click", () => {
-  window.setTimeout(() => {
+  input.focus({ preventScroll: true });
+
+  requestAnimationFrame(() => {
     if (document.body.classList.contains("search-open")) {
       input.focus({ preventScroll: true });
     }
-  }, 420);
+  });
 });
-
       
     }
 
