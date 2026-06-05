@@ -2802,7 +2802,7 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
 
 
 .fihris-icon {
-  width: 30px;
+  width: 36px;
   height: 24px;
 
   display: flex;
@@ -2813,7 +2813,7 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
 }
 
 .fihris-chevron-svg {
-  width: 30px;
+  width: 36px;
   height: 24px;
 
   display: block;
@@ -2836,12 +2836,11 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
 .fihris-label {
   font-family: "Scheherazade New", serif;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 300;
   line-height: 1;
    
   opacity: 1;
    
-  transform: translateY(-2px);
   transition: opacity 120ms ease;
 }
 
