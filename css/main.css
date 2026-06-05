@@ -1731,6 +1731,8 @@ body.night-mode .ayah-targeted{
   font-size: 15px;
   line-height: 1.5;
   color: var(--muted-text, rgba(0, 0, 0, 0.58));
+  width: 100%;
+  text-align: center;
 }
 
 .search-page-results {
