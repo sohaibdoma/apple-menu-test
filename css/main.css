@@ -2423,7 +2423,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
 
 .font-size-pill:not(.is-open) .font-size-close-icon {
   transition:
-    opacity 0ms,
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
     transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -2838,10 +2838,18 @@ body.mushaf-surah-picker-open .fihris-label {
 }
 
 #mushafNextSurahBtn,
-#mushafNextSurahBtn:focus,
-#mushafNextSurahBtn:focus-visible,
-#mushafNextSurahBtn:active {
+.mushaf-surah-picker-item {
   outline: none !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent;
+}
+
+#mushafNextSurahBtn:focus,
+#mushafNextSurahBtn:focus-visible,
+#mushafNextSurahBtn:active,
+.mushaf-surah-picker-item:focus,
+.mushaf-surah-picker-item:focus-visible,
+.mushaf-surah-picker-item:active {
+  outline: none !important;
+  box-shadow: none !important;
 }
