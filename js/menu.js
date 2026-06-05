@@ -105,13 +105,15 @@
             const currentLink = menuNav.querySelector('a[aria-current="page"]');
             (currentLink || menuNav.querySelector("a"))?.focus({ preventScroll: true });
           }
-        } else {
-          const searchScroller = getSearchScroller();
-          if (searchScroller) searchScroller.scrollTop = 0;
 
-          const input = document.querySelector("#searchInput");
-          if (input) input.focus({ preventScroll: true });
-        }
+
+          
+} else {
+  const searchScroller = getSearchScroller();
+  if (searchScroller) searchScroller.scrollTop = 0;
+}
+
+        
       });
     }
 
