@@ -2386,8 +2386,8 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
 .font-size-pill:not(.is-open) .font-size-trigger::before,
 .font-size-pill:not(.is-open) .font-size-trigger .font-size-trigger-large {
   transition:
-    opacity 380ms cubic-bezier(0.22, 1, 0.36, 1) 80ms,
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 80ms;
+    opacity 380ms cubic-bezier(0.22, 1, 0.36, 1) 150ms,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 150ms;
 }
 
 
