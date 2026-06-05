@@ -111,6 +111,9 @@
 } else {
   const searchScroller = getSearchScroller();
   if (searchScroller) searchScroller.scrollTop = 0;
+
+  const input = document.querySelector("#searchInput");
+  if (input) input.focus({ preventScroll: true });
 }
 
         
