@@ -1730,7 +1730,7 @@ body.night-mode .ayah-targeted{
   margin: 8px 0 0;
   font-size: 15px;
   line-height: 1.5;
-  color: #999999;
+  color: #A9A9A9;
   width: 100%;
   text-align: center;
 }
@@ -2394,7 +2394,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
 .font-size-pill:not(.is-open) .font-size-trigger .font-size-trigger-large {
   transition:
     opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
