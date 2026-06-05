@@ -2840,6 +2840,8 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
   line-height: 1;
    
   opacity: 1;
+   
+  transform: translateY(-2px);
   transition: opacity 120ms ease;
 }
 
