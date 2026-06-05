@@ -117,15 +117,17 @@
         .replace(/>/g, "&gt;");
     }
 
-    function highlightMatch(text, query) {
-      const safe = escapeHtml(text);
-      if (!query) return safe;
+function highlightMatch(text, query) {
+  const safe = escapeHtml(text);
+  const cleanQuery = (query || "").trim();
 
-      const q = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      const regex = new RegExp(`(${q})`, "gi");
+  if (!cleanQuery || cleanQuery.length < 2) return safe;
 
-      return safe.replace(regex, `<span class="search-highlight">$1</span>`);
-    }
+  const q = cleanQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regex = new RegExp(`(${q})`, "gi");
+
+  return safe.replace(regex, `<span class="search-highlight">$1</span>`);
+}
 
     function goToSearchPage() {
       const q = input.value.trim();
