@@ -1713,6 +1713,7 @@ body.night-mode .ayah-targeted{
 }
 
 .search-page-header {
+  margin-top: -12px;
   margin-bottom: 20px;
 }
 
@@ -2722,6 +2723,9 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  padding-top: 8px;
+  padding-bottom: 16px;
 
   direction: rtl;
 
