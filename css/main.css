@@ -1730,7 +1730,7 @@ body.night-mode .ayah-targeted{
   margin: 8px 0 0;
   font-size: 15px;
   line-height: 1.5;
-  color: #808080;
+  color: #909090;
   width: 100%;
   text-align: center;
 }
@@ -2730,7 +2730,7 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   flex-direction: column;
   gap: 4px;
 
-  padding-top: 8px;
+  padding-top: 4px;
   padding-bottom: 26px;
 
   direction: rtl;
