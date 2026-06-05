@@ -2422,9 +2422,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
 
 
 .font-size-pill:not(.is-open) .font-size-close-icon {
-  transition:
-    opacity 0ms
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: none;
 }
 
 
