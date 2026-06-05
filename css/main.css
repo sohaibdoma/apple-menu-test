@@ -1730,7 +1730,7 @@ body.night-mode .ayah-targeted{
   margin: 8px 0 0;
   font-size: 15px;
   line-height: 1.5;
-  color: var(--muted-text, rgba(0, 0, 0, 0.58));
+  color: var(--page-text);
   width: 100%;
   text-align: center;
 }
@@ -1795,13 +1795,17 @@ body.night-mode .search-page-results .search-result {
 }
 
 html.night-mode .search-page-subtitle,
-body.night-mode .search-page-subtitle,
+body.night-mode .search-page-subtitle {
+  color: #ffffff;
+}
+
 html.night-mode .search-page-results .search-empty,
 body.night-mode .search-page-results .search-empty,
 html.night-mode .search-page-results .search-result-type,
 body.night-mode .search-page-results .search-result-type {
   color: rgba(255, 255, 255, 0.68);
 }
+
 
 html.night-mode .search-page-results .search-result,
 body.night-mode .search-page-results .search-result {
