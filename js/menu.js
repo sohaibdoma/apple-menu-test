@@ -113,9 +113,7 @@
   if (searchScroller) searchScroller.scrollTop = 0;
 
 const input = document.querySelector("#searchInput");
-
-if (input && !/Android/i.test(navigator.userAgent)) {
-  input.focus({ preventScroll: true });
+if (input) input.focus({ preventScroll: true });
 }
 
         
