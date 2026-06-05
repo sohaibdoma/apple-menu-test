@@ -2802,7 +2802,7 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
 
 
 .fihris-icon {
-  width: 52px;
+  width: 40px;
   height: 24px;
 
   display: flex;
@@ -2810,12 +2810,10 @@ body.mushaf-surah-picker-open .auto-scroll-bar {
   justify-content: center;
 
   flex-shrink: 0;
-
-  color: #909090;
 }
 
 .fihris-chevron-svg {
-  width: 52px;
+  width: 40px;
   height: 24px;
 
   display: block;
