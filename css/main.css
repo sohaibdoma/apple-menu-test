@@ -2354,7 +2354,9 @@ body.night-mode .font-size-pill.is-open .font-size-btn:not(.is-active) {
   font-weight: 700;
   line-height: 1;
 
-transition: none;
+  transition:
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
    
 }
 
@@ -2374,7 +2376,9 @@ transition: none;
   font-weight: 700;
   line-height: 1;
 
-transition: none;
+  transition:
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 
   pointer-events: none;
 }
@@ -2399,7 +2403,7 @@ transition: none;
   width: 24px;
   height: 24px;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 30%);
 
   opacity: 0;
   pointer-events: none;
@@ -2413,16 +2417,17 @@ transition: none;
   background: transparent;
   -webkit-tap-highlight-color: transparent;
 
-  transition: none;
+  transition:
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 
 .font-size-pill.is-open .font-size-close-icon {
   opacity: 1;
 
-  transition-property: opacity;
-  transition-duration: 900ms;
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: 180ms;
+  transform:
+    translate(-50%, -50%);
 }
 
 
@@ -2459,13 +2464,13 @@ body.night-mode .font-size-close-icon {
 
 .font-size-pill.is-open .font-size-trigger::before {
   opacity: 0;
+  transform: translateY(-110%);
 }
 
 .font-size-pill.is-open .font-size-trigger .font-size-trigger-large {
-  color: transparent;
   opacity: 0;
+  transform: translateY(-110%);
 }
-
 
 
 .font-size-menu {
