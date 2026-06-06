@@ -2656,8 +2656,8 @@ body[data-quran-font-size="xlarge"] .mushaf-text {
 }
 
 body.mushaf-surah-picker-open .mushaf-surah-pill {
-  width: min(70vw, 300px);
-  height: calc(100dvh - var(--header-h) - var(--nav-gap) - 30px);
+  width: min(100vw, 400px);
+  height: calc(100dvh - var(--header-h) - var(--nav-gap) - 100px);
   background-color: #ffffff;
 }
 
