@@ -116,6 +116,45 @@ body {
 
 
 
+
+
+
+
+.menu-overlay-home {
+  position: absolute;
+
+  top: 10px;
+  left: 19px;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--page-text);
+  text-decoration: none;
+
+  z-index: 50;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu-overlay-home svg {
+  width: 30px;
+  height: 29px;
+  display: block;
+  fill: currentColor;
+}
+
+.menu-overlay-home:focus,
+.menu-overlay-home:focus-visible,
+.menu-overlay-home:active {
+  outline: none;
+  box-shadow: none;
+}
+
 /* ========================================
    HOME
 ======================================== */
@@ -150,6 +189,13 @@ body {
   justify-content: center;
   gap: 14px;
 }
+
+
+
+
+
+
+
 
 /* ========================================
    HOME BUTTONS (ALWAYS DARK)
