@@ -164,7 +164,7 @@ body.menu-open .menu-overlay-home {
 
   fill: currentColor;
 
-  transform: translateY(-0.4px);
+  transform: translateY(-1.6px);
 }
 
 .menu-overlay-home:focus,
