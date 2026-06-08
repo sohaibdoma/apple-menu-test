@@ -138,7 +138,7 @@ body {
   z-index: 4;
 
   transition:
-    opacity 300ms ease 300ms,
+    opacity 300ms ease 400ms,
     transform 300ms cubic-bezier(0.22, 1, 0.36, 1) 300ms;
 
   transform: translateY(0);
