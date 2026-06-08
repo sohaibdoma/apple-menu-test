@@ -138,7 +138,7 @@ body {
   z-index: 4;
 
   transition:
-    opacity 300ms ease 500ms,
+    opacity 300ms ease 400ms,
     transform 300ms cubic-bezier(0.22, 1, 0.36, 1) 300ms;
 
   transform: translateY(0);
@@ -1926,11 +1926,11 @@ body.night-mode .search-page-results .search-result-meta {
   position: relative;
 
   transition:
-    opacity 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 450ms cubic-bezier(0.22, 1, 0.36, 1) 80ms;
 }
 
 body.mushaf-surah-picker-open .mushaf-container {
-  opacity: 0.55;
+  opacity: 0.40;
 }
 
 body:not(.mushaf-surah-picker-open) .mushaf-container {
