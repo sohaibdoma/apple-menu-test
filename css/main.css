@@ -122,9 +122,8 @@ body {
 
 .menu-overlay-home {
   position: absolute;
-
-  top: 0;
   left: 12px;
+  top: 0;
 
   width: 44px;
   height: 44px;
@@ -133,46 +132,32 @@ body {
   place-items: center;
 
   color: var(--menu-icon-color);
-
   opacity: 0;
-  transform: translateY(-4px);
-
   pointer-events: none;
 
+  z-index: 4;
+
   transition:
-    opacity 300ms ease,
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 300ms ease 120ms,
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1) 120ms;
 
-  z-index: 10;
-
-  -webkit-tap-highlight-color: transparent;
+  transform: translateY(0);
 }
 
 body.menu-open .menu-overlay-home {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
-
-  transition-delay: 120ms;
 }
 
 .menu-overlay-home .home-icon {
   width: 30px;
   height: 29px;
-
   display: block;
-
   fill: currentColor;
-
-  transform: translateY(-1.6px);
+  transform: translateY(1.6px);
 }
 
-.menu-overlay-home:focus,
-.menu-overlay-home:focus-visible,
-.menu-overlay-home:active {
-  outline: none;
-  box-shadow: none;
-}
+
 
 /* ========================================
    HOME
