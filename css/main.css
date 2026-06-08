@@ -831,13 +831,13 @@ body,
     opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-body:not(.theme-ready) * {
+
+
+html:not(.theme-ready) body * {
   transition: none !important;
 }
 
-html:not(.theme-ready) * {
-  transition: none !important;
-}
+
 
 .menu-content a[aria-current="page"] {
   background-color: #000;
@@ -1926,7 +1926,7 @@ body.night-mode .search-page-results .search-result-meta {
   position: relative;
 
   transition:
-    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body.mushaf-surah-picker-open .mushaf-container {
