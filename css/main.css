@@ -138,8 +138,8 @@ body {
   z-index: 4;
 
   transition:
-    opacity 300ms ease 400ms,
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1) 400ms;
+    opacity 300ms ease 350ms,
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1) 350ms;
 
   transform: translateY(0);
 }
@@ -154,7 +154,7 @@ body.menu-open .menu-overlay-home {
   height: 29px;
   display: block;
   fill: currentColor;
-  transform: translateY(10px);
+  transform: translateY(12px);
 }
 
 body:not(.menu-open) .menu-overlay-home {
