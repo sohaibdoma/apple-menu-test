@@ -2858,13 +2858,12 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   direction: rtl;
 }
 
-.mushaf-surah-picker-number {
-  min-width: 34px;
-  text-align: left;
 
-  font-size: 15px;
-  font-weight: 700;
+.mushaf-surah-picker-number {
   opacity: 0.45;
+  font-size: 15px;
+  min-width: 20px;
+  text-align: left;
 }
 
 .mushaf-surah-picker-item:hover {
