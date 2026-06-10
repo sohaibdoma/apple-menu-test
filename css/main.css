@@ -2850,8 +2850,20 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 
   transition:
     background-color 180ms ease,
-    color 180ms ease,
     border-radius 180ms ease;
+}
+
+.mushaf-surah-picker-name {
+  direction: rtl;
+}
+
+.mushaf-surah-picker-number {
+  min-width: 34px;
+  text-align: left;
+
+  font-size: 15px;
+  font-weight: 700;
+  opacity: 0.45;
 }
 
 .mushaf-surah-picker-item:hover {
@@ -2868,7 +2880,6 @@ html.night-mode .mushaf-surah-picker-item:hover,
 body.night-mode .mushaf-surah-picker-item:hover {
   background: rgba(255, 255, 255, 0.10);
 }
-
 
 
 
