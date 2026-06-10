@@ -2838,7 +2838,8 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 12px;
 
   padding: 0 8px;
 
