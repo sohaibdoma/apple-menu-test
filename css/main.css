@@ -2840,6 +2840,9 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   align-items: center;
   justify-content: flex-end;
 
+  width: 100%;
+  box-sizing: border-box;
+
   padding: 0 16px;
 
   font-family: "Scheherazade New", serif;
