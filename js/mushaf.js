@@ -865,7 +865,21 @@ if (!pill.contains(event.target)) {
 
  let previousLoadTimer = null;
 
+
+
+
+
+
+  
+
 document.addEventListener("scroll", () => {
+  const overlayOpen =
+    document.body.classList.contains("menu-open") ||
+    document.body.classList.contains("search-open") ||
+    document.body.classList.contains("menu-open-lock");
+
+  if (overlayOpen) return;
+
   updateNavbarSurahTitle();
   loadNextPagesIfNeeded();
 
@@ -874,6 +888,18 @@ document.addEventListener("scroll", () => {
     loadPreviousPagesIfNeeded();
   }, 180);
 }, { passive: true });
+
+
+
+
+
+
+
+
+
+
+
+  
 
   window.addEventListener("resize", () => {
     updateNavbarSurahTitle();
