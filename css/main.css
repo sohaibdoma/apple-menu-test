@@ -2801,7 +2801,37 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 
 
 
+
+
+
+
+.mushaf-surah-picker-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  padding-top: 8px;
+  padding-bottom: 26px;
+
+  direction: rtl;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.mushaf-surah-picker-list::-webkit-scrollbar {
+  display: none;
+}
+
 .mushaf-surah-picker-item {
+  width: 100%;
   height: 46px;
   min-height: 46px;
 
@@ -2816,8 +2846,6 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   align-items: center;
   justify-content: center;
 
-  width: calc(100% - 28px);
-  margin: 0 auto;
   padding: 0 16px;
   box-sizing: border-box;
 
@@ -2831,8 +2859,8 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   cursor: pointer;
 
   transition:
-    background-color 180ms ease,
-    border-radius 180ms ease;
+    background-color 120ms ease,
+    border-radius 120ms ease;
 }
 
 .mushaf-surah-picker-item:active {
@@ -2850,19 +2878,13 @@ body.night-mode .mushaf-surah-picker-item:active {
   background: rgba(255, 255, 255, 0.10);
 }
 
-
-
-
-
 body.mushaf-surah-picker-open {
   overflow: hidden;
-  touch-action: none;
 }
 
-.mushaf-surah-picker-list {
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
-}
+
+
+
 
 
 .font-size-pill {
