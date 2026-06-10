@@ -100,13 +100,14 @@
           if (menuScroller) menuScroller.scrollTop = 0;
 
           markCurrentSurah();
+          
 
-if (menuNav && document.body?.dataset?.pageType !== "mushaf") {
+if (menuNav) {
   const currentLink = menuNav.querySelector('a[aria-current="page"]');
-  currentLink?.focus({ preventScroll: true });
+  (currentLink || menuNav.querySelector("a"))?.focus({ preventScroll: true });
 }
 
-
+          
           
 } else {
   const searchScroller = getSearchScroller();
