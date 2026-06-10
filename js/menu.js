@@ -162,6 +162,39 @@ if (input) input.focus({ preventScroll: true });
       }, 420);
     }
 
+
+
+
+
+function closeOverlayInstant() {
+  if (!isOverlayOpen()) return;
+
+  document.body.classList.add("no-blur-transition");
+
+  document.body.classList.remove(
+    "menu-open",
+    "search-open",
+    "menu-closing",
+    "search-closing"
+  );
+
+  setButtonsOpenState(false);
+  unlockScroll();
+
+  requestAnimationFrame(() => {
+    document.body.classList.remove("no-blur-transition");
+  });
+}
+
+
+
+
+
+
+
+
+    
+
     menuButton.addEventListener("click", () => {
       isOverlayOpen() ? closeOverlay() : openOverlay("menu");
     });
@@ -212,6 +245,7 @@ if (input) input.focus({ preventScroll: true });
     window.Wahyollah.markCurrentSurah = markCurrentSurah;
     window.Wahyollah.openOverlay = openOverlay;
     window.Wahyollah.closeOverlay = closeOverlay;
+    window.Wahyollah.closeOverlayInstant = closeOverlayInstant;
     window.Wahyollah.getOverlayMode = getOverlayMode;
   }
 
