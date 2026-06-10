@@ -137,12 +137,24 @@ body {
 
   z-index: 4;
 
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+   
   transition:
-    opacity 400ms ease 400ms,
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1) 200ms;
+    opacity 300ms ease 150ms,
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1) 150ms;
 
   transform: translateY(0);
 }
+
+.menu-overlay-home:focus,
+.menu-overlay-home:focus-visible,
+.menu-overlay-home:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 
 body.menu-open .menu-overlay-home {
   opacity: 1;
