@@ -62,6 +62,14 @@
       document.body.style.width = "";
       document.body.style.overflow = "";
 
+
+      
+
+      document.body.classList.remove("menu-open-lock");
+
+
+      
+
       window.scrollTo(0, lockedScrollY);
       lockedScrollY = 0;
 
