@@ -101,10 +101,10 @@
 
           markCurrentSurah();
 
-          if (menuNav) {
-            const currentLink = menuNav.querySelector('a[aria-current="page"]');
-            (currentLink || menuNav.querySelector("a"))?.focus({ preventScroll: true });
-          }
+if (menuNav && document.body?.dataset?.pageType !== "mushaf") {
+  const currentLink = menuNav.querySelector('a[aria-current="page"]');
+  currentLink?.focus({ preventScroll: true });
+}
 
 
           
