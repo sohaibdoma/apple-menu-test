@@ -827,12 +827,8 @@ bodyOverlayObserver.observe(document.body, {
         button.className = "mushaf-surah-picker-item";
         button.type = "button";
 
-        
-  button.innerHTML = `
-    <span class="mushaf-surah-picker-name">${name}</span>
-    <span class="mushaf-surah-picker-number">${toArabicDigits(id)}</span>
-  `;
-
+      
+        button.textContent = name;
         
         button.dataset.surahId = id;
 
