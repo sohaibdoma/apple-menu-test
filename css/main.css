@@ -2799,28 +2799,52 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 }
 
 
-.mushaf-surah-picker-list {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
+.mushaf-surah-picker-item {
+  width: 100%;
+  height: 46px;
+
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+
+  background: transparent;
+  color: inherit;
 
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  justify-content: center;
 
-  padding-top: 8px;
-  padding-bottom: 26px;
+  padding: 0 16px;
+  box-sizing: border-box;
 
+  font-family: "Scheherazade New", serif;
+  font-size: 21px;
+  font-weight: 700;
+
+  text-align: center;
   direction: rtl;
 
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    border-radius 180ms ease;
 }
 
-.mushaf-surah-picker-list::-webkit-scrollbar {
-  display: none;
+.mushaf-surah-picker-item:active {
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
 }
 
+html.night-mode .mushaf-surah-picker-item,
+body.night-mode .mushaf-surah-picker-item {
+  border-bottom-color: rgba(255, 255, 255, 0.10);
+}
+
+html.night-mode .mushaf-surah-picker-item:active,
+body.night-mode .mushaf-surah-picker-item:active {
+  background: rgba(255, 255, 255, 0.10);
+}
 
 
 
