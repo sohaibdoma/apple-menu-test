@@ -343,17 +343,27 @@ if (item.type === "ayah") {
       document.getElementById(`ayah-${item.ayahNumber}`);
 
     if (target) {
-      target.classList.remove("ayah-targeted");
 
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
 
-      requestAnimationFrame(() => {
-        target.classList.add("ayah-targeted");
-      });
 
+      
+target.classList.remove("ayah-targeted");
+
+/* Force browser to reset the animation */
+void target.offsetWidth;
+
+target.scrollIntoView({
+  behavior: "smooth",
+  block: "center"
+});
+
+window.setTimeout(() => {
+  target.classList.add("ayah-targeted");
+}, 350);
+
+
+
+      
       return;
     }
   }
