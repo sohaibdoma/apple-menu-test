@@ -318,14 +318,7 @@ function highlightMatch(text, query) {
           if (!item) return;
 
 
-
-
-
-
-
-
-          
-window.Wahyollah?.closeOverlay?.();
+window.Wahyollah?.closeOverlayInstant?.();
 
 if (item.type === "ayah") {
   const currentParams = new URLSearchParams(window.location.search);
