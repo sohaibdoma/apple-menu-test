@@ -338,32 +338,51 @@ if (item.type === "ayah") {
   const targetSurah = String(item.surahId);
 
   if (String(currentSurah) === targetSurah) {
-    const target =
-      document.querySelector(`[data-ayah="${item.ayahNumber}"]`) ||
-      document.getElementById(`ayah-${item.ayahNumber}`);
-
-    if (target) {
 
 
 
-      
-window.setTimeout(() => {
-  target.classList.remove("ayah-targeted");
 
-  target.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
 
+
+
+    
+const targetId = item.verseKey
+  ? `ayah-${String(item.verseKey).replace(":", "-")}`
+  : `ayah-${item.surahId}-${item.ayahNumber}`;
+
+const target = document.getElementById(targetId);
+
+if (target) {
   window.setTimeout(() => {
+    const header = document.querySelector(".main-header");
+    const headerHeight = header ? header.offsetHeight : 0;
+
+    const y =
+      target.getBoundingClientRect().top +
+      window.pageYOffset -
+      headerHeight -
+      24;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth"
+    });
+
     target.classList.remove("ayah-targeted");
     void target.offsetWidth;
     target.classList.add("ayah-targeted");
-  }, 450);
-}, 460);
+  }, 460);
 
-return;
-    }
+  return;
+}
+
+
+
+
+
+
+
+    
   }
 }
 
