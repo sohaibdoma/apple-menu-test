@@ -317,8 +317,56 @@ function highlightMatch(text, query) {
           const item = items[i];
           if (!item) return;
 
-          window.Wahyollah?.closeOverlay?.();
-          window.location.href = item.href;
+
+
+
+
+
+
+
+          
+window.Wahyollah?.closeOverlay?.();
+
+if (item.type === "ayah") {
+  const currentParams = new URLSearchParams(window.location.search);
+
+  const currentSurah =
+    currentParams.get("surah") ||
+    currentParams.get("id") ||
+    document.body?.dataset?.surah;
+
+  const targetSurah = String(item.surahId);
+
+  if (String(currentSurah) === targetSurah) {
+    const target =
+      document.querySelector(`[data-ayah="${item.ayahNumber}"]`) ||
+      document.getElementById(`ayah-${item.ayahNumber}`);
+
+    if (target) {
+      target.classList.remove("ayah-targeted");
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+      requestAnimationFrame(() => {
+        target.classList.add("ayah-targeted");
+      });
+
+      return;
+    }
+  }
+}
+
+window.location.href = item.href;
+
+
+
+
+
+
+          
         });
       });
     }
