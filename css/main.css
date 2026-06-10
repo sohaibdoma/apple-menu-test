@@ -2821,25 +2821,61 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   display: none;
 }
 
+
+
+
+
+
 .mushaf-surah-picker-item {
-  height: 42px;
+  height: 46px;
 
   border: none;
-  border-radius: var(--nav-radius);
-  background: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0;
 
+  background: transparent;
   color: inherit;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  padding: 0 14px;
 
   font-family: "Scheherazade New", serif;
   font-size: 21px;
   font-weight: 700;
 
   cursor: pointer;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-radius 180ms ease;
 }
+
+.mushaf-surah-picker-item:hover {
+  background: rgba(0, 0, 0, 0.045);
+  border-radius: 14px;
+}
+
+html.night-mode .mushaf-surah-picker-item,
+body.night-mode .mushaf-surah-picker-item {
+  border-bottom-color: rgba(255, 255, 255, 0.10);
+}
+
+html.night-mode .mushaf-surah-picker-item:hover,
+body.night-mode .mushaf-surah-picker-item:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+
+
+
+
+
+
+
 
 
 body.mushaf-surah-picker-open {
