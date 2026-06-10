@@ -2838,14 +2838,16 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  justify-content: flex-end;
 
-  padding: 0 8px;
+  padding: 0 16px;
 
   font-family: "Scheherazade New", serif;
   font-size: 21px;
   font-weight: 700;
+
+  text-align: right;
+  direction: rtl;
 
   cursor: pointer;
 
@@ -2854,36 +2856,15 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
     border-radius 180ms ease;
 }
 
-.mushaf-surah-picker-name {
-  direction: rtl;
-}
-
-
-.mushaf-surah-picker-number {
-  opacity: 0.45;
-  font-size: 15px;
-  min-width: 20px;
-  text-align: left;
-}
-
-.mushaf-surah-picker-item:hover {
-  background: rgba(0, 0, 0, 0.045);
+.mushaf-surah-picker-item:active {
+  background: rgba(0, 0, 0, 0.06);
   border-radius: 14px;
 }
 
-html.night-mode .mushaf-surah-picker-item,
-body.night-mode .mushaf-surah-picker-item {
-  border-bottom-color: rgba(255, 255, 255, 0.10);
-}
-
-html.night-mode .mushaf-surah-picker-item:hover,
-body.night-mode .mushaf-surah-picker-item:hover {
+html.night-mode .mushaf-surah-picker-item:active,
+body.night-mode .mushaf-surah-picker-item:active {
   background: rgba(255, 255, 255, 0.10);
 }
-
-
-
-
 
 
 
