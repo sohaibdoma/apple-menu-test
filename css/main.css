@@ -2799,9 +2799,11 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 }
 
 
+
+
 .mushaf-surah-picker-item {
-  width: 100%;
   height: 46px;
+  min-height: 46px;
 
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -2814,6 +2816,8 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   align-items: center;
   justify-content: center;
 
+  width: calc(100% - 28px);
+  margin: 0 auto;
   padding: 0 16px;
   box-sizing: border-box;
 
@@ -2839,53 +2843,6 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 html.night-mode .mushaf-surah-picker-item,
 body.night-mode .mushaf-surah-picker-item {
   border-bottom-color: rgba(255, 255, 255, 0.10);
-}
-
-html.night-mode .mushaf-surah-picker-item:active,
-body.night-mode .mushaf-surah-picker-item:active {
-  background: rgba(255, 255, 255, 0.10);
-}
-
-
-
-
-
-.mushaf-surah-picker-item {
-  height: 46px;
-
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 0;
-
-  background: transparent;
-  color: inherit;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  width: 100%;
-  box-sizing: border-box;
-
-  padding: 0 16px;
-
-  font-family: "Scheherazade New", serif;
-  font-size: 21px;
-  font-weight: 700;
-
-  text-align: right;
-  direction: rtl;
-
-  cursor: pointer;
-
-  transition:
-    background-color 180ms ease,
-    border-radius 180ms ease;
-}
-
-.mushaf-surah-picker-item:active {
-  background: rgba(0, 0, 0, 0.06);
-  border-radius: 14px;
 }
 
 html.night-mode .mushaf-surah-picker-item:active,
