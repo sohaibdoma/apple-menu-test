@@ -347,24 +347,22 @@ if (item.type === "ayah") {
 
 
       
-target.classList.remove("ayah-targeted");
-
-/* Force browser to reset the animation */
-void target.offsetWidth;
-
-target.scrollIntoView({
-  behavior: "smooth",
-  block: "center"
-});
-
 window.setTimeout(() => {
-  target.classList.add("ayah-targeted");
-}, 350);
+  target.classList.remove("ayah-targeted");
 
+  target.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
 
+  window.setTimeout(() => {
+    target.classList.remove("ayah-targeted");
+    void target.offsetWidth;
+    target.classList.add("ayah-targeted");
+  }, 450);
+}, 460);
 
-      
-      return;
+return;
     }
   }
 }
