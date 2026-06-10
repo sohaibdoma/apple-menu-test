@@ -819,27 +819,56 @@ bodyOverlayObserver.observe(document.body, {
 });
   
 
-    function renderList() {
-      list.innerHTML = "";
 
-      Object.entries(SURAH_NAMES_AR).forEach(([id, name]) => {
-        const button = document.createElement("button");
-        button.className = "mushaf-surah-picker-item";
-        button.type = "button";
 
-      
-        button.textContent = name;
-        
-        button.dataset.surahId = id;
 
-        button.addEventListener("click", async () => {
-          closePicker();
-          await jumpToSurahInMushaf(Number(id));
-        });
 
-        list.appendChild(button);
-      });
+    
+function renderList() {
+  list.innerHTML = "";
+
+  const currentHeader = document.querySelector(".mushaf-surah-start");
+  const navName = document.querySelector("#nav-surah-title .nav-surah-name");
+
+  let currentSurahId = null;
+
+  const headers = Array.from(document.querySelectorAll(".mushaf-surah-start"));
+
+  headers.forEach((header) => {
+    const rect = header.getBoundingClientRect();
+
+    if (rect.top <= 140) {
+      currentSurahId = Number(header.getAttribute("data-surah-id"));
     }
+  });
+
+  if (!currentSurahId && currentHeader) {
+    currentSurahId = Number(currentHeader.getAttribute("data-surah-id"));
+  }
+
+  Object.entries(SURAH_NAMES_AR).forEach(([id, name]) => {
+    const button = document.createElement("button");
+    button.className = "mushaf-surah-picker-item";
+    button.type = "button";
+    button.textContent = name;
+    button.dataset.surahId = id;
+
+    if (Number(id) === currentSurahId) {
+      button.classList.add("is-current-surah");
+    }
+
+    button.addEventListener("click", async () => {
+      closePicker();
+      await jumpToSurahInMushaf(Number(id));
+    });
+
+    list.appendChild(button);
+  });
+}
+
+
+
+    
 
 document.addEventListener("click", (event) => {
   const isOpen = document.body.classList.contains(
