@@ -2363,7 +2363,8 @@ transition:
 
 .font-size-pill.is-open {
   flex: 1;
-  max-width: 300px;
+  width: calc(100vw - 140px);
+  max-width: 245px;
   height: var(--header-h);
 
   background-color: #ffffff;
