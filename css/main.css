@@ -2351,7 +2351,7 @@ body[data-quran-font-size="large"] .mushaf-text {
 
 
 .font-size-pill.is-open {
-  width: 276px; /* 46 × 6 buttons */
+  width: 347px;
   height: var(--header-h);
   background-color: #ffffff;
 }
