@@ -2334,6 +2334,8 @@ body[data-quran-font-size="large"] .mushaf-text {
   border-radius: 999px;
   isolation: isolate;
   overflow: hidden;
+   
+  margin-left: auto;
 
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(1px);
