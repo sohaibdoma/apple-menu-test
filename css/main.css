@@ -2345,10 +2345,10 @@ body[data-quran-font-size="large"] .mushaf-text {
   flex-shrink: 0;
 
   transition:
-    width 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    width 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 120ms ease;
 }
-
 
 .font-size-pill.is-open {
   width: 347px;
@@ -2356,14 +2356,14 @@ body[data-quran-font-size="large"] .mushaf-text {
   background-color: #ffffff;
 }
 
-html.night-mode .font-size-pill.is-open,
-body.night-mode .font-size-pill.is-open {
-  background-color: #000000;
-}
-
 html.night-mode .font-size-pill,
 body.night-mode .font-size-pill {
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+html.night-mode .font-size-pill.is-open,
+body.night-mode .font-size-pill.is-open {
+  background-color: #000000;
 }
 
 .font-size-trigger,
@@ -2395,8 +2395,7 @@ body.night-mode .font-size-pill {
   -webkit-tap-highlight-color: transparent;
 }
 
-.font-size-trigger 
-  position: relative;
+.font-size-trigger {
   flex: 0 0 var(--header-h);
   font-size: 24px;
 }
@@ -2413,7 +2412,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   color: #ffffff;
 }
 
-/* Main Arabic glyph */
+/* Closed-state big letter */
 .font-size-trigger::before {
   content: "ء";
 
@@ -2429,12 +2428,14 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   font-weight: 700;
   line-height: 1;
 
+  opacity: 1;
+
   transition:
-    opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0ms linear 0ms;
 }
 
-/* Small right letter */
+/* Closed-state small letter */
 .font-size-trigger .font-size-trigger-large {
   position: absolute;
 
@@ -2448,19 +2449,25 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   font-weight: 700;
   line-height: 1;
 
+  opacity: 1;
   pointer-events: none;
 
   transition:
-    opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0ms linear 0ms;
 }
 
+/* Opening: letters disappear instantly */
 .font-size-pill.is-open .font-size-trigger::before,
 .font-size-pill.is-open .font-size-trigger .font-size-trigger-large {
   opacity: 0;
-  transform: translateY(-110%);
+  transform: translate(-18px, -70%);
+  transition:
+    transform 0ms linear,
+    opacity 0ms linear;
 }
 
+/* X icon */
 .font-size-close-icon {
   position: absolute;
 
@@ -2470,7 +2477,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   width: 24px;
   height: 24px;
 
-  transform: translate(-50%, 30%);
+  transform: translate(20px, -50%);
 
   opacity: 0;
   pointer-events: none;
@@ -2485,14 +2492,11 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   -webkit-tap-highlight-color: transparent;
 
   transition:
-    opacity 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 160ms ease 120ms,
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 40ms;
 }
 
-.font-size-pill:not(.is-open) .font-size-close-icon {
-  transition: none;
-}
-
+/* Opening: X moves left into place */
 .font-size-pill.is-open .font-size-close-icon {
   opacity: 1;
   transform: translate(-50%, -50%);
@@ -2509,6 +2513,7 @@ body.night-mode .font-size-close-icon {
   pointer-events: none;
 }
 
+/* Menu expands to the left of the trigger */
 .font-size-menu {
   display: flex;
   flex-direction: row-reverse;
@@ -2519,17 +2524,23 @@ body.night-mode .font-size-close-icon {
   opacity: 0;
   pointer-events: none;
 
-  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    opacity 180ms ease 160ms;
 }
-
 
 .font-size-pill.is-open .font-size-menu {
   opacity: 1;
   pointer-events: auto;
 }
 
+/* Closing: menu disappears immediately */
+.font-size-pill:not(.is-open) .font-size-menu {
+  transition: none;
+}
+
 .font-size-btn {
   opacity: 1;
+
   transition:
     opacity 160ms ease,
     transform 160ms ease;
@@ -2619,6 +2630,8 @@ body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent;
 }
+
+
 
 /* Ayah text */
 
