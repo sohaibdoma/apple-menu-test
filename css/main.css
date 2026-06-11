@@ -2322,11 +2322,12 @@ body[data-quran-font-size="large"] .mushaf-text {
 ======================================== */
 
 .surah-bottom-controls {
-  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
 }
 
 .font-size-pill {
-  position: absolute;
+ position: relative; /* instead of absolute */
   right: 0;
   bottom: 0;
 
@@ -2361,8 +2362,8 @@ transition:
 }
 
 .font-size-pill.is-open {
-  width: calc(100vw - 140px);
-  max-width: 420px;
+  flex: 1;
+  max-width: 300px;
   height: var(--header-h);
 
   background-color: #ffffff;
