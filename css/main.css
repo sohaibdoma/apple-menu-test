@@ -2356,10 +2356,13 @@ transition:
   width 420ms cubic-bezier(0.22, 1, 0.36, 1),
   background-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
   opacity 120ms ease;
+   
+  z-index: 100;
 }
 
 .font-size-pill.is-open {
-  width: 250px;
+  width: calc(100vw - 140px);
+  max-width: 420px;
   height: var(--header-h);
 
   background-color: #ffffff;
