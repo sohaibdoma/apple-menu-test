@@ -31,15 +31,20 @@
     }, 400);
   }
 
-  function openMenu() {
-    pill.classList.add("is-open");
-    trigger.setAttribute("aria-expanded", "true");
-  }
+function openMenu() {
+  pill.classList.add("is-open");
+  document.body.classList.add("font-size-open");
+  trigger.setAttribute("aria-expanded", "true");
+}
 
-  function closeMenu() {
-    pill.classList.remove("is-open");
-    trigger.setAttribute("aria-expanded", "false");
-  }
+function closeMenu() {
+  pill.classList.remove("is-open");
+  trigger.setAttribute("aria-expanded", "false");
+
+  requestAnimationFrame(function () {
+    document.body.classList.remove("font-size-open");
+  });
+}
 
   function toggleMenu() {
     if (pill.classList.contains("is-open")) {
