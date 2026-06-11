@@ -2865,7 +2865,7 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 
 .mushaf-surah-picker-item.is-current-surah {
   background: rgba(0, 0, 0, 0.055);
-  border-radius: 14px;
+  border-radius: 999px;
 }
 
 html.night-mode .mushaf-surah-picker-item.is-current-surah,
