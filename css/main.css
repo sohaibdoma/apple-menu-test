@@ -2592,15 +2592,18 @@ body.night-mode .font-size-btn.is-active {
 .mushaf-surah-pill,
 .auto-scroll-bar {
   opacity: 1;
+  transform: translateY(0);
 
   transition:
-    opacity 260ms ease,
+    opacity 120ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
     background-color 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body.font-size-open .mushaf-surah-pill,
 body.font-size-open .auto-scroll-bar {
   opacity: 0;
+  transform: translateY(8px);
   pointer-events: none;
   transition: none;
 }
@@ -2860,15 +2863,6 @@ body.mushaf-surah-picker-open {
   overflow: hidden;
 }
 
-
-
-.auto-scroll-bar {
-  opacity: 1;
-
-  transition:
-    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 120ms ease;
-}
 
 body.mushaf-surah-picker-open .font-size-pill,
 body.mushaf-surah-picker-open .auto-scroll-bar {
