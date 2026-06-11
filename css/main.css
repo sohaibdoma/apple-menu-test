@@ -2349,8 +2349,9 @@ body[data-quran-font-size="large"] .mushaf-text {
     background-color 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+
 .font-size-pill.is-open {
-  width: 347px;
+  width: 276px; /* 46 × 6 buttons */
   height: var(--header-h);
   background-color: #ffffff;
 }
@@ -2394,7 +2395,8 @@ body.night-mode .font-size-pill {
   -webkit-tap-highlight-color: transparent;
 }
 
-.font-size-trigger {
+.font-size-trigger 
+  position: relative;
   flex: 0 0 var(--header-h);
   font-size: 24px;
 }
@@ -2517,9 +2519,9 @@ body.night-mode .font-size-close-icon {
   opacity: 0;
   pointer-events: none;
 
-  transition:
-    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 
 .font-size-pill.is-open .font-size-menu {
   opacity: 1;
