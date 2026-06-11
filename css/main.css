@@ -2335,7 +2335,6 @@ body[data-quran-font-size="large"] .mushaf-text {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: flex-start;
-  gap: 0;
 
   border-radius: 999px;
   isolation: isolate;
@@ -2357,7 +2356,7 @@ body[data-quran-font-size="large"] .mushaf-text {
 }
 
 .font-size-pill.is-open {
-  width: calc(var(--header-h) * 6);
+  width: 347px;
   height: var(--header-h);
   background-color: #ffffff;
 }
@@ -2378,7 +2377,6 @@ body.night-mode .font-size-pill.is-open {
   height: var(--header-h);
   min-width: var(--header-h);
   min-height: var(--header-h);
-  flex: 0 0 var(--header-h);
 
   position: relative;
   z-index: 1;
@@ -2403,6 +2401,7 @@ body.night-mode .font-size-pill.is-open {
 }
 
 .font-size-trigger {
+  flex: 0 0 var(--header-h);
   font-size: 24px;
 }
 
@@ -2418,10 +2417,12 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   color: #ffffff;
 }
 
+/* Closed-state big letter */
 .font-size-trigger::before {
   content: "ء";
 
   position: absolute;
+
   top: 50%;
   left: 18px;
 
@@ -2439,8 +2440,10 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     opacity 0ms linear 0ms;
 }
 
+/* Closed-state small letter */
 .font-size-trigger .font-size-trigger-large {
   position: absolute;
+
   top: 50%;
   left: 34px;
 
@@ -2459,6 +2462,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     opacity 0ms linear 0ms;
 }
 
+/* Opening: letters disappear instantly */
 .font-size-pill.is-open .font-size-trigger::before,
 .font-size-pill.is-open .font-size-trigger .font-size-trigger-large {
   opacity: 0;
@@ -2468,8 +2472,10 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     opacity 0ms linear;
 }
 
+/* X icon */
 .font-size-close-icon {
   position: absolute;
+
   top: 50%;
   left: 50%;
 
@@ -2495,6 +2501,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 40ms;
 }
 
+/* Opening: X moves left into place */
 .font-size-pill.is-open .font-size-close-icon {
   opacity: 1;
   transform: translate(-50%, -50%);
@@ -2509,6 +2516,31 @@ body.night-mode .font-size-close-icon {
   fill: none;
   stroke: inherit;
   pointer-events: none;
+}
+
+/* Menu expands to the left of the trigger */
+.font-size-menu {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+
+  flex: 0 0 auto;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 180ms ease 160ms;
+}
+
+.font-size-pill.is-open .font-size-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Closing: menu disappears immediately */
+.font-size-pill:not(.is-open) .font-size-menu {
+  transition: none;
 }
 
 .font-size-btn {
@@ -2566,6 +2598,25 @@ body.night-mode .font-size-btn.is-active {
   );
 }
 
+
+.mushaf-surah-pill,
+.auto-scroll-bar {
+  opacity: 1;
+
+  transition:
+    opacity 260ms ease,
+    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.font-size-open .mushaf-surah-pill,
+body.font-size-open .auto-scroll-bar {
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+
+
+
 .font-size-pill.is-open .font-size-btn.is-active {
   color: #ffffff;
 
@@ -2587,22 +2638,6 @@ body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
   );
 }
 
-.mushaf-surah-pill,
-.auto-scroll-bar {
-  opacity: 1;
-
-  transition:
-    opacity 260ms ease,
-    background-color 420ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body.font-size-open .mushaf-surah-pill,
-body.font-size-open .auto-scroll-bar {
-  opacity: 0;
-  pointer-events: none;
-  transition: none;
-}
-
 .font-size-btn--xs { font-size: 15px; }
 .font-size-btn--sm { font-size: 18px; }
 .font-size-btn--md { font-size: 22px; }
@@ -2619,7 +2654,6 @@ body.font-size-open .auto-scroll-bar {
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent;
 }
-
 
 
 /* Ayah text */
