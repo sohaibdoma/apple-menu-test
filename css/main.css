@@ -2361,8 +2361,7 @@ transition:
 }
 
 .font-size-pill.is-open {
-  width: calc(100vw - 140px);
-  max-width: 245px;
+  width: 245px;
   height: var(--header-h);
 
   background-color: #ffffff;
