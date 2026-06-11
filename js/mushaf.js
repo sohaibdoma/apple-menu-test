@@ -921,16 +921,6 @@ document.addEventListener("scroll", () => {
   }, 180);
 }, { passive: true });
 
-
-
-
-
-
-
-
-
-
-
   
 
   window.addEventListener("resize", () => {
