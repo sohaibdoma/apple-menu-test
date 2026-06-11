@@ -963,6 +963,9 @@ body:not([data-page-type="mushaf"]) .surah-bottom-right {
   gap: 10px;
 
   direction: ltr;
+
+  position: relative;
+  padding-right: calc(var(--header-h) + 10px);
 }
 
 .surah-bottom-left,
