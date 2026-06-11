@@ -2236,6 +2236,9 @@ body[data-page-type="mushaf"] .mushaf-bottom-right {
   align-items: flex-end;
   gap: 10px;
   direction: ltr;
+
+  position: relative;
+  padding-right: calc(var(--header-h) + 10px);
 }
 
 /* Inside right group: Next Surah first, Font second */
@@ -2320,7 +2323,9 @@ body[data-quran-font-size="large"] .mushaf-text {
 }
 
 .font-size-pill {
-  position: relative;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 
   width: var(--header-h);
   height: var(--header-h);
@@ -2334,8 +2339,6 @@ body[data-quran-font-size="large"] .mushaf-text {
   border-radius: 999px;
   isolation: isolate;
   overflow: hidden;
-   
-  margin-left: auto;
 
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(1px);
