@@ -2863,37 +2863,19 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
     transform 120ms ease;
 }
 
-.mushaf-surah-picker-item:active {
-  background: rgba(0,0,0,0.05);
-  transform: scale(0.985);
-}
-
 .mushaf-surah-picker-item.is-current-surah {
   background: rgba(0, 0, 0, 0.055);
   border-radius: 14px;
 }
-
-
-
-
-html.night-mode .mushaf-surah-picker-item:active,
-body.night-mode .mushaf-surah-picker-item:active {
-  background: rgba(255, 255, 255, 0.10);
-}
-
-
 
 html.night-mode .mushaf-surah-picker-item.is-current-surah,
 body.night-mode .mushaf-surah-picker-item.is-current-surah {
   background: rgba(255, 255, 255, 0.10);
 }
 
-
-
 body.mushaf-surah-picker-open {
   overflow: hidden;
 }
-
 
 
 
