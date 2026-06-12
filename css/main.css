@@ -2500,8 +2500,6 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
    
   transform: translate(60px, -14px);
    
-  opacity: 0;
-   
   pointer-events: none;
 
   transition:
@@ -2510,19 +2508,26 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 
 .font-size-menu .font-size-btn {
+  opacity: 0;
   margin-inline-start: -14px;
+
+  transition:
+    opacity 400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
 .font-size-pill.is-open .font-size-menu {
-  opacity: 1;
   pointer-events: auto;
 }
 
 
-.font-size-btn {
+.font-size-pill.is-open .font-size-menu .font-size-btn {
   opacity: 1;
+}
 
+
+
+.font-size-btn {
   transition:
     opacity 160ms ease,
     transform 160ms ease;
