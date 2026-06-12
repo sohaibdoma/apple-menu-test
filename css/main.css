@@ -2479,10 +2479,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 .font-size-pill.is-open .font-size-trigger::before,
 .font-size-pill.is-open .font-size-trigger .font-size-trigger-large {
   opacity: 0;
-  transform: translate(-18px, -70%);
-  transition:
-    transform 0ms linear,
-    opacity 0ms linear;
+  transform: translate(18px, -70%);
 }
 
 
@@ -2503,7 +2500,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   pointer-events: none;
 
   transition:
-    opacity 280ms cubic-bezier(0.22, 1, 0.36, 1) 120ms;
+    opacity 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
