@@ -2540,7 +2540,7 @@ body.night-mode .font-size-close-icon {
 
   gap: 0;
    
-  transform: translate(25px, -14px);
+  transform: translate(20px, -14px);
    
   opacity: 1;
   pointer-events: auto;
