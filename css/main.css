@@ -2484,17 +2484,15 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 }
 
 
-/* X icon */
 .font-size-close-icon {
   position: absolute;
-
-  top: 50%;
-  left: 50%;
+  inset: 0;
+  margin: auto;
 
   width: 24px;
   height: 24px;
 
-  transform: translate(20px, -50%);
+  transform: translateY(8px);
 
   opacity: 0;
   pointer-events: none;
@@ -2513,11 +2511,13 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     transform 520ms cubic-bezier(0.22, 1, 0.36, 1) 40ms;
 }
 
+
 /* Opening: X moves left into place */
 .font-size-pill.is-open .font-size-close-icon {
   opacity: 1;
-  transform: translate(-50%, -50%);
+  transform: translateY(0);
 }
+
 
 html.night-mode .font-size-close-icon,
 body.night-mode .font-size-close-icon {
@@ -2540,7 +2540,7 @@ body.night-mode .font-size-close-icon {
 
   gap: 0;
    
-  transform: translate(20px, -14px);
+  transform: translate(15px, -14px);
    
   opacity: 1;
   pointer-events: auto;
