@@ -2535,8 +2535,15 @@ body.night-mode .font-size-close-icon {
 
   flex-shrink: 0;
 
+  gap: 0;
+  transform: translateX(10px);
+   
   opacity: 1;
   pointer-events: auto;
+}
+
+.font-size-menu .font-size-btn {
+  margin-inline-start: -6px;
 }
 
 
