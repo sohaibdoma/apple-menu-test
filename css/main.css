@@ -2481,6 +2481,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
     opacity 0ms linear;
 }
 
+
 /* X icon */
 .font-size-close-icon {
   position: absolute;
@@ -2543,7 +2544,7 @@ body.night-mode .font-size-close-icon {
 }
 
 .font-size-menu .font-size-btn {
-  margin-inline-start: -12px;
+  margin-inline-start: -30px;
 }
 
 
