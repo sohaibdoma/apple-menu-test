@@ -2244,6 +2244,8 @@ body[data-page-type="mushaf"] .mushaf-bottom-right {
   padding-right: calc(var(--header-h) + 10px);
 }
 
+
+
 /* Inside right group: Next Surah first, Font second */
 body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   order: 1;
@@ -2538,7 +2540,7 @@ body.night-mode .font-size-close-icon {
 
   gap: 0;
    
-  transform: translateY(-3px);
+  transform: translate(10px, -3px);
    
   opacity: 1;
   pointer-events: auto;
