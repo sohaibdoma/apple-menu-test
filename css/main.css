@@ -2254,12 +2254,10 @@ body[data-page-type="mushaf"] .mushaf-next-surah-btn {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-   flex-direction: column;
+  flex-direction: column;
 
   text-decoration: none;
   color: var(--page-text);
-   
-
    
   padding-inline: 12px;
   gap: 0px;
@@ -2764,12 +2762,13 @@ body.night-mode.mushaf-surah-picker-open .mushaf-surah-pill {
 }
 
 .mushaf-surah-picker {
-  order: 1;
+  order: 2;
 }
 
 .mushaf-next-surah-btn {
-  order: 2;
+  order: 1;
 }
+
 
 .mushaf-surah-picker {
   flex: 1;
@@ -2778,12 +2777,12 @@ body.night-mode.mushaf-surah-picker-open .mushaf-surah-pill {
   padding: 0px 14px 0;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 10px;
 
   opacity: 0;
   pointer-events: none;
 
-  transform: translateY(0);
+  transform: translateY(8px);
 
   transition:
     opacity 220ms ease 80ms,
@@ -2795,12 +2794,6 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   pointer-events: auto;
   transform: translateY(0);
 }
-
-
-
-
-
-
 
 
 .mushaf-surah-picker-list {
