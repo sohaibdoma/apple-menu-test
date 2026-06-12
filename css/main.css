@@ -2507,7 +2507,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   -webkit-tap-highlight-color: transparent;
 
   transition:
-    transform 350ms cubic-bezier(0.22, 1, 0.36, 1) 40ms;
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .font-size-pill.is-open .font-size-close-icon {
@@ -2933,7 +2933,7 @@ body.mushaf-surah-picker-open .fihris-label {
 
 
 body.mushaf-surah-picker-open .fihris-icon {
-  transform: translateY(12px);
+  transform: translateY(10px);
 }
 
 #mushafNextSurahBtn,
