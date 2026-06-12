@@ -2488,7 +2488,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   position: absolute;
 
   top: 50%;
-  left: calc(50% - 2px);
+  left: calc(50% - 8px);
 
   width: 24px;
   height: 24px;
