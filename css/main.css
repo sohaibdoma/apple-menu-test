@@ -2361,14 +2361,11 @@ transition:
 }
 
 .font-size-pill.is-open {
-  width: 247px;
-  height: var(--header-h);
-
-  background-color: #ffffff;
-
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
+    width: min(
+    calc(100vw - (2 * var(--nav-inset)) - var(--header-h) - 12px),
+    347px
+  );
+   
   height: var(--header-h);
 
   background-color: #ffffff;
