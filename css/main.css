@@ -2540,14 +2540,14 @@ body.night-mode .font-size-close-icon {
 
   gap: 0;
    
-  transform: translate(30px, -12px);
+  transform: translate(25px, -14px);
    
   opacity: 1;
   pointer-events: auto;
 }
 
 .font-size-menu .font-size-btn {
-  margin-inline-start: -25px;
+  margin-inline-start: -26px;
 }
 
 
