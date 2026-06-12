@@ -2414,6 +2414,10 @@ body.night-mode .font-size-pill.is-open {
   font-size: 24px;
 }
 
+.font-size-pill.is-open .font-size-trigger {
+  pointer-events: none;
+}
+
 .font-size-pill.is-open .font-size-trigger,
 .font-size-pill.is-open .font-size-btn {
   color: #000000;
