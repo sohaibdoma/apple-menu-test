@@ -2363,7 +2363,7 @@ transition:
 .font-size-pill.is-open {
     width: min(
     calc(100vw - (2 * var(--nav-inset)) - var(--header-h) - 12px),
-    347px
+    247px
   );
    
   height: var(--header-h);
