@@ -2512,10 +2512,14 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
   transition: none;
 }
 
-.font-size-menu .font-size-btn.is-active {
-  opacity: 0;
-  visibility: hidden;
-}
+
+
+
+
+
+
+
+
 
 .font-size-pill.is-open .font-size-menu {
   pointer-events: auto;
