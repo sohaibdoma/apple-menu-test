@@ -697,7 +697,7 @@ async function jumpToSurahInMushaf(surahId) {
 
     let startY = 0;
     let currentY = 0;
-    const SWIPE_THRESHOLD = 90;
+    const SWIPE_THRESHOLD = 45;
 
     const picker = document.getElementById("mushafSurahPicker");
     const pill = document.getElementById("mushafSurahPill");
