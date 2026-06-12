@@ -2487,14 +2487,14 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 .font-size-close-icon {
   position: absolute;
 
-  top: 50%;
+  top: calc(50% - 2px); /* moves up */
   left: 50%;
 
 
   width: 24px;
   height: 24px;
 
-  transform: translate(-50%, -50%);
+ transform: translate(calc(-50% + 20px), -50%);
 
   opacity: 0;
   pointer-events: none;
@@ -2515,7 +2515,9 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 .font-size-pill.is-open .font-size-close-icon {
   opacity: 1;
+  transform: translate(-50%, -50%);
 }
+
 
 
 html.night-mode .font-size-close-icon,
