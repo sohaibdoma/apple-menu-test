@@ -2496,7 +2496,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   gap: 0;
    
-  transform: translate(13px, -14px);
+  transform: translate(15px, -14px);
    
   opacity: 1;
   pointer-events: auto;
@@ -2504,7 +2504,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
 
 .font-size-menu .font-size-btn {
-  margin-inline-start: -25px;
+  margin-inline-start: -15px;
 }
 
 
