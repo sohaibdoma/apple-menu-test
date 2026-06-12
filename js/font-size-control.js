@@ -31,11 +31,47 @@
     }, 400);
   }
 
+
+
+
+
+
+function updateOpenWidth() {
+  const autoScroll = document.querySelector(".auto-scroll-bar");
+  if (!autoScroll) return;
+
+  const pillRect = pill.getBoundingClientRect();
+  const autoRect = autoScroll.getBoundingClientRect();
+
+  const width = pillRect.right - autoRect.left;
+
+  pill.style.setProperty("--font-size-open-width", `${width}px`);
+}
+
+
+
+
+
+
+
+
+
+
+  
 function openMenu() {
+  updateOpenWidth();
+
   pill.classList.add("is-open");
   document.body.classList.add("font-size-open");
   trigger.setAttribute("aria-expanded", "true");
 }
+
+
+
+
+
+
+  
 
 function closeMenu() {
   pill.classList.remove("is-open");
