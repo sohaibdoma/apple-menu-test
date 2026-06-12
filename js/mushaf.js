@@ -882,6 +882,65 @@ if (!pill.contains(event.target)) {
 }
 });
 
+
+
+
+
+
+
+
+document.addEventListener("touchstart", (event) => {
+  const isOpen = document.body.classList.contains(
+    "mushaf-surah-picker-open"
+  );
+
+  if (!isOpen) return;
+  if (pill.contains(event.target)) return;
+
+  startY = event.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener("touchmove", (event) => {
+  const isOpen = document.body.classList.contains(
+    "mushaf-surah-picker-open"
+  );
+
+  if (!isOpen) return;
+  if (pill.contains(event.target)) return;
+
+  currentY = event.touches[0].clientY;
+}, { passive: true });
+
+document.addEventListener("touchend", (event) => {
+  const isOpen = document.body.classList.contains(
+    "mushaf-surah-picker-open"
+  );
+
+  if (!isOpen) return;
+  if (pill.contains(event.target)) return;
+
+  const distance = currentY - startY;
+
+  if (distance > SWIPE_THRESHOLD) {
+    closePicker();
+  }
+
+  startY = 0;
+  currentY = 0;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+    
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
 
