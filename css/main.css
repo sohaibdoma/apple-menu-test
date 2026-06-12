@@ -2932,6 +2932,11 @@ body.mushaf-surah-picker-open .fihris-label {
   transition: none;
 }
 
+
+body.mushaf-surah-picker-open .fihris-icon {
+  transform: translateY(8px);
+}
+
 #mushafNextSurahBtn,
 .mushaf-surah-picker-item {
   outline: none !important;
