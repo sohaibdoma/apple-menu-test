@@ -2778,12 +2778,12 @@ body.night-mode.mushaf-surah-picker-open .mushaf-surah-pill {
   padding: 0px 14px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
 
   opacity: 0;
   pointer-events: none;
 
-  transform: translateY(8px);
+  transform: translateY(0);
 
   transition:
     opacity 220ms ease 80ms,
@@ -2813,7 +2813,7 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
   flex-direction: column;
   gap: 0;
 
-  padding-top: 2px;
+  padding-top: 8px;
   padding-bottom: 26px;
 
   direction: rtl;
