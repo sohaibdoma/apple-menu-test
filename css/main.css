@@ -2361,15 +2361,14 @@ transition:
 }
 
 .font-size-pill.is-open {
-  width: calc((var(--header-h) * 2) + 12px);
-   
+  width: var(--font-size-open-width);
   height: var(--header-h);
-
   background-color: #ffffff;
 
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
+
 
 html.night-mode .font-size-pill,
 body.night-mode .font-size-pill {
