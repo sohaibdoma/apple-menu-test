@@ -2496,7 +2496,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn {
 
   gap: 0;
    
-  transform: translate(15px, -14px);
+  transform: translate(30px, -14px);
    
   opacity: 1;
   pointer-events: auto;
