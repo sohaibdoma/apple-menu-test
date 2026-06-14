@@ -2624,7 +2624,7 @@ body.night-mode .font-size-pill.is-open .font-size-btn.is-active {
   );
 }
 
-.font-size-btn--xs { font-size: 15px; }
+.font-size-btn--xs { font-size: 30px; }
 .font-size-btn--sm { font-size: 18px; }
 .font-size-btn--md { font-size: 22px; }
 .font-size-btn--lg { font-size: 26px; }
