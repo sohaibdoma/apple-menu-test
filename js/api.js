@@ -182,9 +182,10 @@ window.Wahyollah = window.Wahyollah || {};
   }
 
   async function getAllAyahs() {
-    if (allAyahsPromise) return allAyahsPromise;
+  if (allAyahsPromise) return allAyahsPromise;
 
-    allAyahsPromise = (async () => {
+  allAyahsPromise = (async () => {
+    try {
       const chapterRequests = [];
 
       for (let chapterNumber = 1; chapterNumber <= 114; chapterNumber += 1) {
@@ -218,10 +219,18 @@ window.Wahyollah = window.Wahyollah || {};
       });
 
       return allAyahs;
-    })();
+    } catch (error) {
+      allAyahsPromise = null;
+      throw error;
+    }
+  })();
 
-    return allAyahsPromise;
-  }
+  return allAyahsPromise;
+}
+
+
+
+  
 
   async function getAllTajweedAyahs() {
     if (allTajweedAyahsPromise) return allTajweedAyahsPromise;
