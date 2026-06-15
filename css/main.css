@@ -2950,6 +2950,7 @@ body.mushaf-surah-picker-open .fihris-icon {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 20px;
+  direction: ltr;
 }
 
 /* ========================================
