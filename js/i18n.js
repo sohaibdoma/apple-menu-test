@@ -43,7 +43,10 @@ function applyLanguage(data, lang) {
 });
 
 
-  localStorage.setItem('lang', lang);
+ try {
+  localStorage.setItem("lang", lang);
+} catch (e) {}
+   
   updateActiveButton(lang);
 }
 
@@ -91,8 +94,14 @@ function initI18n() {
     if (lang) loadLanguage(lang);
   });
 
-  const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
-  loadLanguage(savedLang);
+ let savedLang = DEFAULT_LANG;
+
+try {
+  savedLang = localStorage.getItem("lang") || DEFAULT_LANG;
+} catch (e) {}
+
+loadLanguage(savedLang);
+   
 }
 
 // expose globally
