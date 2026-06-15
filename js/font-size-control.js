@@ -17,7 +17,9 @@
     ignoreScrollClose = true;
 
     document.body.setAttribute("data-quran-font-size", size);
-    localStorage.setItem(STORAGE_KEY, size);
+    try {
+  localStorage.setItem(STORAGE_KEY, size);
+} catch (e) {}
 
     buttons.forEach((button) => {
       button.classList.toggle(
@@ -32,10 +34,6 @@
   }
 
 
-
-
-
-
 function updateOpenWidth() {
   const autoScroll = document.querySelector(".auto-scroll-bar");
   if (!autoScroll) return;
@@ -48,15 +46,6 @@ function updateOpenWidth() {
   pill.style.setProperty("--font-size-open-width", `${width}px`);
 }
 
-
-
-
-
-
-
-
-
-
   
 function openMenu() {
   updateOpenWidth();
@@ -66,13 +55,7 @@ function openMenu() {
   trigger.setAttribute("aria-expanded", "true");
 }
 
-
-
-
-
-
   
-
 function closeMenu() {
   pill.classList.remove("is-open");
   trigger.setAttribute("aria-expanded", "false");
@@ -90,8 +73,15 @@ function closeMenu() {
     }
   }
 
-  const savedSize = localStorage.getItem(STORAGE_KEY) || DEFAULT_SIZE;
-  setSize(savedSize);
+  
+let savedSize = DEFAULT_SIZE;
+
+try {
+  savedSize = localStorage.getItem(STORAGE_KEY) || DEFAULT_SIZE;
+} catch (e) {}
+
+setSize(savedSize);
+  
 
 trigger.addEventListener("click", function (event) {
   event.stopPropagation();
