@@ -2965,35 +2965,34 @@ body.mushaf-surah-picker-open .fihris-icon {
   margin: 0;
 }
 
-/* ========================================
-   FOOTER LOGO
-======================================== */
-
 .footer-logo {
   width: 60px;
   height: auto;
   display: block;
-  margin: 0;
+  margin: 0 auto 10px;
+  transition: opacity 0.2s ease;
+  position: absolute;
 }
 
-/* ========================================
-   THEME LOGO SWITCH
-======================================== */
-
-/* light mode */
+.footer-logo--light,
 .footer-logo--dark {
-  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .footer-logo--light {
-  display: none;
+  opacity: 0;
 }
 
-/* night mode */
-.night-mode .footer-logo--dark {
-  display: none;
+.footer-logo--dark {
+  opacity: 1;
 }
 
 .night-mode .footer-logo--light {
-  display: block;
+  opacity: 1;
+}
+
+.night-mode .footer-logo--dark {
+  opacity: 0;
 }
