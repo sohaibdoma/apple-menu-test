@@ -2943,13 +2943,13 @@ body.mushaf-surah-picker-open .fihris-icon {
 ======================================== */
 
 .home-footer-inner {
-  position: relative;
-  margin-left: var(--nav-inset);
-  margin-right: var(--nav-inset);
-
+  width: auto;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
+
+  margin-left: var(--nav-inset);
+  margin-right: var(--nav-inset);
 
   padding: 20px 0;
    
