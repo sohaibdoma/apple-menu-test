@@ -2952,6 +2952,8 @@ body.mushaf-surah-picker-open .fihris-icon {
   align-items: center;
 
   padding: 20px 0;
+   
+  direction: ltr;
 }
 
 /* ========================================
