@@ -2939,7 +2939,7 @@ body.mushaf-surah-picker-open .fihris-icon {
 
 
 /* ========================================
-   HOME FOOTER (CENTERED LAYOUT)
+   HOME FOOTER (SIMPLE CENTER STACK)
 ======================================== */
 
 .home-footer-inner {
@@ -2954,16 +2954,15 @@ body.mushaf-surah-picker-open .fihris-icon {
   margin-right: var(--nav-inset);
 
   padding: 20px 0;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* ========================================
    FOOTER TEXT
 ======================================== */
 
-.footer-left,
-.footer-right {
-  text-align: center;
+.home-footer-copy {
+  margin: 0;
 }
 
 /* ========================================
@@ -2974,14 +2973,14 @@ body.mushaf-surah-picker-open .fihris-icon {
   width: 60px;
   height: auto;
   display: block;
-  margin: 0 auto;
+  margin: 0;
 }
 
 /* ========================================
-   THEME LOGO SWITCH (LIGHT / NIGHT)
+   THEME LOGO SWITCH
 ======================================== */
 
-/* default (light mode) */
+/* light mode */
 .footer-logo--dark {
   display: block;
 }
