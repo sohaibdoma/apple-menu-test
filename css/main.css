@@ -2953,20 +2953,20 @@ body.mushaf-surah-picker-open .fihris-icon {
 }
 
 /* ========================================
-   FOOTER ALIGNMENT (FLIPPED)
+   FOOTER ALIGNMENT (FINAL)
 ======================================== */
 
 .footer-left {
-  justify-self: end;   /* was start */
-}
-
-.footer-right {
-  justify-self: start; /* was end */
+  justify-self: start;
 }
 
 .footer-center {
   justify-self: center;
   text-align: center;
+}
+
+.footer-right {
+  justify-self: end;
 }
 
 /* ========================================
