@@ -3,6 +3,8 @@
 
   let liveSearchTimer = null;
 
+  let searchDataPromise = null;
+
   function getQueryFromURL() {
     const params = new URLSearchParams(window.location.search);
     return (params.get("q") || "").trim();
@@ -99,44 +101,61 @@ function highlightMatch(text, query) {
     document.title = query ? `${getPageTitle()} - ${query}` : getPageTitle();
   }
 
-  async function loadSearchData() {
-    const api = window.Wahyollah?.api;
-    if (!api) {
-      throw new Error("API module not loaded");
-    }
 
-    const [allSurahs, allAyahs] = await Promise.all([
-      api.getAllChapters(),
-      api.getAllAyahs()
-    ]);
 
-    const surahs = allSurahs.map((chapter) => ({
-      type: "surah",
-      surahId: chapter.id,
-      href: `surah.html?surah=${chapter.id}`,
-      nameArabic: chapter.name_arabic || "",
-      nameSimple: chapter.name_simple || "",
-      revelationPlace: chapter.revelation_place || "",
-      versesCount: chapter.verses_count || ""
-    }));
 
-    const surahNameById = new Map(
-      allSurahs.map((chapter) => [chapter.id, chapter.name_arabic || ""])
-    );
+  
+async function loadSearchData() {
+  if (searchDataPromise) return searchDataPromise;
 
-    const ayahs = allAyahs.map((ayah) => ({
-      type: "ayah",
-      surahId: ayah.surahId,
-      surahNameArabic: surahNameById.get(ayah.surahId) || "",
-      ayahNumber: ayah.ayahNumber,
-      verseKey: ayah.verseKey,
-      pageNumber: ayah.pageNumber,
-      textArabic: ayah.textArabic || "",
-      href: ayah.href || ""
-    }));
-
-    return { surahs, ayahs };
+  const api = window.Wahyollah?.api;
+  if (!api) {
+    throw new Error("API module not loaded");
   }
+
+  searchDataPromise = (async () => {
+    try {
+      const [allSurahs, allAyahs] = await Promise.all([
+        api.getAllChapters(),
+        api.getAllAyahs()
+      ]);
+
+      const surahs = allSurahs.map((chapter) => ({
+        type: "surah",
+        surahId: chapter.id,
+        href: `surah.html?surah=${chapter.id}`,
+        nameArabic: chapter.name_arabic || "",
+        nameSimple: chapter.name_simple || "",
+        revelationPlace: chapter.revelation_place || "",
+        versesCount: chapter.verses_count || ""
+      }));
+
+      const surahNameById = new Map(
+        allSurahs.map((chapter) => [chapter.id, chapter.name_arabic || ""])
+      );
+
+      const ayahs = allAyahs.map((ayah) => ({
+        type: "ayah",
+        surahId: ayah.surahId,
+        surahNameArabic: surahNameById.get(ayah.surahId) || "",
+        ayahNumber: ayah.ayahNumber,
+        verseKey: ayah.verseKey,
+        pageNumber: ayah.pageNumber,
+        textArabic: ayah.textArabic || "",
+        href: ayah.href || ""
+      }));
+
+      return { surahs, ayahs };
+    } catch (error) {
+      searchDataPromise = null;
+      throw error;
+    }
+  })();
+
+  return searchDataPromise;
+}
+
+  
 
   function searchSurahs(items, query) {
     const q = normalizeSearchText(query);
