@@ -82,10 +82,11 @@ window.Wahyollah = window.Wahyollah || {};
     return data;
   }
 
-  async function getAllChapters() {
-    if (allChaptersPromise) return allChaptersPromise;
+async function getAllChapters() {
+  if (allChaptersPromise) return allChaptersPromise;
 
-    allChaptersPromise = (async () => {
+  allChaptersPromise = (async () => {
+    try {
       const requests = [];
 
       for (let id = 1; id <= 114; id += 1) {
@@ -98,10 +99,14 @@ window.Wahyollah = window.Wahyollah || {};
         .map((res) => res?.chapter)
         .filter(Boolean)
         .sort((a, b) => a.id - b.id);
-    })();
+    } catch (error) {
+      allChaptersPromise = null;
+      throw error;
+    }
+  })();
 
-    return allChaptersPromise;
-  }
+  return allChaptersPromise;
+}
 
   async function getUthmaniVersesByChapter(chapterNumber) {
     const perPage = 50;
@@ -232,10 +237,11 @@ window.Wahyollah = window.Wahyollah || {};
 
   
 
-  async function getAllTajweedAyahs() {
-    if (allTajweedAyahsPromise) return allTajweedAyahsPromise;
+async function getAllTajweedAyahs() {
+  if (allTajweedAyahsPromise) return allTajweedAyahsPromise;
 
-    allTajweedAyahsPromise = (async () => {
+  allTajweedAyahsPromise = (async () => {
+    try {
       const chapterRequests = [];
 
       for (let chapterNumber = 1; chapterNumber <= 114; chapterNumber += 1) {
@@ -269,10 +275,14 @@ window.Wahyollah = window.Wahyollah || {};
       });
 
       return allAyahs;
-    })();
+    } catch (error) {
+      allTajweedAyahsPromise = null;
+      throw error;
+    }
+  })();
 
-    return allTajweedAyahsPromise;
-  }
+  return allTajweedAyahsPromise;
+}
 
   window.Wahyollah.api = {
     getChapter,
