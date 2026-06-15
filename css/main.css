@@ -2947,4 +2947,19 @@ body.mushaf-surah-picker-open .fihris-icon {
   margin: 0 auto 10px;
 }
 
+.footer-logo--light,
+.footer-logo--dark {
+  display: none;
+}
 
+.footer-logo--dark {
+  display: block;
+}
+
+.night-mode .footer-logo--dark {
+  display: none;
+}
+
+.night-mode .footer-logo--light {
+  display: block;
+}
