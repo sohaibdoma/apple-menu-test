@@ -635,61 +635,66 @@ async function loadPreviousPagesIfNeeded() {
 
 async function jumpToSurahInMushaf(surahId) {
   isJumpingToSurah = true;
-  await Promise.all([
-    surahId > 1 ? loadSingleSurahForJump(surahId - 1) : Promise.resolve(),
-    loadSingleSurahForJump(surahId),
-    surahId < 114 ? loadSingleSurahForJump(surahId + 1) : Promise.resolve(),
-    surahId < 113 ? loadSingleSurahForJump(surahId + 2) : Promise.resolve()
-  ]);
 
-  const firstPage = getFirstPageForSurah(surahId);
-  if (!firstPage) return;
+  try {
+    await Promise.all([
+      surahId > 1 ? loadSingleSurahForJump(surahId - 1) : Promise.resolve(),
+      loadSingleSurahForJump(surahId),
+      surahId < 114 ? loadSingleSurahForJump(surahId + 1) : Promise.resolve(),
+      surahId < 113 ? loadSingleSurahForJump(surahId + 2) : Promise.resolve()
+    ]);
 
-  const pagesRoot = document.getElementById("mushaf-pages");
-  if (!pagesRoot) return;
+    const firstPage = getFirstPageForSurah(surahId);
+    if (!firstPage) return;
 
-  pagesRoot.innerHTML = "";
-  renderedPages.clear();
-  lowestRenderedPage = firstPage;
-  highestRenderedPage = firstPage - 1;
+    const pagesRoot = document.getElementById("mushaf-pages");
+    if (!pagesRoot) return;
 
-  const startPage = Math.max(1, firstPage - 4);
-  const endPage = Math.min(604, firstPage + 8);
+    pagesRoot.innerHTML = "";
+    renderedPages.clear();
+    lowestRenderedPage = firstPage;
+    highestRenderedPage = firstPage - 1;
 
-  for (let page = startPage; page <= endPage; page += 1) {
-    appendPage(page);
+    const startPage = Math.max(1, firstPage - 4);
+    const endPage = Math.min(604, firstPage + 8);
+
+    for (let page = startPage; page <= endPage; page += 1) {
+      appendPage(page);
+    }
+
+    await new Promise((resolve) =>
+      requestAnimationFrame(() => {
+        requestAnimationFrame(resolve);
+      })
+    );
+
+    const target = document.querySelector(
+      `.mushaf-surah-start[data-surah-id="${surahId}"]`
+    );
+
+    if (target) {
+      const header = document.querySelector(".main-header");
+      const headerHeight = header ? header.offsetHeight : 0;
+
+      const y =
+        target.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerHeight -
+        24;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth"
+      });
+    }
+
+    updateNextSurahPill(surahId);
+    updateNavbarSurahTitle();
+  } finally {
+    setTimeout(() => {
+      isJumpingToSurah = false;
+    }, 1500);
   }
-
-  await new Promise((resolve) => requestAnimationFrame(() => {
-    requestAnimationFrame(resolve);
-  }));
-
-  const target = document.querySelector(
-    `.mushaf-surah-start[data-surah-id="${surahId}"]`
-  );
-
-  if (target) {
-    const header = document.querySelector(".main-header");
-    const headerHeight = header ? header.offsetHeight : 0;
-
-    const y =
-      target.getBoundingClientRect().top +
-      window.pageYOffset -
-      headerHeight -
-      24;
-
-    window.scrollTo({
-      top: y,
-      behavior: "smooth"
-    });
-  }
-
-  updateNextSurahPill(surahId);
-  updateNavbarSurahTitle();
-  
-  setTimeout(() => {
-  isJumpingToSurah = false;
-}, 1500);
 }
 
   
