@@ -2844,13 +2844,13 @@ body.mushaf-surah-picker-open .mushaf-surah-picker {
 }
 
 .mushaf-surah-picker-item.is-current-surah {
-  background: rgba(0, 0, 0, 0.055);
+  background: rgba(0, 0, 0, 0.10);
   border-radius: 999px;
 }
 
 html.night-mode .mushaf-surah-picker-item.is-current-surah,
 body.night-mode .mushaf-surah-picker-item.is-current-surah {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 body.mushaf-surah-picker-open {
