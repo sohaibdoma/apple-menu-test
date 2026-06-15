@@ -2936,3 +2936,15 @@ body.mushaf-surah-picker-open .fihris-icon {
   outline: none !important;
   box-shadow: none !important;
 }
+
+
+
+
+.footer-logo {
+  width: 60px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+
