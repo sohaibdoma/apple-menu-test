@@ -2949,7 +2949,7 @@ body.mushaf-surah-picker-open .fihris-icon {
   justify-content: center;
 
   direction: ltr;
-  gap: 12px;
+  gap: 4px;
 }
 
 /* ========================================
@@ -2964,7 +2964,7 @@ body.mushaf-surah-picker-open .fihris-icon {
   width: 60px;
   height: auto;
   display: block;
-  margin: 0 auto 10px;
+  margin: 0;
   transition: opacity 0.2s ease;
 }
 
