@@ -2948,14 +2948,6 @@ body.mushaf-surah-picker-open .fihris-icon {
   align-items: center;
   justify-content: center;
 
-  text-align: center;
-
-  margin-left: var(--nav-inset);
-  margin-right: var(--nav-inset);
-
-  padding: 20px 0;
-  gap: 12px;
-
   direction: ltr;
 }
 
