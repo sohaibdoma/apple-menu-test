@@ -548,6 +548,10 @@ async function loadNextPagesIfNeeded() {
     }
   }
 
+
+
+
+  
 async function loadPreviousPagesIfNeeded() {
   if (isJumpingToSurah) return;
   if (isLoadingPrevious) return;
@@ -558,8 +562,20 @@ async function loadPreviousPagesIfNeeded() {
 
   try {
     const previousPage = lowestRenderedPage - 1;
+    const firstRenderedPage = document.querySelector(".mushaf-page");
+    const anchorSurahId = Number(
+      firstRenderedPage?.getAttribute("data-surah-id")
+    );
 
-    await loadSurahAroundRenderedWindow("previous");
+    if (anchorSurahId) {
+      for (
+        let surahId = anchorSurahId - 1;
+        surahId >= 1 && getPageVerses(previousPage).length === 0;
+        surahId -= 1
+      ) {
+        await loadSingleSurahForJump(surahId);
+      }
+    }
 
     await new Promise((resolve) => {
       setTimeout(resolve, 180);
@@ -577,6 +593,8 @@ async function loadPreviousPagesIfNeeded() {
   }
 }
 
+
+  
   async function loadInitialMushafData() {
     await loadSurahIntoCache(1);
     await loadSurahIntoCache(2);
