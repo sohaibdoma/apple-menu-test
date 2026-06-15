@@ -3,11 +3,19 @@ window.Wahyollah = window.Wahyollah || {};
 function applyTheme(isNight) {
   document.documentElement.classList.toggle("night-mode", isNight);
   document.body.classList.toggle("night-mode", isNight);
-  localStorage.setItem("theme", isNight ? "night" : "light");
+
+  try {
+    localStorage.setItem("theme", isNight ? "night" : "light");
+  } catch (e) {}
 }
 
 function initTheme() {
-  const saved = localStorage.getItem("theme");
+  let saved = "";
+
+try {
+  saved = localStorage.getItem("theme") || "";
+} catch (e) {}
+  
   applyTheme(saved === "night");
 
   const toggle = document.getElementById("themeToggle");
