@@ -637,12 +637,13 @@ async function jumpToSurahInMushaf(surahId) {
   isJumpingToSurah = true;
 
   try {
-    await Promise.all([
-      surahId > 1 ? loadSingleSurahForJump(surahId - 1) : Promise.resolve(),
-      loadSingleSurahForJump(surahId),
-      surahId < 114 ? loadSingleSurahForJump(surahId + 1) : Promise.resolve(),
-      surahId < 113 ? loadSingleSurahForJump(surahId + 2) : Promise.resolve()
-    ]);
+for (let id = surahId; id >= 1; id -= 1) {
+  await loadSingleSurahForJump(id);
+}
+
+for (let id = surahId + 1; id <= Math.min(114, surahId + 2); id += 1) {
+  await loadSingleSurahForJump(id);
+}
 
     const firstPage = getFirstPageForSurah(surahId);
     if (!firstPage) return;
