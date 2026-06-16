@@ -2993,7 +2993,7 @@ body.mushaf-surah-picker-open .fihris-icon {
 
 .home-footer-copy {
   margin: 0;
-  color: var(--footer-line);
+  color: var(--footer-line) !important;
    
   font-family: "Comfortaa", sans-serif;
   font-weight: 500;
@@ -3003,7 +3003,7 @@ body.mushaf-surah-picker-open .fihris-icon {
 
 
 .footer-logo {
-  width: 30px;
+  width: 40px;
   height: auto;
   display: block;
 
