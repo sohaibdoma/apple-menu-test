@@ -2973,38 +2973,31 @@ body.mushaf-surah-picker-open .fihris-icon {
   --footer-line: rgba(255, 255, 255, 0.15);
 }
 
+/* ========================================
+   FOOTER CONTENT
+======================================== */
+
 .home-footer-inner {
-  position: relative;
-
   width: var(--footer-width);
-  height: 25px;
-
   margin: 0 auto;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
   direction: ltr;
 }
 
-.footer-logo {
-  position: absolute;
-  left: -22px;
-  top: 50%;
-
-  width: 20px;
-  height: auto;
-
-  display: block;
-  transform: translateY(-50%);
+.home-footer-copy {
+  margin: 0;
+  color: var(--footer-line);
 }
 
-.home-footer-copy {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-
-  margin: 0;
-
-  transform: translate(-50%, -50%);
-  color: var(--footer-line);
+.footer-logo {
+  width: 20px;
+  height: auto;
+  display: block;
 }
 
 .footer-logo--light {
