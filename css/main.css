@@ -2921,6 +2921,7 @@ body.mushaf-surah-picker-open .fihris-icon {
 }
 
 .home-footer::before {
+  display: none;
   content: "";
 
   position: absolute;
