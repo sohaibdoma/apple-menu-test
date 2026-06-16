@@ -2984,3 +2984,20 @@ body.mushaf-surah-picker-open .fihris-icon {
 .night-mode .footer-logo--dark {
   display: none;
 }
+
+
+/* ========================================
+   HOME FOOTER
+======================================== */
+
+.home-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 32px;
+  padding-top: 24px;
+}
+
+.night-mode .home-footer {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+
