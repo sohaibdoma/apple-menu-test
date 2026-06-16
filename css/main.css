@@ -2906,9 +2906,9 @@ body.mushaf-surah-picker-open .fihris-icon {
 .home-footer {
   position: relative;
 
-  margin-top: 32px;
-  padding-top: 24px;
-  padding-bottom: 28px;
+  margin-top: 60px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 
   width: calc(100% - (2 * var(--nav-inset)));
   margin-left: auto;
