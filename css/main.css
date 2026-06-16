@@ -2996,11 +2996,21 @@ body.mushaf-surah-picker-open .fihris-icon {
   width: calc(100% - (2 * var(--nav-inset)));
   margin-left: auto;
   margin-right: auto;
-
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+   
+  --footer-line: rgba(0, 0, 0, 0.40);
+  border-top: 1px solid var(--footer-line);
 }
 
 .night-mode .home-footer {
-  border-top-color: rgba(255, 255, 255, 0.15);
+  --footer-line: rgba(255, 255, 255, 0.35);
 }
 
+
+.footer-divider {
+  width: 1px;
+  height: 14px;
+
+  background: var(--footer-line);
+
+  flex-shrink: 0;
+}
