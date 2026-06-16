@@ -3021,12 +3021,3 @@ body.mushaf-surah-picker-open .fihris-icon {
 .night-mode .home-footer {
   --footer-line: rgba(255, 255, 255, 0.15);
 }
-
-.footer-divider {
-  width: 1px;
-  height: 14px;
-
-  background: var(--footer-line);
-
-  flex-shrink: 0;
-}
