@@ -2963,7 +2963,7 @@ body.mushaf-surah-picker-open .fihris-icon {
 }
 
 .footer-logo {
-  width: 25px;
+  width: 15px;
   height: auto;
   display: block;
 }
@@ -2999,7 +2999,7 @@ body.mushaf-surah-picker-open .fihris-icon {
   margin-left: auto;
   margin-right: auto;
 
-  --footer-line: rgba(0, 0, 0, 0.30);
+  --footer-line: rgba(0, 0, 0, 0.20);
 }
 
 .home-footer::before {
@@ -3018,7 +3018,7 @@ body.mushaf-surah-picker-open .fihris-icon {
 }
 
 .night-mode .home-footer {
-  --footer-line: rgba(255, 255, 255, 0.25);
+  --footer-line: rgba(255, 255, 255, 0.15);
 }
 
 .footer-divider {
