@@ -2963,7 +2963,7 @@ body.mushaf-surah-picker-open .fihris-icon {
 }
 
 .footer-logo {
-  width: 30px;
+  width: 25px;
   height: auto;
   display: block;
 }
@@ -3009,7 +3009,7 @@ body.mushaf-surah-picker-open .fihris-icon {
   top: 0;
   left: 50%;
 
-  width: 90%;
+  width: 95%;
   height: 1px;
 
   transform: translateX(-50%);
