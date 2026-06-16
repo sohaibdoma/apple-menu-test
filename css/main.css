@@ -2990,21 +2990,36 @@ body.mushaf-surah-picker-open .fihris-icon {
 ======================================== */
 
 .home-footer {
+  position: relative;
+
   margin-top: 32px;
   padding-top: 24px;
 
   width: calc(100% - (2 * var(--nav-inset)));
   margin-left: auto;
   margin-right: auto;
-   
+
   --footer-line: rgba(0, 0, 0, 0.40);
-  border-top: 1px solid var(--footer-line);
+}
+
+.home-footer::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  width: 75%;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background: var(--footer-line);
 }
 
 .night-mode .home-footer {
   --footer-line: rgba(255, 255, 255, 0.35);
 }
-
 
 .footer-divider {
   width: 1px;
