@@ -2947,6 +2947,7 @@ body.mushaf-surah-picker-open .fihris-icon {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   direction: ltr;
 
@@ -2963,26 +2964,25 @@ body.mushaf-surah-picker-open .fihris-icon {
 }
 
 .footer-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   width: 60px;
   height: auto;
-  display: block;
-  margin: 0;
-  line-height: 0;
 }
 
-
 .footer-logo--light {
-  opacity: 0;
+  display: none;
 }
 
 .footer-logo--dark {
-  opacity: 1;
+  display: block;
 }
 
 .night-mode .footer-logo--light {
-  opacity: 1;
+  display: block;
 }
 
 .night-mode .footer-logo--dark {
-  opacity: 0;
+  display: none;
 }
