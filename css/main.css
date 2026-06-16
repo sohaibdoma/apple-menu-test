@@ -2960,10 +2960,11 @@ body.mushaf-surah-picker-open .fihris-icon {
 
 .home-footer-copy {
   margin: 0;
+  color: var(--footer-line);
 }
 
 .footer-logo {
-  width: 15px;
+  width: 25px;
   height: auto;
   display: block;
 }
