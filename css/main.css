@@ -273,46 +273,6 @@ body.night-mode .choose-surah-btn:hover {
 }
 
 
-/* ========================================
-   HOME FOOTER (ALWAYS DARK)
-======================================== */
-
-.home-footer {
-  width: 100%;
-  padding: 20px 24px 28px;
-  text-align: center;
-}
-
-.home-footer-inner {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.home-footer-brand {
-  margin: 0;
-  font-family: "Scheherazade New", serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #000000;
-}
-
-.home-footer-copy {
-  margin: 4px 0 0;
-  font-size: 13px;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-html.night-mode .home-footer-brand,
-body.night-mode .home-footer-brand {
-  color: #ffffff;
-}
-
-html.night-mode .home-footer-copy,
-body.night-mode .home-footer-copy {
-  color: rgba(255, 255, 255, 0.6);
-}
-
 
 /* ========================================
    SURAH PAGE
@@ -2947,10 +2907,13 @@ body.mushaf-surah-picker-open .fihris-icon {
 
   margin-top: 32px;
   padding-top: 24px;
+  padding-bottom: 28px;
 
   width: calc(100% - (2 * var(--nav-inset)));
   margin-left: auto;
   margin-right: auto;
+
+  text-align: center;
 
   --footer-width: 95%;
   --footer-line: rgba(0, 0, 0, 0.20);
@@ -2990,22 +2953,22 @@ body.mushaf-surah-picker-open .fihris-icon {
   direction: ltr;
 }
 
-
-.home-footer-copy {
-  margin: 0;
-  color: var(--footer-line) !important;
-   
-  font-family: "Comfortaa", sans-serif;
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.02em;
-}
-
-
 .footer-logo {
   width: 40px;
   height: auto;
   display: block;
 
   color: var(--footer-line);
+}
+
+.home-footer-copy {
+  margin: 0;
+
+  color: var(--footer-line);
+
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
