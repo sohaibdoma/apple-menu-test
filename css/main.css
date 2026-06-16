@@ -3003,23 +3003,9 @@ body.mushaf-surah-picker-open .fihris-icon {
 
 
 .footer-logo {
-  width: 30px;
+  width: 20px;
   height: auto;
   display: block;
-}
 
-.footer-logo--light {
-  display: none;
-}
-
-.footer-logo--dark {
-  display: block;
-}
-
-.night-mode .footer-logo--light {
-  display: block;
-}
-
-.night-mode .footer-logo--dark {
-  display: none;
+  color: var(--footer-line);
 }
