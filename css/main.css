@@ -2899,6 +2899,44 @@ body.mushaf-surah-picker-open .fihris-icon {
 
 
 
+/* ========================================
+   HOME FOOTER
+======================================== */
+
+.home-footer {
+  position: relative;
+
+  margin-top: 32px;
+  padding-top: 24px;
+  padding-bottom: 28px;
+
+  width: calc(100% - (2 * var(--nav-inset)));
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: center;
+
+  --footer-width: 95%;
+  --footer-line: rgba(0, 0, 0, 0.20);
+}
+
+.home-footer::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: calc((100% - var(--footer-width)) / 2);
+
+  width: var(--footer-width);
+  height: 1px;
+
+  background: var(--footer-line);
+}
+
+.night-mode .home-footer {
+  --footer-line: rgba(255, 255, 255, 0.28);
+}
+
 
 /* ========================================
    FOOTER CONTENT
