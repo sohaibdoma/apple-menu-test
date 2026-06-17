@@ -276,6 +276,13 @@ function renderSurah(data) {
   const content = document.getElementById("surah-content");
   const navTitle = document.getElementById("nav-surah-title");
 
+  const surahName = data?.chapter?.name_simple || "";
+
+if (surahName) {
+  document.title = `Wahyollah | Surah ${surahName}`;
+}
+  
+
   function updateSurahNavbarPage() {
     if (!navTitle) return;
 
