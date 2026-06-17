@@ -34,7 +34,7 @@ function highlightMatch(text, query) {
 }
 
 function getPageTitle() {
-  return "Quran Search | ";
+  return "Quran Search";
 }
 
   function getResultsLabel(count, query) {
