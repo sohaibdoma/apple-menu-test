@@ -33,13 +33,9 @@ function highlightMatch(text, query) {
   return escapeHtml(text);
 }
 
-  function getPageTitle() {
-    const lang = document.documentElement.getAttribute("data-lang") || "ar";
-
-    if (lang === "en") return "Search";
-    if (lang === "tr") return "Arama";
-    return "البحث";
-  }
+function getPageTitle() {
+  return "Wahyollah | Quran Search";
+}
 
   function getResultsLabel(count, query) {
     const lang = document.documentElement.getAttribute("data-lang") || "ar";
@@ -98,11 +94,8 @@ function highlightMatch(text, query) {
       }
     }
 
-    document.title = query ? `${getPageTitle()} - ${query}` : getPageTitle();
+    document.title = query ? `${getPageTitle()} | ${query}` : getPageTitle();
   }
-
-
-
 
   
 async function loadSearchData() {
